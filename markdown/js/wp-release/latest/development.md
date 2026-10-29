@@ -14,7 +14,7 @@ npm run lint --workspace @wpelevator/wp-release
 - `test` runs the `.ts` tests directly with `node --test`, using Node.js type stripping, so it needs Node.js 22.18 or later but no build. The SVN integration tests in `svn-deploy.integration.test.ts` create repositories with `svnadmin` and deploy to their `file://` URLs; they're skipped when `svn` or `svnadmin` isn't installed.
 - `lint` runs ESLint and a `tsc` type check.
 
-The i18n tests validate gettext round trips, script catalogs and generated PHP data without launching PHP, WP-CLI or WordPress, covering contexts, plural forms, comments, flags, Unicode, escaping and PHP-looking input as data.
+The i18n tests in `@wpelevator/wp-gettext` validate gettext round trips, script catalogs and generated PHP data without launching PHP, WP-CLI or WordPress, covering contexts, plural forms, comments, flags, Unicode, escaping and PHP-looking input as data.
 
 The `wpelevator-source` export condition points at `src/index.ts`. The wp-release tests and monorepo CLI scripts use it to work with the source instead of a `dist/` build. Action builds use the declared dependency's default export, which resolves to `dist/` for the workspace copy and the published package. Build wp-release before building the actions.
 
@@ -36,7 +36,7 @@ The package uses ES modules as its unit of encapsulation, like most Node.js CLI 
 - **Workflows with steps** are classes, so that their steps share state and dependencies on the instance: `SvnDeploy` shares the temporary working copy across `prepare()`, `checkout()`, `sync()` and `commit()`, `GitDeploy` binds the options and the git runner to its steps, and `ChangesetRelease` binds the repository and the runners to `add()`, `version()` and `tag()`.
 - **External commands** run through injectable runners: `createSvnRunner()` and `createGitRunner()` return functions that spawn the binary without a shell. The classes take a runner as an option and create the default one when it's missing, so tests pass a fake runner, or one that wraps the real runner and records some commands, instead of putting fake binaries on the `PATH`. The `Svn` and `ReleaseRepository` classes wrap a runner with the commands of their domain.
 - **Domain logic** is plain functions that take their dependencies as arguments, like `discoverPackages( repository, config )`, so that each one can be tested on its own.
-- **Commands** in `src/commands/` parse the CLI options and call the library, and `cli.ts` handles the global options, logging and exit codes. Errors carry their exit code, like `ValidationError` with `2`.
+- **Commands** in `src/commands/` parse the CLI options and call the library, and `cli.ts` handles the global options, logging and exit codes. Errors carry their exit code, like `ValidationError` with `2`. Signing lives in `@wpelevator/signatures`, which throws errors with a `code`; `src/signing.ts` wraps it to read `WP_RELEASE_SIGNING_KEY` and to report those errors as `ValidationError`. ZIP archives live in `@wpelevator/zip` in the same way: `src/zip.ts` and `src/unzip.ts` adapt its entries and `zipPath` inputs and report its `ZipError` as `ValidationError`, with the `--force` hint for an existing archive. File selection and syncing live in `@wpelevator/fileset` and checksums in `@wpelevator/checksums`, which throw errors with a `code` in the same way: `src/file-selection.ts`, `src/sync.ts` and `src/checksums.ts` wrap them to report those errors as `ValidationError`, to build the manifest metadata from the plugin or theme slug and version, to select the files from the rules before hashing, and to pass the Git `export-ignore` lister to the fileset package. `src/integrity.ts` wraps the manifest codecs of the checksums package in the same way.
 - Constructors only store their options. Work starts in a method call.
 
 The changeset release modules, from the entry point down:
@@ -60,19 +60,10 @@ The changeset release modules, from the entry point down:
 | `file-journal.ts` | `FileJournal`, which restores every file a failed `changeset-version` run changed. |
 | `versions.ts` | Version checks and SemVer precedence. |
 
-The internationalization modules in `src/i18n/`, from the entry points down:
+The internationalization modules in `src/i18n/` adapt the standalone `@wpelevator/wp-gettext` package, which owns extraction, catalogs, POT, PO, MO, script JSON, `.l10n.php` and audits:
 
 | Module | Responsibility |
 |---|---|
 | `packages.ts` | `resolveI18nPackages()`, the config adapter that selects a directory, one package or all packages and resolves their options and POT paths. |
-| `options.ts` | Validating and merging the `i18n` options of the config layers and the CLI. |
-| `generate.ts` | `extractCatalog()` and `generatePackagePot()`, which read the selected files of a package and write or check its POT. |
-| `compile.ts` | `compileTranslations()`, which compiles a translated PO into MO, script JSON or `.l10n.php` and writes or checks the outputs. |
-| `files.ts` | Selecting source files with the include and exclude globs, independently of the distribution file rules. |
-| `php.ts`, `javascript.ts` and `metadata.ts` | Parsers for PHP, JavaScript and TypeScript, and `block.json`, `theme.json` and plugin and theme headers. |
-| `extraction.ts` | The translation functions and their arguments, shared by the parsers. |
-| `catalog.ts` | Catalog types, merging messages of a domain and the diagnostics. |
-| `audit.ts` and `placeholders.ts` | Audit findings and the sprintf placeholders that they check. |
-| `pot.ts` | Serializing a catalog as a POT. |
-| `po.ts`, `translation-json.ts` and `translation-php.ts` | Parsing translated PO files and compiling MO, script JSON and `.l10n.php`. |
-| `atomic-output.ts` | Validating output paths and replacing output files atomically. |
+| `generate.ts` | `extractCatalog()`, `generatePackagePot()`, `resolvePotPath()` and `validatePotDestinations()`, which read the headers of the main file with `package-meta.ts` and pass them as `meta` to the generate functions of `@wpelevator/wp-gettext/generate`. |
+| `gettext.ts` | The other functions of `@wpelevator/wp-gettext`, with their `GettextError` reported as a `ValidationError` with the original error as its `cause`. |

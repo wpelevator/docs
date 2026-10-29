@@ -75,4 +75,6 @@ A script map is a JSON object from normalized package-relative source references
 
 JSON filenames are `<domain>-<Language>-<md5(runtime-path)>.json`; the WordPress `default` domain uses `<Language>-<md5(runtime-path)>.json`. WordPress's `.min.js` normalization applies consistently to grouping, hashing and the JSON `source`. Jed keys preserve context through `\u0004`, plural arrays contain all translated forms, and revision dates come from the PO metadata. `.l10n.php` writes safely escaped data arrays with NUL-separated plural translations; catalog text is never treated as executable PHP.
 
+The extraction and compilation primitives are in the standalone [`@wpelevator/wp-gettext`](https://www.npmjs.com/package/@wpelevator/wp-gettext) package, without the repository and release tooling, and `wp-release` depends on it. See its README to use them in your own scripts.
+
 The package can be installed and used in any WordPress plugin or theme project; repository package selection is optional, and directory mode works without a wp-release config.
