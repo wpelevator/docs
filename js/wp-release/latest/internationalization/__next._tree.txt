@@ -2,4 +2,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"slug","t":"c","k":"js/wp-release/latest/internationalization","s":["api","markdown"]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(docs)","h":96,"c":"$Q2"}]]
-0:{"b":"c8pLxhISH_9Nh1zk0qA9l","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"WqPsY6KowfkIKBBATjcMZ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
