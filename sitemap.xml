@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://docs.wpelevator.com</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/changesets</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/cli</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/comparison</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/configuration</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/deployment</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/development</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/internationalization</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/library</loc>
+</url>
+<url>
+<loc>https://docs.wpelevator.com/js/wp-release/latest/packaging</loc>
+</url>
+</urlset>
