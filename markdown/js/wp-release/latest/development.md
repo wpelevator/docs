@@ -10,7 +10,7 @@ npm test --workspace @wpelevator/wp-release
 npm run lint --workspace @wpelevator/wp-release
 ```
 
-- `build` compiles `src/` to `dist/` with `tsc`, leaving out the tests.
+- `build` compiles `src/` to `dist/` with `tsc`, leaving out the tests. TypeScript resolves the workspace packages that wp-release depends on, like `@wpelevator/zip`, through their `wpelevator-source` condition, so it checks their source and needs no `dist/` of them. `preserveSymlinks` keeps their files under `node_modules`, so they aren't compiled into wp-release's `dist/`.
 - `test` runs the `.ts` tests directly with `node --test`, using Node.js type stripping, so it needs Node.js 22.18 or later but no build. The SVN integration tests in `svn-deploy.integration.test.ts` create repositories with `svnadmin` and deploy to their `file://` URLs; they're skipped when `svn` or `svnadmin` isn't installed.
 - `lint` runs ESLint and a `tsc` type check.
 
