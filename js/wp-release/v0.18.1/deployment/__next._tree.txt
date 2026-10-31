@@ -1,5 +1,5 @@
 :HL["/docs/_next/static/chunks/0nii7-syev-hu.css","style"]
 3:[["children",{"s":"__PAGE__","h":160}]]
-2:[["children",{"s":{"n":"slug","t":"c","k":"js/wp-release/v0.18.1/deployment","s":["api","markdown"]},"h":96,"c":"$Q3"}]]
-1:[["children",{"s":"(docs)","h":96,"c":"$Q2"}]]
-0:{"b":"TrnRS5In3_uxW6eAGjsXt","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+2:[["children",{"s":{"n":"slug","t":"c","k":"js/wp-release/v0.18.1/deployment","s":["api","markdown"]},"h":64,"c":"$Q3"}]]
+1:[["children",{"s":"(docs)","h":32,"c":"$Q2"}]]
+0:{"b":"v3u0kbcKBco4t6au2GJyS","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
