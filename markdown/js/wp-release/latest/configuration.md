@@ -30,7 +30,7 @@ The names below are scoped to their commands. `--output` selects the primary art
 | SVN repository | `--svn-url <url>` | `svn-url` | `svnUrl` | Deploy destination. |
 | Git repository | `--git-url <url>` | | `gitUrl` | Destination of `deploy-git`. Credentials come from git, like a token in the URL or an SSH key, and are never printed. |
 | Branch and tag to release to | `--branch <name>`, `--tag <name>` | | `branch`, `tag` | Refs written by `deploy-git` in the Git repository, distinct from the git tag that `version-check` compares. |
-| Source history | `--split-prefix <dir>` | | `splitPrefix` | Directory of a monorepo package whose history, from `git subtree split`, becomes the source history of `deploy-git` releases. |
+| Source history | `--split-prefix <dir>` | | `splitPrefix` | Directory of a monorepo package whose history, split into its own commits like `git subtree split` does, becomes the source history of `deploy-git` releases. |
 | SVN credentials | `--svn-username <name>`, `SVN_USERNAME` and `SVN_PASSWORD` env vars | `svn-username`, `svn-password` | `svnUsername`, `svnPassword` | Needed only to commit. There's no password flag, since it would show in the process list; the action inputs and library options fall back to the env vars. |
 | Log format | `--log-format <text\|github>`, `--ci` for `github` | always `github` | `writer: new TextWriter()` or `new GitHubActionsWriter()` | How the log is printed: plain text, or GitHub Actions annotations and job summaries. Each name matches the start of its writer class. |
 | Release config | `--config <path>` | `config` in ZIP, checksums and SVN actions | `configFile` | Explicit JavaScript config path for package selection, integrity settings or deployment. |
