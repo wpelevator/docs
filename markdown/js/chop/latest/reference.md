@@ -34,6 +34,21 @@ Where the original comes from. The data directory is the default and its behavio
 - `allowedHosts` entries are `host`, `*.example.com` (subdomains on a dot boundary, not the apex), either with `:port`, or `*` for every host on the default ports. `*` can't be mixed with other entries, and it is a warning at startup. Even with `*` everything else of this section applies, and `originAllowPrivate` never applies to a URL source (R-SRC-15).
 - A data directory that is set explicitly and an origin together are an invalid setting (R-SRC-16).
 
+### S3 origin [#s3-origin]
+
+`origin` set to `s3://bucket[/prefix]` reads the originals from an S3 bucket or an S3-compatible service. It is the HTTP origin of the section above for requests of the bucket, with signed requests, and every rule of that section applies unless it is changed here.
+
+- `origin` is parsed into a bucket and a prefix: the bucket has 3 to 63 lower case letters, digits, dots and hyphens and isn't an IP address, and the prefix can't have empty, `.` or `..` segments, a query string or a fragment. `http://` and `https://` origins are unchanged, and a data directory that is set explicitly together with an `s3://` origin is an invalid setting (R-S3-1).
+- The region is `s3Region` (`CHOP_S3_REGION`, then `AWS_REGION`). On AWS, which is without `s3Endpoint`, it is required and a missing one is an invalid setting at startup. With an endpoint it defaults to `us-east-1`, and `auto` is allowed for R2 (R-S3-2).
+- On AWS the bucket is in the host, `bucket.s3.<region>.amazonaws.com`, unless `s3PathStyle` is true or the bucket name has dots, which use `s3.<region>.amazonaws.com/bucket/key`. A custom endpoint is `endpoint/bucket/key` unless `s3PathStyle` is false, which uses `bucket.endpoint-host`. The endpoint is checked like the origin: https, or http with `originAllowHttp`, no user information, query string or fragment, and no blocked address without `originAllowPrivate` (R-S3-3).
+- With `s3AccessKeyId` and `s3SecretAccessKey` every request to the bucket is signed with AWS Signature Version 4 with a fresh date, and the signed host is the `Host` header that is sent, with its port. A session token is sent and signed as `x-amz-security-token`. Without a key and a secret requests are unsigned and there is a warning at startup, and a key without a secret, a secret without a key and a token alone are invalid settings (R-S3-4).
+- The key is the prefix and the validated segments of the path, and each segment is percent-encoded once, keeping only `A-Z a-z 0-9 - . _ ~`, and sent exactly as it is signed. The path is not normalized (R-S3-5).
+- The errors are those of the HTTP origin: `404` and `403` from the bucket are a plain `404`, a `5xx`, a network or TLS error and a redirect are a `502`, a timeout is a `504`, and an object over `maxInputBytes` is a `413` (R-S3-6).
+- For the operator only, the first 2048 bytes of the body of an error from the bucket are read (for at most two seconds), and the `<Code>` of the XML, like `SignatureDoesNotMatch`, `AccessDenied`, `RequestTimeTooSkewed`, `ExpiredToken` or `InvalidAccessKeyId`, is given to `onOriginError` in the detail of the error. `NoSuchKey` is not reported, since it is an ordinary miss. A `301` or `307` is a `502` with the detail `bucket is in another region (check CHOP_S3_REGION)` and isn't followed. The body of an error of any other origin is still dropped without being read (R-S3-7).
+- Requests for URL sources are never signed and never get the credentials, and the URL sources of `allowedHosts` keep working (R-S3-8).
+- The secret key and the session token are only read from the environment by the command, and are not in any error message, warning or log line (R-S3-9).
+- `CHOP_S3_ENDPOINT`, `CHOP_S3_REGION`, `CHOP_S3_PATH_STYLE`, `CHOP_S3_ACCESS_KEY_ID`, `CHOP_S3_SECRET_ACCESS_KEY` and `CHOP_S3_SESSION_TOKEN` are read, with `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` as the fallbacks, and `--origin s3://bucket` works. Credentials are read once at startup and aren't refreshed (R-S3-10).
+
 ## Query scheme arguments [#query-scheme-arguments]
 
 This is the default scheme, named `query`. All arguments are optional, and a malformed value of a known argument is a `400` that names it.
@@ -137,8 +152,12 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 | `avif` | `CHOP_AVIF` | `true` |
 | `avifEffort` | `CHOP_AVIF_EFFORT` | `4` |
 | `allowedWidths` | `CHOP_ALLOWED_WIDTHS` (comma separated) | unset |
-| `origin` | `CHOP_ORIGIN` | unset |
+| `origin` | `CHOP_ORIGIN` (an `https://` URL or `s3://bucket[/prefix]`) | unset |
 | `originAllowHttp`, `originAllowPrivate` | `CHOP_ORIGIN_ALLOW_HTTP`, `CHOP_ORIGIN_ALLOW_PRIVATE` | `false`, `false` |
+| `s3Endpoint` | `CHOP_S3_ENDPOINT` | unset (AWS) |
+| `s3Region` | `CHOP_S3_REGION`, `AWS_REGION` | unset (required on AWS), `us-east-1` with an endpoint |
+| `s3PathStyle` | `CHOP_S3_PATH_STYLE` | `true` with an endpoint, `false` on AWS |
+| `s3AccessKeyId`, `s3SecretAccessKey`, `s3SessionToken` | `CHOP_S3_ACCESS_KEY_ID`, `CHOP_S3_SECRET_ACCESS_KEY`, `CHOP_S3_SESSION_TOKEN`, with the `AWS_*` fallbacks | unset |
 | `originAuth` | `CHOP_ORIGIN_AUTH` | unset |
 | `originConnectTimeout`, `originTimeout` | `CHOP_ORIGIN_CONNECT_TIMEOUT`, `CHOP_ORIGIN_TIMEOUT` | `3000`, `10000` |
 | `originConcurrency`, `originQueue` | `CHOP_ORIGIN_CONCURRENCY`, `CHOP_ORIGIN_QUEUE` | `4`, `32` |
@@ -149,6 +168,6 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 ## Interfaces [#interfaces]
 
 - `createHandler( settings? )` returns `( request ) => Promise< Response >` with `{ method, url, headers }` in and `{ status, headers, body }` out. It never throws for a request, never uses `node:http` and reports unexpected errors to an optional `onError`, risky settings to `onWarning` and the failures of an origin to `onOriginError` (R-API-1).
-- `createConfig()`, `configFromEnv( env )`, `configWarnings()`, the `Origin` interface with `createOrigin()`, `createLocalOrigin()` and `createHttpOrigin()`, `isBlockedAddress()`, `parseQuery()`, `createServer()`, the URL schemes `queryScheme` and `cloudflareScheme` with their `SCHEMES` registry and the `UrlScheme` type (`{ name, parse( url, options ) }`, where `parse` returns `{ segments, ops }`, with `url` set for a URL source, or `null`), and the other types are exported too (R-API-2, S-1).
+- `createConfig()`, `configFromEnv( env )`, `configWarnings()`, the `Origin` interface with `createOrigin()`, `createLocalOrigin()` and `createHttpOrigin()`, `createS3Origin()`, `isBlockedAddress()`, `parseQuery()`, `createServer()`, the URL schemes `queryScheme` and `cloudflareScheme` with their `SCHEMES` registry and the `UrlScheme` type (`{ name, parse( url, options ) }`, where `parse` returns `{ segments, ops }`, with `url` set for a URL source, or `null`), and the other types are exported too (R-API-2, S-1).
 - Errors are `ChopError` with a `code` from `CHOP_ERROR_CODES`, checked with `isChopError()` (R-API-3).
-- The CLI is `chop [--data <dir> | --origin <url>] [--port <n>] [--host <address>] [--scheme <name>] [--help]`, with flags overriding `CHOP_*` variables. A flag replaces the other source from the environment (`--origin` over `CHOP_DATA_DIR`, `--data` over `CHOP_ORIGIN`). Warnings about risky settings and the reasons for refused origin requests go to the standard error. Exit codes are `0`, `1` for a failure and `2` for invalid options. `SIGINT` and `SIGTERM` stop it gracefully, and `CHOP_ACCESS_LOG=1` prints one JSON line per request (R-CLI-1 to R-CLI-4).
+- The CLI is `chop [--data <dir> | --origin <url or s3://bucket>] [--port <n>] [--host <address>] [--scheme <name>] [--help]`, with flags overriding `CHOP_*` variables. A flag replaces the other source from the environment (`--origin` over `CHOP_DATA_DIR`, `--data` over `CHOP_ORIGIN`). Warnings about risky settings and the reasons for refused origin requests go to the standard error. Exit codes are `0`, `1` for a failure and `2` for invalid options. `SIGINT` and `SIGTERM` stop it gracefully, and `CHOP_ACCESS_LOG=1` prints one JSON line per request (R-CLI-1 to R-CLI-4).
