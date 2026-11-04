@@ -90,11 +90,13 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 
 - `Accept` is parsed per RFC 9110. Only a listed `image/avif` or `image/webp` makes those formats acceptable, so `image/*` and `*/*` don't (R-FMT-1).
 - An explicit `format` is used even when `Accept` doesn't list it. Transparency is flattened onto white for formats that can't hold it (R-FMT-2).
-- With `auto`, a still image is AVIF if enabled and accepted and the output is lossy, else WebP if accepted and within its size limit, else the fallback format: GIF for GIF sources, PNG for lossless or transparent output, and JPEG otherwise (R-FMT-3).
-- An animated source becomes an animated WebP if accepted, otherwise a GIF, and never AVIF (R-FMT-4).
+- With `auto`, a still image is the negotiated format from `autoFormats` (R-FMT-10): AVIF if the output is lossy, or WebP if the output is within its size limit. Without an accepted candidate it is the fallback format: GIF for GIF sources, PNG for lossless or transparent output, and JPEG otherwise (R-FMT-3).
+- An animated source becomes an animated WebP if accepted and in `autoFormats`, otherwise a GIF, and never AVIF (R-FMT-4).
 - PNG, GIF and lossless WebP sources stay lossless unless `lossy=1` or a `quality` below 100 is given (R-FMT-5). JPEG, lossy WebP and AVIF sources produce lossy output (R-FMT-6).
 - Every response that depends on `Accept` has `Vary: Accept` (R-FMT-7).
 - JPEG, PNG, GIF, WebP and AVIF are read, detected from the content. Other content is a `415`, and unreadable or corrupt files are a `422` (R-FMT-8).
+- A source whose detected format isn't in `allowedInputFormats` is a `415` with the same message as other unsupported content, which doesn't tell which formats are allowed. The check follows the header detection and comes before any pixel decoding or processing (R-FMT-9).
+- `autoFormats` lists the formats (`avif`, `webp`) that `auto` can negotiate, in order of preference. Among the listed formats that `Accept` lists with `q` above 0 (and that pass the checks of R-FMT-3), the one with the highest `q` is used, and the earlier entry of `autoFormats` wins a tie. An empty list disables the upgrades. An explicit `format` is not restricted by `autoFormats`, and `avif: false` removes AVIF from the list (R-FMT-10).
 
 ## Quality and size [#quality-and-size]
 
@@ -141,6 +143,8 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 | `originConnectTimeout`, `originTimeout` | `CHOP_ORIGIN_CONNECT_TIMEOUT`, `CHOP_ORIGIN_TIMEOUT` | `3000`, `10000` |
 | `originConcurrency`, `originQueue` | `CHOP_ORIGIN_CONCURRENCY`, `CHOP_ORIGIN_QUEUE` | `4`, `32` |
 | `allowedHosts` | `CHOP_ALLOWED_HOSTS` (comma separated) | unset |
+| `allowedInputFormats` | `CHOP_ALLOWED_INPUT_FORMATS` (comma separated) | `jpeg,png,gif,webp,avif` |
+| `autoFormats` | `CHOP_AUTO_FORMATS` (comma separated, or `none`) | `avif,webp` |
 
 ## Interfaces [#interfaces]
 
