@@ -5,12 +5,34 @@ How chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the 
 ## Requests [#requests]
 
 - `GET` and `HEAD` are answered, other methods get `405` with `Allow: GET, HEAD` (R-REQ-1).
-- The path selects the original under the data directory, and a URL scheme selects the operations (R-REQ-2, S-1). Unknown arguments are ignored, so cache busters like `ver=3` are harmless.
-- `/healthz` answers `200 ok` without touching the data directory (R-REQ-3).
+- The path selects the original under the data directory or the configured origin, and a URL scheme selects the operations (R-REQ-2, S-1). Unknown arguments are ignored, so cache busters like `ver=3` are harmless.
+- `/healthz` answers `200 ok` without touching the data directory or the origin (R-REQ-3).
 - The same URL and `Accept` header give the same bytes (R-REQ-4).
-- Path segments are percent-decoded once. `.`, `..`, empty segments and segments with `/`, `\` or a NUL byte are a `400`, and a broken escape is a `400` (R-PATH-1).
+- Path segments are percent-decoded once. `.`, `..`, empty segments and segments with `/`, `\` or a NUL byte are a `400`, and a broken escape is a `400` (R-PATH-1). This is for plain paths: in a URL source the embedded URL path is sent to the origin as written, so `//` in it is allowed, but dot segments and broken escapes are still a `400` (R-SRC-14).
 - The real path, with symbolic links resolved, must be inside the real data directory. A missing file, a directory and an escape are all the same `404` (R-PATH-2).
-- A file over `maxInputBytes` is a `413`, checked before the read and again after it (R-PATH-3).
+- A file over `maxInputBytes` is a `413`, checked before the read and again after it (R-PATH-3). These checks are for the local data directory.
+
+## Sources [#sources]
+
+Where the original comes from. The data directory is the default and its behavior is the one above.
+
+- Plain paths go to the configured origin (`origin`, `CHOP_ORIGIN`) when there is one, and to the data directory when there isn't. A URL source goes to the HTTP fetcher with the allow-list (R-SRC-1).
+- The URL of a plain path is the origin base URL, its path without a trailing slash and the path segments, each percent-encoded again, so a segment can't change the host, the port, the query string or the path of the base (R-SRC-2).
+- The origin is `https://`, or `http://` with `originAllowHttp`, without user information, a query string or a fragment, and not an IP literal in a blocked range unless `originAllowPrivate` is set. The same scheme rule applies to URL sources, and a bad origin is an invalid setting at startup (R-SRC-3).
+- Before connecting, the address literal in the URL is checked, or the name is resolved, every address is checked and the socket only gets the addresses that were checked. If any address is blocked nothing is connected, and the connection is made to one of the addresses that were checked and not to a second DNS answer, so DNS rebinding can't swap the address. Blocked addresses are loopback, unspecified, private, link-local (including `169.254.169.254`), carrier-grade NAT, documentation, multicast and reserved ranges for IPv4 and IPv6, with IPv4-mapped and NAT64 addresses checked as the IPv4 address that they contain, 6to4 and Teredo blocked, and anything that can't be parsed blocked (R-SRC-4).
+- Redirects are not followed, and a `3xx` is a `502` (R-SRC-5).
+- The request is a `GET` with `Accept: image/*`, `Accept-Encoding: identity` and `User-Agent: chop`, and without any header of the client. `originAuth` is sent as `Authorization` to the configured origin only. A response with a `Content-Encoding` is a `502` (R-SRC-6).
+- The body is limited to `maxInputBytes` while it is read, whether or not there is a `Content-Length`, and a `Content-Length` over the limit is a `413` before the body is read (R-SRC-7).
+- Connecting must finish within `originConnectTimeout` and the whole download within `originTimeout`, or the answer is a `504`. Upstream failures, a `5xx` or other unexpected status, a redirect and a body that ends early are a `502`, and the body of a response that is not a `200` is dropped without being read. A name that can't be resolved is a `502` for the configured origin, so the operator sees a broken origin, and a plain `404` for a URL source, so that a client can't tell which names exist (R-SRC-8).
+- An upstream `404` or `410`, an upstream `401`, `403` or `407`, a URL source that is not allowed and a blocked destination are all the same plain `404`. The reason is only given to the `onOriginError` callback, which the command writes to the standard error, and it is made of the host, a status code or an error code and never an error message (R-SRC-9).
+- The type is found from the content, and the `Content-Type` of the origin is not used (R-SRC-10).
+- The headers of the origin, like `Cache-Control` and `ETag`, don't change the response, and the original is not cached (R-SRC-11).
+- A `HEAD` request downloads and processes the original like a `GET`, since it must have the same headers, including `Content-Length` (R-REQ-1), so a proxy should not forward `HEAD` requests for remote originals unless it needs them (R-SRC-12).
+- At most `originConcurrency` downloads run at once and `originQueue` more wait, outside of the processing slots, and a full queue is a `503` with `Retry-After: 1` (R-SRC-12).
+- A URL source is a URL after `/` in the `query` scheme or after the options in the `cloudflare` scheme, written `https://host/path`, `https:/host/path` or `https%3A//host/path`. It is a `404` unless `allowedHosts` is not empty and names its host, and the match is on the lower case host without a trailing dot, and the port (R-SRC-13).
+- A URL source with user information, a fragment, or a query string of its own (a `400` in the `cloudflare` scheme, and not possible in the `query` scheme where the query is chop's arguments) is a `400`, and dot segments are a `400` as for any path. A port other than the default of the scheme must be in the entry (R-SRC-14).
+- `allowedHosts` entries are `host`, `*.example.com` (subdomains on a dot boundary, not the apex), either with `:port`, or `*` for every host on the default ports. `*` can't be mixed with other entries, and it is a warning at startup. Even with `*` everything else of this section applies, and `originAllowPrivate` never applies to a URL source (R-SRC-15).
+- A data directory that is set explicitly and an origin together are an invalid setting (R-SRC-16).
 
 ## Query scheme arguments [#query-scheme-arguments]
 
@@ -62,7 +84,7 @@ The `/cdn-cgi/image/<options>/<path>` form of Cloudflare Image Resizing, with co
 | `metadata` | `keep` is `strip=none`, `copyright` is `strip=metadata`, `none` is `strip=all` (S-12). |
 | `background` | The `lb` color for `fit=pad`, as hex digits (S-13). |
 
-Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`, are ignored. Remote source URLs aren't supported and are a `404`.
+Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`, are ignored. A source that starts with `http://` or `https://` is a URL source (see Sources) and is a `404` without `allowedHosts`.
 
 ## Output format [#output-format]
 
@@ -83,7 +105,7 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 
 - `200` has the output `Content-Type`, `Content-Length`, `Cache-Control: public, max-age=<maxAge>`, `Vary: Accept`, `X-Content-Type-Options: nosniff` and a strong SHA-256 `ETag` (R-RES-1). `X-Bytes-Saved` appears when the output is smaller than the original (R-RES-3).
 - `If-None-Match` that matches, including weak comparison, lists and `*`, gets a `304` without a body (R-RES-2).
-- Errors are plain text with `Cache-Control: no-store` and no file system paths: `400` invalid request, `404` not found, `405` method, `413` original too large, `415` unsupported type, `422` unreadable image, `500` unexpected, `503` busy (R-RES-4).
+- Errors are plain text with `Cache-Control: no-store` and no file system paths: `400` invalid request, `404` not found, `405` method, `413` original too large, `415` unsupported type, `422` unreadable image, `500` unexpected, `502` the origin failed, `503` busy and `504` the origin was too slow (R-RES-4).
 
 ## Caching [#caching]
 
@@ -94,7 +116,7 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 - At most `maxConcurrency` images are processed at once and `maxQueue` more wait in order. A request that finds the queue full gets `503` with `Retry-After: 1`, and a failing request frees its slot (R-LIM-1, R-LIM-2).
 - Decoding is limited by `maxInputPixels` (R-LIM-3).
 - `allowedWidths` optionally restricts the output widths to a list (R-LIM-4).
-- chop never writes to disk and makes no network requests (R-LIM-5).
+- chop never writes to disk, and makes no network requests unless an origin or `allowedHosts` is configured, and then only to those hosts (R-LIM-5).
 
 ## Settings [#settings]
 
@@ -113,10 +135,16 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 | `avif` | `CHOP_AVIF` | `true` |
 | `avifEffort` | `CHOP_AVIF_EFFORT` | `4` |
 | `allowedWidths` | `CHOP_ALLOWED_WIDTHS` (comma separated) | unset |
+| `origin` | `CHOP_ORIGIN` | unset |
+| `originAllowHttp`, `originAllowPrivate` | `CHOP_ORIGIN_ALLOW_HTTP`, `CHOP_ORIGIN_ALLOW_PRIVATE` | `false`, `false` |
+| `originAuth` | `CHOP_ORIGIN_AUTH` | unset |
+| `originConnectTimeout`, `originTimeout` | `CHOP_ORIGIN_CONNECT_TIMEOUT`, `CHOP_ORIGIN_TIMEOUT` | `3000`, `10000` |
+| `originConcurrency`, `originQueue` | `CHOP_ORIGIN_CONCURRENCY`, `CHOP_ORIGIN_QUEUE` | `4`, `32` |
+| `allowedHosts` | `CHOP_ALLOWED_HOSTS` (comma separated) | unset |
 
 ## Interfaces [#interfaces]
 
-- `createHandler( settings? )` returns `( request ) => Promise< Response >` with `{ method, url, headers }` in and `{ status, headers, body }` out. It never throws for a request, never uses `node:http` and reports unexpected errors to an optional `onError` (R-API-1).
-- `createConfig()`, `configFromEnv( env )`, `parseQuery()`, `createServer()`, the URL schemes `queryScheme` and `cloudflareScheme` with their `SCHEMES` registry and the `UrlScheme` type (`{ name, parse( url ) }`, where `parse` returns `{ segments, ops }` or `null`), and the other types are exported too (R-API-2, S-1).
+- `createHandler( settings? )` returns `( request ) => Promise< Response >` with `{ method, url, headers }` in and `{ status, headers, body }` out. It never throws for a request, never uses `node:http` and reports unexpected errors to an optional `onError`, risky settings to `onWarning` and the failures of an origin to `onOriginError` (R-API-1).
+- `createConfig()`, `configFromEnv( env )`, `configWarnings()`, the `Origin` interface with `createOrigin()`, `createLocalOrigin()` and `createHttpOrigin()`, `isBlockedAddress()`, `parseQuery()`, `createServer()`, the URL schemes `queryScheme` and `cloudflareScheme` with their `SCHEMES` registry and the `UrlScheme` type (`{ name, parse( url, options ) }`, where `parse` returns `{ segments, ops }`, with `url` set for a URL source, or `null`), and the other types are exported too (R-API-2, S-1).
 - Errors are `ChopError` with a `code` from `CHOP_ERROR_CODES`, checked with `isChopError()` (R-API-3).
-- The CLI is `chop [--data <dir>] [--port <n>] [--host <address>] [--scheme <name>] [--help]`, with flags overriding `CHOP_*` variables. Exit codes are `0`, `1` for a failure and `2` for invalid options. `SIGINT` and `SIGTERM` stop it gracefully, and `CHOP_ACCESS_LOG=1` prints one JSON line per request (R-CLI-1 to R-CLI-4).
+- The CLI is `chop [--data <dir> | --origin <url>] [--port <n>] [--host <address>] [--scheme <name>] [--help]`, with flags overriding `CHOP_*` variables. A flag replaces the other source from the environment (`--origin` over `CHOP_DATA_DIR`, `--data` over `CHOP_ORIGIN`). Warnings about risky settings and the reasons for refused origin requests go to the standard error. Exit codes are `0`, `1` for a failure and `2` for invalid options. `SIGINT` and `SIGTERM` stop it gracefully, and `CHOP_ACCESS_LOG=1` prints one JSON line per request (R-CLI-1 to R-CLI-4).
