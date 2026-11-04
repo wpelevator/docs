@@ -1,6 +1,6 @@
 # Reference (/js/chop/latest/reference)
 
-How Chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the tests refer to in their names. Chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.
+How chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.
 
 ## Requests [#requests]
 
@@ -44,7 +44,7 @@ A scheme turns a URL into the path of the original and the operations. All the s
 - Schemes are tried in the configured order, and the first one that recognizes the URL wins. The default is `query` only (S-1). The `query` scheme recognizes every URL, so it has to be listed last when it's enabled with others. The `cloudflare` scheme only recognizes URLs that start with `/cdn-cgi/image/`.
 - A scheme's path segments go through the same checks as any other path, so no scheme can read outside the data directory (S-2).
 - A URL that no enabled scheme recognizes is a `404` (S-3).
-- A scheme ignores the options that Chop doesn't support, and a malformed value of one that it supports is a `400` (S-4).
+- A scheme ignores the options that chop doesn't support, and a malformed value of one that it supports is a `400` (S-4).
 - Different schemes that give the same operations give the same bytes and `ETag` (S-5).
 
 ### `cloudflare` [#cloudflare]
@@ -94,7 +94,7 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 - At most `maxConcurrency` images are processed at once and `maxQueue` more wait in order. A request that finds the queue full gets `503` with `Retry-After: 1`, and a failing request frees its slot (R-LIM-1, R-LIM-2).
 - Decoding is limited by `maxInputPixels` (R-LIM-3).
 - `allowedWidths` optionally restricts the output widths to a list (R-LIM-4).
-- Chop never writes to disk and makes no network requests (R-LIM-5).
+- chop never writes to disk and makes no network requests (R-LIM-5).
 
 ## Settings [#settings]
 
