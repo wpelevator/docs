@@ -1,4 +1,4 @@
-# GitHub Actions (/php/php-changesets/latest/github-actions)
+# GitHub Actions (/php/php-changesets/latest/github-actions.html)
 
 ## Release with GitHub Actions [#release-with-github-actions]
 

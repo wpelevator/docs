@@ -1,4 +1,4 @@
-# Configuration (/php/php-changesets/latest/configuration)
+# Configuration (/php/php-changesets/latest/configuration.html)
 
 ## Configuration [#configuration]
 

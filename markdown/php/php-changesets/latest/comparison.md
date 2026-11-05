@@ -1,8 +1,8 @@
-# Comparison with wp-release (/php/php-changesets/latest/comparison)
+# Comparison with wp-release (/php/php-changesets/latest/comparison.html)
 
 ## Comparison with wp-release [#comparison-with-wp-release]
 
-PHP Changesets is the PHP counterpart of the `changeset-*` commands of [`wp-release`](../../../js/wp-release/docs/index.md), for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose `wp-release` when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same `releases[]` plan, so a repository can switch between them.
+PHP Changesets is the PHP counterpart of the `changeset-*` commands of [`wp-release`](../../../js/wp-release/docs/index.html.md), for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose `wp-release` when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same `releases[]` plan, so a repository can switch between them.
 
 | PHP Changesets | wp-release | Notes |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ They also share these conventions: `--json` and `--github-output` on every comma
 - The command is `changeset` with subcommands, like `changeset add`, where `wp-release` has `changeset-add` among its other commands. Run `changeset --help` for the commands.
 - No single-project version flags like `--version-composer-json`: without a config, the project is inferred, and `changeset init` writes the inferred settings to `changesets.config.php` to change them.
 - No `changelogInsertAfter`: new `CHANGELOG.md` sections go before the first version heading, and readme sections after the `== Changelog ==` heading.
-- `tag` creates and pushes tags but not GitHub Releases. A workflow step like `softprops/action-gh-release` creates them from its result; see [GitHub Actions](github-actions.md).
+- `tag` creates and pushes tags but not GitHub Releases. A workflow step like `softprops/action-gh-release` creates them from its result; see [GitHub Actions](github-actions.html.md).
 - No `releaseNotes` callback: the release notes are the changelog section, or the commits since the previous tag.
 - No library of primitives: the package is the config-driven CLI and its classes, without build, ZIP, checksum or deploy functions.
 - A package at the repository root needs an `id`, a manifest name or `--project-name`, and the name of the checkout directory never names a package, so changesets keep working in forks, worktrees and CI.
