@@ -1,4 +1,4 @@
-# Command line (/php/php-changesets/v2.0.0/cli)
+# Command line (/php/php-changesets/v2.0.0/cli.html)
 
 ## Commands [#commands]
 

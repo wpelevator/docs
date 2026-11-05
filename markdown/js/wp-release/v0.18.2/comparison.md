@@ -1,4 +1,4 @@
-# Comparison with other tools (/js/wp-release/v0.18.2/comparison)
+# Comparison with other tools (/js/wp-release/v0.18.2/comparison.html)
 
 ## Comparison with existing tools [#comparison-with-existing-tools]
 

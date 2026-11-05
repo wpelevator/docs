@@ -1,4 +1,4 @@
-# Reference (/js/chop/v0.1.0/reference)
+# Reference (/js/chop/v0.1.0/reference.html)
 
 How Chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the tests refer to in their names. Chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.
 

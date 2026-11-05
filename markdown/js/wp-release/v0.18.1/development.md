@@ -1,4 +1,4 @@
-# Development (/js/wp-release/v0.18.1/development)
+# Development (/js/wp-release/v0.18.1/development.html)
 
 ## Development [#development]
 

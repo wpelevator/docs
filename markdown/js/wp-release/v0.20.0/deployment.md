@@ -1,4 +1,4 @@
-# Deployment (/js/wp-release/v0.20.0/deployment)
+# Deployment (/js/wp-release/v0.20.0/deployment.html)
 
 ### Deploy to SVN [#deploy-to-svn]
 
@@ -52,7 +52,7 @@ Validation:
 - `--version` defaults to `--svn-tag`, then the `Version` header of the deployed files; when `--version` and `--svn-tag` are both set they must match.
 - Pre-release versions like `1.0.0-rc.1` can be tagged, but syncing one to `trunk/` warns, since trunk is for the development version.
 - `--trunk` without `--svn-tag` works but warns, to remind you that updating trunk alone doesn't create a version tag for stable downloads.
-- A version mismatch throws a `VersionMismatchError`, a `ValidationError` with the `mismatches` and a problem for each, with its file and line. See [Logging](library.md#logging).
+- A version mismatch throws a `VersionMismatchError`, a `ValidationError` with the `mismatches` and a problem for each, with its file and line. See [Logging](library.html.md#logging).
 
 ### Deploy to Git [#deploy-to-git]
 

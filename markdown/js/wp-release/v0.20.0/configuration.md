@@ -1,4 +1,4 @@
-# Configuration (/js/wp-release/v0.20.0/configuration)
+# Configuration (/js/wp-release/v0.20.0/configuration.html)
 
 ### Naming convention [#naming-convention]
 

@@ -1,4 +1,4 @@
-# Library API (/js/wp-release/v0.20.0/library)
+# Library API (/js/wp-release/v0.20.0/library.html)
 
 ### Exit codes [#exit-codes]
 
@@ -87,7 +87,7 @@ Extracting translatable strings from PHP, JavaScript and `block.json` sources, b
 `Logger` filters messages by level and passes them to a writer, like the transports of other Node.js loggers. The writer decides how messages look:
 
 - `TextWriter` prints plain text to `stdout` and `stderr`. It's the default.
-- `GitHubActionsWriter` prints [workflow commands](cli.md#github-actions-annotations-and-job-summaries), so that notices, warnings and errors with a file are annotations, and appends summaries to `GITHUB_STEP_SUMMARY`. It's the CLI's `github` log format, and the GitHub Actions pass it to their logger. Its `workspace` and `summaryPath` options default to `GITHUB_WORKSPACE` and `GITHUB_STEP_SUMMARY`.
+- `GitHubActionsWriter` prints [workflow commands](cli.html.md#github-actions-annotations-and-job-summaries), so that notices, warnings and errors with a file are annotations, and appends summaries to `GITHUB_STEP_SUMMARY`. It's the CLI's `github` log format, and the GitHub Actions pass it to their logger. Its `workspace` and `summaryPath` options default to `GITHUB_WORKSPACE` and `GITHUB_STEP_SUMMARY`.
 
 ```js
 import { GitHubActionsWriter, Logger, logError } from '@wpelevator/wp-release';

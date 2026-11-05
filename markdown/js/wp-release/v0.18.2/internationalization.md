@@ -1,4 +1,4 @@
-# Internationalization (/js/wp-release/v0.18.2/internationalization)
+# Internationalization (/js/wp-release/v0.18.2/internationalization.html)
 
 ### WordPress internationalization [#wordpress-internationalization]
 

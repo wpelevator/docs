@@ -1,4 +1,4 @@
-# Configuration (/php/php-changesets/v2.0.0/configuration)
+# Configuration (/php/php-changesets/v2.0.0/configuration.html)
 
 ## Configuration [#configuration]
 
