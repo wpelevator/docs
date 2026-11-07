@@ -1,6 +1,6 @@
 # Reference (/js/chop/latest/reference.html)
 
-How chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.
+How chop behaves, in short. The guides describe each area in more detail: [requests](requests.html.md), [sources](sources.html.md), [URL schemes](url-schemes.html.md), [formats and quality](formats.html.md), [responses](responses.html.md) and [configuration](configuration.html.md). The IDs in parentheses, like `R-OP-8`, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.
 
 ## Requests [#requests]
 
@@ -99,7 +99,7 @@ The `/cdn-cgi/image/<options>/<path>` form of Cloudflare Image Resizing, with co
 | `metadata` | `keep` is `strip=none`, `copyright` is `strip=metadata`, `none` is `strip=all` (S-12). |
 | `background` | The `lb` color for `fit=pad`, as hex digits (S-13). |
 
-Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`, are ignored. A source that starts with `http://` or `https://` is a URL source (see Sources) and is a `404` without `allowedHosts`.
+Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`, are ignored. A source that starts with `http://` or `https://` is a URL source (see [Sources](sources.html.md)) and is a `404` without `allowedHosts`.
 
 ## Output format [#output-format]
 
@@ -126,7 +126,7 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 
 ## Caching [#caching]
 
-- Responses depend on `Accept` and the URL only, so a cache can key on the URL and a bucket of `Accept`: `image/avif`, `image/webp` or neither. Send the bucket as `Accept` upstream so that the body matches the key. The README has an nginx recipe.
+- Responses depend on `Accept` and the URL only, so a cache can key on the URL and a bucket of `Accept`: `image/avif`, `image/webp` or neither. Send the bucket as `Accept` upstream so that the body matches the key. The [caching guide](caching.html.md) has an nginx recipe.
 
 ## Limits [#limits]
 
