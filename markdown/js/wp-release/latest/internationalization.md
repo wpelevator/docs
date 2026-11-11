@@ -2,15 +2,15 @@
 
 ### WordPress internationalization [#wordpress-internationalization]
 
-`i18n-pot` extracts plugin/theme strings and writes a reproducible UTF-8 POT. `i18n-audit` reads the same source and returns findings without writing files. Both run with Node alone: no PHP, WordPress installation, database, WP-CLI or network requests. Extraction is independent of `files`, `.distignore` and Git `export-ignore` distribution rules.
+`i18n pot` extracts plugin/theme strings and writes a reproducible UTF-8 POT. `i18n audit` reads the same source and returns findings without writing files. Both run with Node alone: no PHP, WordPress installation, database, WP-CLI or network requests. Extraction is independent of `files`, `.distignore` and Git `export-ignore` distribution rules.
 
 ```sh
-wp-release i18n-pot .
-wp-release i18n-pot --package plugins/agent-pilot
-wp-release i18n-pot --all
-wp-release i18n-pot --package plugins/agent-pilot --check
-wp-release i18n-audit --package plugins/agent-pilot --json
-wp-release i18n-audit . --strict --suppress conflicting-comments
+wp-release i18n pot .
+wp-release i18n pot --package plugins/agent-pilot
+wp-release i18n pot --all
+wp-release i18n pot --package plugins/agent-pilot --check
+wp-release i18n audit --package plugins/agent-pilot --json
+wp-release i18n audit . --strict --suppress conflicting-comments
 ```
 
 Config-free source directories must have plugin/theme headers. The actual main file is discovered using the package metadata reader, including plugins whose main filename differs from their slug. The selected domain defaults to `Text Domain`, then the directory name. Calls with omitted domains belong to WordPress's `default` domain; block metadata without a domain inherits the package domain. `--all-domains` explicitly combines domains. A block's explicit `textdomain` always controls its messages.
@@ -56,10 +56,10 @@ Invalid syntax, unreadable selected files, selected source symlinks, empty/reser
 Runtime formats require a translated PO, not an untranslated POT. PO updating, fuzzy matching and automatic translation are not provided. Compilation validates `Language` and `Plural-Forms`, excludes fuzzy, obsolete and untranslated entries, preserves contexts and plural forms, and never changes the input PO. An incompletely translated plural entry is excluded as a unit. Gettext parsing handles source encoding; runtime outputs use UTF-8. Each output is replaced atomically; JSON outputs are independent writes, and obsolete output files are not deleted automatically.
 
 ```sh
-wp-release i18n-mo languages/my-plugin-lv.po
-wp-release i18n-php languages/my-plugin-lv.po
-wp-release i18n-json languages/my-plugin-lv.po --domain my-plugin --map scripts.json --output languages
-wp-release i18n-mo languages/my-plugin-lv.po --check
+wp-release i18n mo languages/my-plugin-lv.po
+wp-release i18n php languages/my-plugin-lv.po
+wp-release i18n json languages/my-plugin-lv.po --domain my-plugin --map scripts.json --output languages
+wp-release i18n mo languages/my-plugin-lv.po --check
 ```
 
 MO and `.l10n.php` default beside the PO, with `.mo` and `.l10n.php` extensions; `--output` selects an explicit file relative to cwd. WordPress PHP catalogs require WordPress 6.5 or later. JSON requires an explicit domain; `--output` is a directory, defaulting to the PO directory. `--check` compares proposed bytes without writing and exits `2` on absent/stale outputs. Compiler commands are primitives and do not select configured packages.

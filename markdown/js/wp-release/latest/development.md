@@ -18,14 +18,14 @@ The i18n tests in `@wpelevator/wp-gettext` validate gettext round trips, script 
 
 The `wpelevator-source` export condition points at `src/index.ts`. The wp-release tests and monorepo CLI scripts use it to work with the source instead of a `dist/` build. Action builds use the declared dependency's default export, which resolves to `dist/` for the workspace copy and the published package. Build wp-release before building the actions.
 
-`execute( 'deploy-svn', args, { cwd, logger, svnRunner } )` runs a single-plugin deployment or a configured plan or deployment. The optional `svnRunner` replaces the external command runner in both modes; without it, the command uses its normal runner.
+`execute( 'deploy svn', args, { cwd, logger, svnRunner } )` runs a single-plugin deployment or a configured plan or deployment. The optional `svnRunner` replaces the external command runner in both modes; without it, the command uses its normal runner.
 
 ### Architecture [#architecture]
 
 wp-release has two layers, so that it fits any repository layout:
 
-- **Primitives** work on the directory, file or values they're given and know nothing about the repository: `build <dir>`, `zip <dir>`, `checksums`, `sign`, `verify`, `version-check`, `deploy-git <dir>`, `deploy-svn <dir>`, `i18n-pot <dir>`, `i18n-audit <dir>` and the `i18n-mo`, `i18n-json` and `i18n-php` compilers.
-- **The config layer** reads `wp-release.config.js` for everything about the repository: where packages are (`root` and the package globs), how their versions and tags are named (`version`, `tagFormat`), which files they ship (`files`), how their translations are extracted (`i18n`), where they deploy (`deploy`) and the git `remote`. The changeset commands (with a single-project fallback when no config exists), `deploy-git` and `deploy-svn --release-ref`, `build --package` and `zip --package`, and `i18n-pot` and `i18n-audit` with `--package` or `--all` belong to it, and the global `--config` and `--tag-format` options select or adjust the config. `zip` and `checksums` also read caller configuration for integrity settings even without `--package`; verification reads it only when explicitly selected. Only `--release-ref` reads which package and version a ref releases. A primitive with a config mode, like `deploy-git --release-ref` beside `deploy-git <dir>` or `zip --package` beside `zip <dir>`, only takes the package directory, its files and its targets from the config there, and otherwise works the same.
+- **Primitives** work on the directory, file or values they're given and know nothing about the repository: `build <dir>`, `zip <dir>`, `checksums`, `sign`, `verify`, `version-check`, `deploy git <dir>`, `deploy svn <dir>`, `i18n pot <dir>`, `i18n audit <dir>` and the `i18n mo`, `i18n json` and `i18n php` compilers.
+- **The config layer** reads `wp-release.config.js` for everything about the repository: where packages are (`root` and the package globs), how their versions and tags are named (`version`, `tagFormat`), which files they ship (`files`), how their translations are extracted (`i18n`), where they deploy (`deploy`) and the git `remote`. The changeset commands (with a single-project fallback when no config exists), `deploy git` and `deploy svn --release-ref`, `build --package` and `zip --package`, and `i18n pot` and `i18n audit` with `--package` or `--all` belong to it, and the global `--config` and `--tag-format` options select or adjust the config. `zip` and `checksums` also read caller configuration for integrity settings even without `--package`; verification reads it only when explicitly selected. Only `--release-ref` reads which package and version a ref releases. A primitive with a config mode, like `deploy git --release-ref` beside `deploy git <dir>` or `zip --package` beside `zip <dir>`, only takes the package directory, its files and its targets from the config there, and otherwise works the same.
 
 Configured repositories use the layout and naming conventions their config sets. Config-free changeset releases use the root-only detection and defaults described above.
 
@@ -54,10 +54,10 @@ The changeset release modules, from the entry point down:
 | `changelog.ts` | Changelog entries, and the `CHANGELOG.md` and readme changelog sections. |
 | `release-tags.ts` | Choosing the version and previous tag of a release, and building its release notes. |
 | `tag-format.ts` | Formatting tag names from the tag format. |
-| `package-deploy.ts` | Resolving the configured deploys of a ref: the released packages, their targets and file selections, for `deploy-git` and `deploy-svn`, and the file selection of a package for `zip --package`. |
+| `package-deploy.ts` | Resolving the configured deploys of a ref: the released packages, their targets and file selections, for `deploy git` and `deploy svn`, and the file selection of a package for `zip --package`. |
 | `package-zip.ts` | `zipPackage()`, the ZIP and checksums manifest of the selected files of a package, for `zip` and the snapshot builds of a monorepo. |
 | `release-repository.ts` | `ReleaseRepository`, the git commands of a release: tags, commits and changed files. |
-| `file-journal.ts` | `FileJournal`, which restores every file a failed `changeset-version` run changed. |
+| `file-journal.ts` | `FileJournal`, which restores every file a failed `changeset version` run changed. |
 | `versions.ts` | Version checks and SemVer precedence. |
 
 The internationalization modules in `src/i18n/` adapt the standalone `@wpelevator/wp-gettext` package, which owns extraction, catalogs, POT, PO, MO, script JSON, `.l10n.php` and audits:

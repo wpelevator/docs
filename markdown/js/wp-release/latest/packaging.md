@@ -17,7 +17,7 @@ The destination is required and automatically excluded when it is inside the sou
 wp-release build --output dist/code-prettify --sign-checksums
 ```
 
-In the Deploy workflow, a directory build can be deployed with `wp-release deploy-svn dist/code-prettify --slug code-prettify --trunk --svn-tag "$GITHUB_REF_NAME" --no-distignore`. Keep `--from-zip` when the SVN deployment must match the attached ZIP exactly. Run dependency installation and compilation before `build`; it only selects and copies files.
+In the Deploy workflow, a directory build can be deployed with `wp-release deploy svn dist/code-prettify --slug code-prettify --trunk --svn-tag "$GITHUB_REF_NAME" --no-distignore`. Keep `--from-zip` when the SVN deployment must match the attached ZIP exactly. Run dependency installation and compilation before `build`; it only selects and copies files.
 
 ### ZIP [#zip]
 
@@ -36,7 +36,7 @@ wp-release zip dist --slug my-plugin --checksums
 - `--sign` signs only the ZIP with `WP_RELEASE_SIGNING_KEY`. `--sign-checksums` generates and signs only the checksums manifest, implying `--checksums`. Use both flags to sign both files. External signatures are written alongside their files; embedded manifest signatures are written inside the package. The default format is WordPress `.sig`, unless integrity configuration selects another format.
 - `--sign-format` selects formats for requested signatures, such as `--sign-format wordpress,minisign,ssh`. It requires `--sign` or `--sign-checksums` and never enables signing by itself. Signing keys, formats and existing signature destinations are validated before writing the ZIP or manifest. `--force` also overwrites requested signatures. Job summaries include signatures and public keys; JSON results include `signatures` and `publicKey`.
 - An existing ZIP or manifest isn't overwritten without `--force`. A ZIP or manifest written inside the source directory is never archived.
-- `--package <name>` zips a package of the [configured packages](deployment.html.md#deploy-configured-packages), by identifier or path under the configured root like `plugins/alpha`, instead of a source directory: its directory with the `files` config of its package group, the same files that its deploys select. The slug defaults to the directory name and the version to the `Version` header, and `--slug` and `--version` still set them. Any package of the config works, with or without a version or deploy targets. To zip what a deploy just released, pass the `package` and `version` of the `deploy-git --release-ref` result, in the same job and from the same build, so the ZIP has exactly the files of the release tag in the release repository. It can't be combined with `<source-dir>` or the file selection options. The `--json` result has the `package`, `slug` and `version`. `zipPackage()` builds the same ZIP from a script, with `getPackageFiles()` for the directory and the files of a package.
+- `--package <name>` zips a package of the [configured packages](deployment.html.md#deploy-configured-packages), by identifier or path under the configured root like `plugins/alpha`, instead of a source directory: its directory with the `files` config of its package group, the same files that its deploys select. The slug defaults to the directory name and the version to the `Version` header, and `--slug` and `--version` still set them. Any package of the config works, with or without a version or deploy targets. To zip what a deploy just released, pass the `package` and `version` of the `deploy git --release-ref` result, in the same job and from the same build, so the ZIP has exactly the files of the release tag in the release repository. It can't be combined with `<source-dir>` or the file selection options. The `--json` result has the `package`, `slug` and `version`. `zipPackage()` builds the same ZIP from a script, with `getPackageFiles()` for the directory and the files of a package.
 
 To embed a signed manifest with a stable filename, use:
 
@@ -181,11 +181,11 @@ For a manifest that is also published as a separate release asset or deployed di
 wp-release checksums build --slug my-plugin --output build/checksums.json
 wp-release sign build/checksums.json
 wp-release zip build --slug my-plugin
-wp-release deploy-svn build --trunk --svn-tag 1.2.0
+wp-release deploy svn build --trunk --svn-tag 1.2.0
 ```
 
 - Write the manifest into the directory that is zipped and deployed. The `checksums` command leaves its output manifest and its signatures (`<name>.sig`, `<name>.minisig` and `<name>.sshsig`) out of the hashes, so running it again with the same output path and `--force` gives the same manifest. `verify` checks matching copies as described below. Sign it last, since the signature covers the exact bytes of the manifest.
-- `zip` and `deploy-svn` carry the pair like any other file. Don't use `zip --checksums` here, since it would write a second manifest that lists the first one. Attach `build/checksums.json` and `build/checksums.json.sig` to the GitHub release as they are.
+- `zip` and `deploy svn` carry the pair like any other file. Don't use `zip --checksums` here, since it would write a second manifest that lists the first one. Attach `build/checksums.json` and `build/checksums.json.sig` to the GitHub release as they are.
 - The signature covers file hashes and not a ZIP, so it stays valid for the ZIP that WordPress.org builds from SVN. Check what WordPress.org serves after a deploy, with the manifest and public key from your build:
 
   ```bash
@@ -208,7 +208,7 @@ wp-release verify wp-content/plugins/my-plugin --checksums my-plugin.1.2.0.check
 - A file matches when its SHA-256 equals the manifest. Manifests without SHA-256 fall back to MD5, and a hash can also be a list of accepted values.
 - `verify` doesn't read `.distignore`, so that an ignore file inside the checked directory can't hide added files. `--exclude <patterns>` skips paths in both the directory and the manifest, for files that aren't part of the release, such as caches.
 - Manifest paths outside the package folder (absolute or with `..`) are rejected.
-- `--zip <file|url>` checks the files of a ZIP instead of a directory. The ZIP can be a URL, such as the one that WordPress.org builds for a release, and its single root folder is found automatically (or set `--root-folder`). The ZIP is extracted to a temporary directory after the same safety checks as `deploy-svn --from-zip`.
+- `--zip <file|url>` checks the files of a ZIP instead of a directory. The ZIP can be a URL, such as the one that WordPress.org builds for a release, and its single root folder is found automatically (or set `--root-folder`). The ZIP is extracted to a temporary directory after the same safety checks as `deploy svn --from-zip`.
 - The version in the manifest must match the `Version` header of the checked files, so that an older release with its own valid manifest can't pass as a newer one.
 - A manifest can't list itself. A copy of the manifest and of its signature inside the checked files, at the root with the same names as the `--checksums` file or at the path of `--embedded`, is skipped when comparing files, but it must be identical to the `--checksums` file and its signature. The signature is the `.sig` file, or the file of `--signature-format`. A path that the manifest lists is never skipped, and a file that isn't a matching copy is reported as not in the checksums. See [Manifest inside the plugin](#manifest-inside-the-plugin).
 

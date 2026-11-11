@@ -4,7 +4,7 @@ Split a directory of a monorepo into its own history, with the same commit hashe
 
 In a monorepo with 477 commits, `git subtree split` takes 6 to 8 seconds for one package and `subtree-split` takes 0.1 seconds. On [WordPress/gutenberg](https://github.com/WordPress/gutenberg) (43,568 commits) it splits `packages/components` in 1.7 seconds. The hashes are the same as `git subtree split` makes, so a repository that you already split that way keeps its history when you switch.
 
-[`@wpelevator/wp-release`](https://www.npmjs.com/package/@wpelevator/wp-release) uses it for `deploy-git --split-prefix`.
+[`@wpelevator/wp-release`](https://www.npmjs.com/package/@wpelevator/wp-release) uses it for `deploy git --split-prefix`.
 
 ## Install [#install]
 

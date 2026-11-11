@@ -60,7 +60,7 @@ const { releases } = await release.version( { dryRun: true } );
 const { tags } = await release.tag( { dryRun: true } );
 ```
 
-`ChangesetRelease` runs the `changeset-*` commands: `add()`, `getStatus()`, `version()` and `tag()`, plus `getPlan()`, `getPackages()` and `getConfiguredPackages()`. Each call reads the configuration, packages and pending changesets again, so one instance can version and then tag. `getConfiguredPackages()` returns package directories with their resolved release group metadata; `formatTag()` and `formatTemplate()` apply the same placeholders as the release workflows. It takes a git runner from `createGitRunner()` as `git`, so that tests can replace it. Without a config file, it detects a single root project. Its optional `singleProject` settings accept `versions` (the existing version descriptors), `versionFrom` (the same selector as `--version-from`), `baseBranch`, `remote`, `changesets`, `readmeChangelog` and `changelogInsertAfter`; `tagFormat` remains a repository option. The functions `addChangeset()`, `getChangesetStatus()`, `versionChangesets()`, `tagChangesets()`, `getChangesetReleasePlan()`, `getChangesetPackages()` and `getConfiguredPackages()` do the same with the default runners, in one call.
+`ChangesetRelease` runs the `changeset` commands: `add()`, `getStatus()`, `version()` and `tag()`, plus `getPlan()`, `getPackages()` and `getConfiguredPackages()`. Each call reads the configuration, packages and pending changesets again, so one instance can version and then tag. `getConfiguredPackages()` returns package directories with their resolved release group metadata; `formatTag()` and `formatTemplate()` apply the same placeholders as the release workflows. It takes a git runner from `createGitRunner()` as `git`, so that tests can replace it. Without a config file, it detects a single root project. Its optional `singleProject` settings accept `versions` (the existing version descriptors), `versionFrom` (the same selector as `--version-from`), `baseBranch`, `remote`, `changesets`, `readmeChangelog` and `changelogInsertAfter`; `tagFormat` remains a repository option. The functions `addChangeset()`, `getChangesetStatus()`, `versionChangesets()`, `tagChangesets()`, `getChangesetReleasePlan()`, `getChangesetPackages()` and `getConfiguredPackages()` do the same with the default runners, in one call.
 
 ### Signing [#signing]
 
@@ -169,7 +169,7 @@ const { valid, changed, missing, extra } = await verifyChecksums( {
 } );
 ```
 
-`loadFileRules()` reads the ignore file and `--exclude` patterns into a gitignore matcher, optionally adds Git `export-ignore` paths, and `selectFiles()` lists the files it doesn't ignore. `compareChecksums()` compares two hash maps without reading any files, and `parseChecksums()` validates manifest JSON. `extractZip()` extracts a ZIP after the same checks as `deploy-svn --from-zip`.
+`loadFileRules()` reads the ignore file and `--exclude` patterns into a gitignore matcher, optionally adds Git `export-ignore` paths, and `selectFiles()` lists the files it doesn't ignore. `compareChecksums()` compares two hash maps without reading any files, and `parseChecksums()` validates manifest JSON. `extractZip()` extracts a ZIP after the same checks as `deploy svn --from-zip`.
 
 Translations:
 ```js

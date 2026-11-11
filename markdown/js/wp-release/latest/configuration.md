@@ -2,7 +2,7 @@
 
 ### Naming convention [#naming-convention]
 
-`@wpelevator/wp-release` is the suite of release tools and `wp-release` is its CLI. "Release" is the whole workflow; each command is one operation in it. Commands are flat: a single word or dashed words like `version-check` and `deploy-svn`, without command groups or aliases. Each GitHub Action is named `wp-release-` followed by the command name, so the CLI command and the `uses:` name always match:
+`@wpelevator/wp-release` is the suite of release tools and `wp-release` is its CLI. "Release" is the whole workflow; each command is one operation in it. Commands are flat: a single word or dashed words like `version-check` and `deploy svn`, without command groups or aliases. Each GitHub Action is named `wp-release-` followed by the command name, so the CLI command and the `uses:` name always match:
 
 | Capability | CLI command | GitHub Action |
 |---|---|---|
@@ -12,8 +12,8 @@
 | Sign files | `wp-release sign` | [`wpelevator/wp-release-sign`](https://github.com/wpelevator/wp-release-sign) |
 | Verify files against a manifest | `wp-release verify` | |
 | Check that the versions agree | `wp-release version-check` | |
-| Deploy to WordPress.org SVN | `wp-release deploy-svn` | [`wpelevator/wp-release-deploy-svn`](https://github.com/wpelevator/wp-release-deploy-svn) |
-| Deploy to a Git repository | `wp-release deploy-git` | |
+| Deploy to WordPress.org SVN | `wp-release deploy svn` | [`wpelevator/wp-release-deploy-svn`](https://github.com/wpelevator/wp-release-deploy-svn) |
+| Deploy to a Git repository | `wp-release deploy git` | |
 
 The names below are scoped to their commands. `--output` selects the primary artifact of each command; ZIP packaging uses `--checksums-file` for its accompanying manifest:
 
@@ -26,11 +26,11 @@ The names below are scoped to their commands. `--output` selects the primary art
 | Checksums filename when zipping | `zip --checksums-file <file>` | `checksums-file` in ZIP action | `checksumsFile` | Relative manifest filename beside the ZIP or inside its package root when embedded. |
 | ZIP to deploy | `--from-zip <file>` | `from-zip` | `fromZip` | Existing ZIP read as the deploy source. |
 | Git tag to compare | `--git-tag <tag>` | | `gitTag` | Git tag checked by `version-check`. |
-| SVN tag to create | `--svn-tag <version>` | `svn-tag` | `svnTag` | Tag written by `deploy-svn`, distinct from a git tag. |
+| SVN tag to create | `--svn-tag <version>` | `svn-tag` | `svnTag` | Tag written by `deploy svn`, distinct from a git tag. |
 | SVN repository | `--svn-url <url>` | `svn-url` | `svnUrl` | Deploy destination. |
-| Git repository | `--git-url <url>` | | `gitUrl` | Destination of `deploy-git`. Credentials come from git, like a token in the URL or an SSH key, and are never printed. |
-| Branch and tag to release to | `--branch <name>`, `--tag <name>` | | `branch`, `tag` | Refs written by `deploy-git` in the Git repository, distinct from the git tag that `version-check` compares. |
-| Source history | `--split-prefix <dir>` | | `splitPrefix` | Directory of a monorepo package whose history, split into its own commits like `git subtree split` does, becomes the source history of `deploy-git` releases. |
+| Git repository | `--git-url <url>` | | `gitUrl` | Destination of `deploy git`. Credentials come from git, like a token in the URL or an SSH key, and are never printed. |
+| Branch and tag to release to | `--branch <name>`, `--tag <name>` | | `branch`, `tag` | Refs written by `deploy git` in the Git repository, distinct from the git tag that `version-check` compares. |
+| Source history | `--split-prefix <dir>` | | `splitPrefix` | Directory of a monorepo package whose history, split into its own commits like `git subtree split` does, becomes the source history of `deploy git` releases. |
 | SVN credentials | `--svn-username <name>`, `SVN_USERNAME` and `SVN_PASSWORD` env vars | `svn-username`, `svn-password` | `svnUsername`, `svnPassword` | Needed only to commit. There's no password flag, since it would show in the process list; the action inputs and library options fall back to the env vars. |
 | Log format | `--log-format <text\|github>`, `--ci` for `github` | always `github` | `writer: new TextWriter()` or `new GitHubActionsWriter()` | How the log is printed: plain text, or GitHub Actions annotations and job summaries. Each name matches the start of its writer class. |
 | Release config | `--config <path>` | `config` in ZIP, checksums and SVN actions | `configFile` | Explicit JavaScript config path for package selection, integrity settings or deployment. |
@@ -46,7 +46,7 @@ Library classes are named after the capability (`SvnDeploy`, `Svn`, `GitDeploy`)
 
 ### File selection [#file-selection]
 
-`build`, `zip`, `checksums`, `deploy-svn` and `deploy-git` select files the same way:
+`build`, `zip`, `checksums`, `deploy svn` and `deploy git` select files the same way:
 
 | Option | Description |
 |---|---|
@@ -55,7 +55,7 @@ Library classes are named after the capability (`SvnDeploy`, `Svn`, `GitDeploy`)
 | `--exclude <patterns>` | Extra gitignore-style patterns, comma-separated or repeated, like `--exclude build/,assets/*,images/**/*`. They're applied after the ignore file, so a `!` pattern can also re-include a file. |
 | `--exclude-gitattributes` | Also exclude paths marked `export-ignore` by Git attributes. This is opt-in and requires the source directory to be inside a Git repository. |
 
-`.distignore` and `--exclude` use full gitignore syntax, including `!` negation. `--exclude-gitattributes` asks Git to evaluate `export-ignore` attributes, including nested `.gitattributes` files, then adds those paths to the exclusions. It is off by default, so releases don't unexpectedly depend on Git or change selection when a repository adds attributes. Git must be installed and the source directory must be inside a working tree; the flag is ignored by `deploy-svn --from-zip`, since the ZIP is already filtered. Version control metadata (`.git`, `.svn` and `.hg`, at any depth, including the `.git` files of worktrees and submodules) is always left out, also without an ignore file and when deploying from a ZIP, and no `!` pattern can re-include it. This keeps a repository's history out of ZIPs and deploys when the source directory is the repository root. The comma-separated `--exclude` list works like `--exclude` in `wp i18n make-pot`. Selected symbolic links are an error, since ZIP archives and WordPress.org SVN don't support them.
+`.distignore` and `--exclude` use full gitignore syntax, including `!` negation. `--exclude-gitattributes` asks Git to evaluate `export-ignore` attributes, including nested `.gitattributes` files, then adds those paths to the exclusions. It is off by default, so releases don't unexpectedly depend on Git or change selection when a repository adds attributes. Git must be installed and the source directory must be inside a working tree; the flag is ignored by `deploy svn --from-zip`, since the ZIP is already filtered. Version control metadata (`.git`, `.svn` and `.hg`, at any depth, including the `.git` files of worktrees and submodules) is always left out, also without an ignore file and when deploying from a ZIP, and no `!` pattern can re-include it. This keeps a repository's history out of ZIPs and deploys when the source directory is the repository root. The comma-separated `--exclude` list works like `--exclude` in `wp i18n make-pot`. Selected symbolic links are an error, since ZIP archives and WordPress.org SVN don't support them.
 
 ### Plugin and theme headers [#plugin-and-theme-headers]
 

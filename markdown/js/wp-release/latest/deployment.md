@@ -4,7 +4,7 @@
 
 The [`wp-release-deploy-svn`](https://github.com/wpelevator/wp-release-deploy-svn) GitHub Action runs this command.
 
-`deploy-svn` syncs a plugin to the WordPress.org plugin SVN repository. Each SVN write is a separate flag and nothing is written unless requested. All writes go into one commit.
+`deploy svn` syncs a plugin to the WordPress.org plugin SVN repository. Each SVN write is a separate flag and nothing is written unless requested. All writes go into one commit.
 
 | Flag | Default | Writes |
 |---|---|---|
@@ -18,19 +18,19 @@ Typical runs:
 
 ```bash
 # Deploy 1.2.0 to trunk and the tag, and update the assets
-wp-release deploy-svn dist --trunk --svn-tag 1.2.0 --assets-dir .wordpress-org
+wp-release deploy svn dist --trunk --svn-tag 1.2.0 --assets-dir .wordpress-org
 
 # Tag a pre-release build without touching trunk
-wp-release deploy-svn dist --svn-tag 1.2.0-rc.1
+wp-release deploy svn dist --svn-tag 1.2.0-rc.1
 
 # Update only the readme between releases
-wp-release deploy-svn dist --readme-only
+wp-release deploy svn dist --readme-only
 
 # Update only the assets
-wp-release deploy-svn --assets-dir .wordpress-org
+wp-release deploy svn --assets-dir .wordpress-org
 
 # Deploy exactly the files of a ZIP built earlier
-wp-release deploy-svn --from-zip my-plugin.1.2.0.zip --trunk --svn-tag 1.2.0
+wp-release deploy svn --from-zip my-plugin.1.2.0.zip --trunk --svn-tag 1.2.0
 ```
 
 How a deploy works:
@@ -56,7 +56,7 @@ Validation:
 
 ### Deploy to Git [#deploy-to-git]
 
-`deploy-git` deploys the selected files of a plugin, theme or package to a Git repository, like a distribution repository that ships the built files and `vendor/` for Composer installs or GitHub-hosted updates, or the release repository of a monorepo package. It selects files like `zip`, with `.distignore` and `--exclude`, so built files that git ignores in the source repository, like `build/` or `vendor/`, are released too. The source directory must be inside a Git repository, which provides the source history and stores the release objects before they're pushed.
+`deploy git` deploys the selected files of a plugin, theme or package to a Git repository, like a distribution repository that ships the built files and `vendor/` for Composer installs or GitHub-hosted updates, or the release repository of a monorepo package. It selects files like `zip`, with `.distignore` and `--exclude`, so built files that git ignores in the source repository, like `build/` or `vendor/`, are released too. The source directory must be inside a Git repository, which provides the source history and stores the release objects before they're pushed.
 
 | Flag | Default | Writes |
 |---|---|---|
@@ -65,10 +65,10 @@ Validation:
 
 ```bash
 # Release a build to a distribution repository and tag it
-wp-release deploy-git build --git-url git@github.com:me/my-plugin-dist.git --branch main --tag 1.2.0
+wp-release deploy git build --git-url git@github.com:me/my-plugin-dist.git --branch main --tag 1.2.0
 
 # Release a monorepo package with its own history
-wp-release deploy-git packages/my-plugin --split-prefix packages/my-plugin --git-url … --branch main
+wp-release deploy git packages/my-plugin --split-prefix packages/my-plugin --git-url … --branch main
 ```
 
 How a deploy works:
@@ -86,7 +86,7 @@ To release a tag again, for example after a release with the wrong files, delete
 
 ### Deploy configured packages [#deploy-configured-packages]
 
-`deploy-git --release-ref <ref>` and `deploy-svn --release-ref <ref>` deploy the packages of a monorepo, or of a single-package repository, to the targets in the `deploy` config of their package groups, like the release repository of each package or its WordPress.org plugin. The ref decides what's deployed: a release tag of a package, like `refs/tags/plugins/alpha/1.2.0` read with the `tagFormat`, deploys that package and version, and a branch, like `refs/heads/main`, deploys every package with a target for that branch. A name without `refs/` is a release tag when it matches the tag format of a package, otherwise a branch, and in GitHub Actions `$GITHUB_REF` is the pushed ref.
+`deploy git --release-ref <ref>` and `deploy svn --release-ref <ref>` deploy the packages of a monorepo, or of a single-package repository, to the targets in the `deploy` config of their package groups, like the release repository of each package or its WordPress.org plugin. The ref decides what's deployed: a release tag of a package, like `refs/tags/plugins/alpha/1.2.0` read with the `tagFormat`, deploys that package and version, and a branch, like `refs/heads/main`, deploys every package with a target for that branch. A name without `refs/` is a release tag when it matches the tag format of a package, otherwise a branch, and in GitHub Actions `$GITHUB_REF` is the pushed ref.
 
 ```js
 packages: [
@@ -112,12 +112,12 @@ packages: [
 
 | Mode | Command | Use |
 |---|---|---|
-| All | `deploy-git --release-ref <ref>` | Deploy every package of the ref to each of its targets, one at a time, in one log group for each package. A failed deploy doesn't stop the others, and the command exits with `1` at the end. |
-| One package | `deploy-git --release-ref <ref> --package <name>` | Deploy only that package (repeatable), by identifier or path, for example to retry a failed one or in a CI job for each package with its own credentials. |
-| Plan | `deploy-git --release-ref <ref> --list` | List the deploys without running them, with each package, its version or branch and the targets with the tag or branch they get. With `--json` or `--github-output` the result is `{ packages: [ … ] }`, for a CI matrix with `include: ${{ fromJSON( steps.plan.outputs.result ).packages }}`. |
-| Single directory | `deploy-git <dir> --git-url <url> [options]` | Deploy one directory without a config, as described above. |
+| All | `deploy git --release-ref <ref>` | Deploy every package of the ref to each of its targets, one at a time, in one log group for each package. A failed deploy doesn't stop the others, and the command exits with `1` at the end. |
+| One package | `deploy git --release-ref <ref> --package <name>` | Deploy only that package (repeatable), by identifier or path, for example to retry a failed one or in a CI job for each package with its own credentials. |
+| Plan | `deploy git --release-ref <ref> --list` | List the deploys without running them, with each package, its version or branch and the targets with the tag or branch they get. With `--json` or `--github-output` the result is `{ packages: [ … ] }`, for a CI matrix with `include: ${{ fromJSON( steps.plan.outputs.result ).packages }}`. |
+| Single directory | `deploy git <dir> --git-url <url> [options]` | Deploy one directory without a config, as described above. |
 
-`deploy-svn` has the same modes. `--release-ref` can't be combined with the options of a single target, like `--git-url`, `--tag` or `--svn-tag`, which come from the config.
+`deploy svn` has the same modes. `--release-ref` can't be combined with the options of a single target, like `--git-url`, `--tag` or `--svn-tag`, which come from the config.
 
 - **Git targets** take a `repository` and release both branches and tags by default. `branches` limits the branches, like `[ 'main' ]`, or turns them off with `false`, and `tag` is the tag template in the repository, `{version}` by default, or `false` to not release tags. A release tag is created on top of the default branch of the repository, and a branch is released to the same branch. `history: false` uses the source commit instead of the package history, and `message` sets the release commit message, `Release {ref} from {revision}` by default.
 - **SVN targets** only deploy release tags: a stable release syncs `trunk/`, creates its tag and syncs the `assetsDir`, and a pre-release only creates its tag. `slug`, the WordPress.org plugin slug, defaults to the name of the package directory, `url` to the WordPress.org plugin repository, and `message` sets the commit message. Credentials come from `SVN_USERNAME` and `SVN_PASSWORD`, or `--svn-username`.
@@ -128,6 +128,6 @@ packages: [
 - **Packages without a version**: a package entry without `version`, like a single directory with a `glob` of its path, isn't released with changesets, so changes to it don't need one, and it only deploys branches, since it has no release tags.
 - **Files**: `files.exclude` adds gitignore-style patterns relative to the package directory, and `files.distignore` sets the ignore file relative to it or turns it off with `false`. A `files` at the root of the config applies to every package group, for the rules that all packages share, and the `files` of a group add their patterns after it and can replace its ignore file. Without `files`, each package's `.distignore` applies, like for `zip`; there's no repository-wide `.distignore`, since each one is relative to its package. `zip --package <name>` zips a package with the same files, `getPackageFiles()` returns the directory and the file selection of any configured package, and `getDeployPackages()` lists the packages with deploy targets and their file selection.
 
-A deploy releases the files of the working tree, so build the packages first. One job that builds once and runs `deploy-git --release-ref "$GITHUB_REF"` is the simplest setup, also for a branch that releases every package. A matrix with a job for each package from `--list` would build every package in every job, so build once and pass the built tree to the jobs as an artifact if you need one, for example for separate credentials.
+A deploy releases the files of the working tree, so build the packages first. One job that builds once and runs `deploy git --release-ref "$GITHUB_REF"` is the simplest setup, also for a branch that releases every package. A matrix with a job for each package from `--list` would build every package in every job, so build once and pass the built tree to the jobs as an artifact if you need one, for example for separate credentials.
 
-Other monorepo tools split the same way with less of the release in the config: [Symplify MonorepoBuilder](https://github.com/symplify/monorepo-builder) and [`danharrin/monorepo-split-github-action`](https://github.com/danharrin/monorepo-split-github-action) push the source history of each package directory, with the packages and repositories listed in the workflow or a matrix, while `deploy-git` releases the built files on top of that history, so `vendor/` and `build/` reach Composer and WordPress installs. Like the publishers of [GoReleaser](https://goreleaser.com/), targets are lists with templates, and pre-releases skip the targets where they would replace the stable version.
+Other monorepo tools split the same way with less of the release in the config: [Symplify MonorepoBuilder](https://github.com/symplify/monorepo-builder) and [`danharrin/monorepo-split-github-action`](https://github.com/danharrin/monorepo-split-github-action) push the source history of each package directory, with the packages and repositories listed in the workflow or a matrix, while `deploy git` releases the built files on top of that history, so `vendor/` and `build/` reach Composer and WordPress installs. Like the publishers of [GoReleaser](https://goreleaser.com/), targets are lists with templates, and pre-releases skip the targets where they would replace the stable version.
