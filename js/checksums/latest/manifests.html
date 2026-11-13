@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/checksums/latest/manifests.html#article",
-      "headline": "",
+      "headline": "Manifests",
       "description": "It takes a plain list of relative paths with forward slashes, so it works with any way of selecting files, like @wpelevator/fileset. The metadata is…",
       "url": "https://wpelevator.github.io/docs/js/checksums/latest/manifests.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/checksums/latest/manifests.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "checksums", "item": "https://wpelevator.github.io/docs/js/checksums/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/checksums/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/checksums/latest/manifests.html" }
+        { "@type": "ListItem", "position": 4, "name": "Manifests", "item": "https://wpelevator.github.io/docs/js/checksums/latest/manifests.html" }
       ]
     }
   ]
@@ -122,15 +122,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Manifests</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/checksums/latest/manifests.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/checksums/latest/manifests.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="manifests" tabindex="-1"><a class="header-anchor" href="#manifests">Manifests</a></h2>
-<h3 id="create-a-manifest" tabindex="-1"><a class="header-anchor" href="#create-a-manifest">Create a manifest</a></h3>
+    <h2 id="create-a-manifest" tabindex="-1"><a class="header-anchor" href="#create-a-manifest">Create a manifest</a></h2>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createChecksums<span class="token punctuation">,</span> writeChecksums <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> manifest <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">createChecksums</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
@@ -151,7 +150,7 @@
 <span class="token punctuation">}</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>createManifest( files, metadata )</code> does the same from hashes that you already have. <code>writeChecksums()</code> refuses to overwrite a file without <code>force</code>.</p>
-<h3 id="read-a-manifest" tabindex="-1"><a class="header-anchor" href="#read-a-manifest">Read a manifest</a></h3>
+<h2 id="read-a-manifest" tabindex="-1"><a class="header-anchor" href="#read-a-manifest">Read a manifest</a></h2>
 <p><code>readChecksums( path )</code> and <code>parseChecksums( json )</code> validate a manifest: it needs a <code>files</code> object with relative paths that have no <code>.</code>, <code>..</code> or backslash segments, and an MD5 or SHA-256 hash for every file. A hash can also be a list of accepted values, as in the WordPress.org API.</p>
 
   </div>

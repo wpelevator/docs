@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html#article",
-      "headline": "",
+      "headline": "wp-release",
       "description": "Build and release WordPress plugins, themes, and packages.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html",
@@ -138,28 +138,27 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1><p class="lede">Build and release WordPress plugins, themes, and packages.</p>
+    <h1>wp-release</h1><p class="lede">Build and release WordPress plugins, themes, and packages.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/index.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/index.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="wp-release" tabindex="-1"><a class="header-anchor" href="#wp-release">wp-release</a></h2>
-<p><code>@wpelevator/wp-release</code> provides a CLI and library for building release directories and ZIPs, creating checksums and signatures, checking versions, extracting and compiling translations, and deploying to WordPress.org SVN or Git repositories.</p>
+    <p><code>@wpelevator/wp-release</code> provides a CLI and library for building release directories and ZIPs, creating checksums and signatures, checking versions, extracting and compiling translations, and deploying to WordPress.org SVN or Git repositories.</p>
 <p>The <a href="https://github.com/wpelevator/wp-release-zip"><code>wp-release-zip</code></a>, <a href="https://github.com/wpelevator/wp-release-checksums"><code>wp-release-checksums</code></a>, <a href="https://github.com/wpelevator/wp-release-sign"><code>wp-release-sign</code></a>, and <a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wp-release-deploy-svn</code></a> GitHub Actions expose the same commands in workflows.</p>
 <p>For projects that don't use Node.js or JavaScript tooling, <a href="../../../php/php-changesets/latest/index.html">PHP Changesets</a> (<code>wpelevator/php-changesets</code>) runs the same changeset release workflow with PHP and Git alone: <code>changeset add</code>, <code>status</code>, <code>version</code> and <code>tag</code> read the same changeset files and match the options of the <code>changeset</code> commands described in <a href="changesets.html">Changesets support</a>.</p>
 <p>WordPress.org themes are released by uploading a ZIP, so <code>deploy svn</code> is for plugins only. Use <code>zip</code> to build a theme upload. Packaging and deployment options follow familiar community tools to ease migration; the <a href="./comparison.html">comparison</a> explains the differences.</p>
-<h3 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h3>
+<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev @wpelevator/wp-release</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Node.js 22.12 or later is required. SVN deployments also require the <code>svn</code> command line client. Git deployments and changeset commands require Git.</p>
 <p>The package is an ES module with TypeScript declarations. CommonJS projects can load it with <code>require( '@wpelevator/wp-release' )</code> on Node.js 22.12 or later.</p>
-<h3 id="start-with-the-cli" tabindex="-1"><a class="header-anchor" href="#start-with-the-cli">Start with the CLI</a></h3>
+<h2 id="start-with-the-cli" tabindex="-1"><a class="header-anchor" href="#start-with-the-cli">Start with the CLI</a></h2>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">npx wp-release <span class="token parameter variable">--help</span>
 npx wp-release <span class="token function">zip</span> <span class="token parameter variable">--help</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h3 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h3>
+<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
 <ul>
 <li><a href="./cli.html">CLI and automation</a></li>
 <li><a href="./changesets.html">Changeset releases</a></li>

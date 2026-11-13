@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/checksums/latest/verifying.html#article",
-      "headline": "",
+      "headline": "Comparing and verifying",
       "description": "A file matches when its SHA-256 is one of the expected values, or its MD5 for entries without a SHA-256. verifyChecksums() hashes the given files and…",
       "url": "https://wpelevator.github.io/docs/js/checksums/latest/verifying.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/checksums/latest/verifying.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "checksums", "item": "https://wpelevator.github.io/docs/js/checksums/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/checksums/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/checksums/latest/verifying.html" }
+        { "@type": "ListItem", "position": 4, "name": "Comparing and verifying", "item": "https://wpelevator.github.io/docs/js/checksums/latest/verifying.html" }
       ]
     }
   ]
@@ -122,15 +122,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Comparing and verifying</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/checksums/latest/verifying.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/checksums/latest/verifying.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="comparing-and-verifying" tabindex="-1"><a class="header-anchor" href="#comparing-and-verifying">Comparing and verifying</a></h2>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> compareChecksums<span class="token punctuation">,</span> verifyChecksums <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
+    <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> compareChecksums<span class="token punctuation">,</span> verifyChecksums <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
 
 <span class="token comment">// Two maps of hashes, without reading files.</span>
 <span class="token function">compareChecksums</span><span class="token punctuation">(</span> manifest<span class="token punctuation">.</span>files<span class="token punctuation">,</span> <span class="token keyword">await</span> <span class="token function">hashFiles</span><span class="token punctuation">(</span> <span class="token string">'dist'</span><span class="token punctuation">,</span> files <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>

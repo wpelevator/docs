@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/development.html#article",
-      "headline": "",
+      "headline": "Development",
       "description": "Run these from the repository root:",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/development.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/development.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/development.html" }
+        { "@type": "ListItem", "position": 4, "name": "Development", "item": "https://wpelevator.github.io/docs/js/chop/latest/development.html" }
       ]
     }
   ]
@@ -140,15 +140,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Development</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/development.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/development.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="development" tabindex="-1"><a class="header-anchor" href="#development">Development</a></h2>
-<p>Run these from the repository root:</p>
+    <p>Run these from the repository root:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> run <span class="token builtin class-name">test</span> <span class="token parameter variable">--workspace</span> @wpelevator/chop
 <span class="token function">npm</span> run lint <span class="token parameter variable">--workspace</span> @wpelevator/chop
 <span class="token function">npm</span> run build <span class="token parameter variable">--workspace</span> @wpelevator/chop
@@ -156,7 +155,7 @@
 <span class="token function">docker</span> compose run <span class="token parameter variable">--rm</span> --no-deps wordpress <span class="token function">npm</span> run <span class="token builtin class-name">test</span> <span class="token parameter variable">--workspace</span><span class="token operator">=</span>@wpelevator/chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>The source runs directly with Node's type stripping through the <code>wpelevator-source</code> export condition, and <code>dist</code> is only for publishing. Tests are co-located <code>*.test.ts</code> files that use <code>node:test</code>, and each test name starts with the requirement ID of the specification that it covers, like <code>R-FMT-3</code>. <code>src/test-fixtures.ts</code> creates temporary data directories and generates the images with sharp, so there are no binary fixtures.</p>
-<h3 id="license" tabindex="-1"><a class="header-anchor" href="#license">License</a></h3>
+<h2 id="license" tabindex="-1"><a class="header-anchor" href="#license">License</a></h2>
 <p>MIT. chop was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server. The <a href="reference.html">reference</a> summarizes that behavior.</p>
 
   </div>

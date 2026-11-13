@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/formats.html#article",
-      "headline": "",
+      "headline": "Formats and quality",
       "description": "With format=auto (the default), the format is chosen from the Accept header for a still image among the formats of autoFormats (avif,webp by default)…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/formats.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/formats.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/formats.html" }
+        { "@type": "ListItem", "position": 4, "name": "Formats and quality", "item": "https://wpelevator.github.io/docs/js/chop/latest/formats.html" }
       ]
     }
   ]
@@ -140,15 +140,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Formats and quality</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/formats.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/formats.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="formats-and-quality" tabindex="-1"><a class="header-anchor" href="#formats-and-quality">Formats and quality</a></h2>
-<p>With <code>format=auto</code> (the default), the format is chosen from the <code>Accept</code> header for a still image among the formats of <code>autoFormats</code> (<code>avif,webp</code> by default): AVIF if it's listed and the output is lossy, or WebP if it's listed and the output fits the 16383 pixel limit of WebP, otherwise the fallback format. When the client lists both, the format with the highest <code>q</code> is used, and the earlier format of <code>autoFormats</code> wins a tie. Browsers send no <code>q</code> for image types, so they get the first format of <code>autoFormats</code> that they accept, as before, while a header like <code>image/avif;q=0.5,image/webp</code> now gives WebP. The fallback is GIF for a GIF source, PNG for lossless or transparent output, and JPEG otherwise.</p>
+    <p>With <code>format=auto</code> (the default), the format is chosen from the <code>Accept</code> header for a still image among the formats of <code>autoFormats</code> (<code>avif,webp</code> by default): AVIF if it's listed and the output is lossy, or WebP if it's listed and the output fits the 16383 pixel limit of WebP, otherwise the fallback format. When the client lists both, the format with the highest <code>q</code> is used, and the earlier format of <code>autoFormats</code> wins a tie. Browsers send no <code>q</code> for image types, so they get the first format of <code>autoFormats</code> that they accept, as before, while a header like <code>image/avif;q=0.5,image/webp</code> now gives WebP. The fallback is GIF for a GIF source, PNG for lossless or transparent output, and JPEG otherwise.</p>
 <p>The header is parsed per RFC 9110, ignoring whitespace and case, and a type with <code>q=0</code> is not accepted. <code>image/*</code> and <code>*/*</code> never make AVIF or WebP acceptable: only a listed <code>image/avif</code> or <code>image/webp</code> does, so clients that don't list them get a format that they can display. An explicit <code>format</code> is used even if <code>Accept</code> doesn't list it, and it isn't restricted by <code>autoFormats</code>, which only governs the negotiation.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -190,12 +189,12 @@
 </div>
 <p>PNG, GIF and lossless WebP sources stay lossless unless <code>lossy=1</code> or a <code>quality</code> below 100 is given. Lossy output of a lossless source is AVIF, WebP or a palette PNG. A JPEG, lossy WebP or AVIF source always gives lossy output. An animated source is never AVIF. With an explicit format that can't hold the image (JPEG for an image with transparency, or any format other than WebP and GIF for an animation), transparency is flattened onto white and only the first frame is kept. Sources are detected from the content, not the extension. Other content is a <code>415</code> and an unreadable or corrupt file is a <code>422</code>.</p>
 <p>Every successful response has <code>Vary: Accept</code>, also when it ends up in the source format.</p>
-<h3 id="restricting-formats" tabindex="-1"><a class="header-anchor" href="#restricting-formats">Restricting formats</a></h3>
+<h2 id="restricting-formats" tabindex="-1"><a class="header-anchor" href="#restricting-formats">Restricting formats</a></h2>
 <ul>
 <li><code>CHOP_AUTO_FORMATS=webp</code> never negotiates AVIF, which avoids its encode cost. <code>CHOP_AUTO_FORMATS=none</code> disables all upgrades, so <code>auto</code> always gives the fallback format. <code>CHOP_AVIF=false</code> is a shorthand that removes <code>avif</code> from the list, also when <code>autoFormats</code> lists it. An explicit <code>format=avif</code> still works with either.</li>
 <li><code>CHOP_ALLOWED_INPUT_FORMATS=jpeg,png,webp</code> is for a site that only serves those. The format is detected from the content of the file, never the extension, and <code>jpg</code> is accepted as an alias of <code>jpeg</code>. A source in another format is a <code>415</code> with the message of any unsupported file, which doesn't tell which formats are allowed. It's rejected after the header is read and before any pixel is decoded or processed.</li>
 </ul>
-<h3 id="quality-and-size" tabindex="-1"><a class="header-anchor" href="#quality-and-size">Quality and size</a></h3>
+<h2 id="quality-and-size" tabindex="-1"><a class="header-anchor" href="#quality-and-size">Quality and size</a></h2>
 <ul>
 <li><code>quality</code> is raised to 20 when it's lower, for lossy encoders. <code>quality=100</code> on WebP is lossless WebP.</li>
 <li>Without <code>quality</code> the defaults are JPEG 82, WebP 80 and AVIF 55 (configurable). A palette PNG uses <code>quality</code> or 80. PNG output of a lossless source is lossless with maximum compression.</li>
@@ -204,7 +203,7 @@
 <li>Pixel values are never converted to another color space because of <code>strip</code>: the ICC profile is kept or dropped, and the pixels stay as they are. CMYK sources are always converted to sRGB.</li>
 <li>Responses have <code>X-Bytes-Saved</code> when the output is smaller than the original.</li>
 </ul>
-<h3 id="choices-where-the-specification-is-silent" tabindex="-1"><a class="header-anchor" href="#choices-where-the-specification-is-silent">Choices where the specification is silent</a></h3>
+<h2 id="choices-where-the-specification-is-silent" tabindex="-1"><a class="header-anchor" href="#choices-where-the-specification-is-silent">Choices where the specification is silent</a></h2>
 <ul>
 <li>An explicit <code>quality</code> or <code>lossy=1</code> turns off the <code>strip=none</code> shortcut that sends the original bytes, because the client asked for a re-encoding. The &quot;never larger&quot; check still applies.</li>
 <li>The source quality cap of a JPEG applies when <code>quality</code> is absent. An explicit <code>quality</code> is used as given (with the floor of 20).</li>

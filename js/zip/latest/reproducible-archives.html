@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/zip/latest/reproducible-archives.html#article",
-      "headline": "",
+      "headline": "Reproducible archives",
       "description": "The same entries always give the same archive bytes: entries are sorted by name, every entry has the file mode 0o100644 (ZIPFILEMODE) and the same…",
       "url": "https://wpelevator.github.io/docs/js/zip/latest/reproducible-archives.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/zip/latest/reproducible-archives.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "zip", "item": "https://wpelevator.github.io/docs/js/zip/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/zip/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/zip/latest/reproducible-archives.html" }
+        { "@type": "ListItem", "position": 4, "name": "Reproducible archives", "item": "https://wpelevator.github.io/docs/js/zip/latest/reproducible-archives.html" }
       ]
     }
   ]
@@ -121,15 +121,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Reproducible archives</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/zip/latest/reproducible-archives.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/zip/latest/reproducible-archives.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="reproducible-archives" tabindex="-1"><a class="header-anchor" href="#reproducible-archives">Reproducible archives</a></h2>
-<p>The same entries always give the same archive bytes: entries are sorted by name, every entry has the file mode <code>0o100644</code> (<code>ZIP_FILE_MODE</code>) and the same modification time, so the archive doesn't depend on the umask, file system, clock or the order of the input.</p>
+    <p>The same entries always give the same archive bytes: entries are sorted by name, every entry has the file mode <code>0o100644</code> (<code>ZIP_FILE_MODE</code>) and the same modification time, so the archive doesn't depend on the umask, file system, clock or the order of the input.</p>
 <p>The modification time is the Unix time in the <code>SOURCE_DATE_EPOCH</code> environment variable when it's set, as in <a href="https://reproducible-builds.org/docs/source-date-epoch/">reproducible-builds.org</a>, and otherwise the fixed <code>ZIP_MTIME</code>, 1980-01-01, the first day that ZIP supports. ZIP stores local time without a time zone, so the UTC time is written as it is, to give the same bytes in every time zone. A time before 1980 gives <code>ZIP_MTIME</code>, and a value that isn't a whole number of seconds throws a <code>ZipError</code> with the code <code>ERR_INVALID_SOURCE_DATE_EPOCH</code>. Pass <code>mtime</code> to override both.</p>
 
   </div>

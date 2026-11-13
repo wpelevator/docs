@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html#article",
-      "headline": "",
+      "headline": "Configuration",
       "description": "The configuration lives in changesets.config.php at the project root, the analog of wp-release.config.mjs. The global --config PATH selects another file…",
       "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html" }
+        { "@type": "ListItem", "position": 4, "name": "Configuration", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html" }
       ]
     }
   ]
@@ -130,19 +130,18 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Configuration</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/latest/configuration.md">Copy as Markdown</button>
       <a href="/docs/markdown/php/php-changesets/latest/configuration.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration">Configuration</a></h2>
-<p>The configuration lives in <code>changesets.config.php</code> at the project root, the analog of <code>wp-release.config.mjs</code>. The global <code>--config PATH</code> selects another file for one command.</p>
+    <p>The configuration lives in <code>changesets.config.php</code> at the project root, the analog of <code>wp-release.config.mjs</code>. The global <code>--config PATH</code> selects another file for one command.</p>
 <p>With no config, <code>init</code> infers the single project from a root Composer manifest or WordPress plugin headers as one group, tagged <code>v{version}</code> like the <code>wp-release</code> single-project default. The package is named by its Composer <code>name</code>, or for a plugin without one, by the slug of its main plugin file, like <code>demo</code> for <code>demo.php</code>, never by the checkout directory. <code>--project-name NAME</code> names any other project without a config. Readme changelog updates are opt-in, like in <code>wp-release</code>, so the scaffold of a plugin carries <code>readmeChangelog</code> commented out. When every directory under <code>packages/*</code> declares a Composer name and version, inference adds a second group for them. Other layouts keep the single group, and the scaffold carries a commented template that shows how to add groups. The config lives outside the changeset directory, so <code>.changeset/</code> holds only the Markdown changesets and its <code>README.md</code>.</p>
 <p>The loader rejects the removed formats <code>.php-changesets.json</code>, <code>.changeset/config.php</code> and <code>config/changesets.php</code> with guidance pointing at <code>changesets.config.php</code>. It also rejects the upstream Changesets <code>.changeset/config.json</code>, since both tools would read and consume the same changeset files.</p>
 <p>The config file is regular PHP (loaded with <code>require</code>) and must return an array, normally the result of <code>define_config()</code>, which validates the settings and hooks eagerly at load time and returns their canonical shape. The config helpers are namespaced functions, the PHP analogs of the <code>wp-release</code> <code>defineConfig()</code> and descriptor builders; import them with <code>use function</code>.</p>
-<h3 id="workspace-settings" tabindex="-1"><a class="header-anchor" href="#workspace-settings">Workspace settings</a></h3>
+<h2 id="workspace-settings" tabindex="-1"><a class="header-anchor" href="#workspace-settings">Workspace settings</a></h2>
 <p>The canonical configuration is a workspace with package groups; a single-project config is one group covering the repository root:</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -316,7 +315,7 @@
 <span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h4 id="hooks" tabindex="-1"><a class="header-anchor" href="#hooks">Hooks</a></h4>
+<h2 id="hooks" tabindex="-1"><a class="header-anchor" href="#hooks">Hooks</a></h2>
 <p>Callbacks are plain PHP closures and live only in the PHP config; nothing else in the schema accepts callables, and callability is validated at config load. A failing hook, or a <code>nextVersion</code> result that is not a supported version, stops the run with a message naming the package.</p>
 <p><code>nextVersion</code> receives <code>{ package, bump, currentVersion, changesets }</code>, like the <code>wp-release</code> <code>NextVersionInput</code>, where <code>package</code> is <code>{ name, path, currentVersion }</code> and <code>changesets</code> lists the release's changeset records, and it returns the supported stable version of the release. A <code>--prerelease</code> run turns that version into a pre-release afterwards, as without a hook:</p>
 <div class="code"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
@@ -340,7 +339,7 @@
 <span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 </span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h4 id="version-descriptors" tabindex="-1"><a class="header-anchor" href="#version-descriptors">Version descriptors</a></h4>
+<h2 id="version-descriptors" tabindex="-1"><a class="header-anchor" href="#version-descriptors">Version descriptors</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -389,7 +388,7 @@
 </tbody>
 </table>
 </div>
-<h4 id="builder-helpers" tabindex="-1"><a class="header-anchor" href="#builder-helpers">Builder helpers</a></h4>
+<h2 id="builder-helpers" tabindex="-1"><a class="header-anchor" href="#builder-helpers">Builder helpers</a></h2>
 <p>Version descriptors are built with functions in the <code>WPElevator\PHP_Changesets</code> namespace, which Composer autoloads: <code>composer_json_version( ?string $file, bool $if_present )</code>, <code>wordpress_plugin_version( ?string $file )</code>, <code>wordpress_theme_version( ?string $file )</code> (<code>style.css</code> by default) and <code>wordpress_stable_tag( ?string $file, bool $if_present )</code> for the manifest, header and readme kinds, <code>php_constant_version( string $file, string $constant )</code> for constants, <code>git_tag_version( ?string $pattern, ?string $initial_version )</code> for tag-only sources, and <code>callback_version( string $file, callable $resolve, ?callable $replace )</code> for custom spans.</p>
 <p><code>define_config( array $config )</code> validates a workspace configuration when it loads, rejects unknown or malformed settings and returns the canonical shape that the other classes read.</p>
 <p>A Git-tag-only library needs a first tag, like <code>git tag v0.1.0</code>, or an initial version for its first release:</p>
@@ -410,7 +409,7 @@
 </span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Once a matching stable tag exists, it takes precedence over <code>initialVersion</code>. Tag-only releases do not modify <code>composer.json</code>: the release is recorded in the changelog, and <code>tag</code> tags the changelog version above the latest tag.</p>
-<h4 id="callback-descriptors" tabindex="-1"><a class="header-anchor" href="#callback-descriptors">Callback descriptors</a></h4>
+<h2 id="callback-descriptors" tabindex="-1"><a class="header-anchor" href="#callback-descriptors">Callback descriptors</a></h2>
 <p>Use <code>callback_version()</code> when the built-in descriptors can't find the version. Its callables must return the same result for the same contents and must not write files:</p>
 <ul>
 <li><code>resolve( string $contents ): ?array</code> returns the version <code>value</code>, zero-based byte <code>offset</code> and byte <code>length</code>, or <code>null</code> when absent. The span must contain exactly <code>value</code>.</li>

@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/cli.html#article",
-      "headline": "",
+      "headline": "Command line",
       "description": "Run commands from the project root, or pass --root DIRECTORY.",
       "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/cli.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/cli.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/cli.html" }
+        { "@type": "ListItem", "position": 4, "name": "Command line", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/cli.html" }
       ]
     }
   ]
@@ -130,15 +130,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Command line</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/latest/cli.md">Copy as Markdown</button>
       <a href="/docs/markdown/php/php-changesets/latest/cli.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="command-line" tabindex="-1"><a class="header-anchor" href="#command-line">Command line</a></h2>
-<h3 id="commands" tabindex="-1"><a class="header-anchor" href="#commands">Commands</a></h3>
+    <h2 id="commands" tabindex="-1"><a class="header-anchor" href="#commands">Commands</a></h2>
 <p>Run commands from the project root, or pass <code>--root DIRECTORY</code>.</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">vendor/bin/changeset init
 vendor/bin/changeset <span class="token function">add</span> <span class="token parameter variable">--package</span> example/alpha <span class="token parameter variable">--bump</span> patch <span class="token parameter variable">--summary</span> <span class="token string">"Fix the settings link."</span>
@@ -237,10 +236,10 @@ vendor/bin/changeset version
 </table>
 </div>
 <p>The CLI does not commit or publish, and only <code>tag</code> creates and, with <code>--push</code>, pushes tags. Review and commit version and changelog changes separately. A second <code>version</code> run with no pending changesets makes no release edits.</p>
-<h3 id="add-a-changeset" tabindex="-1"><a class="header-anchor" href="#add-a-changeset">Add a changeset</a></h3>
+<h2 id="add-a-changeset" tabindex="-1"><a class="header-anchor" href="#add-a-changeset">Add a changeset</a></h2>
 <p>A changeset's frontmatter maps one or more package names to a <code>patch</code>, <code>minor</code> or <code>major</code> bump, and its body is a nonempty Markdown summary:</p>
 <div class="code"><pre class="language-md" tabindex="0"><code class="language-md"><span class="token front-matter-block"><span class="token punctuation">---</span>
-<span class="token front-matter yaml language-yaml">"example/alpha": minor</span>
+<span class="token front-matter yaml language-yaml"><span class="token key atrule">"example/alpha"</span><span class="token punctuation">:</span> minor</span>
 <span class="token punctuation">---</span></span>
 
 Add a feature.</code></pre>
@@ -251,20 +250,20 @@ Add a feature.</code></pre>
 <p>With <code>--since REF</code>, <code>add</code> compares the changes since <code>REF</code>, including uncommitted and untracked files, since changesets are usually added before committing. The prompt marks the changed packages without a changeset and Enter selects them, and a single <code>--bump</code> without <code>--package</code> releases them, like <code>changeset add --since origin/main --bump patch --summary &quot;…&quot;</code> to fix a failing status check.</p>
 <p>Unknown package names, duplicated entries and unsupported YAML are rejected against the discovered package names. Multiple changesets aggregate with the highest bump per package and keep their changelog entries in filename order.</p>
 <p>Empty frontmatter records an explicit no-release decision and applies to every package, so <code>--empty</code> needs no package selection and is consumed by the next release of all of them.</p>
-<h3 id="check-pull-requests-for-changesets" tabindex="-1"><a class="header-anchor" href="#check-pull-requests-for-changesets">Check pull requests for changesets</a></h3>
+<h2 id="check-pull-requests-for-changesets" tabindex="-1"><a class="header-anchor" href="#check-pull-requests-for-changesets">Check pull requests for changesets</a></h2>
 <p>In CI, <code>changeset status --since origin/main</code> (or <code>changeset status</code> with a configured <code>baseBranch</code> of <code>main</code>) requires a changeset added by the pull request for every package that it changes. Changesets already on the base don't count, and an empty changeset added by the pull request records an explicit no-release decision. A package at the repository root owns every changed file. The command exits with code 2 and reports <code>Changed package &quot;…&quot; has no changeset.</code> for each missing one; with the <code>github</code> log format, the error is an annotation on a changed file of the package. <code>--since</code> needs the history of the base, so check out with <code>fetch-depth: 0</code>.</p>
 <p>The result adds <code>since</code>, <code>changedPackages</code>, <code>changedPackageFiles</code> with the changed files of each package, and <code>missingChangesets</code> to the release plan.</p>
-<h3 id="preview-and-apply-a-release" tabindex="-1"><a class="header-anchor" href="#preview-and-apply-a-release">Preview and apply a release</a></h3>
+<h2 id="preview-and-apply-a-release" tabindex="-1"><a class="header-anchor" href="#preview-and-apply-a-release">Preview and apply a release</a></h2>
 <p><code>status --json</code> and <code>version --dry-run --json</code> print the <code>wp-release</code> release-plan shape: <code>changesets</code> with <code>file</code>, <code>packages</code> and <code>summary</code> items, and one <code>releases[]</code> item per discovered package with <code>package</code>, <code>currentVersion</code>, <code>bump</code>, <code>nextVersion</code>, <code>tag</code>, <code>changesets</code>, the <code>changelog</code> Markdown list added to <code>CHANGELOG.md</code> and the affected <code>paths</code>, in configured group order. A release without changesets has a null bump and tag. Dry-run JSON also includes one combined <code>diff</code> string with a <code>### {package}</code> section per release.</p>
 <p><code>version</code> checks that each proposed tag does not exist, updates the configured version targets of every release, prepends a <code>## {version} ({date})</code> changelog section and consumes the changesets. Every package's targets are checked before any files are written, and the edits of all releases apply as one transaction, so a failure never leaves one package released and another pending. An interrupted write leaves a <code>.php-changesets-transaction/</code> journal and blocks <code>status</code> and <code>version</code>; run <code>changeset recover</code> before retrying.</p>
-<h3 id="version-some-packages" tabindex="-1"><a class="header-anchor" href="#version-some-packages">Version some packages</a></h3>
+<h2 id="version-some-packages" tabindex="-1"><a class="header-anchor" href="#version-some-packages">Version some packages</a></h2>
 <p>To release packages separately, for example with a release pull request for each, pass <code>--package NAME</code>, repeatable, to version only those packages. A changeset that also names other packages keeps only their entries and its summary, so it still applies to their releases with the same bump. Changesets without packages are left for a run without <code>--package</code>.</p>
 <p><code>version --snapshot ID</code> releases snapshots of the next versions for test builds, like <code>1.3.0-pr-251.20261012183005</code> for a pull request: the next version with the identifier and the UTC time, so that every snapshot is unique and they sort by time. Snapshots can't be combined with <code>--prerelease</code>, and like a pre-release, a snapshot keeps the readme <code>Stable tag</code>. Build the versioned files without committing them, since a snapshot consumes the changesets.</p>
-<h3 id="tags-and-release-notes" tabindex="-1"><a class="header-anchor" href="#tags-and-release-notes">Tags and release notes</a></h3>
+<h2 id="tags-and-release-notes" tabindex="-1"><a class="header-anchor" href="#tags-and-release-notes">Tags and release notes</a></h2>
 <p>After merging a release, <code>changeset tag</code> creates the missing tags of the current versions, and <code>--push</code> pushes them to the remote one at a time, since GitHub doesn't trigger workflows for a push of more than three tags. Tags are created only when absent, so a rerun after a partial failure is safe, and every version target of a package must match the version before its tag is created. <code>--dry-run</code> lists the tags without creating them, and <code>--untagged</code> lists only the releases without a tag, for example to release each of them with a separate workflow.</p>
 <p>With <code>--json</code> or <code>--github-output</code>, each entry of <code>tags</code> has the <code>package</code>, <code>version</code>, <code>tag</code>, a <code>title</code>, the <code>previousTag</code> when there is one, a <code>prerelease</code> flag, whether the tag already <code>exists</code> or was <code>created</code>, and the release <code>notes</code>. The title is <code>name@version</code>, or the version for a package at the repository root, unless <code>releaseTitle</code> or <code>--release-title</code> sets a template with <code>{name}</code>, <code>{path}</code>, <code>{version}</code> and <code>{tag}</code> placeholders. The notes are the changelog section of the version, or without one the commits that changed the package since the previous tag, the highest version below the released one, skipping pre-releases for a stable version.</p>
 <p>To release a single package, pass <code>--package NAME</code> and <code>--version VERSION</code>, which fails unless the package is at that version; a sole package is selected without <code>--package</code>. A package versioned by Git tags has no version file, so <code>--version</code> is the version to tag, and without it the version is the changelog version above its latest tag. The tags are read from the local repository, so check out the full history with its tags.</p>
-<h3 id="pre-releases" tabindex="-1"><a class="header-anchor" href="#pre-releases">Pre-releases</a></h3>
+<h2 id="pre-releases" tabindex="-1"><a class="header-anchor" href="#pre-releases">Pre-releases</a></h2>
 <p>There is no pre mode and no state file. Pre-releases are a per-run transform of the release plan, like in <code>wp-release</code>: <code>changeset version --prerelease ID</code> computes the stable plan first, then turns every release's version into a pre-release of that stable version.</p>
 <ul>
 <li>A bare identifier like <code>rc</code> numbers one above the highest existing <code>&lt;stable&gt;-&lt;identifier&gt;.</code> version among the package's Git tags in its tag format, so the first pre-release of a stable version is <code>1.2.5-rc.1</code>. Tag each pre-release with the release workflow; the numbering counts those tags.</li>
@@ -275,9 +274,9 @@ Add a feature.</code></pre>
 <li>With a <code>nextVersion</code> hook, the transform applies to the stable version that the hook returns.</li>
 </ul>
 <p>The recommended flow is the <code>wp-release</code> one: cut a pre-release on a branch that isn't merged with <code>changeset version --prerelease rc</code>, tag it with the release workflow, and later run <code>changeset version</code> without the flag on the base branch to release the stable version.</p>
-<h3 id="github-actions-output" tabindex="-1"><a class="header-anchor" href="#github-actions-output">GitHub Actions output</a></h3>
+<h2 id="github-actions-output" tabindex="-1"><a class="header-anchor" href="#github-actions-output">GitHub Actions output</a></h2>
 <p><code>--github-output</code> writes the complete result as compact JSON to the <code>result</code> step output and each top-level string, number or boolean, like the dry-run <code>diff</code>, as its own output, like <code>wp-release</code>. Arrays and objects stay in <code>result</code>, so read them with <code>fromJSON( steps.tag.outputs.result ).tags</code>.</p>
-<h3 id="annotations-and-job-summaries" tabindex="-1"><a class="header-anchor" href="#annotations-and-job-summaries">Annotations and job summaries</a></h3>
+<h2 id="annotations-and-job-summaries" tabindex="-1"><a class="header-anchor" href="#annotations-and-job-summaries">Annotations and job summaries</a></h2>
 <p><code>--log-format github</code>, the default when <code>GITHUB_ACTIONS=true</code> and also selected by <code>--ci</code>, prints errors as <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands">workflow commands</a>, so they show up as annotations on the run and on the files of a pull request. Version mismatches are annotated on the file and line of the version, and missing changesets on a changed file of the package. File paths are relative to <code>GITHUB_WORKSPACE</code>, or the current directory without it. Pass <code>--log-format text</code> for plain text in GitHub Actions.</p>
 <p>When <code>GITHUB_STEP_SUMMARY</code> is set, each command adds a section to the job summary of the run:</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
@@ -305,7 +304,7 @@ Add a feature.</code></pre>
 </table>
 </div>
 <p>A failed command adds its error to the summary, or a table of its problems with their files and lines.</p>
-<h3 id="exit-codes" tabindex="-1"><a class="header-anchor" href="#exit-codes">Exit codes</a></h3>
+<h2 id="exit-codes" tabindex="-1"><a class="header-anchor" href="#exit-codes">Exit codes</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>

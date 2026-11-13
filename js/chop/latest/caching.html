@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/caching.html#article",
-      "headline": "",
+      "headline": "Caching",
       "description": "Put an nginx cache in front of chop. Responses depend on the Accept header, and Vary: Accept alone makes nginx cache a separate copy for every distinct…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/caching.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/caching.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/caching.html" }
+        { "@type": "ListItem", "position": 4, "name": "Caching", "item": "https://wpelevator.github.io/docs/js/chop/latest/caching.html" }
       ]
     }
   ]
@@ -140,15 +140,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Caching</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/caching.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/caching.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="caching" tabindex="-1"><a class="header-anchor" href="#caching">Caching</a></h2>
-<h3 id="caching-with-nginx" tabindex="-1"><a class="header-anchor" href="#caching-with-nginx">Caching with nginx</a></h3>
+    <h2 id="caching-with-nginx" tabindex="-1"><a class="header-anchor" href="#caching-with-nginx">Caching with nginx</a></h2>
 <p>Put an nginx cache in front of chop. Responses depend on the <code>Accept</code> header, and <code>Vary: Accept</code> alone makes nginx cache a separate copy for every distinct <code>Accept</code> string. Browsers send dozens of them, but chop only produces three variants of an image: AVIF, WebP and the source format. Collapse the header into those three buckets, use the bucket in the cache key, and send the same bucket upstream, so that the body in the cache always matches its key:</p>
 <div class="code"><pre class="language-nginx" tabindex="0"><code class="language-nginx"><span class="token comment"># A listed image/avif or image/webp (without q=0) selects the bucket. The first match wins, so AVIF goes first.</span>
 <span class="token directive"><span class="token keyword">map</span> <span class="token variable">$http_accept</span> <span class="token variable">$chop_bucket</span></span> <span class="token punctuation">{</span>
@@ -199,7 +198,7 @@
 <li>If you disable AVIF in chop (<code>CHOP_AVIF=false</code>), the <code>avif</code> bucket holds WebP, which is correct but caches the same image twice. Remove the AVIF line from the first <code>map</code> then.</li>
 </ul>
 <p>Pass the <code>Accept</code> buckets on to any CDN in front of nginx in the same way, with a custom cache key built from a normalized header, and see <a href="caching.html#cdn-and-caching">CDN and caching</a>.</p>
-<h3 id="cdn-and-caching" tabindex="-1"><a class="header-anchor" href="#cdn-and-caching">CDN and caching</a></h3>
+<h2 id="cdn-and-caching" tabindex="-1"><a class="header-anchor" href="#cdn-and-caching">CDN and caching</a></h2>
 <p>The <a href="caching.html#caching-with-nginx">nginx recipe</a> covers the cache next to chop. Responses depend on the <code>Accept</code> header, so the CDN must use it in the cache key, or at least whether it lists <code>image/avif</code> and <code>image/webp</code>. Every response has <code>Vary: Accept</code>, but many CDNs ignore <code>Vary</code> unless configured, and without it a cached AVIF can be sent to a browser that can't display it. Normalizing <code>Accept</code> at the edge to a small set of values (<code>image/avif,image/webp</code>, <code>image/webp</code> and none) keeps the number of cached variants low.</p>
 <p>The responses are immutable by design (<code>Cache-Control: public, max-age=31536000</code> by default and a strong <code>ETag</code>), so change the URL, for example with <code>?ver=3</code>, when an original changes, which also holds for a remote origin, since chop doesn't cache originals and doesn't look at the cache headers of the origin. Set <code>allowedWidths</code> to the widths of your <code>srcset</code> so that the server can't be used to generate unbounded variants, and put the server behind the CDN only. Use <code>/healthz</code> for health checks.</p>
 

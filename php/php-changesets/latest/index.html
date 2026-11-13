@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html#article",
-      "headline": "",
+      "headline": "php-changesets",
       "description": "Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.",
       "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html",
@@ -129,28 +129,27 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1><p class="lede">Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.</p>
+    <h1>php-changesets</h1><p class="lede">Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/latest/index.md">Copy as Markdown</button>
       <a href="/docs/markdown/php/php-changesets/latest/index.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="php-changesets" tabindex="-1"><a class="header-anchor" href="#php-changesets">php-changesets</a></h2>
-<p><code>wpelevator/php-changesets</code> releases WordPress plugins, themes and Composer packages from changeset Markdown files, with PHP and Git and without Node.js. It's for projects that don't use Node.js or JavaScript tooling: a Composer dependency replaces an npm one, and nothing needs installing in CI beyond PHP. It follows the release model of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, the Node.js release tool of WP Elevator, so both tools read the same changesets, take the same command options and produce the same release plans.</p>
+    <p><code>wpelevator/php-changesets</code> releases WordPress plugins, themes and Composer packages from changeset Markdown files, with PHP and Git and without Node.js. It's for projects that don't use Node.js or JavaScript tooling: a Composer dependency replaces an npm one, and nothing needs installing in CI beyond PHP. It follows the release model of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, the Node.js release tool of WP Elevator, so both tools read the same changesets, take the same command options and produce the same release plans.</p>
 <p>If your project already builds with Node.js, or you also want ZIPs, checksums, translations or WordPress.org deploys, use the <a href="../../../js/wp-release/latest/changesets.html"><code>wp-release</code> changeset commands</a> instead. The <a href="comparison.html">comparison</a> lists the differences.</p>
 <p>Contributors describe each change in a small Markdown file. When you release, the <code>changeset</code> command bumps the versions of every changed package, writes the changelogs and creates the release tags. It never commits or publishes: those steps belong to your workflow, like the <a href="github-actions.html">GitHub Actions workflow</a>.</p>
-<h3 id="requirements" tabindex="-1"><a class="header-anchor" href="#requirements">Requirements</a></h3>
+<h2 id="requirements" tabindex="-1"><a class="header-anchor" href="#requirements">Requirements</a></h2>
 <ul>
 <li>PHP 7.4 or later.</li>
 <li>Git for tag-based versions, changed-package checks, release tags and dry-run diffs.</li>
 <li>Composer to install the CLI. Node.js is not required.</li>
 </ul>
-<h3 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h3>
+<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">composer</span> require <span class="token parameter variable">--dev</span> wpelevator/php-changesets
 vendor/bin/changeset <span class="token parameter variable">--help</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h3 id="quickstart" tabindex="-1"><a class="header-anchor" href="#quickstart">Quickstart</a></h3>
+<h2 id="quickstart" tabindex="-1"><a class="header-anchor" href="#quickstart">Quickstart</a></h2>
 <p>For a WordPress plugin or a Composer package at the repository root:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">vendor/bin/changeset init                  <span class="token comment"># Infer and write changesets.config.php</span>
 vendor/bin/changeset <span class="token function">add</span>                   <span class="token comment"># Describe a change; commit the file with it</span>
@@ -159,7 +158,7 @@ vendor/bin/changeset version --dry-run     <span class="token comment"># Preview
 vendor/bin/changeset version               <span class="token comment"># Apply them; review and commit</span>
 vendor/bin/changeset tag                   <span class="token comment"># After merging: create the release tags, like v1.3.0</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h3 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h3>
+<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
 <ul>
 <li><a href="cli.html">Command line</a>: the commands, changesets, the status check, releases, pre-releases, output formats and exit codes.</li>
 <li><a href="configuration.html">Configuration</a>: <code>changesets.config.php</code>, package groups, version descriptors and hooks.</li>

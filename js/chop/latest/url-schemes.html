@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/url-schemes.html#article",
-      "headline": "",
+      "headline": "URL schemes",
       "description": "A URL scheme turns the URL of a request into the path of the original and the operations to run on it. All the schemes produce the same operations, so…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/url-schemes.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/url-schemes.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/url-schemes.html" }
+        { "@type": "ListItem", "position": 4, "name": "URL schemes", "item": "https://wpelevator.github.io/docs/js/chop/latest/url-schemes.html" }
       ]
     }
   ]
@@ -140,15 +140,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>URL schemes</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/url-schemes.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/url-schemes.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="url-schemes" tabindex="-1"><a class="header-anchor" href="#url-schemes">URL schemes</a></h2>
-<p>A URL scheme turns the URL of a request into the path of the original and the operations to run on it. All the schemes produce the same operations, so every scheme gets the same format negotiation, limits and path safety, and different schemes that give the same operations give the same bytes and <code>ETag</code>. Enable them with <code>schemes</code> in the settings, <code>CHOP_SCHEMES</code> or <code>--scheme</code>, which can be repeated.</p>
+    <p>A URL scheme turns the URL of a request into the path of the original and the operations to run on it. All the schemes produce the same operations, so every scheme gets the same format negotiation, limits and path safety, and different schemes that give the same operations give the same bytes and <code>ETag</code>. Enable them with <code>schemes</code> in the settings, <code>CHOP_SCHEMES</code> or <code>--scheme</code>, which can be repeated.</p>
 <p>The schemes are tried in the configured order, and the first one that recognizes the URL wins. A URL that none of them recognizes is a <code>404</code>. <code>/healthz</code> doesn't depend on the schemes. The <code>query</code> scheme recognizes every URL, so when it's enabled together with other schemes, list it last. The path of a scheme goes through the same checks as any path: dot segments, empty segments, slashes, backslashes and NUL bytes in a decoded segment are a <code>400</code>, and the real path must stay inside the data directory. A scheme can also find a <a href="sources.html">URL source</a> in the URL.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">chop <span class="token parameter variable">--data</span> ./uploads <span class="token parameter variable">--scheme</span> cloudflare <span class="token parameter variable">--scheme</span> query</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -156,9 +155,9 @@
 /2026/05/photo.jpg?w=300</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>With <code>Accept: image/avif</code>, both of these URLs give the same AVIF bytes.</p>
-<h3 id="query" tabindex="-1"><a class="header-anchor" href="#query"><code>query</code></a></h3>
+<h2 id="query" tabindex="-1"><a class="header-anchor" href="#query"><code>query</code></a></h2>
 <p>The default scheme. The path is the path of the original and the arguments in <a href="requests.html">Requests</a> are in the query string. A path that starts with <code>http://</code> or <code>https://</code> (also <code>https:/</code> and <code>https%3A//</code>) is a <a href="sources.html">URL source</a>, like <code>/https://uploads.example.com/photo.jpg?w=300</code>, and the query string is still chop's arguments, so the source URL can't have its own.</p>
-<h3 id="cloudflare" tabindex="-1"><a class="header-anchor" href="#cloudflare"><code>cloudflare</code></a></h3>
+<h2 id="cloudflare" tabindex="-1"><a class="header-anchor" href="#cloudflare"><code>cloudflare</code></a></h2>
 <p>The <code>/cdn-cgi/image/&lt;options&gt;/&lt;path&gt;</code> form of <a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/">Cloudflare Image Resizing</a>, with comma separated <code>name=value</code> options. It only recognizes URLs that start with <code>/cdn-cgi/image/</code>. Options that chop doesn't support, like <code>trim</code>, <code>rotate</code>, <code>blur</code>, <code>sharpen</code> and <code>onerror</code>, are ignored, and a malformed value of a supported option is a <code>400</code> that names the option. The first value wins when an option repeats. A source after the options that starts with <code>http://</code> or <code>https://</code> (also <code>https:/</code> and <code>https%3A//</code>) is a <a href="sources.html">URL source</a>, which is a <code>404</code> unless <code>CHOP_ALLOWED_HOSTS</code> is set. A query string on a URL source is a <code>400</code>, and on a path under the origin it is ignored.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>

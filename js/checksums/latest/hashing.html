@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html#article",
-      "headline": "",
+      "headline": "Hashing",
       "description": "Every function gives the MD5 and the SHA-256 hex digests in a single pass. MD5 is there for compatibility with the WordPress.org format. hashFiles() reads…",
       "url": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "checksums", "item": "https://wpelevator.github.io/docs/js/checksums/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/checksums/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html" }
+        { "@type": "ListItem", "position": 4, "name": "Hashing", "item": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html" }
       ]
     }
   ]
@@ -122,15 +122,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Hashing</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/checksums/latest/hashing.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/checksums/latest/hashing.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="hashing" tabindex="-1"><a class="header-anchor" href="#hashing">Hashing</a></h2>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> hashBytes<span class="token punctuation">,</span> hashFile<span class="token punctuation">,</span> hashFiles<span class="token punctuation">,</span> hashStream <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
+    <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> hashBytes<span class="token punctuation">,</span> hashFile<span class="token punctuation">,</span> hashFiles<span class="token punctuation">,</span> hashStream <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
 
 <span class="token function">hashBytes</span><span class="token punctuation">(</span> <span class="token string">'abc'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { md5: '9001…', sha256: 'ba78…' }</span>
 <span class="token keyword">await</span> <span class="token function">hashStream</span><span class="token punctuation">(</span> <span class="token function">createReadStream</span><span class="token punctuation">(</span> <span class="token string">'my-plugin.php'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>

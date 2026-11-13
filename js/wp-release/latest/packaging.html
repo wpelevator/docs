@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/packaging.html#article",
-      "headline": "",
+      "headline": "Packaging and integrity",
       "description": "build and zip use the same internal helper to load file rules, exclude their outputs, select release files and reject an empty selection. build copies the…",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/packaging.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/packaging.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/packaging.html" }
+        { "@type": "ListItem", "position": 4, "name": "Packaging and integrity", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/packaging.html" }
       ]
     }
   ]
@@ -139,15 +139,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Packaging and integrity</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/packaging.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/packaging.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="packaging-and-integrity" tabindex="-1"><a class="header-anchor" href="#packaging-and-integrity">Packaging and integrity</a></h2>
-<h3 id="build-a-directory" tabindex="-1"><a class="header-anchor" href="#build-a-directory">Build a directory</a></h3>
+    <h2 id="build-a-directory" tabindex="-1"><a class="header-anchor" href="#build-a-directory">Build a directory</a></h2>
 <p><code>build</code> and <code>zip</code> use the same internal helper to load file rules, exclude their outputs, select release files and reject an empty selection. <code>build</code> copies the selected files directly into <code>--output &lt;dir&gt;</code>, without a slug wrapper or ZIP. Checksums and manifest signatures are optional. It supports the shared file selection flags above and <code>--package &lt;name&gt;</code> with <code>--config &lt;path&gt;</code> for configured package rules. A configured package cannot be combined with a source directory or file selection flags.</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release build <span class="token parameter variable">--output</span> dist/code-prettify
 wp-release build <span class="token parameter variable">--package</span> plugins/alpha <span class="token parameter variable">--output</span> dist/alpha</code></pre>
@@ -157,7 +156,7 @@ wp-release build <span class="token parameter variable">--package</span> plugins
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release build <span class="token parameter variable">--output</span> dist/code-prettify --sign-checksums</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>In the Deploy workflow, a directory build can be deployed with <code>wp-release deploy svn dist/code-prettify --slug code-prettify --trunk --svn-tag &quot;$GITHUB_REF_NAME&quot; --no-distignore</code>. Keep <code>--from-zip</code> when the SVN deployment must match the attached ZIP exactly. Run dependency installation and compilation before <code>build</code>; it only selects and copies files.</p>
-<h4 id="zip" tabindex="-1"><a class="header-anchor" href="#zip">ZIP</a></h4>
+<h2 id="zip" tabindex="-1"><a class="header-anchor" href="#zip">ZIP</a></h2>
 <p>The <a href="https://github.com/wpelevator/wp-release-zip"><code>wp-release-zip</code></a> GitHub Action runs this command.</p>
 <p><code>zip</code> writes <code>{slug}.{version}.zip</code> to the current directory, or to <code>--output &lt;file&gt;</code>, with the selected files in a <code>{slug}/</code> root folder:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release <span class="token function">zip</span> dist <span class="token parameter variable">--slug</span> my-plugin <span class="token parameter variable">--checksums</span></code></pre>
@@ -176,7 +175,7 @@ wp-release build <span class="token parameter variable">--package</span> plugins
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release <span class="token function">zip</span> dist --checksums-file checksums.json --embed-checksums --sign-checksums</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>See <a href="#checksums">Checksums</a> for filenames, placement, formats and configuration.</p>
-<h4 id="signing-targets-for-builds-and-zips" tabindex="-1"><a class="header-anchor" href="#signing-targets-for-builds-and-zips">Signing targets for builds and ZIPs</a></h4>
+<h2 id="signing-targets-for-builds-and-zips" tabindex="-1"><a class="header-anchor" href="#signing-targets-for-builds-and-zips">Signing targets for builds and ZIPs</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -214,7 +213,7 @@ wp-release build <span class="token parameter variable">--package</span> plugins
 wp-release build <span class="token parameter variable">--output</span> dist/code-prettify --sign-checksums --sign-format minisign</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>These flags deliberately replace the former implicit signing behavior: <code>zip --checksums --sign</code> now leaves the manifest unsigned, and <code>--sign-format</code> alone is rejected. Add <code>--sign-checksums</code> to sign a manifest and <code>--sign</code> to sign a ZIP. The standalone <code>checksums</code> and <code>sign</code> commands remain available for workflows that write and sign a manifest inside the source before packaging it.</p>
-<h4 id="checksums" tabindex="-1"><a class="header-anchor" href="#checksums">Checksums</a></h4>
+<h2 id="checksums" tabindex="-1"><a class="header-anchor" href="#checksums">Checksums</a></h2>
 <p>The <a href="https://github.com/wpelevator/wp-release-checksums"><code>wp-release-checksums</code></a> GitHub Action runs this command.</p>
 <p><code>checksums</code> writes a manifest with the MD5 and SHA-256 hash of every selected file, in the format of the WordPress.org plugin checksums API (<code>https://downloads.wordpress.org/plugin-checksums/{slug}/{version}.json</code>). Paths are relative to the plugin or theme folder, sorted, and use forward slashes:</p>
 <div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
@@ -233,7 +232,7 @@ wp-release build <span class="token parameter variable">--output</span> dist/cod
 wp-release checksums dist <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.0</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Because the manifest lists the files and not the ZIP, it stays valid for any copy of the same files: the GitHub release ZIP, the ZIP that WordPress.org builds from SVN, or an installed plugin on a site.</p>
-<h5 id="filenames-embedding-and-signing" tabindex="-1"><a class="header-anchor" href="#filenames-embedding-and-signing">Filenames, embedding and signing</a></h5>
+<h3 id="filenames-embedding-and-signing" tabindex="-1"><a class="header-anchor" href="#filenames-embedding-and-signing">Filenames, embedding and signing</a></h3>
 <p><code>--checksums-file &lt;file&gt;</code> enables checksums and sets a relative filename independently of the ZIP name. Without <code>--embed-checksums</code>, it resolves against the ZIP output directory; with embedding, it resolves against the package root inside the ZIP (the archive root with <code>--no-root-folder</code>). Nested paths are supported, but absolute paths, backslashes, drive letters, control characters and dot segments are rejected. Embedding emits no external manifest and never modifies the source directory. Embedded minisign signatures contain a signing timestamp, so ZIP bytes can differ across signing times; unsigned metadata and WordPress/SSH signatures remain deterministic. Selected source files must not collide with generated manifest or signature entries.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token comment"># External manifest beside releases/my-plugin.1.5.1.zip.</span>
 wp-release <span class="token function">zip</span> dist <span class="token parameter variable">--output</span> releases/my-plugin.1.5.1.zip --checksums-file checksums.json --sign-checksums
@@ -250,7 +249,7 @@ wp-release verify <span class="token parameter variable">--zip</span> releases/m
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>--sign-checksums</code> enables checksums and signs only the manifest, before embedding when requested. It reads <code>WP_RELEASE_SIGNING_KEY</code> and uses <code>--sign-format wordpress,minisign,ssh</code> to select formats; each signature travels with the manifest. <code>--sign-format</code> selects formats for explicitly requested signing targets and never enables signing. <code>--sign</code> signs only the final ZIP; <code>--sign-checksums</code> controls the manifest in either placement mode. Use both flags to sign both targets. <code>--force</code> permits replacing external output files and signatures. <code>--json</code> reports external manifests in <code>checksumsPath</code>, embedded package-relative paths in <code>checksumsEmbedded</code>, and manifest signatures in <code>checksumsSignatures</code>.</p>
 <p>The default WordPress filename remains the ZIP basename with <code>.checksums.json</code> instead of <code>.zip</code>, in either placement mode. Choose <code>--checksums-file checksums.json</code> for a stable name. The version remains in the JSON content.</p>
-<h5 id="formats" tabindex="-1"><a class="header-anchor" href="#formats">Formats</a></h5>
+<h3 id="formats" tabindex="-1"><a class="header-anchor" href="#formats">Formats</a></h3>
 <p><code>--checksums-format</code> chooses the manifest format. <code>wordpress-json</code> (default) uses the WordPress-compatible structure shown above. <code>sha256sum</code> uses GNU-compatible SHA-256 lines and escaping, with <code>SHA256SUMS</code> as its default filename. It carries no package identity or version, and standard <code>sha256sum --check</code> checks listed files without rejecting additional files; <code>wp-release verify</code> also checks for extra files.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release <span class="token function">zip</span> dist --embed-checksums --checksums-format sha256sum --sign-checksums --sign-format minisign
 wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.5.1.zip --checksums-format sha256sum --public-key <span class="token string">"<span class="token variable">$MINISIGN_PUBLIC_KEY</span>"</span> --signature-format minisign
@@ -259,7 +258,7 @@ minisign <span class="token parameter variable">-Vm</span> SHA256SUMS <span clas
 sha256sum <span class="token parameter variable">--check</span> SHA256SUMS</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>--checksums-algorithms md5,sha256</code> selects JSON digest fields; lists replace configured lists. Supported algorithms are MD5 (for compatibility) and SHA-256. The <code>sha256sum</code> codec requires SHA-256. The standalone <code>checksums</code> command also accepts <code>--checksums-format</code>, keeping <code>--output</code> relative to the working directory.</p>
-<h5 id="configuration-and-custom-codecs" tabindex="-1"><a class="header-anchor" href="#configuration-and-custom-codecs">Configuration and custom codecs</a></h5>
+<h3 id="configuration-and-custom-codecs" tabindex="-1"><a class="header-anchor" href="#configuration-and-custom-codecs">Configuration and custom codecs</a></h3>
 <p>The optional top-level <code>integrity</code> configuration maps to these flags. Explicit CLI values override configuration; <code>--no-embed-checksums</code> and <code>--no-sign-checksums</code> disable their configured behaviors. Existing release configurations retain their <code>packages</code> array; use <code>packages: []</code> for a configuration containing only integrity settings.</p>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">packages</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -297,7 +296,7 @@ sha256sum <span class="token parameter variable">--check</span> SHA256SUMS</code
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>zip</code> and <code>checksums</code> read the caller's release configuration. For verification of custom codecs or configured filenames, pass <code>--config wp-release.config.mjs</code> explicitly. See <a href="#verify">Verify</a>.</p>
-<h5 id="manifest-inside-the-plugin" tabindex="-1"><a class="header-anchor" href="#manifest-inside-the-plugin">Manifest inside the plugin</a></h5>
+<h3 id="manifest-inside-the-plugin" tabindex="-1"><a class="header-anchor" href="#manifest-inside-the-plugin">Manifest inside the plugin</a></h3>
 <p>For a manifest that is also published as a separate release asset or deployed directly from a source directory, write and sign it in that directory before packaging. Use <code>zip --embed-checksums</code> as described <a href="#filenames-embedding-and-signing">above</a> when only the archive should contain the generated metadata. The source-directory workflow uses the same manifest for installed copies and release assets:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release checksums build <span class="token parameter variable">--slug</span> my-plugin <span class="token parameter variable">--output</span> build/checksums.json
 wp-release sign build/checksums.json
@@ -322,7 +321,7 @@ wp-release deploy svn build <span class="token parameter variable">--trunk</span
 </li>
 </ul>
 <p>The public key has to come from somewhere other than the plugin that it checks, because someone who can overwrite the plugin files can also replace a key and a signature inside them. A copy of the manifest also doesn't prevent a downgrade to an older release that was signed too, so the installing side has to enforce a minimum version.</p>
-<h4 id="verify" tabindex="-1"><a class="header-anchor" href="#verify">Verify</a></h4>
+<h2 id="verify" tabindex="-1"><a class="header-anchor" href="#verify">Verify</a></h2>
 <p><code>verify</code> checks a directory against a manifest from <code>checksums</code> or from the WordPress.org checksums API, and reports every changed, missing and extra file. It exits with <code>2</code> unless all files match:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release verify wp-content/plugins/my-plugin <span class="token parameter variable">--checksums</span> my-plugin.1.2.0.checksums.json</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -336,7 +335,7 @@ wp-release deploy svn build <span class="token parameter variable">--trunk</span
 </ul>
 <p>A checksums manifest proves only that the files match the manifest. With <code>--public-key &lt;key&gt;</code>, <code>verify</code> first checks <code>&lt;checksums&gt;.sig</code> against the Ed25519 public key and fails with exit code <code>2</code> before comparing any file when the signature is missing or invalid, so that the manifest itself can be trusted. <code>--signature-format minisign</code> or <code>ssh</code> checks <code>&lt;checksums&gt;.minisig</code> or <code>&lt;checksums&gt;.sshsig</code> instead. The key can be the base64 key, the minisign public key or the <code>ssh-ed25519</code> public key, since they're forms of the same key. See <a href="#sign">Sign</a>.</p>
 <p>Verification never executes configuration from inside a downloaded package. Without <code>--checksums</code>, <code>verify</code> reads the embedded filename selected by <code>--checksums-file</code>, explicit configuration, or the codec default. For a versioned embedded filename, pass that filename explicitly. With a public key, signatures are checked before decoding; the selected signature format must exist (WordPress <code>.sig</code> by default; pass <code>--signature-format minisign</code> or <code>ssh</code> for those formats), and all other present supported signature formats are also authenticated when verifying the embedded manifest. Without a public key, checksums detect changes but do not authenticate the publisher. Trusted public keys must come from outside the package.</p>
-<h4 id="sign" tabindex="-1"><a class="header-anchor" href="#sign">Sign</a></h4>
+<h2 id="sign" tabindex="-1"><a class="header-anchor" href="#sign">Sign</a></h2>
 <p>The <a href="https://github.com/wpelevator/wp-release-sign"><code>wp-release-sign</code></a> GitHub Action runs this command.</p>
 <p><code>sign</code> writes a detached signature next to each file, <code>&lt;file&gt;.sig</code>, so that downloads and installed copies can be trusted. Sign both the ZIP and the checksums manifest: the ZIP signature covers installs and updates, and the manifest signature covers the contents after unpacking and copies that weren't built by you.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">WP_RELEASE_SIGNING_KEY</span><span class="token operator">=</span>… wp-release sign my-plugin.1.2.0.zip my-plugin.1.2.0.checksums.json</code></pre>
@@ -348,7 +347,7 @@ wp-release deploy svn build <span class="token parameter variable">--trunk</span
 <li>An existing signature file isn't overwritten without <code>--force</code>.</li>
 <li><code>zip --sign</code> signs only the ZIP; add <code>--sign-checksums</code> to sign its manifest too. <code>signFiles()</code> signs files from a script.</li>
 </ul>
-<h5 id="signature-formats" tabindex="-1"><a class="header-anchor" href="#signature-formats">Signature formats</a></h5>
+<h3 id="signature-formats" tabindex="-1"><a class="header-anchor" href="#signature-formats">Signature formats</a></h3>
 <p>The same key can also sign in formats that tools outside WordPress check, for people who download a release by hand or verify it in other pipelines. Pick them with <code>--format</code>, comma-separated or repeated; the default is <code>wordpress</code>:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release sign my-plugin.1.2.0.zip <span class="token parameter variable">--format</span> wordpress,minisign,ssh</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -386,7 +385,7 @@ wp-release deploy svn build <span class="token parameter variable">--trunk</span
 <li>All formats are Ed25519 signatures by the same key, so one key and one secret cover all of them. The tests check each format with <code>minisign</code>, <code>ssh-keygen</code> and libsodium, and check the signatures that <code>minisign</code> and <code>ssh-keygen</code> write with <code>wp-release verify</code>.</li>
 </ul>
 <p>Generate a key pair with <code>wp-release keygen</code>. It prints the private seed once as <code>WP_RELEASE_SIGNING_KEY=…</code> and the matching public key, also as a minisign public key and an <code>ssh-ed25519</code> public key. Generate keys locally and store the private seed in your secret manager or CI secrets. Distribute the public key to verifiers. <code>keygen --github-output</code> is rejected to keep the private seed out of workflow outputs; regular and <code>--json</code> output both include the seed.</p>
-<h4 id="version-check" tabindex="-1"><a class="header-anchor" href="#version-check">Version check</a></h4>
+<h2 id="version-check" tabindex="-1"><a class="header-anchor" href="#version-check">Version check</a></h2>
 <p><code>version-check</code> compares the versions that have to agree before a release, and reports every mismatch with exit code <code>2</code>:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release version-check <span class="token parameter variable">--constant</span> MY_PLUGIN_VERSION --git-tag v1.2.0</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>

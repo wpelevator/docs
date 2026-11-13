@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html#article",
-      "headline": "",
+      "headline": "Development",
       "description": "Classes live in php/ with Composer classmap autoloading, and tests live in tests/phpunit/. The bin/changeset entry point loads php/bootstrap.php so it…",
       "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html" }
+        { "@type": "ListItem", "position": 4, "name": "Development", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html" }
       ]
     }
   ]
@@ -130,18 +130,17 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Development</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/latest/development.md">Copy as Markdown</button>
       <a href="/docs/markdown/php/php-changesets/latest/development.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="development" tabindex="-1"><a class="header-anchor" href="#development">Development</a></h2>
-<p>Classes live in <code>php/</code> with Composer classmap autoloading, and tests live in <code>tests/phpunit/</code>. The <code>bin/changeset</code> entry point loads <code>php/bootstrap.php</code> so it also runs directly from a checkout. Run the package tests from the monorepo root:</p>
+    <p>Classes live in <code>php/</code> with Composer classmap autoloading, and tests live in <code>tests/phpunit/</code>. The <code>bin/changeset</code> entry point loads <code>php/bootstrap.php</code> so it also runs directly from a checkout. Run the package tests from the monorepo root:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">docker</span> compose run <span class="token parameter variable">--rm</span> wordpress vendor/bin/phpunit <span class="token parameter variable">--testsuite</span> php/php-changesets</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h3 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture">Architecture</a></h3>
+<h2 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture">Architecture</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>

@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html#article",
-      "headline": "",
+      "headline": "Changesets",
       "description": "The changeset commands manage versioning, changelogs and release tags for single-package repositories and monorepos, including this repository. They read…",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html" }
+        { "@type": "ListItem", "position": 4, "name": "Changesets", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html" }
       ]
     }
   ]
@@ -139,18 +139,17 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Changesets</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/changesets.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/changesets.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="changesets" tabindex="-1"><a class="header-anchor" href="#changesets">Changesets</a></h2>
-<h3 id="changesets-support" tabindex="-1"><a class="header-anchor" href="#changesets-support">Changesets support</a></h3>
+    <h2 id="changesets-support" tabindex="-1"><a class="header-anchor" href="#changesets-support">Changesets support</a></h2>
 <p>The changeset commands manage versioning, changelogs and release tags for single-package repositories and monorepos, including this repository. They read Changesets-style Markdown and load JavaScript configs with descriptors for npm and Composer manifests, plugin and theme headers, readme Stable tags, PHP constants, and Git tags. Use JavaScript configs with ESM (<code>export default</code>) or CommonJS (<code>module.exports</code>). Frontmatter uses <code>package-name: patch|minor|major</code> entries. For pre-releases, use the built-in <a href="#pre-releases">pre-release workflow</a>; the parser supports this simple frontmatter format rather than general YAML or the Changesets pre mode.</p>
 <p>PHP projects that don't use Node.js or JavaScript can run the same workflow with <a href="../../../php/php-changesets/latest/index.html">PHP Changesets</a>, a Composer package that needs only PHP and Git. Its <code>changeset add</code>, <code>changeset status</code>, <code>changeset version</code> and <code>changeset tag</code> commands take the options of the <code>changeset</code> commands here, read the same changeset files and print the same release plans, with a PHP config file in place of <code>wp-release.config.*</code>. Use <code>wp-release</code> when the project already builds with Node.js, or to also build ZIPs, translations and WordPress.org deploys; see the <a href="../../../php/php-changesets/latest/comparison.html">comparison</a> for the differences.</p>
-<h4 id="single-project-repositories-without-a-config-file" tabindex="-1"><a class="header-anchor" href="#single-project-repositories-without-a-config-file">Single-project repositories without a config file</a></h4>
+<h3 id="single-project-repositories-without-a-config-file" tabindex="-1"><a class="header-anchor" href="#single-project-repositories-without-a-config-file">Single-project repositories without a config file</a></h3>
 <p>The <code>changeset</code> commands can release one project at the repository root without a <code>wp-release.config.*</code> file. Run them from the root directory. With no version descriptor flags, they detect a root <code>package.json</code> or <code>composer.json</code> with a version, a plugin entry PHP file with a <code>Plugin Name</code> header, or a theme <code>style.css</code> with a <code>Theme Name</code> header. A detected plugin also updates the Stable tag in <code>readme.txt</code>, or <code>readme.md</code> when no Stable tag is found in <code>readme.txt</code>. Multiple version sources, multiple plugin entry files and npm workspaces require explicit descriptors or a config; files belonging to different projects aren't silently synchronized. A directory without a recognized version source still requires a config or explicit descriptors.</p>
 <p>For a root npm package, the complete workflow needs no project flags:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">npx wp-release changeset <span class="token function">add</span> <span class="token parameter variable">--bump</span> minor <span class="token parameter variable">--summary</span> <span class="token string">"Add a new feature."</span>
@@ -289,7 +288,7 @@ npx wp-release changeset tag <span class="token parameter variable">--push</span
 <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>version.from</code> selects the current version; <code>version.to</code> lists release targets. Use <code>phpConstantVersion( { file, constant } )</code> to sync a PHP constant.</p>
-<h5 id="single-project-checks-in-github-actions" tabindex="-1"><a class="header-anchor" href="#single-project-checks-in-github-actions">Single-project checks in GitHub Actions</a></h5>
+<h3 id="single-project-checks-in-github-actions" tabindex="-1"><a class="header-anchor" href="#single-project-checks-in-github-actions">Single-project checks in GitHub Actions</a></h3>
 <p>There are no dedicated build or changeset wrapper actions. Install the CLI in your project and run it directly. A root npm package can check a pull request with:</p>
 <div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v7
         <span class="token key atrule">with</span><span class="token punctuation">:</span>
@@ -301,7 +300,7 @@ npx wp-release changeset tag <span class="token parameter variable">--push</span
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npx <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>install wp<span class="token punctuation">-</span>release changeset status <span class="token punctuation">-</span><span class="token punctuation">-</span>since origin/main</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>For a plugin with several version targets, put the same descriptor flags in npm scripts for all four changeset commands. Full Git history and tags are needed for comparisons, Git version sources and release notes. Keep the checkout directory name consistent when it supplies the changeset identifier. Directory artifacts use <code>npx --no-install wp-release build --output dist/my-plugin --github-output</code>; upload that directory with your artifact action. <code>build</code> writes manifest sidecars outside the directory and does not accept the ZIP-only embedding, codec or manifest-filename flags.</p>
-<h5 id="release-workflows-for-a-single-package" tabindex="-1"><a class="header-anchor" href="#release-workflows-for-a-single-package">Release workflows for a single package</a></h5>
+<h3 id="release-workflows-for-a-single-package" tabindex="-1"><a class="header-anchor" href="#release-workflows-for-a-single-package">Release workflows for a single package</a></h3>
 <p>A repository with one package needs two workflows after the pull request check above: one that opens the release pull request when changesets reach the base branch, and one that tags the release when the versioned files do. This example is for a plugin at the repository root with this config, where the plugin header is the only version source and target, and tags are plain versions like <code>1.2.0</code>:</p>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig<span class="token punctuation">,</span> wordpressPluginVersion <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
 
@@ -426,7 +425,7 @@ npx wp-release changeset tag <span class="token parameter variable">--push</span
 <span class="token punctuation">}</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>A repository with several packages reads the same lists, but needs a job for each release or tag, since <code>releases[0]</code> and <code>tags[0]</code> are only the first one. See the <code>Prepare Release</code> and <code>Tag Release</code> workflows of this repository for a monorepo that releases all packages in one pull request and tags each of them in its own workflow run.</p>
-<h6 id="built-files-in-the-release" tabindex="-1"><a class="header-anchor" href="#built-files-in-the-release">Built files in the release</a></h6>
+<h4 id="built-files-in-the-release" tabindex="-1"><a class="header-anchor" href="#built-files-in-the-release">Built files in the release</a></h4>
 <p>What the release commit and the tag must contain depends on how the package is distributed:</p>
 <ul>
 <li>
@@ -461,7 +460,7 @@ npx wp-release changeset tag <span class="token parameter variable">--push</span
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 </li>
 </ul>
-<h5 id="packages-and-tags" tabindex="-1"><a class="header-anchor" href="#packages-and-tags">Packages and tags</a></h5>
+<h3 id="packages-and-tags" tabindex="-1"><a class="header-anchor" href="#packages-and-tags">Packages and tags</a></h3>
 <p>The config describes the repository, so wp-release assumes no directory structure or naming convention of its own:</p>
 <ul>
 <li>
@@ -578,7 +577,7 @@ npx wp-release changeset tag <span class="token parameter variable">--push</span
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>The release notes are the version's <code>CHANGELOG.md</code> section, or without one the commits that changed the package since its previous tag, the highest version below the released one, skipping pre-releases for a stable version. Configure <code>releaseNotes( { package, version, tag, previousTag, changelog, commits, notes } )</code> to format them, for example to add links; <code>notes</code> is the default text and <code>commits</code> lists <code>{ hash, shortHash, subject }</code>, newest first. <code>changeset tag --package &lt;name&gt; --dry-run</code> prints them without creating the tag.</p>
 <p>For local development, run the TypeScript source with <code>npm run wp-release -- &lt;command&gt;</code> (for example, <code>npm run wp-release -- changeset status --since origin/main</code>). GitHub workflows use the same CLI for versioning and tagging. <code>SUBTREE_DEPLOY_TOKEN</code> lets them update the release PR and push tags, and the <code>Tag Release</code> workflow passes it to <code>softprops/action-gh-release</code> to create the GitHub Releases.</p>
-<h5 id="pre-releases" tabindex="-1"><a class="header-anchor" href="#pre-releases">Pre-releases</a></h5>
+<h3 id="pre-releases" tabindex="-1"><a class="header-anchor" href="#pre-releases">Pre-releases</a></h3>
 <p><code>changeset version --prerelease &lt;id&gt;</code> (the <code>prerelease</code> option of <code>versionChangesets()</code>) releases pre-releases of the next versions, like <code>1.3.0-rc.1</code> for a minor bump of <code>1.2.0</code>. The identifier, like <code>alpha</code>, <code>beta</code> or <code>rc</code>, can have a number, like <code>rc.2</code>, which is used as is and fails when the version is already tagged. Without a number, the number is one above the highest existing tag of that identifier and next stable version, read with the <code>tagFormat</code> of the package, so the first one is <code>rc.1</code>, and the numbering starts again at <code>.1</code> when later changesets raise the next version. The dependents of a source become pre-releases too, so that they bundle its pre-release, unless they're left out with <code>--no-dependents</code>.</p>
 <p>A pre-release writes every version target except the readme <code>Stable tag</code>, which keeps the last stable version since WordPress.org offers it to every site, and <code>changeset tag</code> skips the <code>Stable tag</code> when it verifies a pre-release. The changelog gets a section for the pre-release, like <code>## 1.3.0-rc.1 (2026-10-12)</code>, so that <code>changeset tag</code> finds its release notes, and the changesets are consumed like in any release.</p>
 <p>Since a pre-release consumes the changesets that the stable release needs, run it on a branch that isn't merged, and tag that branch commit:</p>
@@ -589,7 +588,7 @@ npx wp-release changeset version <span class="token parameter variable">--packag
 npx wp-release changeset tag <span class="token parameter variable">--package</span> plugins/alpha <span class="token parameter variable">--version</span> <span class="token number">1.3</span>.0-rc.1 <span class="token parameter variable">--push</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>The base branch keeps its stable versions and pending changesets, so the stable release later versions them as usual, in one changelog section. The tag keeps the pre-release commit reachable after the branch is reset or deleted. The release notes of a stable release compare with the previous stable release, skipping the pre-releases before it, and the <code>git-tag</code> version source ignores pre-release tags, so packages versioned by git tags keep building on their last stable version.</p>
-<h5 id="snapshots" tabindex="-1"><a class="header-anchor" href="#snapshots">Snapshots</a></h5>
+<h3 id="snapshots" tabindex="-1"><a class="header-anchor" href="#snapshots">Snapshots</a></h3>
 <p><code>changeset version --snapshot &lt;id&gt;</code> (the <code>snapshot</code> option of <code>versionChangesets()</code>) releases snapshots of the next versions for test builds, like <code>1.3.0-pr-251.20261012183005</code> for a pull request: the next version with the identifier, like <code>pr-251</code> or <code>pr-251.0abc123</code> with a commit hash, and the UTC time, so that every snapshot is unique and they sort by time. Snapshots aren't numbered from tags and can't be combined with <code>--prerelease</code>. Like a pre-release, a snapshot writes every version target except the readme <code>Stable tag</code>. Build and publish the versioned files without committing them, for example under an npm dist-tag like <code>pr-251</code>, since a snapshot consumes the changesets:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx wp-release changeset version <span class="token parameter variable">--package</span> @vendor/library <span class="token parameter variable">--snapshot</span> pr-251
 <span class="token function">npm</span> publish <span class="token parameter variable">--workspace</span> packages/library <span class="token parameter variable">--tag</span> pr-251</code></pre>

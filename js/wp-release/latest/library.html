@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html#article",
-      "headline": "",
+      "headline": "Library API",
       "description": "resolveDeployOptions() applies the defaults and throws a ValidationError (with exitCode 2) for invalid combinations. SvnDeploy exposes each step…",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html" }
+        { "@type": "ListItem", "position": 4, "name": "Library API", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html" }
       ]
     }
   ]
@@ -139,15 +139,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Library API</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/library.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/library.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="library-api" tabindex="-1"><a class="header-anchor" href="#library-api">Library API</a></h2>
-<h3 id="exit-codes" tabindex="-1"><a class="header-anchor" href="#exit-codes">Exit codes</a></h3>
+    <h2 id="exit-codes" tabindex="-1"><a class="header-anchor" href="#exit-codes">Exit codes</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -176,7 +175,7 @@
 </tbody>
 </table>
 </div>
-<h3 id="library" tabindex="-1"><a class="header-anchor" href="#library">Library</a></h3>
+<h2 id="library" tabindex="-1"><a class="header-anchor" href="#library">Library</a></h2>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Logger<span class="token punctuation">,</span> SvnDeploy<span class="token punctuation">,</span> resolveDeployOptions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token function">resolveDeployOptions</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
@@ -217,17 +216,17 @@
 <span class="token keyword">const</span> <span class="token punctuation">{</span> tags <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> release<span class="token punctuation">.</span><span class="token function">tag</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">dryRun</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>ChangesetRelease</code> runs the <code>changeset</code> commands: <code>add()</code>, <code>getStatus()</code>, <code>version()</code> and <code>tag()</code>, plus <code>getPlan()</code>, <code>getPackages()</code> and <code>getConfiguredPackages()</code>. Each call reads the configuration, packages and pending changesets again, so one instance can version and then tag. <code>getConfiguredPackages()</code> returns package directories with their resolved release group metadata; <code>formatTag()</code> and <code>formatTemplate()</code> apply the same placeholders as the release workflows. It takes a git runner from <code>createGitRunner()</code> as <code>git</code>, so that tests can replace it. Without a config file, it detects a single root project. Its optional <code>singleProject</code> settings accept <code>versions</code> (the existing version descriptors), <code>versionFrom</code> (the same selector as <code>--version-from</code>), <code>baseBranch</code>, <code>remote</code>, <code>changesets</code>, <code>readmeChangelog</code> and <code>changelogInsertAfter</code>; <code>tagFormat</code> remains a repository option. The functions <code>addChangeset()</code>, <code>getChangesetStatus()</code>, <code>versionChangesets()</code>, <code>tagChangesets()</code>, <code>getChangesetReleasePlan()</code>, <code>getChangesetPackages()</code> and <code>getConfiguredPackages()</code> do the same with the default runners, in one call.</p>
-<h4 id="signing" tabindex="-1"><a class="header-anchor" href="#signing">Signing</a></h4>
+<h3 id="signing" tabindex="-1"><a class="header-anchor" href="#signing">Signing</a></h3>
 <p>The Ed25519 key handling and the WordPress, minisign and OpenSSH signature formats live in the <a href="https://www.npmjs.com/package/@wpelevator/signatures"><code>@wpelevator/signatures</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still re-exports the signing functions that it has always exported; the bytes-first functions and error guards are only in <code>@wpelevator/signatures</code>. The wp-release functions read the key from <code>WP_RELEASE_SIGNING_KEY</code> and report invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>; the <code>@wpelevator/signatures</code> functions use <code>SIGNING_KEY</code> by default and throw a <code>SigningError</code>.</p>
-<h4 id="zip-archives" tabindex="-1"><a class="header-anchor" href="#zip-archives">ZIP archives</a></h4>
+<h3 id="zip-archives" tabindex="-1"><a class="header-anchor" href="#zip-archives">ZIP archives</a></h3>
 <p>Reproducible archives and safe extraction live in the <a href="https://www.npmjs.com/package/@wpelevator/zip"><code>@wpelevator/zip</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports <code>createZip()</code>, <code>readZipEntries()</code>, <code>getZipEntryErrors()</code>, <code>extractZip()</code>, <code>ZIP_MTIME</code> and <code>ZIP_FILE_MODE</code> with their <code>sourceDir</code>, <code>files</code> and <code>zipPath</code> inputs, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The zip package takes a list of <code>{ source, name }</code> entries, where the source is a file path or bytes, and can create and read archives in memory. Entries have the fixed <code>ZIP_MTIME</code>, or the <code>SOURCE_DATE_EPOCH</code> time when that environment variable is set.</p>
-<h4 id="file-selection" tabindex="-1"><a class="header-anchor" href="#file-selection">File selection</a></h4>
+<h3 id="file-selection" tabindex="-1"><a class="header-anchor" href="#file-selection">File selection</a></h3>
 <p>Gitignore-style file selection and directory syncing live in the <a href="https://www.npmjs.com/package/@wpelevator/fileset"><code>@wpelevator/fileset</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports <code>resolveFileSelection()</code>, <code>loadFileRules()</code>, <code>selectFiles()</code>, <code>parseExclude()</code>, <code>syncDirectory()</code> and <code>copyFileIfChanged()</code> with the same inputs, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The fileset package has no Git dependency: it takes a function that lists more files to exclude, <code>listExcluded</code>, and <code>@wpelevator/wp-release</code> passes one that reads the <code>export-ignore</code> attribute with Git when <code>excludeGitattributes</code> is set. The ignore file name (<code>.distignore</code> by default) and the directories that a sync leaves alone (<code>.svn</code> by default) are options of the fileset package.</p>
-<h4 id="checksums" tabindex="-1"><a class="header-anchor" href="#checksums">Checksums</a></h4>
+<h3 id="checksums" tabindex="-1"><a class="header-anchor" href="#checksums">Checksums</a></h3>
 <p>Hashing, the checksums manifest formats and their comparison live in the <a href="https://www.npmjs.com/package/@wpelevator/checksums"><code>@wpelevator/checksums</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports <code>createChecksums()</code>, <code>writeChecksums()</code>, <code>readChecksums()</code>, <code>parseChecksums()</code>, <code>verifyChecksums()</code>, <code>compareChecksums()</code>, <code>hashFile()</code>, <code>hashFiles()</code> and the <code>wordpressCodec</code> and <code>sha256sumCodec</code> codecs with the same inputs and output, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The checksums package takes a plain list of file paths instead of file rules, hashes bytes and streams with <code>hashBytes()</code> and <code>hashStream()</code>, and keeps the plugin or theme slug and version as generic <code>metadata</code> next to the <code>files</code>, which <code>@wpelevator/wp-release</code> fills in. Manifests are written byte for byte as before.</p>
-<h4 id="translations" tabindex="-1"><a class="header-anchor" href="#translations">Translations</a></h4>
+<h3 id="translations" tabindex="-1"><a class="header-anchor" href="#translations">Translations</a></h3>
 <p>Extracting translatable strings from PHP, JavaScript and <code>block.json</code> sources, building catalogs, writing POT files, compiling PO files to MO, script JSON and <code>.l10n.php</code>, and auditing live in the <a href="https://www.npmjs.com/package/@wpelevator/wp-gettext"><code>@wpelevator/wp-gettext</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports the same functions, like <code>extractCatalog()</code>, <code>generatePackagePot()</code>, <code>serializePot()</code>, <code>parseTranslatedPo()</code> and <code>compileTranslations()</code>, with the same inputs and output, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The wp-gettext package doesn't read plugin and theme headers: it takes the header details as a <code>meta</code> input, which <code>@wpelevator/wp-release</code> reads from the main file with its own package metadata reader. <code>resolveI18nPackages()</code>, which selects the configured packages, stays in <code>@wpelevator/wp-release</code>. Importing the main entry of <code>@wpelevator/wp-gettext</code> doesn't load the PHP and JavaScript parsers, which are in the <code>/php</code> and <code>/javascript</code> sub-paths.</p>
-<h4 id="logging" tabindex="-1"><a class="header-anchor" href="#logging">Logging</a></h4>
+<h3 id="logging" tabindex="-1"><a class="header-anchor" href="#logging">Logging</a></h3>
 <p><code>Logger</code> filters messages by level and passes them to a writer, like the transports of other Node.js loggers. The writer decides how messages look:</p>
 <ul>
 <li><code>TextWriter</code> prints plain text to <code>stdout</code> and <code>stderr</code>. It's the default.</li>

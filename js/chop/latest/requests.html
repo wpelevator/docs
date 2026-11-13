@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/requests.html#article",
-      "headline": "",
+      "headline": "Requests",
       "description": "The URL path selects the original, like /2026/05/photo.jpg for /2026/05/photo.jpg or for /2026/05/photo.jpg when an origin is configured, and a URL scheme…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/requests.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/requests.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/requests.html" }
+        { "@type": "ListItem", "position": 4, "name": "Requests", "item": "https://wpelevator.github.io/docs/js/chop/latest/requests.html" }
       ]
     }
   ]
@@ -140,15 +140,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1></h1>
+    <h1>Requests</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/requests.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/requests.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="requests" tabindex="-1"><a class="header-anchor" href="#requests">Requests</a></h2>
-<p>The URL path selects the original, like <code>/2026/05/photo.jpg</code> for <code>&lt;data&gt;/2026/05/photo.jpg</code> or for <code>&lt;origin&gt;/2026/05/photo.jpg</code> when an <a href="sources.html">origin</a> is configured, and a <a href="url-schemes.html">URL scheme</a> selects the operations. The default <code>query</code> scheme reads them from the query string. Unknown arguments are ignored, so cache-busting arguments like <code>ver=3</code> are harmless. A malformed value of a known argument is a <code>400</code> with a message that names the argument. <code>GET /healthz</code> answers <code>ok</code> without touching the data directory or the origin. Only <code>GET</code> and <code>HEAD</code> are allowed.</p>
+    <p>The URL path selects the original, like <code>/2026/05/photo.jpg</code> for <code>&lt;data&gt;/2026/05/photo.jpg</code> or for <code>&lt;origin&gt;/2026/05/photo.jpg</code> when an <a href="sources.html">origin</a> is configured, and a <a href="url-schemes.html">URL scheme</a> selects the operations. The default <code>query</code> scheme reads them from the query string. Unknown arguments are ignored, so cache-busting arguments like <code>ver=3</code> are harmless. A malformed value of a known argument is a <code>400</code> with a message that names the argument. <code>GET /healthz</code> answers <code>ok</code> without touching the data directory or the origin. Only <code>GET</code> and <code>HEAD</code> are allowed.</p>
 <p>Operations run in a fixed order, whatever the order in the URL: orientation, <code>crop</code>, size, <code>lb</code>, then encoding. The EXIF orientation is always applied to the pixels first, so every size and offset refers to the displayed image, and the output has no orientation tag.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -225,7 +224,7 @@
 </div>
 <p>Nothing enlarges the image unless <code>upscale=1</code>. When a requested size is larger than the image, <code>w</code>, <code>h</code> and <code>fit</code> clamp to the original size, <code>resize</code> crops to the requested aspect ratio at the largest size that fits, and <code>lb</code> pads without enlarging the image inside. With <code>upscale=1</code> the long side of a result may be as large as <code>maxUpscaleDimension</code>, but never less than the long side of the image itself. The output may not exceed <code>maxOutputDimension</code> in either dimension, which is checked after clamping and is a <code>400</code> when a request asks for more. When <code>allowedWidths</code> is set, the width of the output must be in the list or the request is a <code>400</code>.</p>
 <p>For an animated source (GIF or animated WebP), <code>crop</code>, <code>w</code>, <code>h</code>, <code>fit</code> and <code>resize</code> apply to every frame and keep all frames and their timing, while <code>lb</code> and <code>gravity=attention</code> are ignored.</p>
-<h3 id="differences-from-photon-query-arguments" tabindex="-1"><a class="header-anchor" href="#differences-from-photon-query-arguments">Differences from Photon query arguments</a></h3>
+<h2 id="differences-from-photon-query-arguments" tabindex="-1"><a class="header-anchor" href="#differences-from-photon-query-arguments">Differences from Photon query arguments</a></h2>
 <p>chop has its own small set of arguments, and it isn't a drop-in replacement for the Photon image service. These arguments are not supported, are not an error and are ignored like any unknown argument:</p>
 <ul>
 <li><code>brightness</code> and <code>contrast</code> (no image adjustments).</li>
