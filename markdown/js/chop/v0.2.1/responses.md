@@ -1,4 +1,4 @@
-# Responses (/js/chop/v0.2.1/responses.html)
+# Responses
 
 A success is `200` with the `Content-Type` of the output, `Content-Length`, `Cache-Control: public, max-age=<maxAge>`, `Vary: Accept`, `X-Content-Type-Options: nosniff` and a strong `ETag` that is a SHA-256 of the body. An `If-None-Match` that matches the `ETag` (weak comparison, lists and `*`) gets `304` with the same `ETag`, `Cache-Control` and `Vary` and no body. A `HEAD` response has the headers of the `GET` response, including `Content-Length`, and no body.
 

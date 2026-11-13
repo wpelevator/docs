@@ -1,6 +1,6 @@
-# Configuration (/js/chop/v0.2.1/configuration.html)
+# Configuration
 
-Settings come from the `CHOP_*` environment variables of the command, from the options of [`createConfig()`](library.html.md), or from a few [command line flags](cli.html.md). A number or boolean that can't be parsed is reported with the name of the variable, and a value that can't be used is an invalid setting.
+Settings come from the `CHOP_*` environment variables of the command, from the options of [`createConfig()`](library.md), or from a few [command line flags](cli.md). A number or boolean that can't be parsed is reported with the name of the variable, and a value that can't be used is an invalid setting.
 
 | Setting | Environment variable | Default | Description |
 | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ Settings come from the `CHOP_*` environment variables of the command, from the o
 | `avif` | `CHOP_AVIF` | `true` | Whether AVIF output is enabled. `false` removes `avif` from `autoFormats`, and doesn't affect an explicit `format=avif`. |
 | `avifEffort` | `CHOP_AVIF_EFFORT` | `4` | AVIF encoder effort from 0 (fast) to 9 (small). |
 | `allowedWidths` | `CHOP_ALLOWED_WIDTHS` (comma separated) | unset | When set, the output width of every request must be in the list. |
-| `origin` | `CHOP_ORIGIN` | unset | Base URL that plain paths are appended to, instead of the data directory, or `s3://bucket[/prefix]` for an [S3 bucket](s3.html.md). Can't be combined with an explicit `dataDir`. |
+| `origin` | `CHOP_ORIGIN` | unset | Base URL that plain paths are appended to, instead of the data directory, or `s3://bucket[/prefix]` for an [S3 bucket](s3.md). Can't be combined with an explicit `dataDir`. |
 | `originAllowHttp` | `CHOP_ORIGIN_ALLOW_HTTP` | `false` | Allow `http://` for the origin and for URL sources. |
 | `originAllowPrivate` | `CHOP_ORIGIN_ALLOW_PRIVATE` | `false` | Allow the configured origin at a loopback, private or link-local address. Never applies to URL sources. |
 | `originAuth` | `CHOP_ORIGIN_AUTH` | unset | `Authorization` header value for the configured origin only. |

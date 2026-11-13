@@ -1,12 +1,12 @@
-# Changesets (/js/wp-release/latest/changesets.html)
+# Changesets
 
-### Changesets support [#changesets-support]
+### Changesets support
 
 The changeset commands manage versioning, changelogs and release tags for single-package repositories and monorepos, including this repository. They read Changesets-style Markdown and load JavaScript configs with descriptors for npm and Composer manifests, plugin and theme headers, readme Stable tags, PHP constants, and Git tags. Use JavaScript configs with ESM (`export default`) or CommonJS (`module.exports`). Frontmatter uses `package-name: patch|minor|major` entries. For pre-releases, use the built-in [pre-release workflow](#pre-releases); the parser supports this simple frontmatter format rather than general YAML or the Changesets pre mode.
 
-PHP projects that don't use Node.js or JavaScript can run the same workflow with [PHP Changesets](../../../php/php-changesets/docs/index.html.md), a Composer package that needs only PHP and Git. Its `changeset add`, `changeset status`, `changeset version` and `changeset tag` commands take the options of the `changeset` commands here, read the same changeset files and print the same release plans, with a PHP config file in place of `wp-release.config.*`. Use `wp-release` when the project already builds with Node.js, or to also build ZIPs, translations and WordPress.org deploys; see the [comparison](../../../php/php-changesets/docs/comparison.html.md) for the differences.
+PHP projects that don't use Node.js or JavaScript can run the same workflow with [PHP Changesets](../../../php/php-changesets/docs/index.md), a Composer package that needs only PHP and Git. Its `changeset add`, `changeset status`, `changeset version` and `changeset tag` commands take the options of the `changeset` commands here, read the same changeset files and print the same release plans, with a PHP config file in place of `wp-release.config.*`. Use `wp-release` when the project already builds with Node.js, or to also build ZIPs, translations and WordPress.org deploys; see the [comparison](../../../php/php-changesets/docs/comparison.md) for the differences.
 
-#### Single-project repositories without a config file [#single-project-repositories-without-a-config-file]
+#### Single-project repositories without a config file
 
 The `changeset` commands can release one project at the repository root without a `wp-release.config.*` file. Run them from the root directory. With no version descriptor flags, they detect a root `package.json` or `composer.json` with a version, a plugin entry PHP file with a `Plugin Name` header, or a theme `style.css` with a `Theme Name` header. A detected plugin also updates the Stable tag in `readme.txt`, or `readme.md` when no Stable tag is found in `readme.txt`. Multiple version sources, multiple plugin entry files and npm workspaces require explicit descriptors or a config; files belonging to different projects aren't silently synchronized. A directory without a recognized version source still requires a config or explicit descriptors.
 
@@ -104,7 +104,7 @@ export default defineConfig( {
 
 `version.from` selects the current version; `version.to` lists release targets. Use `phpConstantVersion( { file, constant } )` to sync a PHP constant.
 
-#### Single-project checks in GitHub Actions [#single-project-checks-in-github-actions]
+#### Single-project checks in GitHub Actions
 
 There are no dedicated build or changeset wrapper actions. Install the CLI in your project and run it directly. A root npm package can check a pull request with:
 
@@ -121,7 +121,7 @@ There are no dedicated build or changeset wrapper actions. Install the CLI in yo
 
 For a plugin with several version targets, put the same descriptor flags in npm scripts for all four changeset commands. Full Git history and tags are needed for comparisons, Git version sources and release notes. Keep the checkout directory name consistent when it supplies the changeset identifier. Directory artifacts use `npx --no-install wp-release build --output dist/my-plugin --github-output`; upload that directory with your artifact action. `build` writes manifest sidecars outside the directory and does not accept the ZIP-only embedding, codec or manifest-filename flags.
 
-#### Release workflows for a single package [#release-workflows-for-a-single-package]
+#### Release workflows for a single package
 
 A repository with one package needs two workflows after the pull request check above: one that opens the release pull request when changesets reach the base branch, and one that tags the release when the versioned files do. This example is for a plugin at the repository root with this config, where the plugin header is the only version source and target, and tags are plain versions like `1.2.0`:
 
@@ -264,12 +264,12 @@ The `--github-output` result of each command is the JSON that these expressions 
 
 A repository with several packages reads the same lists, but needs a job for each release or tag, since `releases[0]` and `tags[0]` are only the first one. See the `Prepare Release` and `Tag Release` workflows of this repository for a monorepo that releases all packages in one pull request and tags each of them in its own workflow run.
 
-##### Built files in the release [#built-files-in-the-release]
+##### Built files in the release
 
 What the release commit and the tag must contain depends on how the package is distributed:
 
-- **WordPress.org** builds the ZIP contents from the tag, then runs [`deploy svn`](deployment.html.md#deploy-to-svn) from a workflow that is triggered by the tag, or by the GitHub Release that the workflow above creates. Nothing but the version files needs to be committed to the release branch.
-- **GitHub Releases only** has the tag workflow create the release as a draft, and a second workflow that listens for `release: published` builds the ZIP with [`zip`](packaging.html.md#zip) and attaches it to the release.
+- **WordPress.org** builds the ZIP contents from the tag, then runs [`deploy svn`](deployment.md#deploy-to-svn) from a workflow that is triggered by the tag, or by the GitHub Release that the workflow above creates. Nothing but the version files needs to be committed to the release branch.
+- **GitHub Releases only** has the tag workflow create the release as a draft, and a second workflow that listens for `release: published` builds the ZIP with [`zip`](packaging.md#zip) and attaches it to the release.
 - **Anything that reads the tag as it is**, like a ZIP built from the tag or an install from the repository, needs the built files that the repository ignores, like `vendor/` and `build/`, in the tag. Build them in the release workflow after `changeset version` and force-add them to the release branch commit. `create-pull-request` can't add ignored files, so the workflow pushes the branch and opens the pull request with `git` and `gh`. The files reach the base branch with the merge, so the tag points at a commit that has them:
 
   ```yaml
@@ -296,7 +296,7 @@ What the release commit and the tag must contain depends on how the package is d
             gh pr create --base main --head "release/$VERSION" --title "Release $VERSION" --body "$CHANGELOG" || gh pr edit "release/$VERSION" --title "Release $VERSION"
   ```
 
-#### Packages and tags [#packages-and-tags]
+#### Packages and tags
 
 The config describes the repository, so wp-release assumes no directory structure or naming convention of its own:
 
@@ -309,7 +309,7 @@ The config describes the repository, so wp-release assumes no directory structur
   | `{name}` | Package identifier | `plugins/alpha`, or its manifest name with `idFrom` | the manifest name, or the directory name |
   | `{version}` | Released version | `1.2.0` | `1.2.0` |
 
-  Deploy templates also have `{branch}`, `{ref}` and `{revision}` (see [Deploy configured packages](deployment.html.md#deploy-configured-packages)), and any template can be a callback that receives the package, for names that the placeholders don't cover, like the last directory of the path.
+  Deploy templates also have `{branch}`, `{ref}` and `{revision}` (see [Deploy configured packages](deployment.md#deploy-configured-packages)), and any template can be a callback that receives the package, for names that the placeholders don't cover, like the last directory of the path.
 - **`tagFormat`** names the release tags, `{path}/{version}` by default, like `plugins/alpha/1.2.0`. Empty placeholders leave no leading or repeated slashes in a tag, so a package at the root gets plain version tags, like `1.2.0`, from the same default. Deploy templates, like repository URLs, are filled in as they are. A `gitTagVersion()` version source reads the tags with its own `pattern`, also `{path}/{version}` by default, so set both when you change the format.
 - **`releaseTitle`** titles the release, like the `title` that `changeset tag` reports for creating a GitHub Release. The default is `name@version`, like `plugins/alpha@1.2.0`, without the prefix for a package at the repository root, which is titled `1.2.0` like its tag. Like `tagFormat`, it supports `{name}`, `{path}`, `{version}` and `{tag}` placeholders: `releaseTitle: '{version} (beta)'`, or a callback that receives `{ package, version, tag }` like the release notes callback. A template without a placeholder fails at load time, since it would name every release alike. `changeset tag --release-title <template>` replaces the `releaseTitle` of the config for one command, like `--tag-format` replaces `tagFormat`.
 - **`--tag-format <format>`** replaces the `tagFormat` of the config for one command, for a workflow or job that names its tags differently, like `--tag-format '{name}@{version}'`. Every command that creates or reads the same tags needs the same format: `changeset tag`, which creates them and finds the previous tag for the release notes, `changeset version --prerelease`, which numbers pre-releases from them, and `deploy git` and `deploy svn --release-ref`, which read the package and version of a tag.
@@ -405,7 +405,7 @@ The release notes are the version's `CHANGELOG.md` section, or without one the c
 
 For local development, run the TypeScript source with `npm run wp-release -- <command>` (for example, `npm run wp-release -- changeset status --since origin/main`). GitHub workflows use the same CLI for versioning and tagging. `SUBTREE_DEPLOY_TOKEN` lets them update the release PR and push tags, and the `Tag Release` workflow passes it to `softprops/action-gh-release` to create the GitHub Releases.
 
-#### Pre-releases [#pre-releases]
+#### Pre-releases
 
 `changeset version --prerelease <id>` (the `prerelease` option of `versionChangesets()`) releases pre-releases of the next versions, like `1.3.0-rc.1` for a minor bump of `1.2.0`. The identifier, like `alpha`, `beta` or `rc`, can have a number, like `rc.2`, which is used as is and fails when the version is already tagged. Without a number, the number is one above the highest existing tag of that identifier and next stable version, read with the `tagFormat` of the package, so the first one is `rc.1`, and the numbering starts again at `.1` when later changesets raise the next version. The dependents of a source become pre-releases too, so that they bundle its pre-release, unless they're left out with `--no-dependents`.
 
@@ -423,7 +423,7 @@ npx wp-release changeset tag --package plugins/alpha --version 1.3.0-rc.1 --push
 
 The base branch keeps its stable versions and pending changesets, so the stable release later versions them as usual, in one changelog section. The tag keeps the pre-release commit reachable after the branch is reset or deleted. The release notes of a stable release compare with the previous stable release, skipping the pre-releases before it, and the `git-tag` version source ignores pre-release tags, so packages versioned by git tags keep building on their last stable version.
 
-#### Snapshots [#snapshots]
+#### Snapshots
 
 `changeset version --snapshot <id>` (the `snapshot` option of `versionChangesets()`) releases snapshots of the next versions for test builds, like `1.3.0-pr-251.20261012183005` for a pull request: the next version with the identifier, like `pr-251` or `pr-251.0abc123` with a commit hash, and the UTC time, so that every snapshot is unique and they sort by time. Snapshots aren't numbered from tags and can't be combined with `--prerelease`. Like a pre-release, a snapshot writes every version target except the readme `Stable tag`. Build and publish the versioned files without committing them, for example under an npm dist-tag like `pr-251`, since a snapshot consumes the changesets:
 

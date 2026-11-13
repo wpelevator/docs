@@ -1,25 +1,27 @@
-# php-changesets (/php/php-changesets/v2.0.1/index.html)
+# php-changesets
 
-`wpelevator/php-changesets` releases WordPress plugins, themes and Composer packages from changeset Markdown files, with PHP and Git and without Node.js. It's for projects that don't use Node.js or JavaScript tooling: a Composer dependency replaces an npm one, and nothing needs installing in CI beyond PHP. It follows the release model of [`wp-release`](../../../js/wp-release/docs/index.html.md), the Node.js release tool of WP Elevator, so both tools read the same changesets, take the same command options and produce the same release plans.
+Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.
 
-If your project already builds with Node.js, or you also want ZIPs, checksums, translations or WordPress.org deploys, use the [`wp-release` changeset commands](../../../js/wp-release/docs/changesets.html.md) instead. The [comparison](comparison.html.md) lists the differences.
+`wpelevator/php-changesets` releases WordPress plugins, themes and Composer packages from changeset Markdown files, with PHP and Git and without Node.js. It's for projects that don't use Node.js or JavaScript tooling: a Composer dependency replaces an npm one, and nothing needs installing in CI beyond PHP. It follows the release model of [`wp-release`](../../../js/wp-release/docs/index.md), the Node.js release tool of WP Elevator, so both tools read the same changesets, take the same command options and produce the same release plans.
 
-Contributors describe each change in a small Markdown file. When you release, the `changeset` command bumps the versions of every changed package, writes the changelogs and creates the release tags. It never commits or publishes: those steps belong to your workflow, like the [GitHub Actions workflow](github-actions.html.md).
+If your project already builds with Node.js, or you also want ZIPs, checksums, translations or WordPress.org deploys, use the [`wp-release` changeset commands](../../../js/wp-release/docs/changesets.md) instead. The [comparison](comparison.md) lists the differences.
 
-## Requirements [#requirements]
+Contributors describe each change in a small Markdown file. When you release, the `changeset` command bumps the versions of every changed package, writes the changelogs and creates the release tags. It never commits or publishes: those steps belong to your workflow, like the [GitHub Actions workflow](github-actions.md).
+
+## Requirements
 
 - PHP 7.4 or later.
 - Git for tag-based versions, changed-package checks, release tags and dry-run diffs.
 - Composer to install the CLI. Node.js is not required.
 
-## Install [#install]
+## Install
 
 ```sh
 composer require --dev wpelevator/php-changesets
 vendor/bin/changeset --help
 ```
 
-## Quickstart [#quickstart]
+## Quickstart
 
 For a WordPress plugin or a Composer package at the repository root:
 
@@ -32,10 +34,10 @@ vendor/bin/changeset version               # Apply them; review and commit
 vendor/bin/changeset tag                   # After merging: create the release tags, like v1.3.0
 ```
 
-## Guides [#guides]
+## Guides
 
-- [Command line](cli.html.md): the commands, changesets, the status check, releases, pre-releases, output formats and exit codes.
-- [Configuration](configuration.html.md): `changesets.config.php`, package groups, version descriptors and hooks.
-- [GitHub Actions](github-actions.html.md): check pull requests for changesets, open release pull requests and create the tags and GitHub releases.
-- [Comparison with wp-release](comparison.html.md): the command mapping and the deliberate differences.
-- [Development](development.html.md): the architecture and tests of the package.
+- [Command line](cli.md): the commands, changesets, the status check, releases, pre-releases, output formats and exit codes.
+- [Configuration](configuration.md): `changesets.config.php`, package groups, version descriptors and hooks.
+- [GitHub Actions](github-actions.md): check pull requests for changesets, open release pull requests and create the tags and GitHub releases.
+- [Comparison with wp-release](comparison.md): the command mapping and the deliberate differences.
+- [Development](development.md): the architecture and tests of the package.

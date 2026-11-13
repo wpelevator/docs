@@ -1,4 +1,6 @@
-# subtree-split (/js/subtree-split/v0.2.1/index.html)
+# subtree-split
+
+Split a monorepo directory into its own history, with the same commit hashes as git subtree split.
 
 Split a directory of a monorepo into its own history, with the same commit hashes as `git subtree split`, in about a tenth of a second instead of several seconds.
 
@@ -6,7 +8,7 @@ In a monorepo with 477 commits, `git subtree split` takes 6 to 8 seconds for one
 
 [`@wpelevator/wp-release`](https://www.npmjs.com/package/@wpelevator/wp-release) uses it for `deploy-git --split-prefix`.
 
-## Install [#install]
+## Install
 
 ```bash
 npm install --save-dev @wpelevator/subtree-split
@@ -14,7 +16,7 @@ npm install --save-dev @wpelevator/subtree-split
 
 It needs Node.js 22.12 or later, Git 2.29 or later, and the full history of the repository. It works in a bare clone, and it fails with a message on a shallow one, so in CI check out with `fetch-depth: 0`.
 
-## Quick start [#quick-start]
+## Quick start
 
 Run it in the monorepo, with the directory that you want to split:
 
@@ -31,11 +33,11 @@ git push git@github.com:acme/my-library.git "$tip:refs/heads/main"
 
 To keep it in a local branch instead, run `git update-ref refs/heads/split/my-library "$tip"`.
 
-## Guides [#guides]
+## Guides
 
-- [CLI](./cli.html.md)
-- [GitHub Actions](./github-actions.html.md)
-- [Caching split results](./caching.html.md)
-- [Library API](./library.html.md)
-- [Compatibility with git subtree split](./compatibility.html.md)
-- [Development](./development.html.md)
+- [CLI](./cli.md)
+- [GitHub Actions](./github-actions.md)
+- [Caching split results](./caching.md)
+- [Library API](./library.md)
+- [Compatibility with git subtree split](./compatibility.md)
+- [Development](./development.md)

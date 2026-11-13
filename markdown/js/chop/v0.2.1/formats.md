@@ -1,4 +1,4 @@
-# Formats and quality (/js/chop/v0.2.1/formats.html)
+# Formats and quality
 
 With `format=auto` (the default), the format is chosen from the `Accept` header for a still image among the formats of `autoFormats` (`avif,webp` by default): AVIF if it's listed and the output is lossy, or WebP if it's listed and the output fits the 16383 pixel limit of WebP, otherwise the fallback format. When the client lists both, the format with the highest `q` is used, and the earlier format of `autoFormats` wins a tie. Browsers send no `q` for image types, so they get the first format of `autoFormats` that they accept, as before, while a header like `image/avif;q=0.5,image/webp` now gives WebP. The fallback is GIF for a GIF source, PNG for lossless or transparent output, and JPEG otherwise.
 
@@ -15,12 +15,12 @@ PNG, GIF and lossless WebP sources stay lossless unless `lossy=1` or a `quality`
 
 Every successful response has `Vary: Accept`, also when it ends up in the source format.
 
-## Restricting formats [#restricting-formats]
+## Restricting formats
 
 - `CHOP_AUTO_FORMATS=webp` never negotiates AVIF, which avoids its encode cost. `CHOP_AUTO_FORMATS=none` disables all upgrades, so `auto` always gives the fallback format. `CHOP_AVIF=false` is a shorthand that removes `avif` from the list, also when `autoFormats` lists it. An explicit `format=avif` still works with either.
 - `CHOP_ALLOWED_INPUT_FORMATS=jpeg,png,webp` is for a site that only serves those. The format is detected from the content of the file, never the extension, and `jpg` is accepted as an alias of `jpeg`. A source in another format is a `415` with the message of any unsupported file, which doesn't tell which formats are allowed. It's rejected after the header is read and before any pixel is decoded or processed.
 
-## Quality and size [#quality-and-size]
+## Quality and size
 
 - `quality` is raised to 20 when it's lower, for lossy encoders. `quality=100` on WebP is lossless WebP.
 - Without `quality` the defaults are JPEG 82, WebP 80 and AVIF 55 (configurable). A palette PNG uses `quality` or 80. PNG output of a lossless source is lossless with maximum compression.
@@ -29,7 +29,7 @@ Every successful response has `Vary: Accept`, also when it ends up in the source
 - Pixel values are never converted to another color space because of `strip`: the ICC profile is kept or dropped, and the pixels stay as they are. CMYK sources are always converted to sRGB.
 - Responses have `X-Bytes-Saved` when the output is smaller than the original.
 
-## Choices where the specification is silent [#choices-where-the-specification-is-silent]
+## Choices where the specification is silent
 
 - An explicit `quality` or `lossy=1` turns off the `strip=none` shortcut that sends the original bytes, because the client asked for a re-encoding. The "never larger" check still applies.
 - The source quality cap of a JPEG applies when `quality` is absent. An explicit `quality` is used as given (with the floor of 20).
@@ -42,7 +42,7 @@ Every successful response has `Vary: Accept`, also when it ends up in the source
 - The `Accept` entries that have an invalid `q` are ignored. A listed type counts as accepted only if every entry of it has `q` above 0.
 - The encoders use the sharp defaults, except for progressive JPEG, WebP `effort` 4 and PNG `compressionLevel` 9.
 - `maxConcurrency` defaults to the number of CPUs and `CHOP_PORT`, `CHOP_HOST` and `CHOP_ACCESS_LOG` are CLI-only variables.
-- A first path segment of `http:` or `https:` always starts a [URL source](sources.html.md), so a directory with that name can't be addressed by a plain path, and with an empty allow-list it is a `404`.
+- A first path segment of `http:` or `https:` always starts a [URL source](sources.md), so a directory with that name can't be addressed by a plain path, and with an empty allow-list it is a `404`.
 - The credentials of `CHOP_ORIGIN_AUTH` are never sent to a URL source, not even to the host of the configured origin. A URL source of that host is fetched like any other, with the address checks.
 - `*` allows every host on the default ports, and a custom port needs its own entry. An allow-list entry is a name or an IPv4 address and not an IPv6 literal, so only `*` allows an IPv6 literal, and the address checks still apply to it.
 - An empty segment inside a URL source (`//` in its path) is sent to the origin as it is, while it's a `400` in a plain path.

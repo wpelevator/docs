@@ -1,6 +1,6 @@
-# Configuration (/php/php-changesets/latest/configuration.html)
+# Configuration
 
-## Configuration [#configuration]
+## Configuration
 
 The configuration lives in `changesets.config.php` at the project root, the analog of `wp-release.config.mjs`. The global `--config PATH` selects another file for one command.
 
@@ -10,7 +10,7 @@ The loader rejects the removed formats `.php-changesets.json`, `.changeset/confi
 
 The config file is regular PHP (loaded with `require`) and must return an array, normally the result of `define_config()`, which validates the settings and hooks eagerly at load time and returns their canonical shape. The config helpers are namespaced functions, the PHP analogs of the `wp-release` `defineConfig()` and descriptor builders; import them with `use function`.
 
-### Workspace settings [#workspace-settings]
+### Workspace settings
 
 The canonical configuration is a workspace with package groups; a single-project config is one group covering the repository root:
 
@@ -78,7 +78,7 @@ return define_config( [
 ] );
 ```
 
-### Hooks [#hooks]
+### Hooks
 
 Callbacks are plain PHP closures and live only in the PHP config; nothing else in the schema accepts callables, and callability is validated at config load. A failing hook, or a `nextVersion` result that is not a supported version, stops the run with a message naming the package.
 
@@ -108,7 +108,7 @@ return \WPElevator\PHP_Changesets\define_config( [
 ] );
 ```
 
-### Version descriptors [#version-descriptors]
+### Version descriptors
 
 | `kind` | Fields | Source or target behavior |
 | --- | --- | --- |
@@ -120,7 +120,7 @@ return \WPElevator\PHP_Changesets\define_config( [
 | `git-tag` | `pattern`, optional `initialVersion` | Read the highest tag by version precedence matching `pattern`, which defaults to the package's tag format and also expands `{name}` and `{path}`; pre-release tags rank below the stable version of the same base. Source only; use an empty `version.to` list. |
 | `callback` | `file`, `resolve`, optional `replace` | Resolve and replace a custom version span, available in every config path. |
 
-### Builder helpers [#builder-helpers]
+### Builder helpers
 
 Version descriptors are built with functions in the `WPElevator\PHP_Changesets` namespace, which Composer autoloads: `composer_json_version( ?string $file, bool $if_present )`, `wordpress_plugin_version( ?string $file )`, `wordpress_theme_version( ?string $file )` (`style.css` by default) and `wordpress_stable_tag( ?string $file, bool $if_present )` for the manifest, header and readme kinds, `php_constant_version( string $file, string $constant )` for constants, `git_tag_version( ?string $pattern, ?string $initial_version )` for tag-only sources, and `callback_version( string $file, callable $resolve, ?callable $replace )` for custom spans.
 
@@ -147,7 +147,7 @@ return \WPElevator\PHP_Changesets\define_config( [
 
 Once a matching stable tag exists, it takes precedence over `initialVersion`. Tag-only releases do not modify `composer.json`: the release is recorded in the changelog, and `tag` tags the changelog version above the latest tag.
 
-### Callback descriptors [#callback-descriptors]
+### Callback descriptors
 
 Use `callback_version()` when the built-in descriptors can't find the version. Its callables must return the same result for the same contents and must not write files:
 

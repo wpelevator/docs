@@ -1,6 +1,6 @@
-# Development (/php/php-changesets/v2.0.1/development.html)
+# Development
 
-## Development [#development]
+## Development
 
 Classes live in `php/` with Composer classmap autoloading, and tests live in `tests/phpunit/`. The `bin/changeset` entry point loads `php/bootstrap.php` so it also runs directly from a checkout. Run the package tests from the monorepo root:
 
@@ -8,7 +8,7 @@ Classes live in `php/` with Composer classmap autoloading, and tests live in `te
 docker compose run --rm wordpress vendor/bin/phpunit --testsuite php/php-changesets
 ```
 
-### Architecture [#architecture]
+### Architecture
 
 | Component | Responsibility |
 | --- | --- |

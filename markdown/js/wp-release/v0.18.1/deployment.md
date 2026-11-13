@@ -1,6 +1,6 @@
-# Deployment (/js/wp-release/v0.18.1/deployment.html)
+# Deployment
 
-### Deploy to SVN [#deploy-to-svn]
+### Deploy to SVN
 
 The [`wp-release-deploy-svn`](https://github.com/wpelevator/wp-release-deploy-svn) GitHub Action runs this command.
 
@@ -52,9 +52,9 @@ Validation:
 - `--version` defaults to `--svn-tag`, then the `Version` header of the deployed files; when `--version` and `--svn-tag` are both set they must match.
 - Pre-release versions like `1.0.0-rc.1` can be tagged, but syncing one to `trunk/` warns, since trunk is for the development version.
 - `--trunk` without `--svn-tag` works but warns, to remind you that updating trunk alone doesn't create a version tag for stable downloads.
-- A version mismatch throws a `VersionMismatchError`, a `ValidationError` with the `mismatches` and a problem for each, with its file and line. See [Logging](library.html.md#logging).
+- A version mismatch throws a `VersionMismatchError`, a `ValidationError` with the `mismatches` and a problem for each, with its file and line. See [Logging](library.md#logging).
 
-### Deploy to Git [#deploy-to-git]
+### Deploy to Git
 
 `deploy-git` deploys the selected files of a plugin, theme or package to a Git repository, like a distribution repository that ships the built files and `vendor/` for Composer installs or GitHub-hosted updates, or the release repository of a monorepo package. It selects files like `zip`, with `.distignore` and `--exclude`, so built files that git ignores in the source repository, like `build/` or `vendor/`, are released too. The source directory must be inside a Git repository, which provides the source history and stores the release objects before they're pushed.
 
@@ -84,7 +84,7 @@ To release a tag again, for example after a release with the wrong files, delete
 
 `--dry-run` runs everything except the push. `--message` sets the commit message, which defaults to `Release <tag or branch> from <source commit>`. Credentials come from git, like a credential helper or an SSH key, and credentials in URLs are never printed. For an HTTPS repository on `github.com`, or on the host of `GITHUB_SERVER_URL` like GitHub Enterprise Server, the `GITHUB_TOKEN` environment variable is sent as an authorization header, like `actions/checkout` does, so the token stays out of the URL, the git arguments and the repository config, and it replaces the header that `actions/checkout` persists. Pass `token` to `resolveGitDeployOptions()` for another HTTPS host. The commit needs a git identity (`user.name` and `user.email`).
 
-### Deploy configured packages [#deploy-configured-packages]
+### Deploy configured packages
 
 `deploy-git --release-ref <ref>` and `deploy-svn --release-ref <ref>` deploy the packages of a monorepo, or of a single-package repository, to the targets in the `deploy` config of their package groups, like the release repository of each package or its WordPress.org plugin. The ref decides what's deployed: a release tag of a package, like `refs/tags/plugins/alpha/1.2.0` read with the `tagFormat`, deploys that package and version, and a branch, like `refs/heads/main`, deploys every package with a target for that branch. A name without `refs/` is a release tag when it matches the tag format of a package, otherwise a branch, and in GitHub Actions `$GITHUB_REF` is the pushed ref.
 

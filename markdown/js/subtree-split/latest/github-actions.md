@@ -1,4 +1,4 @@
-# GitHub Actions (/js/subtree-split/latest/github-actions.html)
+# GitHub Actions
 
 `--github-output` sets the `hash`, `prefix`, `ref` and `result` outputs of the step. `result` has all of them as JSON.
 

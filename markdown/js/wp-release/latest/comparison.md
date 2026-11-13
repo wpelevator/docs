@@ -1,6 +1,6 @@
-# Comparison with other tools (/js/wp-release/latest/comparison.html)
+# Comparison with other tools
 
-## Comparison with existing tools [#comparison-with-existing-tools]
+## Comparison with existing tools
 
 | Tool | What it does | How `wp-release` differs |
 |---|---|---|

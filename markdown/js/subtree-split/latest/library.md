@@ -1,4 +1,4 @@
-# Library API (/js/subtree-split/latest/library.html)
+# Library API
 
 ```js
 import { splitHistory } from '@wpelevator/subtree-split';

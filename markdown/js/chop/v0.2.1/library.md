@@ -1,6 +1,6 @@
-# Library API (/js/chop/v0.2.1/library.html)
+# Library API
 
-The request handler doesn't depend on an HTTP framework, so it can run in a `node:http` server, a serverless function or a test. Install the package as described in the [overview](index.html.md#install).
+The request handler doesn't depend on an HTTP framework, so it can run in a `node:http` server, a serverless function or a test. Install the package as described in the [overview](index.md#install).
 
 ```js
 import { createHandler, createServer } from '@wpelevator/chop';
@@ -26,7 +26,7 @@ createServer( { dataDir: '/var/www/uploads' } ).listen( 8080 );
 | `createConfig( overrides? )`, `configWarnings( settings )` | Settings with defaults, checked, and the list of warnings for the risky settings in them. Throws a `ChopError` with `ERR_INVALID_SETTING` for a value that can't be used. |
 | `configFromEnv( env )` | The settings that the `CHOP_*` variables in an environment object set. It doesn't read `process`. |
 | `parseQuery( searchParams )` | Parses a `URLSearchParams` into typed operations. |
-| `queryScheme`, `cloudflareScheme`, `SCHEMES`, `UrlScheme` | The built-in [URL schemes](url-schemes.html.md), the registry of them by name, and the type of a scheme: `{ name, parse( url, options ) }`, where `parse` returns `{ segments, ops }`, with `url` set instead of `segments` for a [URL source](sources.html.md), or `null` for a URL that it doesn't recognize. `options.urlSources` tells whether URL sources are enabled. |
+| `queryScheme`, `cloudflareScheme`, `SCHEMES`, `UrlScheme` | The built-in [URL schemes](url-schemes.md), the registry of them by name, and the type of a scheme: `{ name, parse( url, options ) }`, where `parse` returns `{ segments, ops }`, with `url` set instead of `segments` for a [URL source](sources.md), or `null` for a URL that it doesn't recognize. `options.urlSources` tells whether URL sources are enabled. |
 | `createOrigin( settings )`, `createLocalOrigin()`, `createHttpOrigin()`, `Origin` | The sources of originals: an `Origin` has `open( reference )`, which finds an original and returns its size and a `read()` for its bytes. The HTTP origin does the downloads and their checks. |
 | `isBlockedAddress( address )`, `createBlockList()`, `parseAllowedHosts()`, `parseSourceUrl()` | The building blocks of the safeguards, for code that wants to apply the same checks. |
 | `createServer( settings? )` | A `node:http` server around the handler, with an `onResponse( summary )` callback for access logs. |

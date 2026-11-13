@@ -1,0 +1,716 @@
+/*
+ * Docs stylesheet. Mobile first: the base styles are the phone layout and wider
+ * screens add to it. The structure, in order:
+ *
+ *   1. Tokens       scales and semantic colors, the only place with raw values
+ *   2. Base         element defaults, kept at low specificity
+ *   3. Shell        page grid: header, sidebar, main, footer
+ *   4. Components   one block per component, with its states and media nested in it
+ *   5. Vendor       the look of the search widget, in the order it needs to win
+ *   6. Preferences  forced colors and print
+ *
+ * Layout decisions use `gap` and grid, not margins on children. Prose is the one
+ * exception: it is authored Markdown with an unknown block order, so `.prose`
+ * separates its blocks with one flow space. Components respond to the width of
+ * their container; only the page shell responds to the viewport.
+ */
+
+/* 1. Tokens ---------------------------------------------------------------- */
+
+:root {
+  color-scheme: light dark;
+
+  /* Scales: space in 4px steps, type, radius, size and layering. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --radius: 8px;
+  --radius-lg: 16px;
+  --control: 2.75rem;
+  --control-sm: 2rem;
+  --measure: 44rem;
+  /* A single grid column that may shrink below its content, so a long code line scrolls inside its block instead of widening the page. */
+  --col: minmax(0, 1fr);
+  --z-sheet: 15;
+  --z-bar: 20;
+  --z-skip: 30;
+  --font: -apple-system, BlinkMacSystemFont, 'Avenir Next', Avenir, 'Segoe UI', 'Helvetica Neue', Helvetica, Cantarell, Ubuntu, Roboto, Noto, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Fluid values: they grow with the viewport between the first and last number. */
+  --gutter: clamp(1rem, 0.4rem + 2.5vw, 2rem);
+  --header: clamp(3.5rem, 3.1rem + 1.2vw, 4rem);
+  --h1: clamp(1.75rem, 1.35rem + 1.6vw, 2.5rem);
+
+  /* Page rhythm: space above the page, between sections, below the page and around a prose block. */
+  --page-top: var(--space-4);
+  --section: var(--space-6);
+  --page-bottom: var(--space-7);
+  --flow: 1.25rem;
+  /* The bottom bar: a control with the same space above and below it. */
+  --bar: 4.25rem;
+
+  /* Colors: one definition per token for both schemes, light first. The dark palette
+   * follows the main site at wpelevator.com. Borders of controls reach 3:1 against
+   * their surroundings, decorative dividers do not need to. */
+  --bg: light-dark(#fff, #1f2628);
+  --surface: light-dark(#f4f6f7, #283033);
+  --text: light-dark(#1f2628, #f4f6f7);
+  --muted: light-dark(#566063, #a9b4b7);
+  --border: light-dark(#d9dfe1, #3b4548);
+  --field-border: light-dark(#78848a, #7d8a8e);
+  --accent: light-dark(#00637f, #00cbff);
+  --accent-surface: light-dark(#e0f6fc, #123743);
+  --focus: light-dark(#0072ff, #6cb8ff);
+  --code-bg: light-dark(#f4f6f7, #171d1f);
+  --hover: color-mix(in oklab, var(--text) 10%, var(--bg));
+  --scrim: color-mix(in oklab, black 45%, transparent);
+  --shadow-sheet: 0 -8px 32px color-mix(in oklab, black 20%, transparent);
+
+  /* Syntax highlighting */
+  --tok-comment: light-dark(#5b6b70, #8d9da2);
+  --tok-string: light-dark(#0a6b3b, #8bd9a4);
+  --tok-keyword: light-dark(#8a2be2, #c8a2ff);
+  --tok-number: light-dark(#b3470c, #ffb27a);
+  --tok-function: light-dark(#0058a8, #7cc4ff);
+
+  @media (width >= 40rem) {
+    --page-top: var(--space-5);
+    --section: var(--space-7);
+  }
+
+  /* The page starts level with the first control of the sidebar. */
+  @media (width >= 60rem) {
+    --page-top: 1.25rem;
+    --page-bottom: var(--space-8);
+  }
+}
+
+/* 2. Base ------------------------------------------------------------------ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-block-start: var(--space-4);
+
+  @media (width >= 60rem) { scroll-padding-block-start: var(--space-5); }
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: var(--text-base)/1.5 var(--font);
+
+  /* The bottom bar covers the end of the page. */
+  .js & { padding-block-end: calc(var(--bar) + env(safe-area-inset-bottom, 0px)); }
+  @media (width >= 60rem) { .js & { padding-block-end: 0; } }
+}
+
+:where(a) {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+
+  &:hover { text-decoration-thickness: 2px; }
+}
+
+:where(h1, h2, h3, h4) { margin: 0; font-style: italic; line-height: 1.25; text-wrap: balance; }
+:where(p, ul, ol, dl, figure, blockquote, pre, table) { margin: 0; }
+:where(ul, ol) { padding: 0; list-style: none; }
+:where(img) { max-width: 100%; height: auto; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+main:focus { outline: none; }
+
+/* A native control, drawn once: buttons, links that look like buttons and selects. */
+:where(button, select) { font: inherit; font-size: var(--text-sm); color: var(--text); }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.skip-link {
+  position: absolute;
+  inset-block-start: -4rem;
+  inset-inline-start: var(--space-2);
+  z-index: var(--z-skip);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+
+  &:focus { inset-block-start: var(--space-2); }
+}
+
+/* 3. Shell ----------------------------------------------------------------- */
+
+/* One centered wrapper and one gutter keep the header, sidebar, page and footer on the same edges. */
+.wrap { max-width: 80rem; margin-inline: auto; padding-inline: var(--gutter); }
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  inline-size: 100%;
+  max-inline-size: 80rem;
+  margin-inline: auto;
+
+  @media (width >= 60rem) { grid-template-columns: 16rem minmax(0, 1fr); }
+}
+
+main {
+  container: main / inline-size;
+  display: grid;
+  grid-template-columns: var(--col);
+  align-content: start;
+  gap: var(--space-3);
+  min-inline-size: 0;
+  padding: var(--page-top) var(--gutter) var(--page-bottom);
+
+  /* Pages are a reading column: the grid items stop at the measure, not at the screen edge. */
+  > * { max-inline-size: var(--measure); min-inline-size: 0; }
+
+  @media (width >= 60rem) { padding-inline-start: var(--space-7); }
+}
+
+/* 4. Components ------------------------------------------------------------ */
+
+/* Header */
+.site-header {
+  border-block-end: 1px solid var(--border);
+
+  .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); min-block-size: var(--header); }
+
+  nav {
+    display: flex;
+    gap: var(--space-1);
+    margin-inline-end: calc(var(--space-2) * -1);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: var(--control);
+      padding-inline: var(--space-2);
+      color: var(--muted);
+      font-size: var(--text-sm);
+      text-decoration: none;
+
+      &:hover { color: var(--text); text-decoration: underline; }
+    }
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.logo { inline-size: calc(var(--header) - 1rem); block-size: calc(var(--header) - 1rem); flex: none; color: var(--text); }
+
+/* Sidebar: inline above the page without script, a sheet on small screens, a column on desktop. */
+.sidebar {
+  container: sidebar / inline-size;
+  display: grid;
+  grid-template-columns: var(--col);
+  align-content: start;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--gutter) var(--space-5);
+  background: var(--surface);
+  border-block-end: 1px solid var(--border);
+  font-size: var(--text-sm);
+
+  > * { min-inline-size: 0; }
+  &:focus { outline: none; }
+
+  /* Phones and tablets with script: a sheet above the bottom bar. */
+  @media (width < 60rem) {
+    .js & {
+      position: fixed;
+      inset: auto 0 calc(var(--bar) + env(safe-area-inset-bottom, 0px));
+      z-index: var(--z-sheet);
+      max-block-size: min(70dvh, calc(100dvh - var(--bar) - 3rem));
+      padding-block-start: var(--space-5);
+      /* Scrolling to the current page keeps this much space above and below it. */
+      scroll-padding-block: var(--space-4);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-block-end: 0;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      box-shadow: var(--shadow-sheet);
+
+      &:not(.open) { display: none; }
+    }
+  }
+
+  @media (width >= 60rem) {
+    position: sticky;
+    inset-block-start: 0;
+    min-block-size: calc(100dvh - var(--header));
+    max-block-size: 100dvh;
+    padding: var(--space-5) var(--space-5) var(--space-6) var(--gutter);
+    overflow-y: auto;
+    background: none;
+    border: 0;
+    border-inline-end: 1px solid var(--border);
+  }
+}
+
+.switchers {
+  display: grid;
+  grid-template-columns: var(--col);
+  gap: var(--space-3);
+
+  @container sidebar (width >= 28rem) { grid-template-columns: repeat(2, var(--col)); }
+}
+
+.field { display: grid; gap: var(--space-1); color: var(--muted); font-size: var(--text-xs); font-weight: 600; }
+
+select {
+  inline-size: 100%;
+  min-block-size: var(--control);
+  padding-inline: var(--space-3) 2.5rem;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius);
+  background-color: var(--bg);
+  font-weight: 400;
+  /* A drawn chevron replaces the native arrow, which the browsers place inconsistently. */
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 1.25rem) 50%, calc(100% - 0.9rem) 50%;
+  background-size: 0.35rem 0.35rem;
+  background-repeat: no-repeat;
+
+  /* iOS zooms the page when a field under 16px gets focus. */
+  @media (width < 60rem) { font-size: var(--text-base); }
+}
+
+.nav-list {
+  display: grid;
+  grid-template-columns: var(--col);
+
+  a {
+    display: block;
+    /* Padding, not a fixed height: a long title wraps and the item grows by the same padding. */
+    padding: 0.6875rem var(--space-3);
+    border-radius: var(--radius);
+    color: var(--text);
+    text-decoration: none;
+
+    @media (hover: hover) { &:hover { background: var(--hover); } }
+    &[aria-current='page'] { background: var(--accent-surface); color: var(--accent); font-weight: 600; }
+  }
+}
+
+.nav-heading {
+  margin-block-start: var(--space-4);
+  padding-inline: var(--space-3);
+  color: var(--muted);
+  font: 700 var(--text-xs)/1.4 var(--font);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  .nav-list > &:first-child { margin-block-start: 0; }
+}
+
+/* Bottom bar (small screens, with script): the menu button and the search are within thumb reach. */
+.bottom-bar, .scrim { display: none; }
+
+@media (width < 60rem) {
+  .js .bottom-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    position: fixed;
+    inset: auto 0 0;
+    z-index: var(--z-bar);
+    padding: var(--space-3) var(--gutter);
+    padding-block-end: calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+    background: var(--bg);
+    border-block-start: 1px solid var(--border);
+    /* Makes the bar the containing block of the search results panel, which spans its full width. */
+    transform: translateZ(0);
+  }
+
+  .js .scrim:not([hidden]) { display: block; position: fixed; inset: 0; z-index: 10; background: var(--scrim); }
+}
+
+.menu-toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  min-block-size: var(--control);
+  padding-inline: var(--space-3);
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-weight: 600;
+  cursor: pointer;
+
+  &[aria-expanded='true'] { background: var(--accent-surface); color: var(--accent); }
+}
+
+.menu-icon {
+  position: relative;
+
+  &, &::before, &::after { display: block; inline-size: 1.125rem; block-size: 2px; background: currentColor; border-radius: 1px; }
+  &::before, &::after { content: ''; position: absolute; inset-inline-start: 0; }
+  &::before { inset-block-start: -6px; }
+  &::after { inset-block-start: 6px; }
+}
+
+.bar-search { flex: 1; min-inline-size: 0; }
+
+/* The search box exists only with script, and keeps its height before Pagefind fills it. */
+.search {
+  display: none;
+
+  .js & { display: block; min-block-size: var(--control); }
+
+  /* Until the search script loads, a placeholder field holds the space. */
+  .bar-search &:empty::before {
+    content: 'Search docs';
+    display: block;
+    block-size: var(--control);
+    padding-inline: 2.75rem var(--space-3);
+    border: 1px solid var(--field-border);
+    border-radius: var(--radius);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    line-height: calc(var(--control) - 2px);
+  }
+}
+
+/* Page head: title, intro and actions are one group, spaced by its gap. */
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--muted);
+  font-size: var(--text-sm);
+
+  li + li::before { content: '/'; margin-inline-end: var(--space-1); }
+  a { display: inline-block; padding-block: var(--space-1); }
+}
+
+.notice {
+  padding: var(--space-3) var(--space-4);
+  background: var(--accent-surface);
+  border-inline-start: 4px solid var(--accent);
+  border-radius: 4px;
+  font-size: var(--text-sm);
+}
+
+article { display: grid; grid-template-columns: var(--col); gap: var(--space-5); }
+
+.page-head {
+  display: grid;
+  grid-template-columns: var(--col);
+  gap: var(--space-3);
+
+  h1 { font-size: var(--h1); }
+  .lede { margin-block-end: var(--space-3); color: var(--muted); font-size: var(--text-lg); line-height: 1.4; }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding-block-end: var(--space-4);
+  border-block-end: 1px solid var(--border);
+
+  :is(button, a) {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: var(--control);
+    padding-inline: var(--space-4);
+    border: 1px solid var(--field-border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    text-decoration: none;
+    cursor: pointer;
+
+    @media (hover: hover) { &:hover { background: var(--hover); } }
+  }
+
+  button { display: none; .js & { display: inline-flex; } }
+}
+
+/* Prose: the Markdown of a page. Its blocks are separated by one flow space, headings by more. */
+.prose {
+  > * + * { margin-block-start: var(--flow); }
+  > * + h2 { margin-block-start: var(--section); }
+  > * + :is(h3, h4) { margin-block-start: var(--space-5); }
+  > :is(h2, h3, h4) + * { margin-block-start: var(--space-3); }
+
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: var(--text-base); }
+  :is(h2, h3, h4) a { color: inherit; text-decoration: none; &:hover { text-decoration: underline; } }
+
+  :is(ul, ol) { padding-inline-start: var(--space-5); list-style: revert; }
+  li + li, li > * + * { margin-block-start: var(--space-1); }
+
+  code {
+    padding: 0.1em 0.3em;
+    background: var(--code-bg);
+    border-radius: 4px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    font: 0.875em var(--mono);
+    overflow-wrap: anywhere;
+  }
+
+  pre {
+    padding: var(--space-4);
+    overflow-x: auto;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font: 0.875rem/1.5 var(--mono);
+    tab-size: 2;
+
+    code { padding: 0; background: none; font: inherit; overflow-wrap: normal; }
+  }
+
+  blockquote { padding: var(--space-1) var(--space-4); border-inline-start: 4px solid var(--border); color: var(--muted); }
+  hr { margin-block: var(--space-6); border: 0; border-block-start: 1px solid var(--border); }
+  p, li { text-wrap: pretty; }
+}
+
+.table-scroll {
+  max-inline-size: 100%;
+  overflow-x: auto;
+
+  table { inline-size: 100%; border-collapse: collapse; font-size: var(--text-sm); line-height: 1.4; }
+  :is(th, td) { padding: var(--space-2) var(--space-3); border: 1px solid var(--border); text-align: start; vertical-align: top; }
+  th { background: var(--surface); }
+  td code { padding: 0; background: none; }
+}
+
+/* Code block with its copy button: an icon in the corner, over the code. */
+.code { position: relative; }
+
+.copy-code {
+  display: none;
+  position: absolute;
+  inset-block-start: var(--space-2);
+  inset-inline-end: var(--space-2);
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--control-sm);
+  block-size: var(--control-sm);
+  padding: 0;
+  border: 1px solid var(--field-border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+
+  .js & { display: inline-flex; }
+  @media (hover: hover) { &:hover { background: var(--hover); } }
+
+  svg { inline-size: 1.125rem; block-size: 1.125rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .icon-done, .icon-failed { display: none; }
+  &[data-state='copied'] { color: var(--accent); }
+  &[data-state] .icon-copy { display: none; }
+  &[data-state='copied'] .icon-done, &[data-state='failed'] .icon-failed { display: block; }
+}
+
+/* Syntax highlighting: Prism token classes */
+.token {
+  &.comment, &.prolog, &.doctype, &.cdata { color: var(--tok-comment); font-style: italic; }
+  &.string, &.attr-value, &.char, &.regex { color: var(--tok-string); }
+  &.keyword, &.atrule, &.boolean, &.important { color: var(--tok-keyword); }
+  &.number, &.constant, &.symbol { color: var(--tok-number); }
+  &.function, &.class-name, &.builtin, &.tag, &.property { color: var(--tok-function); }
+}
+
+/* The text a search result links to, highlighted on the page. */
+::target-text { background: var(--accent-surface); color: var(--text); }
+
+/* Previous and next page: two columns once the column is wide enough, next always on the right. */
+.pager {
+  display: grid;
+  grid-template-columns: var(--col);
+  gap: var(--space-3);
+  margin-block-start: calc(var(--section) - var(--space-3));
+
+  a {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+
+    @media (hover: hover) { &:hover { border-color: var(--accent); } }
+  }
+
+  small { display: block; color: var(--muted); font-size: var(--text-xs); font-weight: 400; }
+  [rel='next'] { text-align: end; }
+
+  @container main (width >= 30rem) {
+    grid-template-columns: repeat(2, var(--col));
+    [rel='next'] { grid-column: 2; }
+  }
+}
+
+/* Home: a group of packages, each card one link stretched over the card. */
+.home { gap: var(--section); }
+.group { display: grid; grid-template-columns: var(--col); gap: var(--space-4); h2 { font-size: 1.5rem; } }
+
+.cards {
+  display: grid;
+  grid-template-columns: var(--col);
+  gap: var(--space-4);
+
+  li {
+    position: relative;
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-4);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    &:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+    @media (hover: hover) { &:hover { border-color: var(--accent); background: var(--surface); } }
+  }
+
+  a {
+    font-weight: 700;
+    text-decoration: none;
+
+    &::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); }
+    &:focus-visible { outline: none; }
+  }
+
+  p { color: var(--muted); font-size: var(--text-sm); }
+}
+
+.site-footer {
+  border-block-start: 1px solid var(--border);
+  color: var(--muted);
+  font-size: var(--text-xs);
+
+  .wrap { padding-block: var(--space-5); }
+}
+
+/* Short screens, such as a phone on its side: a slimmer bar, and sheets that use the room. */
+@media (width < 60rem) and (height < 32rem) {
+  :root { --bar: 3.25rem; }
+
+  .js .bottom-bar { padding-block: var(--space-1); padding-block-end: calc(var(--space-1) + env(safe-area-inset-bottom, 0px)); }
+  .js .sidebar, .bar-search .pagefind-ui__drawer { max-block-size: calc(100dvh - var(--bar) - var(--space-4)); }
+}
+
+/* Very narrow screens, such as a large display size: the menu button keeps its icon, its label stays for screen readers. */
+@media (width < 20rem) {
+  .menu-label { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
+/* 5. Vendor: the Pagefind search widget ------------------------------------ */
+
+/* The widget's own stylesheet is added before this one, so these rules win at equal
+ * specificity, without !important or doubled selectors. */
+.search .pagefind-ui {
+  /* Pagefind sizes everything from its scale: 0.6875 makes the input as tall as the other controls. */
+  --pagefind-ui-font: var(--font);
+  --pagefind-ui-scale: 0.6875;
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-text: var(--text);
+  --pagefind-ui-background: var(--bg);
+  --pagefind-ui-border: var(--field-border);
+  --pagefind-ui-tag: var(--surface);
+  --pagefind-ui-border-width: 1px;
+  --pagefind-ui-border-radius: var(--radius);
+
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .pagefind-ui__search-input { font-size: var(--text-sm); font-weight: 400; }
+  .pagefind-ui__message { margin: 0 0 var(--space-2); padding-inline: var(--space-3); font-size: var(--text-sm); }
+
+  /* A result is one link: the title link stretches over it. The rounded line Pagefind draws
+   * above each result is dropped, the bold titles separate them. */
+  .pagefind-ui__result {
+    position: relative;
+    margin: 0;
+    padding: var(--space-3);
+    border-width: 0;
+    border-radius: var(--radius);
+
+    &:focus-within { outline: 3px solid var(--focus); outline-offset: -3px; }
+    @media (hover: hover) { &:hover { background: var(--surface); } }
+  }
+
+  .pagefind-ui__result-inner { margin: 0; }
+  .pagefind-ui__result-title { margin: 0 0 var(--space-1); font-size: 1.0625rem; line-height: 1.3; }
+  .pagefind-ui__result-excerpt { margin: 0; font-size: var(--text-sm); line-height: 1.45; }
+  .pagefind-ui__result-link { &::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius); } &:focus-visible { outline: none; } }
+
+  @media (width < 60rem) {
+    /* iOS zooms the page when a field under 16px gets focus. */
+    .pagefind-ui__search-input { font-size: var(--text-base); }
+  }
+}
+
+/* On small screens the results rise from the bottom bar, across its full width. */
+@media (width < 60rem) {
+  .bar-search .pagefind-ui__drawer {
+    /* Fixed inside the transformed bar: measured from the full-width bar, not from the narrow field. */
+    position: fixed;
+    inset: auto 0 100%;
+    max-block-size: min(65dvh, calc(100dvh - var(--bar) - 3rem));
+    padding: var(--space-4) var(--gutter);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-block-end: 0;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    box-shadow: var(--shadow-sheet);
+  }
+}
+
+/* 6. Preferences ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Forced colors drop background colors: mark the current page and the cards by outline. */
+@media (forced-colors: active) {
+  .nav-list a[aria-current='page'] { outline: 2px solid CanvasText; }
+  .menu-toggle[aria-expanded='true'] { outline: 2px solid CanvasText; }
+  .cards li, .pager a { border-color: CanvasText; }
+}
+
+/* Print: the page text only. */
+@media print {
+  .site-header, .sidebar, .bottom-bar, .scrim, .skip-link, .actions, .pager, .copy-code, .crumbs { display: none; }
+  body { display: block; padding: 0; }
+  main { padding: 0; }
+  .prose pre { white-space: pre-wrap; border-color: CanvasText; }
+  .prose a[href^='http']::after { content: ' (' attr(href) ')'; font-size: var(--text-xs); }
+}

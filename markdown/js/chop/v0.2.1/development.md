@@ -1,4 +1,4 @@
-# Development (/js/chop/v0.2.1/development.html)
+# Development
 
 Run these from the repository root:
 
@@ -12,6 +12,6 @@ docker compose run --rm --no-deps wordpress npm run test --workspace=@wpelevator
 
 The source runs directly with Node's type stripping through the `wpelevator-source` export condition, and `dist` is only for publishing. Tests are co-located `*.test.ts` files that use `node:test`, and each test name starts with the requirement ID of the specification that it covers, like `R-FMT-3`. `src/test-fixtures.ts` creates temporary data directories and generates the images with sharp, so there are no binary fixtures.
 
-## License [#license]
+## License
 
-MIT. chop was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server. The [reference](reference.html.md) summarizes that behavior.
+MIT. chop was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server. The [reference](reference.md) summarizes that behavior.

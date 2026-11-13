@@ -1,6 +1,6 @@
-# Internationalization (/js/wp-release/v0.20.2/internationalization.html)
+# Internationalization
 
-### WordPress internationalization [#wordpress-internationalization]
+### WordPress internationalization
 
 `i18n-pot` extracts plugin/theme strings and writes a reproducible UTF-8 POT. `i18n-audit` reads the same source and returns findings without writing files. Both run with Node alone: no PHP, WordPress installation, database, WP-CLI or network requests. Extraction is independent of `files`, `.distignore` and Git `export-ignore` distribution rules.
 
@@ -41,7 +41,7 @@ Precedence is defaults, root configuration, package group/individual entry, then
 
 The default output is `<Domain Path>/<text-domain>.pot`, or `languages/<text-domain>.pot`. A leading `/` in `Domain Path` is package-relative, and configured destinations cannot escape the package. `--destination` changes the package-relative directory. An explicit `--output <file.pot>` resolves against the command's working directory and requires one package. All multi-package destinations are validated before writing; each completed package replaces its file atomically, independently of other packages. `--check` compares bytes without writing and fails if the POT is absent or stale. Source references are preserved by default as `file:line`. `--add-location file` keeps only the file name, so that editing a source file doesn't change the POT unless its strings change, and `--no-location` (the same as `--add-location never`) omits them; `--add-location full` is the default. In configuration, set `location` to `'full'`, `'file'` or `'never'`. The older `--no-references` flag and `references: false` option still work as `--no-location`, and an explicit `location` wins over `references` in the same layer. Asking for locations and for none in the same command is an error. `POT-Creation-Date` and `PO-Revision-Date` default to empty values; no current date or year is inserted. Name/version headers come from metadata, and `--header NAME=VALUE` overrides any default, including with an empty value, and `--header NAME` removes the header. The POT lists the plugin or theme header strings first, then the strings of PHP, JavaScript, `block.json` and other metadata files in source order, so related strings stay together for translators. Each entry has its extracted comments, references and flags before the strings, in the usual gettext layout. The default headers come in a fixed order, and custom headers follow them. No generator header or generated copyright comment is added; set `fileComment` for a static one.
 
-#### Supported extraction syntax [#supported-extraction-syntax]
+#### Supported extraction syntax
 
 PHP extraction uses `php-parser` in PHP 8.3 mode, tested with attributes, enums, match expressions, promoted properties and readonly classes. Supported WordPress functions are `__`, `_e`, `_x`, `_ex`, `_n`, `_nx`, `_n_noop`, `_nx_noop`, `esc_attr__`, `esc_attr_e`, `esc_attr_x`, `esc_html__`, `esc_html_e` and `esc_html_x`. Global and explicitly global calls, namespace fallback and explicit function imports/aliases are supported. Known file-local declarations and unrelated namespaced imports are excluded; methods and static methods are never translation calls. Named arguments resolve by PHP parameter name. Literal strings, static concatenation and non-interpolated heredoc/nowdoc preserve decoded escapes, Unicode and newlines. Counts may be dynamic; IDs, contexts and selected domains must be static.
 
@@ -51,7 +51,7 @@ A `translators:` comment attaches to the first translation call whose containing
 
 Invalid syntax, unreadable selected files, selected source symlinks, empty/reserved message IDs, conflicting plural definitions and output errors fail generation. Unsupported dynamic arguments warn and are fatal with `--strict`. Audit adds `placeholder-comment`, `unordered-placeholders`, `plural-placeholders`, `empty-message` and `conflicting-comments` findings; suppress these explicitly by code where justified. Placeholders support `%%`, positional indexes, numeric width/precision, padding/flags and PHP/JS sprintf conversion types. Audit checks extraction and message quality, not every untranslated user-facing string. Audit fails on errors; strict audit also fails on warnings. Failed checks return exit code `2`; unexpected I/O/option-loading errors follow the existing CLI error handling. `--json`, GitHub annotations, summaries and step outputs use the existing CLI reporting facilities.
 
-#### Compile translated catalogs [#compile-translated-catalogs]
+#### Compile translated catalogs
 
 Runtime formats require a translated PO, not an untranslated POT. PO updating, fuzzy matching and automatic translation are not provided. Compilation validates `Language` and `Plural-Forms`, excludes fuzzy, obsolete and untranslated entries, preserves contexts and plural forms, and never changes the input PO. An incompletely translated plural entry is excluded as a unit. Gettext parsing handles source encoding; runtime outputs use UTF-8. Each output is replaced atomically; JSON outputs are independent writes, and obsolete output files are not deleted automatically.
 

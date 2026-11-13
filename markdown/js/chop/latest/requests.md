@@ -1,6 +1,6 @@
-# Requests (/js/chop/latest/requests.html)
+# Requests
 
-The URL path selects the original, like `/2026/05/photo.jpg` for `<data>/2026/05/photo.jpg` or for `<origin>/2026/05/photo.jpg` when an [origin](sources.html.md) is configured, and a [URL scheme](url-schemes.html.md) selects the operations. The default `query` scheme reads them from the query string. Unknown arguments are ignored, so cache-busting arguments like `ver=3` are harmless. A malformed value of a known argument is a `400` with a message that names the argument. `GET /healthz` answers `ok` without touching the data directory or the origin. Only `GET` and `HEAD` are allowed.
+The URL path selects the original, like `/2026/05/photo.jpg` for `<data>/2026/05/photo.jpg` or for `<origin>/2026/05/photo.jpg` when an [origin](sources.md) is configured, and a [URL scheme](url-schemes.md) selects the operations. The default `query` scheme reads them from the query string. Unknown arguments are ignored, so cache-busting arguments like `ver=3` are harmless. A malformed value of a known argument is a `400` with a message that names the argument. `GET /healthz` answers `ok` without touching the data directory or the origin. Only `GET` and `HEAD` are allowed.
 
 Operations run in a fixed order, whatever the order in the URL: orientation, `crop`, size, `lb`, then encoding. The EXIF orientation is always applied to the pixels first, so every size and offset refers to the displayed image, and the output has no orientation tag.
 
@@ -23,7 +23,7 @@ Nothing enlarges the image unless `upscale=1`. When a requested size is larger t
 
 For an animated source (GIF or animated WebP), `crop`, `w`, `h`, `fit` and `resize` apply to every frame and keep all frames and their timing, while `lb` and `gravity=attention` are ignored.
 
-## Differences from Photon query arguments [#differences-from-photon-query-arguments]
+## Differences from Photon query arguments
 
 chop has its own small set of arguments, and it isn't a drop-in replacement for the Photon image service. These arguments are not supported, are not an error and are ignored like any unknown argument:
 

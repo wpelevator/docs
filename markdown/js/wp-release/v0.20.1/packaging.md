@@ -1,6 +1,6 @@
-# Packaging and integrity (/js/wp-release/v0.20.1/packaging.html)
+# Packaging and integrity
 
-### Build a directory [#build-a-directory]
+### Build a directory
 
 `build` and `zip` use the same internal helper to load file rules, exclude their outputs, select release files and reject an empty selection. `build` copies the selected files directly into `--output <dir>`, without a slug wrapper or ZIP. Checksums and manifest signatures are optional. It supports the shared file selection flags above and `--package <name>` with `--config <path>` for configured package rules. A configured package cannot be combined with a source directory or file selection flags.
 
@@ -19,7 +19,7 @@ wp-release build --output dist/code-prettify --sign-checksums
 
 In the Deploy workflow, a directory build can be deployed with `wp-release deploy-svn dist/code-prettify --slug code-prettify --trunk --svn-tag "$GITHUB_REF_NAME" --no-distignore`. Keep `--from-zip` when the SVN deployment must match the attached ZIP exactly. Run dependency installation and compilation before `build`; it only selects and copies files.
 
-### ZIP [#zip]
+### ZIP
 
 The [`wp-release-zip`](https://github.com/wpelevator/wp-release-zip) GitHub Action runs this command.
 
@@ -36,7 +36,7 @@ wp-release zip dist --slug my-plugin --checksums
 - `--sign` signs only the ZIP with `WP_RELEASE_SIGNING_KEY`. `--sign-checksums` generates and signs only the checksums manifest, implying `--checksums`. Use both flags to sign both files. External signatures are written alongside their files; embedded manifest signatures are written inside the package. The default format is WordPress `.sig`, unless integrity configuration selects another format.
 - `--sign-format` selects formats for requested signatures, such as `--sign-format wordpress,minisign,ssh`. It requires `--sign` or `--sign-checksums` and never enables signing by itself. Signing keys, formats and existing signature destinations are validated before writing the ZIP or manifest. `--force` also overwrites requested signatures. Job summaries include signatures and public keys; JSON results include `signatures` and `publicKey`.
 - An existing ZIP or manifest isn't overwritten without `--force`. A ZIP or manifest written inside the source directory is never archived.
-- `--package <name>` zips a package of the [configured packages](deployment.html.md#deploy-configured-packages), by identifier or path under the configured root like `plugins/alpha`, instead of a source directory: its directory with the `files` config of its package group, the same files that its deploys select. The slug defaults to the directory name and the version to the `Version` header, and `--slug` and `--version` still set them. Any package of the config works, with or without a version or deploy targets. To zip what a deploy just released, pass the `package` and `version` of the `deploy-git --release-ref` result, in the same job and from the same build, so the ZIP has exactly the files of the release tag in the release repository. It can't be combined with `<source-dir>` or the file selection options. The `--json` result has the `package`, `slug` and `version`. `zipPackage()` builds the same ZIP from a script, with `getPackageFiles()` for the directory and the files of a package.
+- `--package <name>` zips a package of the [configured packages](deployment.md#deploy-configured-packages), by identifier or path under the configured root like `plugins/alpha`, instead of a source directory: its directory with the `files` config of its package group, the same files that its deploys select. The slug defaults to the directory name and the version to the `Version` header, and `--slug` and `--version` still set them. Any package of the config works, with or without a version or deploy targets. To zip what a deploy just released, pass the `package` and `version` of the `deploy-git --release-ref` result, in the same job and from the same build, so the ZIP has exactly the files of the release tag in the release repository. It can't be combined with `<source-dir>` or the file selection options. The `--json` result has the `package`, `slug` and `version`. `zipPackage()` builds the same ZIP from a script, with `getPackageFiles()` for the directory and the files of a package.
 
 To embed a signed manifest with a stable filename, use:
 
@@ -46,7 +46,7 @@ wp-release zip dist --checksums-file checksums.json --embed-checksums --sign-che
 
 See [Checksums](#checksums) for filenames, placement, formats and configuration.
 
-### Signing targets for builds and ZIPs [#signing-targets-for-builds-and-zips]
+### Signing targets for builds and ZIPs
 
 | Flag | `zip` | `build` |
 |---|---|---|
@@ -62,7 +62,7 @@ wp-release build --output dist/code-prettify --sign-checksums --sign-format mini
 
 These flags deliberately replace the former implicit signing behavior: `zip --checksums --sign` now leaves the manifest unsigned, and `--sign-format` alone is rejected. Add `--sign-checksums` to sign a manifest and `--sign` to sign a ZIP. The standalone `checksums` and `sign` commands remain available for workflows that write and sign a manifest inside the source before packaging it.
 
-### Checksums [#checksums]
+### Checksums
 
 The [`wp-release-checksums`](https://github.com/wpelevator/wp-release-checksums) GitHub Action runs this command.
 
@@ -90,7 +90,7 @@ wp-release checksums dist --version 1.2.0
 
 Because the manifest lists the files and not the ZIP, it stays valid for any copy of the same files: the GitHub release ZIP, the ZIP that WordPress.org builds from SVN, or an installed plugin on a site.
 
-#### Filenames, embedding and signing [#filenames-embedding-and-signing]
+#### Filenames, embedding and signing
 
 `--checksums-file <file>` enables checksums and sets a relative filename independently of the ZIP name. Without `--embed-checksums`, it resolves against the ZIP output directory; with embedding, it resolves against the package root inside the ZIP (the archive root with `--no-root-folder`). Nested paths are supported, but absolute paths, backslashes, drive letters, control characters and dot segments are rejected. Embedding emits no external manifest and never modifies the source directory. Embedded minisign signatures contain a signing timestamp, so ZIP bytes can differ across signing times; unsigned metadata and WordPress/SSH signatures remain deterministic. Selected source files must not collide with generated manifest or signature entries.
 
@@ -113,7 +113,7 @@ wp-release verify --zip releases/my-plugin.1.5.1.zip --public-key "$PUBLIC_KEY"
 
 The default WordPress filename remains the ZIP basename with `.checksums.json` instead of `.zip`, in either placement mode. Choose `--checksums-file checksums.json` for a stable name. The version remains in the JSON content.
 
-#### Formats [#formats]
+#### Formats
 
 `--checksums-format` chooses the manifest format. `wordpress-json` (default) uses the WordPress-compatible structure shown above. `sha256sum` uses GNU-compatible SHA-256 lines and escaping, with `SHA256SUMS` as its default filename. It carries no package identity or version, and standard `sha256sum --check` checks listed files without rejecting additional files; `wp-release verify` also checks for extra files.
 
@@ -127,7 +127,7 @@ sha256sum --check SHA256SUMS
 
 `--checksums-algorithms md5,sha256` selects JSON digest fields; lists replace configured lists. Supported algorithms are MD5 (for compatibility) and SHA-256. The `sha256sum` codec requires SHA-256. The standalone `checksums` command also accepts `--checksums-format`, keeping `--output` relative to the working directory.
 
-#### Configuration and custom codecs [#configuration-and-custom-codecs]
+#### Configuration and custom codecs
 
 The optional top-level `integrity` configuration maps to these flags. Explicit CLI values override configuration; `--no-embed-checksums` and `--no-sign-checksums` disable their configured behaviors. Existing release configurations retain their `packages` array; use `packages: []` for a configuration containing only integrity settings.
 
@@ -173,7 +173,7 @@ export default {
 
 `zip` and `checksums` read the caller's release configuration. For verification of custom codecs or configured filenames, pass `--config wp-release.config.mjs` explicitly. See [Verify](#verify).
 
-#### Manifest inside the plugin [#manifest-inside-the-plugin]
+#### Manifest inside the plugin
 
 For a manifest that is also published as a separate release asset or deployed directly from a source directory, write and sign it in that directory before packaging. Use `zip --embed-checksums` as described [above](#filenames-embedding-and-signing) when only the archive should contain the generated metadata. The source-directory workflow uses the same manifest for installed copies and release assets:
 
@@ -197,7 +197,7 @@ wp-release deploy-svn build --trunk --svn-tag 1.2.0
 
 The public key has to come from somewhere other than the plugin that it checks, because someone who can overwrite the plugin files can also replace a key and a signature inside them. A copy of the manifest also doesn't prevent a downgrade to an older release that was signed too, so the installing side has to enforce a minimum version.
 
-### Verify [#verify]
+### Verify
 
 `verify` checks a directory against a manifest from `checksums` or from the WordPress.org checksums API, and reports every changed, missing and extra file. It exits with `2` unless all files match:
 
@@ -216,7 +216,7 @@ A checksums manifest proves only that the files match the manifest. With `--publ
 
 Verification never executes configuration from inside a downloaded package. Without `--checksums`, `verify` reads the embedded filename selected by `--checksums-file`, explicit configuration, or the codec default. For a versioned embedded filename, pass that filename explicitly. With a public key, signatures are checked before decoding; the selected signature format must exist (WordPress `.sig` by default; pass `--signature-format minisign` or `ssh` for those formats), and all other present supported signature formats are also authenticated when verifying the embedded manifest. Without a public key, checksums detect changes but do not authenticate the publisher. Trusted public keys must come from outside the package.
 
-### Sign [#sign]
+### Sign
 
 The [`wp-release-sign`](https://github.com/wpelevator/wp-release-sign) GitHub Action runs this command.
 
@@ -232,7 +232,7 @@ WP_RELEASE_SIGNING_KEY=… wp-release sign my-plugin.1.2.0.zip my-plugin.1.2.0.c
 - An existing signature file isn't overwritten without `--force`.
 - `zip --sign` signs only the ZIP; add `--sign-checksums` to sign its manifest too. `signFiles()` signs files from a script.
 
-#### Signature formats [#signature-formats]
+#### Signature formats
 
 The same key can also sign in formats that tools outside WordPress check, for people who download a release by hand or verify it in other pipelines. Pick them with `--format`, comma-separated or repeated; the default is `wordpress`:
 
@@ -252,7 +252,7 @@ wp-release sign my-plugin.1.2.0.zip --format wordpress,minisign,ssh
 
 Generate a key pair with `wp-release keygen`. It prints the private seed once as `WP_RELEASE_SIGNING_KEY=…` and the matching public key, also as a minisign public key and an `ssh-ed25519` public key. Generate keys locally and store the private seed in your secret manager or CI secrets. Distribute the public key to verifiers. `keygen --github-output` is rejected to keep the private seed out of workflow outputs; regular and `--json` output both include the seed.
 
-### Version check [#version-check]
+### Version check
 
 `version-check` compares the versions that have to agree before a release, and reports every mismatch with exit code `2`:
 

@@ -1,6 +1,6 @@
-# Development (/js/wp-release/latest/development.html)
+# Development
 
-## Development [#development]
+## Development
 
 The source is TypeScript in `src/`, with tests next to the files they test (`*.test.ts`). The published package contains only the compiled `dist/` with JavaScript and `.d.ts` files; tests and translation fixtures stay in the repository.
 
@@ -20,7 +20,7 @@ The `wpelevator-source` export condition points at `src/index.ts`. The wp-releas
 
 `execute( 'deploy svn', args, { cwd, logger, svnRunner } )` runs a single-plugin deployment or a configured plan or deployment. The optional `svnRunner` replaces the external command runner in both modes; without it, the command uses its normal runner.
 
-### Architecture [#architecture]
+### Architecture
 
 wp-release has two layers, so that it fits any repository layout:
 

@@ -1,6 +1,6 @@
-# CLI (/js/wp-release/latest/cli.html)
+# CLI
 
-## CLI [#cli]
+## CLI
 
 ```bash
 npx wp-release --help
@@ -49,7 +49,7 @@ In GitHub Actions, `--github-output` writes the complete result as JSON to `step
 
 Prefer plain outputs in steps that run conditionally, since a skipped step has empty outputs. When reading JSON from a step that may be skipped, use a fallback such as `fromJSON( steps.tag.outputs.result || '{"tags":[]}' ).tags[0].tag`. For several tags or deploys, read the arrays in `result` to build a job matrix or process each item.
 
-### GitHub Actions annotations and job summaries [#github-actions-annotations-and-job-summaries]
+### GitHub Actions annotations and job summaries
 
 With the `github` log format, the CLI uses current GitHub Actions features to report problems where you look for them, instead of only in the log. `--log-format <name>` picks how the CLI logs, separately from the result that `--json` prints:
 
@@ -58,7 +58,7 @@ With the `github` log format, the CLI uses current GitHub Actions features to re
 | `text` | Plain text. The default outside GitHub Actions. |
 | `github` | GitHub Actions annotations and job summaries. The default when `GITHUB_ACTIONS=true`. `--ci` is a shorthand for it. |
 
-Pass `--log-format text` for plain text in GitHub Actions. The GitHub Actions always use the `github` log format. Only the CLI checks `GITHUB_ACTIONS`: the library classes don't read the environment, and choose the format by the [writer](library.html.md#logging) they get.
+Pass `--log-format text` for plain text in GitHub Actions. The GitHub Actions always use the `github` log format. Only the CLI checks `GITHUB_ACTIONS`: the library classes don't read the environment, and choose the format by the [writer](library.md#logging) they get.
 
 Errors, warnings and notices are printed as [workflow commands](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands), so they show up as annotations on the run and on the files of a pull request:
 
@@ -83,4 +83,4 @@ Each command also adds a section to the [job summary](https://docs.github.com/en
 
 A failed command adds its error to the summary, or a table of its problems with their files and lines, listing up to 100 and counting the rest. The Markdown of the summaries isn't part of the library API. File paths are relative to `GITHUB_WORKSPACE`, or the current directory without it. Files outside it, like those of an extracted ZIP, get an annotation without a file. Multi-line messages stay one annotation.
 
-Use global `--config <path>` to select a config; relative paths resolve from the current directory. Otherwise, commands using the config discover `wp-release.config.js`, `.mjs` or `.cjs` at the repository root. Global `--tag-format <format>` replaces the `tagFormat` of the config for one command, see [Packages and tags](changesets.html.md#packages-and-tags).
+Use global `--config <path>` to select a config; relative paths resolve from the current directory. Otherwise, commands using the config discover `wp-release.config.js`, `.mjs` or `.cjs` at the repository root. Global `--tag-format <format>` replaces the `tagFormat` of the config for one command, see [Packages and tags](changesets.md#packages-and-tags).

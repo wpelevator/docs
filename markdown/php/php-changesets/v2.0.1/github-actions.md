@@ -1,10 +1,10 @@
-# GitHub Actions (/php/php-changesets/v2.0.1/github-actions.html)
+# GitHub Actions
 
-## Release with GitHub Actions [#release-with-github-actions]
+## Release with GitHub Actions
 
 The CLI prepares releases, and other actions publish them. These workflows check that pull requests add changesets, open a release pull request whenever changesets are pending on `main`, and after it's merged, create the tag and GitHub release of every released package. Packagist picks up the new tags of Composer packages; add the [WP Release Zip](https://github.com/marketplace/actions/wp-release-zip) and [WP Release Deploy SVN](https://github.com/marketplace/actions/wp-release-deploy-svn) actions to the `release` job to ship a WordPress plugin.
 
-### Check pull requests [#check-pull-requests]
+### Check pull requests
 
 ```yaml
 name: Changesets
@@ -26,7 +26,7 @@ jobs:
 
 A pull request that changes a package without adding a changeset fails with an annotation on a changed file of the package and a job summary of the changed packages. Contributors fix it with `changeset add`, or with `changeset add --empty` for a change that needs no release.
 
-### Release [#release]
+### Release
 
 ```yaml
 name: Release

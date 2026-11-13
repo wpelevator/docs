@@ -1,6 +1,6 @@
-# Configuration (/js/wp-release/v0.19.0/configuration.html)
+# Configuration
 
-### Naming convention [#naming-convention]
+### Naming convention
 
 `@wpelevator/wp-release` is the suite of release tools and `wp-release` is its CLI. "Release" is the whole workflow; each command is one operation in it. Commands are flat: a single word or dashed words like `version-check` and `deploy-svn`, without command groups or aliases. Each GitHub Action is named `wp-release-` followed by the command name, so the CLI command and the `uses:` name always match:
 
@@ -44,7 +44,7 @@ The ZIP CLI result uses `checksumsEmbedded` for the package-relative embedded ma
 
 Library classes are named after the capability (`SvnDeploy`, `Svn`, `GitDeploy`) without repeating "release".
 
-### File selection [#file-selection]
+### File selection
 
 `build`, `zip`, `checksums`, `deploy-svn` and `deploy-git` select files the same way:
 
@@ -57,7 +57,7 @@ Library classes are named after the capability (`SvnDeploy`, `Svn`, `GitDeploy`)
 
 `.distignore` and `--exclude` use full gitignore syntax, including `!` negation. `--exclude-gitattributes` asks Git to evaluate `export-ignore` attributes, including nested `.gitattributes` files, then adds those paths to the exclusions. It is off by default, so releases don't unexpectedly depend on Git or change selection when a repository adds attributes. Git must be installed and the source directory must be inside a working tree; the flag is ignored by `deploy-svn --from-zip`, since the ZIP is already filtered. Version control metadata (`.git`, `.svn` and `.hg`, at any depth, including the `.git` files of worktrees and submodules) is always left out, also without an ignore file and when deploying from a ZIP, and no `!` pattern can re-include it. This keeps a repository's history out of ZIPs and deploys when the source directory is the repository root. The comma-separated `--exclude` list works like `--exclude` in `wp i18n make-pot`. Selected symbolic links are an error, since ZIP archives and WordPress.org SVN don't support them.
 
-### Plugin and theme headers [#plugin-and-theme-headers]
+### Plugin and theme headers
 
 The commands read the same headers as WordPress. The main plugin file is the top-level `.php` file with a `Plugin Name:` header in its first 8 KB, preferring `{slug}.php` when several files have one. A directory without a plugin file and with `Theme Name:` in `style.css` is a theme. The readme headers (`Stable tag`, `Tested up to`, …) come from `readme.txt`, or `readme.md` when there's no `readme.txt`.
 

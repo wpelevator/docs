@@ -1,4 +1,4 @@
-# CLI (/js/subtree-split/v0.2.2/cli.html)
+# CLI
 
 ```bash
 subtree-split --prefix packages/my-library --ref main --git-dir-cache

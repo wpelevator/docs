@@ -1,4 +1,4 @@
-# Caching (/js/subtree-split/v0.2.2/caching.html)
+# Caching
 
 Every run splits the whole history again. `--git-dir-cache` remembers the results in `.git/subtree-split-cache/`, so the next run only processes the commits that are new. On gutenberg that takes `packages/components` from 1.7 seconds to 0.3. On a small repository it makes no difference.
 

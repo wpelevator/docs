@@ -1,6 +1,6 @@
-# Library API (/js/wp-release/v0.18.1/library.html)
+# Library API
 
-### Exit codes [#exit-codes]
+### Exit codes
 
 | Code | Meaning |
 |---|---|
@@ -9,7 +9,7 @@
 | `2` | Invalid options, failed release checks, an existing SVN tag, a Git tag that exists with another release, or files that don't match the checksums |
 | `3` | Missing SVN credentials, or credentials that SVN rejected |
 
-## Library [#library]
+## Library
 
 ```js
 import { Logger, SvnDeploy, resolveDeployOptions } from '@wpelevator/wp-release';
@@ -62,12 +62,12 @@ const { tags } = await release.tag( { dryRun: true } );
 
 `ChangesetRelease` runs the `changeset-*` commands: `add()`, `getStatus()`, `version()` and `tag()`, plus `getPlan()`, `getPackages()` and `getConfiguredPackages()`. Each call reads the configuration, packages and pending changesets again, so one instance can version and then tag. `getConfiguredPackages()` returns package directories with their resolved release group metadata; `formatTag()` and `formatTemplate()` apply the same placeholders as the release workflows. It takes a git runner from `createGitRunner()` as `git`, so that tests can replace it. Without a config file, it detects a single root project. Its optional `singleProject` settings accept `versions` (the existing version descriptors), `versionFrom` (the same selector as `--version-from`), `baseBranch`, `remote`, `changesets`, `readmeChangelog` and `changelogInsertAfter`; `tagFormat` remains a repository option. The functions `addChangeset()`, `getChangesetStatus()`, `versionChangesets()`, `tagChangesets()`, `getChangesetReleasePlan()`, `getChangesetPackages()` and `getConfiguredPackages()` do the same with the default runners, in one call.
 
-### Logging [#logging]
+### Logging
 
 `Logger` filters messages by level and passes them to a writer, like the transports of other Node.js loggers. The writer decides how messages look:
 
 - `TextWriter` prints plain text to `stdout` and `stderr`. It's the default.
-- `GitHubActionsWriter` prints [workflow commands](cli.html.md#github-actions-annotations-and-job-summaries), so that notices, warnings and errors with a file are annotations, and appends summaries to `GITHUB_STEP_SUMMARY`. It's the CLI's `github` log format, and the GitHub Actions pass it to their logger. Its `workspace` and `summaryPath` options default to `GITHUB_WORKSPACE` and `GITHUB_STEP_SUMMARY`.
+- `GitHubActionsWriter` prints [workflow commands](cli.md#github-actions-annotations-and-job-summaries), so that notices, warnings and errors with a file are annotations, and appends summaries to `GITHUB_STEP_SUMMARY`. It's the CLI's `github` log format, and the GitHub Actions pass it to their logger. Its `workspace` and `summaryPath` options default to `GITHUB_WORKSPACE` and `GITHUB_STEP_SUMMARY`.
 
 ```js
 import { GitHubActionsWriter, Logger, logError } from '@wpelevator/wp-release';

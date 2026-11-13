@@ -1,8 +1,8 @@
-# Reference (/js/chop/v0.2.0/reference.html)
+# Reference
 
 How chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.
 
-## Requests [#requests]
+## Requests
 
 - `GET` and `HEAD` are answered, other methods get `405` with `Allow: GET, HEAD` (R-REQ-1).
 - The path selects the original under the data directory or the configured origin, and a URL scheme selects the operations (R-REQ-2, S-1). Unknown arguments are ignored, so cache busters like `ver=3` are harmless.
@@ -12,7 +12,7 @@ How chop behaves, in short. The IDs in parentheses, like `R-OP-8`, are what the 
 - The real path, with symbolic links resolved, must be inside the real data directory. A missing file, a directory and an escape are all the same `404` (R-PATH-2).
 - A file over `maxInputBytes` is a `413`, checked before the read and again after it (R-PATH-3). These checks are for the local data directory.
 
-## Sources [#sources]
+## Sources
 
 Where the original comes from. The data directory is the default and its behavior is the one above.
 
@@ -34,7 +34,7 @@ Where the original comes from. The data directory is the default and its behavio
 - `allowedHosts` entries are `host`, `*.example.com` (subdomains on a dot boundary, not the apex), either with `:port`, or `*` for every host on the default ports. `*` can't be mixed with other entries, and it is a warning at startup. Even with `*` everything else of this section applies, and `originAllowPrivate` never applies to a URL source (R-SRC-15).
 - A data directory that is set explicitly and an origin together are an invalid setting (R-SRC-16).
 
-### S3 origin [#s3-origin]
+### S3 origin
 
 `origin` set to `s3://bucket[/prefix]` reads the originals from an S3 bucket or an S3-compatible service. It is the HTTP origin of the section above for requests of the bucket, with signed requests, and every rule of that section applies unless it is changed here.
 
@@ -49,7 +49,7 @@ Where the original comes from. The data directory is the default and its behavio
 - The secret key and the session token are only read from the environment by the command, and are not in any error message, warning or log line (R-S3-9).
 - `CHOP_S3_ENDPOINT`, `CHOP_S3_REGION`, `CHOP_S3_PATH_STYLE`, `CHOP_S3_ACCESS_KEY_ID`, `CHOP_S3_SECRET_ACCESS_KEY` and `CHOP_S3_SESSION_TOKEN` are read, with `AWS_REGION`, `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` as the fallbacks, and `--origin s3://bucket` works. Credentials are read once at startup and aren't refreshed (R-S3-10).
 
-## Query scheme arguments [#query-scheme-arguments]
+## Query scheme arguments
 
 This is the default scheme, named `query`. All arguments are optional, and a malformed value of a known argument is a `400` that names it.
 
@@ -74,7 +74,7 @@ Without `upscale=1` nothing is enlarged: sizes clamp to the original, `resize` c
 
 Animated sources keep all frames for `crop` and sizes. `lb` and `gravity=attention` are ignored for them (R-OP-13). Image adjustments (R-OP-10) and filters (R-OP-11) aren't supported, and their arguments are ignored.
 
-## URL schemes [#url-schemes]
+## URL schemes
 
 A scheme turns a URL into the path of the original and the operations. All the schemes produce the same operations, so every scheme gets the same negotiation, limits and path safety.
 
@@ -84,7 +84,7 @@ A scheme turns a URL into the path of the original and the operations. All the s
 - A scheme ignores the options that chop doesn't support, and a malformed value of one that it supports is a `400` (S-4).
 - Different schemes that give the same operations give the same bytes and `ETag` (S-5).
 
-### `cloudflare` [#cloudflare]
+### `cloudflare`
 
 The `/cdn-cgi/image/<options>/<path>` form of Cloudflare Image Resizing, with comma separated `name=value` options.
 
@@ -101,7 +101,7 @@ The `/cdn-cgi/image/<options>/<path>` form of Cloudflare Image Resizing, with co
 
 Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`, are ignored. A source that starts with `http://` or `https://` is a URL source (see Sources) and is a `404` without `allowedHosts`.
 
-## Output format [#output-format]
+## Output format
 
 - `Accept` is parsed per RFC 9110. Only a listed `image/avif` or `image/webp` makes those formats acceptable, so `image/*` and `*/*` don't (R-FMT-1).
 - An explicit `format` is used even when `Accept` doesn't list it. Transparency is flattened onto white for formats that can't hold it (R-FMT-2).
@@ -113,29 +113,29 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 - A source whose detected format isn't in `allowedInputFormats` is a `415` with the same message as other unsupported content, which doesn't tell which formats are allowed. The check follows the header detection and comes before any pixel decoding or processing (R-FMT-9).
 - `autoFormats` lists the formats (`avif`, `webp`) that `auto` can negotiate, in order of preference. Among the listed formats that `Accept` lists with `q` above 0 (and that pass the checks of R-FMT-3), the one with the highest `q` is used, and the earlier entry of `autoFormats` wins a tie. An empty list disables the upgrades. An explicit `format` is not restricted by `autoFormats`, and `avif: false` removes AVIF from the list (R-FMT-10).
 
-## Quality and size [#quality-and-size]
+## Quality and size
 
 - The defaults are JPEG 82, WebP 80 and AVIF 55, lowered to the estimated quality of a JPEG source, so that a recompressed JPEG never gets a higher quality than it has. The estimate compares the file's luminance quantization table with the standard table scaled for each quality. An explicit `quality` is used as given (R-QLT-2, R-QLT-3).
 - A request that changes nothing about the pixels and keeps the source format sends the original bytes when the re-encoded image isn't smaller, and with `strip=none` it always sends them (R-QLT-4).
 
-## Responses [#responses]
+## Responses
 
 - `200` has the output `Content-Type`, `Content-Length`, `Cache-Control: public, max-age=<maxAge>`, `Vary: Accept`, `X-Content-Type-Options: nosniff` and a strong SHA-256 `ETag` (R-RES-1). `X-Bytes-Saved` appears when the output is smaller than the original (R-RES-3).
 - `If-None-Match` that matches, including weak comparison, lists and `*`, gets a `304` without a body (R-RES-2).
 - Errors are plain text with `Cache-Control: no-store` and no file system paths: `400` invalid request, `404` not found, `405` method, `413` original too large, `415` unsupported type, `422` unreadable image, `500` unexpected, `502` the origin failed, `503` busy and `504` the origin was too slow (R-RES-4).
 
-## Caching [#caching]
+## Caching
 
 - Responses depend on `Accept` and the URL only, so a cache can key on the URL and a bucket of `Accept`: `image/avif`, `image/webp` or neither. Send the bucket as `Accept` upstream so that the body matches the key. The README has an nginx recipe.
 
-## Limits [#limits]
+## Limits
 
 - At most `maxConcurrency` images are processed at once and `maxQueue` more wait in order. A request that finds the queue full gets `503` with `Retry-After: 1`, and a failing request frees its slot (R-LIM-1, R-LIM-2).
 - Decoding is limited by `maxInputPixels` (R-LIM-3).
 - `allowedWidths` optionally restricts the output widths to a list (R-LIM-4).
 - chop never writes to disk, and makes no network requests unless an origin or `allowedHosts` is configured, and then only to those hosts (R-LIM-5).
 
-## Settings [#settings]
+## Settings
 
 | Setting | Environment variable | Default |
 | --- | --- | --- |
@@ -165,7 +165,7 @@ Other Cloudflare options, like `trim`, `rotate`, `blur`, `sharpen` and `onerror`
 | `allowedInputFormats` | `CHOP_ALLOWED_INPUT_FORMATS` (comma separated) | `jpeg,png,gif,webp,avif` |
 | `autoFormats` | `CHOP_AUTO_FORMATS` (comma separated, or `none`) | `avif,webp` |
 
-## Interfaces [#interfaces]
+## Interfaces
 
 - `createHandler( settings? )` returns `( request ) => Promise< Response >` with `{ method, url, headers }` in and `{ status, headers, body }` out. It never throws for a request, never uses `node:http` and reports unexpected errors to an optional `onError`, risky settings to `onWarning` and the failures of an origin to `onOriginError` (R-API-1).
 - `createConfig()`, `configFromEnv( env )`, `configWarnings()`, the `Origin` interface with `createOrigin()`, `createLocalOrigin()` and `createHttpOrigin()`, `createS3Origin()`, `isBlockedAddress()`, `parseQuery()`, `createServer()`, the URL schemes `queryScheme` and `cloudflareScheme` with their `SCHEMES` registry and the `UrlScheme` type (`{ name, parse( url, options ) }`, where `parse` returns `{ segments, ops }`, with `url` set for a URL source, or `null`), and the other types are exported too (R-API-2, S-1).

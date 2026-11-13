@@ -1,10 +1,10 @@
-# Sources (/js/chop/v0.2.1/sources.html)
+# Sources
 
 An original comes from one of four places, and every request reads exactly one of them:
 
-- **The data directory.** The default. A plain path like `/2026/05/photo.jpg` is a file under `dataDir`, with the path checks of [Responses](responses.html.md).
+- **The data directory.** The default. A plain path like `/2026/05/photo.jpg` is a file under `dataDir`, with the path checks of [Responses](responses.md).
 - **The configured origin.** With `CHOP_ORIGIN=https://uploads.example.com/base`, the same plain path is appended to the base URL: `/2026/05/photo.jpg` is fetched from `https://uploads.example.com/base/2026/05/photo.jpg`. Clients never supply a host. This is the recommended way to use a remote origin, and plain paths go to the origin instead of the data directory, so `CHOP_ORIGIN` can't be combined with an explicitly set `CHOP_DATA_DIR` or `--data`. The origin must be an `https://` URL without user information, a query string or a fragment, or `http://` with `CHOP_ORIGIN_ALLOW_HTTP=1`.
-- **An S3 bucket.** With `CHOP_ORIGIN=s3://my-bucket/uploads`, the plain path `/2026/05/photo.jpg` is the object `uploads/2026/05/photo.jpg` of the bucket, which chop reads with signed `GET` requests. It works with AWS S3 and with services that have an S3 API, like SeaweedFS, MinIO and Cloudflare R2, and it follows all the rules of the configured origin. See [S3 and S3-compatible storage](s3.html.md).
+- **An S3 bucket.** With `CHOP_ORIGIN=s3://my-bucket/uploads`, the plain path `/2026/05/photo.jpg` is the object `uploads/2026/05/photo.jpg` of the bucket, which chop reads with signed `GET` requests. It works with AWS S3 and with services that have an S3 API, like SeaweedFS, MinIO and Cloudflare R2, and it follows all the rules of the configured origin. See [S3 and S3-compatible storage](s3.md).
 - **URL sources.** With `CHOP_ALLOWED_HOSTS` set, a request can name the full URL of the original, and chop fetches it if the host is on the list. Plain paths keep their meaning, and only a path that starts with `http://` or `https://` is a URL source. Without the setting, which is the default, these URLs are a `404`.
 
 URL sources work in both schemes. In the `query` scheme the URL is the path and the query string is chop's arguments, and in the `cloudflare` scheme the URL comes after the options:
@@ -23,13 +23,13 @@ Each entry of `CHOP_ALLOWED_HOSTS` is a comma separated list item:
 | `uploads.example.com` | That host, on the default port of the scheme. |
 | `*.example.com` | Any subdomain at any depth, on a dot boundary, so `a.example.com` and `a.b.example.com` match, but `example.com` and `evilexample.com` don't. List the apex too if you need it. |
 | `uploads.example.com:8443` | That host on that port, and not on the default port. |
-| `*` | Every host, on the default ports. It can't be mixed with other entries, and it prints a warning on startup. See [Securing remote origins](security.html.md). |
+| `*` | Every host, on the default ports. It can't be mixed with other entries, and it prints a warning on startup. See [Securing remote origins](security.md). |
 
 Hosts are compared in lower case and without a trailing dot. International names must be written in punycode (`xn--...`). An empty list means no URL sources.
 
 Whatever the source, the original is downloaded into memory, up to `maxInputBytes`, before it is processed. `X-Bytes-Saved` is measured against the downloaded size, the `ETag` is still a hash of the output, and when re-encoding doesn't make the image smaller, the downloaded bytes are sent as they are. The type of the image is found from its content, and the `Content-Type` that the origin states is ignored.
 
-## What chop does for every remote fetch [#what-chop-does-for-every-remote-fetch]
+## What chop does for every remote fetch
 
 These apply to the configured origin and to URL sources, with any allow-list, including `*`:
 

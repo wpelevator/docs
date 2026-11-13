@@ -1,6 +1,6 @@
-# Library API (/js/wp-release/latest/library.html)
+# Library API
 
-### Exit codes [#exit-codes]
+### Exit codes
 
 | Code | Meaning |
 |---|---|
@@ -9,7 +9,7 @@
 | `2` | Invalid options, failed release checks, an existing SVN tag, a Git tag that exists with another release, or files that don't match the checksums |
 | `3` | Missing SVN credentials, or credentials that SVN rejected |
 
-## Library [#library]
+## Library
 
 ```js
 import { Logger, SvnDeploy, resolveDeployOptions } from '@wpelevator/wp-release';
@@ -62,32 +62,32 @@ const { tags } = await release.tag( { dryRun: true } );
 
 `ChangesetRelease` runs the `changeset` commands: `add()`, `getStatus()`, `version()` and `tag()`, plus `getPlan()`, `getPackages()` and `getConfiguredPackages()`. Each call reads the configuration, packages and pending changesets again, so one instance can version and then tag. `getConfiguredPackages()` returns package directories with their resolved release group metadata; `formatTag()` and `formatTemplate()` apply the same placeholders as the release workflows. It takes a git runner from `createGitRunner()` as `git`, so that tests can replace it. Without a config file, it detects a single root project. Its optional `singleProject` settings accept `versions` (the existing version descriptors), `versionFrom` (the same selector as `--version-from`), `baseBranch`, `remote`, `changesets`, `readmeChangelog` and `changelogInsertAfter`; `tagFormat` remains a repository option. The functions `addChangeset()`, `getChangesetStatus()`, `versionChangesets()`, `tagChangesets()`, `getChangesetReleasePlan()`, `getChangesetPackages()` and `getConfiguredPackages()` do the same with the default runners, in one call.
 
-### Signing [#signing]
+### Signing
 
 The Ed25519 key handling and the WordPress, minisign and OpenSSH signature formats live in the [`@wpelevator/signatures`](https://www.npmjs.com/package/@wpelevator/signatures) package, which `@wpelevator/wp-release` depends on. It still re-exports the signing functions that it has always exported; the bytes-first functions and error guards are only in `@wpelevator/signatures`. The wp-release functions read the key from `WP_RELEASE_SIGNING_KEY` and report invalid input as a `ValidationError` with the original error as its `cause`; the `@wpelevator/signatures` functions use `SIGNING_KEY` by default and throw a `SigningError`.
 
-### ZIP archives [#zip-archives]
+### ZIP archives
 
 Reproducible archives and safe extraction live in the [`@wpelevator/zip`](https://www.npmjs.com/package/@wpelevator/zip) package, which `@wpelevator/wp-release` depends on. It still exports `createZip()`, `readZipEntries()`, `getZipEntryErrors()`, `extractZip()`, `ZIP_MTIME` and `ZIP_FILE_MODE` with their `sourceDir`, `files` and `zipPath` inputs, and reports invalid input as a `ValidationError` with the original error as its `cause`. The zip package takes a list of `{ source, name }` entries, where the source is a file path or bytes, and can create and read archives in memory. Entries have the fixed `ZIP_MTIME`, or the `SOURCE_DATE_EPOCH` time when that environment variable is set.
 
-### File selection [#file-selection]
+### File selection
 
 Gitignore-style file selection and directory syncing live in the [`@wpelevator/fileset`](https://www.npmjs.com/package/@wpelevator/fileset) package, which `@wpelevator/wp-release` depends on. It still exports `resolveFileSelection()`, `loadFileRules()`, `selectFiles()`, `parseExclude()`, `syncDirectory()` and `copyFileIfChanged()` with the same inputs, and reports invalid input as a `ValidationError` with the original error as its `cause`. The fileset package has no Git dependency: it takes a function that lists more files to exclude, `listExcluded`, and `@wpelevator/wp-release` passes one that reads the `export-ignore` attribute with Git when `excludeGitattributes` is set. The ignore file name (`.distignore` by default) and the directories that a sync leaves alone (`.svn` by default) are options of the fileset package.
 
-### Checksums [#checksums]
+### Checksums
 
 Hashing, the checksums manifest formats and their comparison live in the [`@wpelevator/checksums`](https://www.npmjs.com/package/@wpelevator/checksums) package, which `@wpelevator/wp-release` depends on. It still exports `createChecksums()`, `writeChecksums()`, `readChecksums()`, `parseChecksums()`, `verifyChecksums()`, `compareChecksums()`, `hashFile()`, `hashFiles()` and the `wordpressCodec` and `sha256sumCodec` codecs with the same inputs and output, and reports invalid input as a `ValidationError` with the original error as its `cause`. The checksums package takes a plain list of file paths instead of file rules, hashes bytes and streams with `hashBytes()` and `hashStream()`, and keeps the plugin or theme slug and version as generic `metadata` next to the `files`, which `@wpelevator/wp-release` fills in. Manifests are written byte for byte as before.
 
-### Translations [#translations]
+### Translations
 
 Extracting translatable strings from PHP, JavaScript and `block.json` sources, building catalogs, writing POT files, compiling PO files to MO, script JSON and `.l10n.php`, and auditing live in the [`@wpelevator/wp-gettext`](https://www.npmjs.com/package/@wpelevator/wp-gettext) package, which `@wpelevator/wp-release` depends on. It still exports the same functions, like `extractCatalog()`, `generatePackagePot()`, `serializePot()`, `parseTranslatedPo()` and `compileTranslations()`, with the same inputs and output, and reports invalid input as a `ValidationError` with the original error as its `cause`. The wp-gettext package doesn't read plugin and theme headers: it takes the header details as a `meta` input, which `@wpelevator/wp-release` reads from the main file with its own package metadata reader. `resolveI18nPackages()`, which selects the configured packages, stays in `@wpelevator/wp-release`. Importing the main entry of `@wpelevator/wp-gettext` doesn't load the PHP and JavaScript parsers, which are in the `/php` and `/javascript` sub-paths.
 
-### Logging [#logging]
+### Logging
 
 `Logger` filters messages by level and passes them to a writer, like the transports of other Node.js loggers. The writer decides how messages look:
 
 - `TextWriter` prints plain text to `stdout` and `stderr`. It's the default.
-- `GitHubActionsWriter` prints [workflow commands](cli.html.md#github-actions-annotations-and-job-summaries), so that notices, warnings and errors with a file are annotations, and appends summaries to `GITHUB_STEP_SUMMARY`. It's the CLI's `github` log format, and the GitHub Actions pass it to their logger. Its `workspace` and `summaryPath` options default to `GITHUB_WORKSPACE` and `GITHUB_STEP_SUMMARY`.
+- `GitHubActionsWriter` prints [workflow commands](cli.md#github-actions-annotations-and-job-summaries), so that notices, warnings and errors with a file are annotations, and appends summaries to `GITHUB_STEP_SUMMARY`. It's the CLI's `github` log format, and the GitHub Actions pass it to their logger. Its `workspace` and `summaryPath` options default to `GITHUB_WORKSPACE` and `GITHUB_STEP_SUMMARY`.
 
 ```js
 import { GitHubActionsWriter, Logger, logError } from '@wpelevator/wp-release';
