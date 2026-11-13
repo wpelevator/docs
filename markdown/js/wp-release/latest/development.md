@@ -18,7 +18,7 @@ The `wpelevator-source` export condition points at `src/index.ts`. The wp-releas
 
 `execute( 'deploy svn', args, { cwd, logger, svnRunner } )` runs a single-plugin deployment or a configured plan or deployment. The optional `svnRunner` replaces the external command runner in both modes; without it, the command uses its normal runner.
 
-### Architecture
+## Architecture
 
 wp-release has two layers, so that it fits any repository layout:
 

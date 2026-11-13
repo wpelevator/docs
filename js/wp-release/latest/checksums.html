@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Write a checksums manifest – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="List every shipped file with its MD5 and SHA-256 hash, in the format of the WordPress.org checksums API.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/checksums.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Write a checksums manifest – wp-release">
+  <meta property="og:description" content="List every shipped file with its MD5 and SHA-256 hash, in the format of the WordPress.org checksums API.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html#article",
+      "headline": "Write a checksums manifest",
+      "description": "List every shipped file with its MD5 and SHA-256 hash, in the format of the WordPress.org checksums API.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Write a checksums manifest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/checksums.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html" aria-current="page">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Write a checksums manifest</h1><p class="lede">List every shipped file with its MD5 and SHA-256 hash, in the format of the WordPress.org checksums API.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/checksums.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/checksums.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>A checksums manifest lists every file of a release with its hash. <a href="verify.html"><code>verify</code></a> uses it to prove that a ZIP, a directory or an installed plugin is unchanged. The easiest way to write one is to build it with the ZIP:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--checksums</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip
+/home/me/my-plugin/my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The manifest has the format of the WordPress.org plugin checksums API:</p>
+<div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+	<span class="token property">"plugin"</span><span class="token operator">:</span> <span class="token string">"my-plugin"</span><span class="token punctuation">,</span>
+	<span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.4.2"</span><span class="token punctuation">,</span>
+	<span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token property">".distignore"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token property">"md5"</span><span class="token operator">:</span> <span class="token string">"&lt;md5>"</span><span class="token punctuation">,</span>
+			<span class="token property">"sha256"</span><span class="token operator">:</span> <span class="token string">"&lt;sha256>"</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token property">"includes/class-thing.php"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token property">"md5"</span><span class="token operator">:</span> <span class="token string">"&lt;md5>"</span><span class="token punctuation">,</span>
+			<span class="token property">"sha256"</span><span class="token operator">:</span> <span class="token string">"&lt;sha256>"</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token property">"my-plugin.php"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token property">"md5"</span><span class="token operator">:</span> <span class="token string">"&lt;md5>"</span><span class="token punctuation">,</span>
+			<span class="token property">"sha256"</span><span class="token operator">:</span> <span class="token string">"&lt;sha256>"</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token property">"readme.txt"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token property">"md5"</span><span class="token operator">:</span> <span class="token string">"&lt;md5>"</span><span class="token punctuation">,</span>
+			<span class="token property">"sha256"</span><span class="token operator">:</span> <span class="token string">"&lt;sha256>"</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The standalone <code>checksums</code> command writes the same manifest for a directory without building a ZIP. The <a href="https://github.com/wpelevator/wp-release-checksums"><code>wp-release-checksums</code></a> GitHub Action runs it.</p>
+<h2 id="the-manifest" tabindex="-1"><a class="header-anchor" href="#the-manifest">The manifest</a></h2>
+<p><code>checksums</code> writes a manifest with the MD5 and SHA-256 hash of every selected file, in the format of the WordPress.org plugin checksums API (<code>https://downloads.wordpress.org/plugin-checksums/{slug}/{version}.json</code>). Paths are relative to the plugin or theme folder, sorted, and use forward slashes:</p>
+<div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+	<span class="token property">"plugin"</span><span class="token operator">:</span> <span class="token string">"my-plugin"</span><span class="token punctuation">,</span>
+	<span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.2.0"</span><span class="token punctuation">,</span>
+	<span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token property">"my-plugin.php"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+			<span class="token property">"md5"</span><span class="token operator">:</span> <span class="token string">"…"</span><span class="token punctuation">,</span>
+			<span class="token property">"sha256"</span><span class="token operator">:</span> <span class="token string">"…"</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Themes use a <code>theme</code> key instead of <code>plugin</code>, and the version is left out when it's unknown. The manifest is named <code>{slug}.{version}.checksums.json</code> after <code>--filename-format</code>, the same name as the ZIP with <code>.checksums.json</code> instead of <code>.zip</code>, so the two are published side by side; <code>--output &lt;file&gt;</code> writes it elsewhere. A manifest written inside <code>&lt;source-dir&gt;</code> is never listed in itself.</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token comment"># Hash the build that is zipped and deployed</span>
+wp-release checksums dist <span class="token parameter variable">--version</span> <span class="token number">1.2</span>.0</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Because the manifest lists the files and not the ZIP, it stays valid for any copy of the same files: the GitHub release ZIP, the ZIP that WordPress.org builds from SVN, or an installed plugin on a site.</p>
+<h2 id="filenames-embedding-and-signing" tabindex="-1"><a class="header-anchor" href="#filenames-embedding-and-signing">Filenames, embedding and signing</a></h2>
+<p><code>--checksums-file &lt;file&gt;</code> enables checksums and sets a relative filename independently of the ZIP name. Without <code>--embed-checksums</code>, it resolves against the ZIP output directory; with embedding, it resolves against the package root inside the ZIP (the archive root with <code>--no-root-folder</code>). Nested paths are supported, but absolute paths, backslashes, drive letters, control characters and dot segments are rejected. Embedding emits no external manifest and never modifies the source directory. Embedded minisign signatures contain a signing timestamp, so ZIP bytes can differ across signing times; unsigned metadata and WordPress/SSH signatures remain deterministic. Selected source files must not collide with generated manifest or signature entries.</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token comment"># External manifest beside releases/my-plugin.1.5.1.zip.</span>
+wp-release <span class="token function">zip</span> dist <span class="token parameter variable">--output</span> releases/my-plugin.1.5.1.zip --checksums-file checksums.json --sign-checksums
+
+<span class="token comment"># Signed manifest inside the package, with a stable filename.</span>
+wp-release <span class="token function">zip</span> dist <span class="token parameter variable">--output</span> releases/my-plugin.1.5.1.zip --checksums-file checksums.json --embed-checksums --sign-checksums
+
+<span class="token comment"># Sign the completed downloadable archive separately.</span>
+wp-release sign releases/my-plugin.1.5.1.zip
+
+<span class="token comment"># Verify installed files or an archive using its embedded manifest.</span>
+wp-release verify installed-plugin --public-key <span class="token string">"<span class="token variable">$PUBLIC_KEY</span>"</span>
+wp-release verify <span class="token parameter variable">--zip</span> releases/my-plugin.1.5.1.zip --public-key <span class="token string">"<span class="token variable">$PUBLIC_KEY</span>"</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>--sign-checksums</code> enables checksums and signs only the manifest, before embedding when requested. It reads <code>WP_RELEASE_SIGNING_KEY</code> and uses <code>--sign-format wordpress,minisign,ssh</code> to select formats; each signature travels with the manifest. <code>--sign-format</code> selects formats for explicitly requested signing targets and never enables signing. <code>--sign</code> signs only the final ZIP; <code>--sign-checksums</code> controls the manifest in either placement mode. Use both flags to sign both targets. <code>--force</code> permits replacing external output files and signatures. <code>--json</code> reports external manifests in <code>checksumsPath</code>, embedded package-relative paths in <code>checksumsEmbedded</code>, and manifest signatures in <code>checksumsSignatures</code>.</p>
+<p>The default WordPress filename remains the ZIP basename with <code>.checksums.json</code> instead of <code>.zip</code>, in either placement mode. Choose <code>--checksums-file checksums.json</code> for a stable name. The version remains in the JSON content.</p>
+<h2 id="formats" tabindex="-1"><a class="header-anchor" href="#formats">Formats</a></h2>
+<p><code>--checksums-format</code> chooses the manifest format. <code>wordpress-json</code> (default) uses the WordPress-compatible structure shown above. <code>sha256sum</code> uses GNU-compatible SHA-256 lines and escaping, with <code>SHA256SUMS</code> as its default filename. It carries no package identity or version, and standard <code>sha256sum --check</code> checks listed files without rejecting additional files; <code>wp-release verify</code> also checks for extra files.</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release <span class="token function">zip</span> dist --embed-checksums --checksums-format sha256sum --sign-checksums --sign-format minisign
+wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.5.1.zip --checksums-format sha256sum --public-key <span class="token string">"<span class="token variable">$MINISIGN_PUBLIC_KEY</span>"</span> --signature-format minisign
+<span class="token comment"># From the extracted package directory:</span>
+minisign <span class="token parameter variable">-Vm</span> SHA256SUMS <span class="token parameter variable">-P</span> <span class="token string">"<span class="token variable">$MINISIGN_PUBLIC_KEY</span>"</span>
+sha256sum <span class="token parameter variable">--check</span> SHA256SUMS</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>--checksums-algorithms md5,sha256</code> selects JSON digest fields; lists replace configured lists. Supported algorithms are MD5 (for compatibility) and SHA-256. The <code>sha256sum</code> codec requires SHA-256. The standalone <code>checksums</code> command also accepts <code>--checksums-format</code>, keeping <code>--output</code> relative to the working directory.</p>
+<h2 id="configuration-and-custom-codecs" tabindex="-1"><a class="header-anchor" href="#configuration-and-custom-codecs">Configuration and custom codecs</a></h2>
+<p>The optional top-level <code>integrity</code> configuration maps to these flags. Explicit CLI values override configuration; <code>--no-embed-checksums</code> and <code>--no-sign-checksums</code> disable their configured behaviors. Existing release configurations retain their <code>packages</code> array; use <code>packages: []</code> for a configuration containing only integrity settings.</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">packages</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">integrity</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">codec</span><span class="token operator">:</span> <span class="token string">'wordpress-json'</span><span class="token punctuation">,</span> <span class="token comment">// --checksums-format</span>
+    <span class="token literal-property property">algorithms</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'md5'</span><span class="token punctuation">,</span> <span class="token string">'sha256'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// --checksums-algorithms</span>
+    <span class="token literal-property property">file</span><span class="token operator">:</span> <span class="token string">'checksums.json'</span><span class="token punctuation">,</span> <span class="token comment">// --checksums-file</span>
+    <span class="token literal-property property">embed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// --embed-checksums</span>
+    <span class="token literal-property property">sign</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">formats</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'wordpress'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// --sign-checksums and --sign-format</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Use <code>codec: 'sha256sum'</code>, <code>algorithms: ['sha256']</code>, <code>file: 'SHA256SUMS'</code> and <code>sign: { formats: ['minisign'] }</code> for the GNU setup. Custom codecs provide <code>id</code>, a default <code>filename</code>, and <code>encode</code>/<code>decode</code> callbacks, which may be asynchronous. Generation validates the round trip before writing artifacts: codecs must preserve all selected file paths, represented digests and any represented package identity. They receive and return the existing WordPress-compatible <code>ChecksumsManifest</code> model (<code>plugin</code> or <code>theme</code>, optional <code>version</code>, and a <code>files</code> map of relative paths to digest fields), keeping format customization separate from selection, hashing and signing.</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">packages</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">integrity</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">file</span><span class="token operator">:</span> <span class="token string">'metadata/integrity.json'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">embed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">sign</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">formats</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'wordpress'</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">codec</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">'custom-v1'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">'integrity.json'</span><span class="token punctuation">,</span>
+      <span class="token function">encode</span><span class="token punctuation">(</span><span class="token parameter">manifest</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">schema</span><span class="token operator">:</span> <span class="token string">'custom-v1'</span><span class="token punctuation">,</span> <span class="token literal-property property">payload</span><span class="token operator">:</span> manifest <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">decode</span><span class="token punctuation">(</span><span class="token parameter">bytes</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> document <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token string">'utf8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>document<span class="token punctuation">.</span>schema <span class="token operator">!==</span> <span class="token string">'custom-v1'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Unknown integrity schema.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> document<span class="token punctuation">.</span>payload<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>zip</code> and <code>checksums</code> read the caller's release configuration. For verification of custom codecs or configured filenames, pass <code>--config wp-release.config.mjs</code> explicitly. See <a href="verify.html">Verify</a>.</p>
+<h2 id="manifest-inside-the-plugin" tabindex="-1"><a class="header-anchor" href="#manifest-inside-the-plugin">Manifest inside the plugin</a></h2>
+<p>For a manifest that is also published as a separate release asset or deployed directly from a source directory, write and sign it in that directory before packaging. Use <code>zip --embed-checksums</code> as described <a href="#filenames-embedding-and-signing">above</a> when only the archive should contain the generated metadata. The source-directory workflow uses the same manifest for installed copies and release assets:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release checksums build <span class="token parameter variable">--slug</span> my-plugin <span class="token parameter variable">--output</span> build/checksums.json
+wp-release sign build/checksums.json
+wp-release <span class="token function">zip</span> build <span class="token parameter variable">--slug</span> my-plugin
+wp-release deploy svn build <span class="token parameter variable">--trunk</span> --svn-tag <span class="token number">1.2</span>.0</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<ul>
+<li>
+<p>Write the manifest into the directory that is zipped and deployed. The <code>checksums</code> command leaves its output manifest and its signatures (<code>&lt;name&gt;.sig</code>, <code>&lt;name&gt;.minisig</code> and <code>&lt;name&gt;.sshsig</code>) out of the hashes, so running it again with the same output path and <code>--force</code> gives the same manifest. <code>verify</code> checks matching copies as described below. Sign it last, since the signature covers the exact bytes of the manifest.</p>
+</li>
+<li>
+<p><code>zip</code> and <code>deploy svn</code> carry the pair like any other file. Don't use <code>zip --checksums</code> here, since it would write a second manifest that lists the first one. Attach <code>build/checksums.json</code> and <code>build/checksums.json.sig</code> to the GitHub release as they are.</p>
+</li>
+<li>
+<p>The signature covers file hashes and not a ZIP, so it stays valid for the ZIP that WordPress.org builds from SVN. Check what WordPress.org serves after a deploy, with the manifest and public key from your build:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release verify <span class="token parameter variable">--zip</span> https://downloads.wordpress.org/plugin/my-plugin.1.2.0.zip <span class="token punctuation">\</span>
+  <span class="token parameter variable">--checksums</span> build/checksums.json --public-key <span class="token string">"<span class="token variable">$PUBLIC_KEY</span>"</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+</li>
+<li>
+<p>The manifest can have any name and location, for example <code>--output build/includes/signatures/checksums.json</code>, and missing folders are created. Tell <code>verify</code> where the shipped copy is with <code>--embedded &lt;path&gt;</code>, like <code>--embedded includes/signatures/checksums.json</code>. Both the <code>--checksums</code> file and its signature must then exist, both copies must be shipped, and they're skipped when comparing files and must be identical to the originals. The manifest can't list the embedded path. Without <code>--embedded</code>, <code>verify</code> looks for the manifest name at the root, and skips a file only when it exists, the matching original exists and the manifest doesn't list it. Otherwise it's checked like any other file, so a listed file that has the name of the manifest can't be deleted unnoticed, and a shipped <code>.sig</code> without an original is reported as not in the checksums.</p>
+</li>
+</ul>
+<p>The public key has to come from somewhere other than the plugin that it checks, because someone who can overwrite the plugin files can also replace a key and a signature inside them. A copy of the manifest also doesn't prevent a downgrade to an older release that was signed too, so the installing side has to enforce a minimum version.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/version-check.html"><small>Previous</small>Check versions before you release</a><a rel="next" href="/docs/js/wp-release/latest/verify.html"><small>Next</small>Verify a ZIP or directory</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

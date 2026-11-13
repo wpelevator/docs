@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Release from GitHub Actions – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Turn changesets in pull requests into a release pull request, a version tag and a GitHub Release with two workflows.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/release-workflow.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Release from GitHub Actions – wp-release">
+  <meta property="og:description" content="Turn changesets in pull requests into a release pull request, a version tag and a GitHub Release with two workflows.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html#article",
+      "headline": "Release from GitHub Actions",
+      "description": "Turn changesets in pull requests into a release pull request, a version tag and a GitHub Release with two workflows.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Release from GitHub Actions", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/release-workflow.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html" aria-current="page">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Release from GitHub Actions</h1><p class="lede">Turn changesets in pull requests into a release pull request, a version tag and a GitHub Release with two workflows.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/release-workflow.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/release-workflow.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>A release takes three moves, and a workflow does the last two:</p>
+<ol>
+<li>A contributor runs <code>changeset add</code> in the pull request. It asks for the bump and the release note, and writes a small Markdown file that is committed with the pull request.</li>
+<li>When it merges, a workflow versions the plugin and opens a release pull request.</li>
+<li>When the release pull request merges, a workflow tags the commit and creates the GitHub Release.</li>
+</ol>
+<p>Nobody writes that file by hand. In a terminal, <code>changeset add</code> asks for the packages, the bump of each and the release note. The same run with options, which is what a script or an AI agent uses:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release changeset <span class="token function">add</span> <span class="token parameter variable">--bump</span> minor <span class="token parameter variable">--summary</span> <span class="token string">"Add a settings page."</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Created /home/me/my-plugin/.changeset/a1b2c3d4.md.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The file that it wrote:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">---
+&quot;my-plugin&quot;: minor
+---
+
+Add a settings page.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>After the pull request merges, <code>changeset version</code> applies it. This is what the workflow puts in the release pull request:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">my-plugin: 1.4.2 → 1.5.0 (minor)</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>It also changes the <code>Version</code> header and the readme <code>Stable tag</code>, and adds the entry to <code>CHANGELOG.md</code>. After the merge, <code>changeset tag</code> creates the tag. Without a config file, tags are named <code>v{version}</code>; the config in the first workflow below names them <code>1.5.0</code>:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Created v1.5.0</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The sections below have the workflows, the data they pass between steps and what to do when the tag must contain built files. Install the CLI in your project first:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">npm</span> <span class="token function">install</span> --save-dev @wpelevator/wp-release</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Projects without Node.js can run the same flow with <a href="../../../php/php-changesets/latest/index.html">PHP Changesets</a>.</p>
+<h2 id="check-pull-requests" tabindex="-1"><a class="header-anchor" href="#check-pull-requests">Check pull requests</a></h2>
+<p>There are no dedicated build or changeset wrapper actions. Install the CLI in your project and run it directly. A root npm package can check a pull request with:</p>
+<div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v7
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v6
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">24</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm ci
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npx <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>install wp<span class="token punctuation">-</span>release changeset status <span class="token punctuation">-</span><span class="token punctuation">-</span>since origin/main</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>For a plugin with several version targets, put the same descriptor flags in npm scripts for all four changeset commands. Full Git history and tags are needed for comparisons, Git version sources and release notes. Keep the checkout directory name consistent when it supplies the changeset identifier. Directory artifacts use <code>npx --no-install wp-release build --output dist/my-plugin --github-output</code>; upload that directory with your artifact action. <code>build</code> writes manifest sidecars outside the directory and does not accept the ZIP-only embedding, codec or manifest-filename flags.</p>
+<h2 id="open-the-release-pull-request-and-tag-the-release" tabindex="-1"><a class="header-anchor" href="#open-the-release-pull-request-and-tag-the-release">Open the release pull request and tag the release</a></h2>
+<p>A repository with one package needs two workflows after the pull request check above: one that opens the release pull request when changesets reach the base branch, and one that tags the release when the versioned files do. This example is for a plugin at the repository root with this config, where the plugin header is the only version source and target, and tags are plain versions like <code>1.2.0</code>:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> defineConfig<span class="token punctuation">,</span> wordpressPluginVersion <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">baseBranch</span><span class="token operator">:</span> <span class="token string">'main'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">packages</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token literal-property property">glob</span><span class="token operator">:</span> <span class="token string">'.'</span><span class="token punctuation">,</span>
+			<span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span><span class="token punctuation">,</span> <span class="token comment">// Pins the identifier, which falls back to the checkout directory name.</span>
+			<span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+				<span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token function">wordpressPluginVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+				<span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token function">wordpressPluginVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>prepare-release.yml</code> versions the pending changesets on every push to <code>main</code> that touches <code>.changeset/</code>, and opens or updates a release pull request with the result. The step that opens the pull request is skipped when no release is pending, since <code>releases</code> is an empty list then and <code>releases[0]</code> reads as <code>null</code>. The version step always runs, so <code>fromJSON()</code> never reads the empty output of a skipped step:</p>
+<div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Prepare Release
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> main <span class="token punctuation">]</span>
+    <span class="token key atrule">paths</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">'.changeset/**'</span> <span class="token punctuation">]</span>
+
+<span class="token key atrule">permissions</span><span class="token punctuation">:</span>
+  <span class="token key atrule">contents</span><span class="token punctuation">:</span> write
+  <span class="token key atrule">pull-requests</span><span class="token punctuation">:</span> write
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">version</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span><span class="token number">24.04</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v7
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v6
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">24</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm ci
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Version the pending changesets
+        <span class="token key atrule">id</span><span class="token punctuation">:</span> version
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> npx <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>install wp<span class="token punctuation">-</span>release changeset version <span class="token punctuation">-</span><span class="token punctuation">-</span>github<span class="token punctuation">-</span>output
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Open or update the release pull request
+        <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.version.outputs.result ).releases<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token tag">!=</span> null <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> peter<span class="token punctuation">-</span>evans/create<span class="token punctuation">-</span>pull<span class="token punctuation">-</span>request@v7
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">branch</span><span class="token punctuation">:</span> release/$<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.version.outputs.result ).releases<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.nextVersion <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">delete-branch</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">commit-message</span><span class="token punctuation">:</span> <span class="token string">'Release ${{ fromJSON( steps.version.outputs.result ).releases[0].nextVersion }}'</span>
+          <span class="token key atrule">title</span><span class="token punctuation">:</span> <span class="token string">'Release ${{ fromJSON( steps.version.outputs.result ).releases[0].nextVersion }}'</span>
+          <span class="token key atrule">body</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.version.outputs.result ).releases<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.changelog <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Pull requests opened with the default <code>GITHUB_TOKEN</code> don't trigger the pull request workflows, like the changeset check. Pass a personal access token or a GitHub App token as <code>token</code> to <code>create-pull-request</code> when the release pull request needs its checks.</p>
+<p><code>tag-release.yml</code> runs on every push to <code>main</code> and tags the commit when it releases a new version. <code>changeset tag</code> creates a tag only when it doesn't exist, and <code>--since HEAD^1</code> limits it to the packages that the pushed commit changed. A push that doesn't change the package has nothing to tag, and one that changes it without a version bump finds its tag already there. So the workflow needs no trigger on the merged release pull request or its merge commit. Tags pushed with the default <code>GITHUB_TOKEN</code> don't trigger other workflows, so check out with a personal access token or a GitHub App token when a workflow listens for the tag or the GitHub Release, like a deploy. Both a squash merge and a merge commit work, since <code>HEAD^1</code> is the previous commit on the base branch in both:</p>
+<div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Tag Release
+
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">push</span><span class="token punctuation">:</span>
+    <span class="token key atrule">branches</span><span class="token punctuation">:</span> <span class="token punctuation">[</span> main <span class="token punctuation">]</span>
+
+<span class="token key atrule">permissions</span><span class="token punctuation">:</span>
+  <span class="token key atrule">contents</span><span class="token punctuation">:</span> write
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">tag</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span><span class="token number">24.04</span>
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v7
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v6
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">node-version</span><span class="token punctuation">:</span> <span class="token number">24</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm ci
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Tag and push the release
+        <span class="token key atrule">id</span><span class="token punctuation">:</span> tag
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> npx <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>install wp<span class="token punctuation">-</span>release changeset tag <span class="token punctuation">-</span><span class="token punctuation">-</span>since HEAD^1 <span class="token punctuation">-</span><span class="token punctuation">-</span>push <span class="token punctuation">-</span><span class="token punctuation">-</span>github<span class="token punctuation">-</span>output
+
+      <span class="token comment"># Skipped when the push didn't change the package, since tags is empty then.</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Create the GitHub Release
+        <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.tag.outputs.result ).tags<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token tag">!=</span> null <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">uses</span><span class="token punctuation">:</span> softprops/action<span class="token punctuation">-</span>gh<span class="token punctuation">-</span>release@v3
+        <span class="token key atrule">with</span><span class="token punctuation">:</span>
+          <span class="token key atrule">tag_name</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.tag.outputs.result ).tags<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.tag <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">name</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.tag.outputs.result ).tags<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.title <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">body</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.tag.outputs.result ).tags<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.notes <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">prerelease</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.tag.outputs.result ).tags<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.prerelease <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The <code>--github-output</code> result of each command is the JSON that these expressions read. <code>changeset version</code> reports the <code>date</code>, whether it <code>changed</code> any file, and the <code>releases</code>:</p>
+<div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+	<span class="token property">"date"</span><span class="token operator">:</span> <span class="token string">"2026-10-12"</span><span class="token punctuation">,</span>
+	<span class="token property">"changed"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+	<span class="token property">"releases"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token property">"package"</span><span class="token operator">:</span> <span class="token string">"my-plugin"</span><span class="token punctuation">,</span>
+			<span class="token property">"bump"</span><span class="token operator">:</span> <span class="token string">"minor"</span><span class="token punctuation">,</span>
+			<span class="token property">"currentVersion"</span><span class="token operator">:</span> <span class="token string">"1.2.0"</span><span class="token punctuation">,</span>
+			<span class="token property">"nextVersion"</span><span class="token operator">:</span> <span class="token string">"1.3.0"</span><span class="token punctuation">,</span>
+			<span class="token property">"changelog"</span><span class="token operator">:</span> <span class="token string">"- Add a new feature."</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>changeset tag</code> reports the <code>tags</code> that it created or found, with <code>exists</code> and <code>created</code> telling the two apart:</p>
+<div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+	<span class="token property">"tags"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token property">"package"</span><span class="token operator">:</span> <span class="token string">"my-plugin"</span><span class="token punctuation">,</span>
+			<span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.3.0"</span><span class="token punctuation">,</span>
+			<span class="token property">"tag"</span><span class="token operator">:</span> <span class="token string">"1.3.0"</span><span class="token punctuation">,</span>
+			<span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"1.3.0"</span><span class="token punctuation">,</span>
+			<span class="token property">"notes"</span><span class="token operator">:</span> <span class="token string">"- Add a new feature."</span><span class="token punctuation">,</span>
+			<span class="token property">"prerelease"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+			<span class="token property">"exists"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+			<span class="token property">"created"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A repository with several packages reads the same lists, but needs a job for each release or tag, since <code>releases[0]</code> and <code>tags[0]</code> are only the first one. See the <code>Prepare Release</code> and <code>Tag Release</code> workflows of this repository for a monorepo that releases all packages in one pull request and tags each of them in its own workflow run.</p>
+<h2 id="built-files-in-the-release" tabindex="-1"><a class="header-anchor" href="#built-files-in-the-release">Built files in the release</a></h2>
+<p>What the release commit and the tag must contain depends on how the package is distributed:</p>
+<ul>
+<li>
+<p><strong>WordPress.org</strong> builds the ZIP contents from the tag, then runs <a href="deploy-svn.html"><code>deploy svn</code></a> from a workflow that is triggered by the tag, or by the GitHub Release that the workflow above creates. Nothing but the version files needs to be committed to the release branch.</p>
+</li>
+<li>
+<p><strong>GitHub Releases only</strong> has the tag workflow create the release as a draft, and a second workflow that listens for <code>release: published</code> builds the ZIP with <a href="build-a-zip.html"><code>zip</code></a> and attaches it to the release.</p>
+</li>
+<li>
+<p><strong>Anything that reads the tag as it is</strong>, like a ZIP built from the tag or an install from the repository, needs the built files that the repository ignores, like <code>vendor/</code> and <code>build/</code>, in the tag. Build them in the release workflow after <code>changeset version</code> and force-add them to the release branch commit. <code>create-pull-request</code> can't add ignored files, so the workflow pushes the branch and opens the pull request with <code>git</code> and <code>gh</code>. The files reach the base branch with the merge, so the tag points at a commit that has them:</p>
+<div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml">      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Version the pending changesets
+        <span class="token key atrule">id</span><span class="token punctuation">:</span> version
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> npx <span class="token punctuation">-</span><span class="token punctuation">-</span>no<span class="token punctuation">-</span>install wp<span class="token punctuation">-</span>release changeset version <span class="token punctuation">-</span><span class="token punctuation">-</span>github<span class="token punctuation">-</span>output
+
+      <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> Build and push the release branch
+        <span class="token key atrule">if</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.version.outputs.result ).releases<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token tag">!=</span> null <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+          <span class="token key atrule">VERSION</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.version.outputs.result ).releases<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.nextVersion <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">CHANGELOG</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> fromJSON( steps.version.outputs.result ).releases<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>.changelog <span class="token punctuation">}</span><span class="token punctuation">}</span>
+          <span class="token key atrule">GH_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> github.token <span class="token punctuation">}</span><span class="token punctuation">}</span>
+        <span class="token key atrule">run</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string">
+          composer install --no-dev --optimize-autoloader
+          npm run build
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -B "release/$VERSION"
+          git add --all
+          git add --force vendor build
+          git commit --message "Release $VERSION"
+          git push --force origin "release/$VERSION"
+          gh pr create --base main --head "release/$VERSION" --title "Release $VERSION" --body "$CHANGELOG" || gh pr edit "release/$VERSION" --title "Release $VERSION"</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/signing.html"><small>Previous</small>Sign releases</a><a rel="next" href="/docs/js/wp-release/latest/changesets.html"><small>Next</small>Changesets</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

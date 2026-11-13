@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Deployment – wp-release | WP Elevator Docs</title>
-  <meta name="description" content="The wp-release-deploy-svn GitHub Action runs this command.">
+  <title>Deploy – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/deployment.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Deployment – wp-release">
-  <meta property="og:description" content="The wp-release-deploy-svn GitHub Action runs this command.">
+  <meta property="og:title" content="Deploy – wp-release">
+  <meta property="og:description" content="Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html#article",
-      "headline": "Deployment",
-      "description": "The wp-release-deploy-svn GitHub Action runs this command.",
+      "headline": "Deploy",
+      "description": "Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Deployment", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html" }
+        { "@type": "ListItem", "position": 4, "name": "Deploy", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html" }
       ]
     }
   ]
@@ -116,15 +116,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html" aria-current="page">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html" aria-current="page">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -139,203 +161,47 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Deployment</h1>
+    <h1>Deploy</h1><p class="lede">Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/deployment.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/deployment.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="deploy-to-svn" tabindex="-1"><a class="header-anchor" href="#deploy-to-svn">Deploy to SVN</a></h2>
-<p>The <a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wp-release-deploy-svn</code></a> GitHub Action runs this command.</p>
-<p><code>deploy svn</code> syncs a plugin to the WordPress.org plugin SVN repository. Each SVN write is a separate flag and nothing is written unless requested. All writes go into one commit.</p>
+    <p>Deploys publish the files of a release. Pick the target:</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Flag</th>
-<th>Default</th>
-<th>Writes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--trunk</code></td>
-<td>off</td>
-<td>Sync the full source directory to <code>trunk/</code></td>
-</tr>
-<tr>
-<td><code>--readme-only</code></td>
-<td>off</td>
-<td>Sync only the readme to <code>trunk/</code>, for updates between releases such as bumping <code>Tested up to</code>. Can't be combined with <code>--svn-tag</code>.</td>
-</tr>
-<tr>
-<td><code>--svn-tag &lt;version&gt;</code></td>
-<td>off</td>
-<td>Create <code>tags/&lt;version&gt;</code>. With <code>--trunk</code>, the tag is a copy of the synced <code>trunk/</code>. Without it, the tag is built directly from the source files and <code>trunk/</code> is left alone, for pre-release tags. A leading <code>v</code> is stripped, so <code>v1.2.0</code> creates <code>tags/1.2.0</code>.</td>
-</tr>
-<tr>
-<td><code>--assets-dir &lt;dir&gt;</code></td>
-<td>not set</td>
-<td>Sync this directory with banners, icons and screenshots to the SVN <code>assets/</code> directory. There's no default directory, so assets are only deployed when this is set, and it must exist.</td>
-</tr>
-<tr>
-<td><code>--no-assets</code></td>
-<td></td>
-<td>Skip the <code>--assets-dir</code> sync for one run, for example when a config always passes <code>--assets-dir</code>.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Typical runs:</p>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token comment"># Deploy 1.2.0 to trunk and the tag, and update the assets</span>
-wp-release deploy svn dist <span class="token parameter variable">--trunk</span> --svn-tag <span class="token number">1.2</span>.0 --assets-dir .wordpress-org
-
-<span class="token comment"># Tag a pre-release build without touching trunk</span>
-wp-release deploy svn dist --svn-tag <span class="token number">1.2</span>.0-rc.1
-
-<span class="token comment"># Update only the readme between releases</span>
-wp-release deploy svn dist --readme-only
-
-<span class="token comment"># Update only the assets</span>
-wp-release deploy svn --assets-dir .wordpress-org
-
-<span class="token comment"># Deploy exactly the files of a ZIP built earlier</span>
-wp-release deploy svn --from-zip my-plugin.1.2.0.zip <span class="token parameter variable">--trunk</span> --svn-tag <span class="token number">1.2</span>.0</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>How a deploy works:</p>
-<ol>
-<li>The options are validated, including the slug, version and readme name, before they're used in URLs or paths.</li>
-<li>With <code>--trunk</code> or <code>--svn-tag</code>, the files must be a plugin whose <code>Version</code> header matches the version. When <code>--trunk</code> and <code>--svn-tag</code> are combined, the readme <code>Stable tag</code> must match too; a tag-only run skips that, since a pre-release tag doesn't change the stable tag. <code>--readme-only</code> needs the readme. Nothing is checked out when a check fails.</li>
-<li>The repository is checked out sparsely into a new temporary directory, with only the directories that the flags write to. A missing <code>assets/</code> (or <code>trunk/</code>, <code>tags/</code>) directory is created. The deploy stops when <code>tags/&lt;version&gt;</code> exists, unless <code>--force</code> replaces it.</li>
-<li>The files are synced in Node.js, without <code>rsync</code>: new and changed files are copied, files that are no longer selected are deleted, and <code>svn add</code> and <code>svn delete</code> stage them, including files that svn ignores by default. With <code>--trunk</code>, <code>trunk/</code> is then copied to the tag with <code>svn copy</code>. Without it, the same selected files are synced into <code>tags/&lt;version&gt;</code> instead, and with <code>--force</code> an existing tag is updated to match, deleting files that are no longer in the build.</li>
-<li>Asset images get <code>svn:mime-type</code> set for PNG, JPEG, GIF and SVG, the formats that WordPress.org documents for plugin assets. Other formats keep the type that svn assigns.</li>
-<li>When <code>svn status</code> is empty, the deploy ends without a commit. A dry run logs the status and stops before the commit. Otherwise the changes are committed, and the temporary directory is always removed.</li>
-</ol>
-<p><code>--from-zip</code> reads the files from a ZIP instead of <code>&lt;source-dir&gt;</code>. The ZIP is checked before it's extracted: entries with absolute paths, <code>..</code> segments or symbolic links, and entries outside a single <code>{slug}/</code> root folder, are rejected.</p>
-<p>Credentials are only needed for the commit, not for dry runs, no-op runs or <code>file://</code> repositories. Pass the username with <code>--svn-username</code> or <code>SVN_USERNAME</code> and the password in <code>SVN_PASSWORD</code>. svn always runs non-interactively without caching credentials, and the password is passed on the standard input with <code>--password-from-stdin</code>, never on the command line or in the logs.</p>
-<p>Validation:</p>
-<ul>
-<li><code>--readme-only</code> can't be combined with <code>--svn-tag</code>, since a tag is a release snapshot that a readme update never changes.</li>
-<li><code>--version</code> defaults to <code>--svn-tag</code>, then the <code>Version</code> header of the deployed files; when <code>--version</code> and <code>--svn-tag</code> are both set they must match.</li>
-<li>Pre-release versions like <code>1.0.0-rc.1</code> can be tagged, but syncing one to <code>trunk/</code> warns, since trunk is for the development version.</li>
-<li><code>--trunk</code> without <code>--svn-tag</code> works but warns, to remind you that updating trunk alone doesn't create a version tag for stable downloads.</li>
-<li>A version mismatch throws a <code>VersionMismatchError</code>, a <code>ValidationError</code> with the <code>mismatches</code> and a problem for each, with its file and line. See <a href="library.html#logging">Logging</a>.</li>
-</ul>
-<h2 id="deploy-to-git" tabindex="-1"><a class="header-anchor" href="#deploy-to-git">Deploy to Git</a></h2>
-<p><code>deploy git</code> deploys the selected files of a plugin, theme or package to a Git repository, like a distribution repository that ships the built files and <code>vendor/</code> for Composer installs or GitHub-hosted updates, or the release repository of a monorepo package. It selects files like <code>zip</code>, with <code>.distignore</code> and <code>--exclude</code>, so built files that git ignores in the source repository, like <code>build/</code> or <code>vendor/</code>, are released too. The source directory must be inside a Git repository, which provides the source history and stores the release objects before they're pushed.</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Default</th>
-<th>Writes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--branch &lt;name&gt;</code></td>
-<td>off</td>
-<td>Push the release to this branch</td>
-</tr>
-<tr>
-<td><code>--tag &lt;name&gt;</code></td>
-<td>off</td>
-<td>Create this tag for the release</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token comment"># Release a build to a distribution repository and tag it</span>
-wp-release deploy <span class="token function">git</span> build --git-url git@github.com:me/my-plugin-dist.git <span class="token parameter variable">--branch</span> main <span class="token parameter variable">--tag</span> <span class="token number">1.2</span>.0
-
-<span class="token comment"># Release a monorepo package with its own history</span>
-wp-release deploy <span class="token function">git</span> packages/my-plugin --split-prefix packages/my-plugin --git-url … <span class="token parameter variable">--branch</span> main</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>How a deploy works:</p>
-<ol>
-<li>The selected files are written to the object database of the source repository and become a tree, with a temporary index, so the working tree and the index of the repository are left alone. Executable files stay executable.</li>
-<li>The previous release is fetched: the tip of <code>--branch</code>, or for a tag-only deploy the tip of the repository's default branch (its <code>HEAD</code>), whatever that branch holds. Release a tag together with <code>--branch</code> to choose the branch it builds on.</li>
-<li>When the files are the same as in the previous release, that release is reused. Otherwise a release commit is created with the files, whose parents are the previous release and the source history: the source commit (<code>--source-ref</code>, default <code>HEAD</code>), or with <code>--split-prefix</code> the history of that directory, split with <a href="https://www.npmjs.com/package/@wpelevator/subtree-split"><code>@wpelevator/subtree-split</code></a> into the same commits as <code>git subtree split</code> makes. The repository keeps the source history, and <code>git log --first-parent</code> lists the releases.</li>
-<li>When the previous release on <code>--branch</code> already has newer source history, the branch isn't moved, so running an older build again, like a re-run of an earlier CI job, can't release older files. The source history is outdated when it's an older commit of the source history that the previous release was made from, its last parent. The split makes this reliable for <code>--split-prefix</code> too, since it creates the same commits for the same history. It needs the full history, so a shallow clone, like a checkout without <code>fetch-depth: 0</code>, fails. A revert is a new commit, so it's released, and with <code>--tag</code> the tag of an older build is still released, without moving the branch.</li>
-<li>The tag is checked in the repository first. A tag that already has the same files is the release: it's reused and nothing is pushed, so running a tag release again is a no-op. A tag with other files fails with exit code <code>2</code> before anything is pushed.</li>
-<li>The release is pushed to the branch, unless it didn't change or is outdated, and to the tag, in one atomic push. Pushes are never forced, so the branch only moves forward and a tag is never replaced, also when it was created in the meantime.</li>
-</ol>
-<p>To release a tag again, for example after a release with the wrong files, delete the tag in the repository (<code>git push &lt;url&gt; :refs/tags/&lt;tag&gt;</code>) and run the deploy again. There's no flag for replacing a tag, since installs, Composer and GitHub Actions pins trust that a published tag doesn't change.</p>
-<p><code>--dry-run</code> runs everything except the push. <code>--message</code> sets the commit message, which defaults to <code>Release &lt;tag or branch&gt; from &lt;source commit&gt;</code>. Credentials come from git, like a credential helper or an SSH key, and credentials in URLs are never printed. For an HTTPS repository on <code>github.com</code>, or on the host of <code>GITHUB_SERVER_URL</code> like GitHub Enterprise Server, the <code>GITHUB_TOKEN</code> environment variable is sent as an authorization header, like <code>actions/checkout</code> does, so the token stays out of the URL, the git arguments and the repository config, and it replaces the header that <code>actions/checkout</code> persists. Pass <code>token</code> to <code>resolveGitDeployOptions()</code> for another HTTPS host. The commit needs a git identity (<code>user.name</code> and <code>user.email</code>).</p>
-<h2 id="deploy-configured-packages" tabindex="-1"><a class="header-anchor" href="#deploy-configured-packages">Deploy configured packages</a></h2>
-<p><code>deploy git --release-ref &lt;ref&gt;</code> and <code>deploy svn --release-ref &lt;ref&gt;</code> deploy the packages of a monorepo, or of a single-package repository, to the targets in the <code>deploy</code> config of their package groups, like the release repository of each package or its WordPress.org plugin. The ref decides what's deployed: a release tag of a package, like <code>refs/tags/plugins/alpha/1.2.0</code> read with the <code>tagFormat</code>, deploys that package and version, and a branch, like <code>refs/heads/main</code>, deploys every package with a target for that branch. A name without <code>refs/</code> is a release tag when it matches the tag format of a package, otherwise a branch, and in GitHub Actions <code>$GITHUB_REF</code> is the pushed ref.</p>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token literal-property property">packages</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-	<span class="token punctuation">{</span>
-		<span class="token literal-property property">glob</span><span class="token operator">:</span> <span class="token string">'plugins/*'</span><span class="token punctuation">,</span>
-		<span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token function">wordpressPluginVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token function">wordpressPluginVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">wordpressStableTag</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-		<span class="token comment">// Files that the deploys ship, instead of each package's .distignore.</span>
-		<span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">distignore</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'.*'</span><span class="token punctuation">,</span> <span class="token string">'node_modules/'</span><span class="token punctuation">,</span> <span class="token string">'/tests/'</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-		<span class="token literal-property property">deploy</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-			<span class="token literal-property property">git</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-				<span class="token comment">// The release repository of each plugin, with its history.</span>
-				<span class="token punctuation">{</span> <span class="token function-variable function">repository</span><span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> <span class="token keyword">package</span><span class="token operator">:</span> pkg <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://github.com/me/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> pkg<span class="token punctuation">.</span>path<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span> <span class="token string">'/'</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.git</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">'Release {path} {ref} from {revision}'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-				<span class="token comment">// A mirror that only gets release tags, named v1.2.0.</span>
-				<span class="token punctuation">{</span> <span class="token function-variable function">repository</span><span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> <span class="token keyword">package</span><span class="token operator">:</span> pkg <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">https://gitlab.com/me/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> pkg<span class="token punctuation">.</span>path <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.git</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token literal-property property">branches</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token literal-property property">tag</span><span class="token operator">:</span> <span class="token string">'v{version}'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-			<span class="token punctuation">]</span><span class="token punctuation">,</span>
-			<span class="token literal-property property">svn</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token function-variable function">slug</span><span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> <span class="token keyword">package</span><span class="token operator">:</span> pkg <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">me-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> pkg<span class="token punctuation">.</span>path<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span> <span class="token string">'/'</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token literal-property property">assetsDir</span><span class="token operator">:</span> <span class="token string">'.wordpress-org'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-		<span class="token punctuation">}</span><span class="token punctuation">,</span>
-	<span class="token punctuation">}</span><span class="token punctuation">,</span>
-	<span class="token comment">// A package that isn't versioned, like a Docker image, only deploys branches.</span>
-	<span class="token punctuation">{</span> <span class="token literal-property property">glob</span><span class="token operator">:</span> <span class="token string">'docker/php-fpm'</span><span class="token punctuation">,</span> <span class="token literal-property property">deploy</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">git</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">repository</span><span class="token operator">:</span> <span class="token string">'https://github.com/me/php-fpm.git'</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Mode</th>
+<th>I want to</th>
 <th>Command</th>
-<th>Use</th>
+<th>Page</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>All</td>
-<td><code>deploy git --release-ref &lt;ref&gt;</code></td>
-<td>Deploy every package of the ref to each of its targets, one at a time, in one log group for each package. A failed deploy doesn't stop the others, and the command exits with <code>1</code> at the end.</td>
+<td>Publish a plugin to WordPress.org</td>
+<td><code>deploy svn</code></td>
+<td><a href="deploy-svn.html">Deploy to WordPress.org</a></td>
 </tr>
 <tr>
-<td>One package</td>
-<td><code>deploy git --release-ref &lt;ref&gt; --package &lt;name&gt;</code></td>
-<td>Deploy only that package (repeatable), by identifier or path, for example to retry a failed one or in a CI job for each package with its own credentials.</td>
+<td>Release built files to a distribution repository</td>
+<td><code>deploy git</code></td>
+<td><a href="deploy-git.html">Deploy to a Git repository</a></td>
 </tr>
 <tr>
-<td>Plan</td>
-<td><code>deploy git --release-ref &lt;ref&gt; --list</code></td>
-<td>List the deploys without running them, with each package, its version or branch and the targets with the tag or branch they get. With <code>--json</code> or <code>--github-output</code> the result is <code>{ packages: [ … ] }</code>, for a CI matrix with <code>include: ${{ fromJSON( steps.plan.outputs.result ).packages }}</code>.</td>
-</tr>
-<tr>
-<td>Single directory</td>
-<td><code>deploy git &lt;dir&gt; --git-url &lt;url&gt; [options]</code></td>
-<td>Deploy one directory without a config, as described above.</td>
+<td>Release every package of a monorepo to its own targets</td>
+<td><code>deploy git --release-ref</code>, <code>deploy svn --release-ref</code></td>
+<td><a href="deploy-packages.html">Deploy configured packages</a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p><code>deploy svn</code> has the same modes. <code>--release-ref</code> can't be combined with the options of a single target, like <code>--git-url</code>, <code>--tag</code> or <code>--svn-tag</code>, which come from the config.</p>
-<ul>
-<li><strong>Git targets</strong> take a <code>repository</code> and release both branches and tags by default. <code>branches</code> limits the branches, like <code>[ 'main' ]</code>, or turns them off with <code>false</code>, and <code>tag</code> is the tag template in the repository, <code>{version}</code> by default, or <code>false</code> to not release tags. A release tag is created on top of the default branch of the repository, and a branch is released to the same branch. <code>history: false</code> uses the source commit instead of the package history, and <code>message</code> sets the release commit message, <code>Release {ref} from {revision}</code> by default.</li>
-<li><strong>SVN targets</strong> only deploy release tags: a stable release syncs <code>trunk/</code>, creates its tag and syncs the <code>assetsDir</code>, and a pre-release only creates its tag. <code>slug</code>, the WordPress.org plugin slug, defaults to the name of the package directory, <code>url</code> to the WordPress.org plugin repository, and <code>message</code> sets the commit message. Credentials come from <code>SVN_USERNAME</code> and <code>SVN_PASSWORD</code>, or <code>--svn-username</code>.</li>
-<li><strong>Several targets</strong>: <code>git</code> and <code>svn</code> each take one target or a list, like a release repository and a mirror on another host. Each target is a separate deploy.</li>
-<li><strong>Credentials</strong>: a GitHub repository URL needs no token in it, since <code>GITHUB_TOKEN</code> is sent as an authorization header (see above). A callback can still add credentials for other hosts.</li>
-<li><strong>Templates and callbacks</strong>: <code>repository</code>, <code>slug</code> and <code>message</code> are templates with <code>{name}</code> and <code>{path}</code>, like the <code>tagFormat</code>, and <code>{version}</code>, <code>{branch}</code>, <code>{ref}</code> (the tag or branch that the deploy writes in the target) and <code>{revision}</code> (the source commit), or callbacks that receive <code>{ package, version, branch, ref, revision }</code>, where <code>package</code> has the <code>name</code>, <code>directory</code>, <code>path</code> and <code>type</code>. A callback can name a target after the package directory, choose another host for some packages, read the environment, or return nothing to skip the target for that package or ref; an empty <code>message</code> uses the default one. Credentials in URLs are never printed or listed.</li>
-<li><strong>Results</strong>: with <code>--json</code> or <code>--github-output</code>, the result lists each deploy in <code>deploys</code> with its <code>package</code>, <code>label</code>, <code>target</code> (the repository or WordPress.org plugin, with credentials redacted), <code>targetRef</code> (the tag or branch written there), <code>version</code> or <code>branch</code>, and its <code>result</code> or <code>error</code>. A remote target repository also has its <code>targetHost</code>, like <code>github.com</code>, and <code>targetPath</code>, like <code>me/my-plugin</code>, without credentials, for a workflow step that calls the API of the forge that hosts it, such as to create the release of the deployed tag. The targets of <code>--list</code> have the same <code>host</code> and <code>path</code>, and <code>parseRepositoryUrl()</code> reads them from an HTTP(S), SSH or scp-like URL. <code>wp-release</code> doesn't call forge APIs itself.</li>
-<li><strong>Packages without a version</strong>: a package entry without <code>version</code>, like a single directory with a <code>glob</code> of its path, isn't released with changesets, so changes to it don't need one, and it only deploys branches, since it has no release tags.</li>
-<li><strong>Files</strong>: <code>files.exclude</code> adds gitignore-style patterns relative to the package directory, and <code>files.distignore</code> sets the ignore file relative to it or turns it off with <code>false</code>. A <code>files</code> at the root of the config applies to every package group, for the rules that all packages share, and the <code>files</code> of a group add their patterns after it and can replace its ignore file. Without <code>files</code>, each package's <code>.distignore</code> applies, like for <code>zip</code>; there's no repository-wide <code>.distignore</code>, since each one is relative to its package. <code>zip --package &lt;name&gt;</code> zips a package with the same files, <code>getPackageFiles()</code> returns the directory and the file selection of any configured package, and <code>getDeployPackages()</code> lists the packages with deploy targets and their file selection.</li>
-</ul>
-<p>A deploy releases the files of the working tree, so build the packages first. One job that builds once and runs <code>deploy git --release-ref &quot;$GITHUB_REF&quot;</code> is the simplest setup, also for a branch that releases every package. A matrix with a job for each package from <code>--list</code> would build every package in every job, so build once and pass the built tree to the jobs as an artifact if you need one, for example for separate credentials.</p>
-<p>Other monorepo tools split the same way with less of the release in the config: <a href="https://github.com/symplify/monorepo-builder">Symplify MonorepoBuilder</a> and <a href="https://github.com/danharrin/monorepo-split-github-action"><code>danharrin/monorepo-split-github-action</code></a> push the source history of each package directory, with the packages and repositories listed in the workflow or a matrix, while <code>deploy git</code> releases the built files on top of that history, so <code>vendor/</code> and <code>build/</code> reach Composer and WordPress installs. Like the publishers of <a href="https://goreleaser.com/">GoReleaser</a>, targets are lists with templates, and pre-releases skip the targets where they would replace the stable version.</p>
+<p>All three read files like <code>zip</code> does: with <a href="file-selection.html"><code>.distignore</code> and <code>--exclude</code></a>, so build first and deploy what you built. Each supports <code>--dry-run</code>, which runs everything except the write, and a failed check exits with <code>2</code>. WordPress.org themes are released by uploading a ZIP, so <code>deploy svn</code> is for plugins only: use <a href="build-a-zip.html"><code>zip</code></a> for a theme.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/wp-release/latest/development.html"><small>Next</small>Development</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/prereleases.html"><small>Previous</small>Pre-releases and snapshots</a><a rel="next" href="/docs/js/wp-release/latest/deploy-svn.html"><small>Next</small>Deploy to WordPress.org</a>
 </nav>
 
   </main>

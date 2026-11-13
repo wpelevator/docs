@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Release a monorepo – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Configure packages, tags, dependents and separate release pull requests for repositories with several plugins, themes or libraries.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/monorepo-releases.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Release a monorepo – wp-release">
+  <meta property="og:description" content="Configure packages, tags, dependents and separate release pull requests for repositories with several plugins, themes or libraries.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html#article",
+      "headline": "Release a monorepo",
+      "description": "Configure packages, tags, dependents and separate release pull requests for repositories with several plugins, themes or libraries.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Release a monorepo", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/monorepo-releases.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html" aria-current="page">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Release a monorepo</h1><p class="lede">Configure packages, tags, dependents and separate release pull requests for repositories with several plugins, themes or libraries.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/monorepo-releases.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/monorepo-releases.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>A monorepo needs a config file, <code>wp-release.config.mjs</code>, that describes its packages. This one finds every directory under <code>js/</code>, <code>plugins/</code> and <code>php/</code> and says where each package keeps its version:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> composerJsonVersion<span class="token punctuation">,</span> defineConfig<span class="token punctuation">,</span> gitTagVersion<span class="token punctuation">,</span> packageJsonVersion<span class="token punctuation">,</span> wordpressPluginVersion<span class="token punctuation">,</span> wordpressStableTag <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">baseBranch</span><span class="token operator">:</span> <span class="token string">'main'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">changesets</span><span class="token operator">:</span> <span class="token string">'.changeset'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">readmeChangelog</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">changelogInsertAfter</span><span class="token operator">:</span> <span class="token string">'&lt;!-- changelog -->'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">root</span><span class="token operator">:</span> <span class="token string">'packages'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">tagFormat</span><span class="token operator">:</span> <span class="token string">'{path}/{version}'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">packages</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span> <span class="token literal-property property">glob</span><span class="token operator">:</span> <span class="token string">'js/*'</span><span class="token punctuation">,</span> <span class="token literal-property property">idFrom</span><span class="token operator">:</span> <span class="token string">'package.json#name'</span><span class="token punctuation">,</span> <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token function">packageJsonVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token function">packageJsonVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span> <span class="token literal-property property">glob</span><span class="token operator">:</span> <span class="token string">'plugins/*'</span><span class="token punctuation">,</span> <span class="token literal-property property">idFrom</span><span class="token operator">:</span> <span class="token string">'package.json#name'</span><span class="token punctuation">,</span> <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token function">wordpressPluginVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token function">wordpressPluginVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">wordpressStableTag</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">ifPresent</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">composerJsonVersion</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">ifPresent</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span> <span class="token literal-property property">glob</span><span class="token operator">:</span> <span class="token string">'php/*'</span><span class="token punctuation">,</span> <span class="token literal-property property">idFrom</span><span class="token operator">:</span> <span class="token string">'composer.json#name'</span><span class="token punctuation">,</span> <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token function">gitTagVersion</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">pattern</span><span class="token operator">:</span> <span class="token string">'{path}/{version}'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>version.from</code> selects the current version; <code>version.to</code> lists release targets. Use <code>phpConstantVersion( { file, constant } )</code> to sync a PHP constant.</p>
+<p>Every changeset command reads it. <code>changeset status</code> lists a release for each package that has a changeset, and <code>changeset tag</code> creates a tag for each, like <code>plugins/alpha/1.2.0</code>. The <a href="release-workflow.html">release workflow</a> shows how the commands run in CI, and this repository's own <code>Prepare Release</code> and <code>Tag Release</code> workflows release all of its packages in one pull request.</p>
+<h2 id="packages-and-tags" tabindex="-1"><a class="header-anchor" href="#packages-and-tags">Packages and tags</a></h2>
+<p>The config describes the repository, so wp-release assumes no directory structure or naming convention of its own:</p>
+<ul>
+<li>
+<p><strong>Packages</strong> are the directories that the <code>glob</code> of a <code>packages</code> entry matches under <code>root</code>, with <code>*</code>, <code>?</code> and <code>**</code>, like <code>plugins/*</code>, or <code>.</code> for a repository with one package at its root. The settings of an entry apply to each of its packages. Discovery never looks inside <code>.git</code>, <code>node_modules</code>, <code>vendor</code> or <code>dist</code> directories. A package is identified by its path, or with <code>idFrom</code> by the name in its <code>package.json</code> or <code>composer.json</code>, or with a literal <code>id</code> when the group matches exactly one package, and commands that take a package accept a path or identifier.</p>
+</li>
+<li>
+<p><strong>Templates</strong> name the tags and the deploy targets of a package with these placeholders:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Placeholder</th>
+<th>Value</th>
+<th><code>plugins/alpha</code></th>
+<th>Root package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{path}</code></td>
+<td>Package directory relative to <code>root</code>, empty for a package at the root</td>
+<td><code>plugins/alpha</code></td>
+<td>(empty)</td>
+</tr>
+<tr>
+<td><code>{name}</code></td>
+<td>Package identifier</td>
+<td><code>plugins/alpha</code>, or its manifest name with <code>idFrom</code></td>
+<td>the manifest name, or the directory name</td>
+</tr>
+<tr>
+<td><code>{version}</code></td>
+<td>Released version</td>
+<td><code>1.2.0</code></td>
+<td><code>1.2.0</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Deploy templates also have <code>{branch}</code>, <code>{ref}</code> and <code>{revision}</code> (see <a href="deploy-packages.html">Deploy configured packages</a>), and any template can be a callback that receives the package, for names that the placeholders don't cover, like the last directory of the path.</p>
+</li>
+<li>
+<p><strong><code>tagFormat</code></strong> names the release tags, <code>{path}/{version}</code> by default, like <code>plugins/alpha/1.2.0</code>. Empty placeholders leave no leading or repeated slashes in a tag, so a package at the root gets plain version tags, like <code>1.2.0</code>, from the same default. Deploy templates, like repository URLs, are filled in as they are. A <code>gitTagVersion()</code> version source reads the tags with its own <code>pattern</code>, also <code>{path}/{version}</code> by default, so set both when you change the format.</p>
+</li>
+<li>
+<p><strong><code>releaseTitle</code></strong> titles the release, like the <code>title</code> that <code>changeset tag</code> reports for creating a GitHub Release. The default is <code>name@version</code>, like <code>plugins/alpha@1.2.0</code>, without the prefix for a package at the repository root, which is titled <code>1.2.0</code> like its tag. Like <code>tagFormat</code>, it supports <code>{name}</code>, <code>{path}</code>, <code>{version}</code> and <code>{tag}</code> placeholders: <code>releaseTitle: '{version} (beta)'</code>, or a callback that receives <code>{ package, version, tag }</code> like the release notes callback. A template without a placeholder fails at load time, since it would name every release alike. <code>changeset tag --release-title &lt;template&gt;</code> replaces the <code>releaseTitle</code> of the config for one command, like <code>--tag-format</code> replaces <code>tagFormat</code>.</p>
+</li>
+<li>
+<p><strong><code>--tag-format &lt;format&gt;</code></strong> replaces the <code>tagFormat</code> of the config for one command, for a workflow or job that names its tags differently, like <code>--tag-format '{name}@{version}'</code>. Every command that creates or reads the same tags needs the same format: <code>changeset tag</code>, which creates them and finds the previous tag for the release notes, <code>changeset version --prerelease</code>, which numbers pre-releases from them, and <code>deploy git</code> and <code>deploy svn --release-ref</code>, which read the package and version of a tag.</p>
+</li>
+<li>
+<p><strong>Slugs</strong> are a WordPress concept: the folder of a plugin or theme. Only the commands that produce something for WordPress use one: the <code>{slug}/</code> root folder and name of a <code>zip</code>, the <code>checksums</code> manifest, the WordPress.org slug of <code>deploy svn</code>, and <code>version-check</code>. Each takes <code>--slug</code>, which defaults to the name of the working directory, or of the package directory with <code>zip --package</code>, and an SVN deploy target takes <code>slug</code>, which defaults to the name of the package directory. Tags and Git deploy targets don't have a slug.</p>
+</li>
+<li>
+<p><strong><code>remote</code></strong> is the git remote that <code>changeset tag --push</code> pushes tags to and that the base branch is compared on, <code>origin</code> by default.</p>
+</li>
+</ul>
+<p>The default strategy bumps stable <code>x.y.z</code> versions with SemVer rules, and the <code>x.y</code> and <code>x.y.z.w</code> versions common in WordPress plugins the same way: the bumped part is raised, the parts after it reset to <code>0</code>, and the version keeps its number of parts. A minor bump of <code>2.1</code> is <code>2.2</code> and a major bump is <code>3.0</code>, while a patch bump adds the third part, <code>2.1.1</code>. A patch bump of <code>1.2.3.4</code> is <code>1.2.4.0</code>, so raising only the fourth part needs a custom strategy. Configure <code>nextVersion( { package, bump, currentVersion, changesets } )</code> for other formats; changeset bumps remain <code>patch</code>, <code>minor</code> or <code>major</code>. Pre-releases are added to the next version with <code>--prerelease</code>, described below.</p>
+<p>Without <code>--since</code>, <code>changeset status</code> compares against <code>&lt;remote&gt;/&lt;baseBranch&gt;</code>, where <code>remote</code> in the config defaults to <code>origin</code> and is also the remote that <code>changeset tag --push</code> pushes tags to; fetch that ref or pass <code>--since</code> when using a fork or different upstream. <code>loadChangesetConfig()</code> discovers a conventional config at the repository root, unless <code>--config &lt;path&gt;</code> selects one explicitly.</p>
+<h2 id="release-packages-separately" tabindex="-1"><a class="header-anchor" href="#release-packages-separately">Release packages separately</a></h2>
+<p>To release packages separately, for example with a release pull request for each, pass <code>--package &lt;name&gt;</code>, repeatable, to version only those packages. A changeset that also names other packages keeps only their entries and its summary, so it still applies to their releases with the same bump. Changesets without packages are left for a run without <code>--package</code>.</p>
+<h2 id="re-release-packages-that-bundle-a-package" tabindex="-1"><a class="header-anchor" href="#re-release-packages-that-bundle-a-package">Re-release packages that bundle a package</a></h2>
+<p>Configure <code>dependents</code> to re-release packages that bundle a package when it releases. The dependents come from what the packages declare: a package is a dependent of a source when the spec that it declares in its npm <code>dependencies</code> or <code>optionalDependencies</code> (or the sections that the policy adds) resolves the current version of the source or points at the workspace, and it re-releases when the next version of the source falls outside the declared range, or always with <code>when: 'always'</code>. A pin to an older version selects a registry release instead and <code>changeset status</code> warns about the drift until the pin resolves the package again. Versioning a dependent rewrites its declared specs of the source to the released version, keeping their range prefixes, so an exact pin matches the released workspace again and the built bundle matches the changelog. Wildcards and unpinned ranges accept the release without one, like the <code>devDependencies</code> of a package. The derived dependents appear in <code>changeset status</code>, <code>changeset version</code> and <code>changeset tag</code> like any other release, and a dependent that releases for its own reasons keeps its own bump and appends the bundle note:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token literal-property property">dependents</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">bump</span><span class="token operator">:</span> <span class="token string">'patch'</span><span class="token punctuation">,</span> <span class="token comment">// Default</span>
+	<span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'actions/wp-release-sign'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// Package paths under root, or globs over them</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Excluded packages still release with their own changesets and stay out of the automatic re-releases.</p>
+<p>When the changesets of a pull request release a source, <code>changeset status</code> requires no changeset for a dependent whose only change is the spec of that source in its <code>package.json</code>, since versioning rewrites the spec and the bundle note announces it. Any other change to the dependent, like another manifest field or dependency, documentation or code, needs its own changeset.</p>
+<p>The bundle changelog entry defaults to <code>Bundle &lt;source&gt; &lt;version&gt;.</code> and is formatted with <code>dependents.changelog( { package, source } )</code>:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token literal-property property">dependents</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+	<span class="token function-variable function">changelog</span><span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> source <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Bundle </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> source<span class="token punctuation">.</span>package<span class="token punctuation">.</span>name <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> source<span class="token punctuation">.</span>version <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>dependents.sections</code> lists the npm dependency sections that declare a source, defaulting to <code>dependencies</code> and <code>optionalDependencies</code>; add <code>devDependencies</code> for dependencies that end up in the dependent's build, or <code>peerDependencies</code> to scan them.</p>
+<p>The <code>dependents.dependency</code> hooks extend the built-in npm scan instead of replacing it, so that both work behind the same range rule and rewrite:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token literal-property property">dependents</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">dependency</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+		<span class="token comment">// Specs that declare the source outside package.json, like a Composer</span>
+		<span class="token comment">// require in a vendor-isolated directory.</span>
+		<span class="token function-variable function">find</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> <span class="token keyword">package</span><span class="token operator">:</span> dependent<span class="token punctuation">,</span> source <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+			<span class="token keyword">return</span> <span class="token punctuation">[</span> <span class="token punctuation">{</span> <span class="token literal-property property">file</span><span class="token operator">:</span> <span class="token string">'vendor-isolated/composer.json'</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'…'</span><span class="token punctuation">,</span> <span class="token literal-property property">spec</span><span class="token operator">:</span> <span class="token string">'^0.3'</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+		<span class="token comment">// Update the declaration to the released version. Call `remember( file )`</span>
+		<span class="token comment">// before writing a file, so failed versioning rolls it back.</span>
+		<span class="token function-variable function">update</span><span class="token operator">:</span> <span class="token keyword">async</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> <span class="token keyword">package</span><span class="token operator">:</span> dependent<span class="token punctuation">,</span> source<span class="token punctuation">,</span> specs<span class="token punctuation">,</span> version<span class="token punctuation">,</span> remember <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">/* … */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>After versioning, run <code>npm install --package-lock-only</code> so that the root lockfile resolves the rewritten pins to the workspace links again; the <code>Prepare Release</code> workflow (<code>prepare-release.yml</code> in this monorepo) does it with its release pull request.</p>
+<h2 id="run-locally-and-in-workflows" tabindex="-1"><a class="header-anchor" href="#run-locally-and-in-workflows">Run locally and in workflows</a></h2>
+<p>For local development, run the TypeScript source with <code>npm run wp-release -- &lt;command&gt;</code> (for example, <code>npm run wp-release -- changeset status --since origin/main</code>). GitHub workflows use the same CLI for versioning and tagging. <code>SUBTREE_DEPLOY_TOKEN</code> lets them update the release PR and push tags, and the <code>Tag Release</code> workflow passes it to <code>softprops/action-gh-release</code> to create the GitHub Releases.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/changesets.html"><small>Previous</small>Changesets</a><a rel="next" href="/docs/js/wp-release/latest/prereleases.html"><small>Next</small>Pre-releases and snapshots</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

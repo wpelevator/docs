@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Configuration – wp-release | WP Elevator Docs</title>
-  <meta name="description" content="@wpelevator/wp-release is the suite of release tools and wp-release is its CLI. "Release" is the whole workflow; each command is one operation in it…">
+  <meta name="description" content="What wp-release detects without a config file, and where the config file is needed.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/configuration.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Configuration – wp-release">
-  <meta property="og:description" content="@wpelevator/wp-release is the suite of release tools and wp-release is its CLI. "Release" is the whole workflow; each command is one operation in it…">
+  <meta property="og:description" content="What wp-release detects without a config file, and where the config file is needed.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -43,7 +43,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html#article",
       "headline": "Configuration",
-      "description": "@wpelevator/wp-release is the suite of release tools and wp-release is its CLI. \"Release\" is the whole workflow; each command is one operation in it…",
+      "description": "What wp-release detects without a config file, and where the config file is needed.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html",
       "inLanguage": "en",
@@ -116,15 +116,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html" aria-current="page">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -139,251 +161,222 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Configuration</h1>
+    <h1>Configuration</h1><p class="lede">What wp-release detects without a config file, and where the config file is needed.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/configuration.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/configuration.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="naming-convention" tabindex="-1"><a class="header-anchor" href="#naming-convention">Naming convention</a></h2>
-<p><code>@wpelevator/wp-release</code> is the suite of release tools and <code>wp-release</code> is its CLI. &quot;Release&quot; is the whole workflow; each command is one operation in it. Commands are flat: a single word or dashed words like <code>version-check</code> and <code>deploy svn</code>, without command groups or aliases. Each GitHub Action is named <code>wp-release-</code> followed by the command name, so the CLI command and the <code>uses:</code> name always match:</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Capability</th>
-<th>CLI command</th>
-<th>GitHub Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Build a directory</td>
-<td><code>wp-release build</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Build a ZIP</td>
-<td><code>wp-release zip</code></td>
-<td><a href="https://github.com/wpelevator/wp-release-zip"><code>wpelevator/wp-release-zip</code></a></td>
-</tr>
-<tr>
-<td>Create a checksums manifest</td>
-<td><code>wp-release checksums</code></td>
-<td><a href="https://github.com/wpelevator/wp-release-checksums"><code>wpelevator/wp-release-checksums</code></a></td>
-</tr>
-<tr>
-<td>Sign files</td>
-<td><code>wp-release sign</code></td>
-<td><a href="https://github.com/wpelevator/wp-release-sign"><code>wpelevator/wp-release-sign</code></a></td>
-</tr>
-<tr>
-<td>Verify files against a manifest</td>
-<td><code>wp-release verify</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Check that the versions agree</td>
-<td><code>wp-release version-check</code></td>
-<td></td>
-</tr>
-<tr>
-<td>Deploy to WordPress.org SVN</td>
-<td><code>wp-release deploy svn</code></td>
-<td><a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wpelevator/wp-release-deploy-svn</code></a></td>
-</tr>
-<tr>
-<td>Deploy to a Git repository</td>
-<td><code>wp-release deploy git</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>The names below are scoped to their commands. <code>--output</code> selects the primary artifact of each command; ZIP packaging uses <code>--checksums-file</code> for its accompanying manifest:</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Concept</th>
-<th>CLI</th>
-<th>GitHub Action</th>
-<th>Library</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Plugin or theme directory</td>
-<td><code>&lt;source-dir&gt;</code> argument or <code>--source-dir</code></td>
-<td><code>source-dir</code></td>
-<td><code>sourceDir</code></td>
-<td>Directory that a command reads, whether it's the repository or a build directory.</td>
-</tr>
-<tr>
-<td>Build directory</td>
-<td><code>build --output &lt;dir&gt;</code></td>
-<td>—</td>
-<td><code>outputDir</code></td>
-<td>Directory written by <code>build</code>; files go directly inside it.</td>
-</tr>
-<tr>
-<td>ZIP file</td>
-<td><code>zip --output &lt;file&gt;</code></td>
-<td><code>output</code> in ZIP action</td>
-<td><code>zipPath</code></td>
-<td>Destination passed to <code>zipPackage()</code>; also returned as <code>zipPath</code>.</td>
-</tr>
-<tr>
-<td>Standalone checksums file</td>
-<td><code>checksums --output &lt;file&gt;</code></td>
-<td><code>output</code> in checksums action</td>
-<td>first argument of <code>writeChecksums()</code></td>
-<td>Manifest destination relative to the working directory; the CLI returns its absolute path as <code>checksumsPath</code>.</td>
-</tr>
-<tr>
-<td>Checksums filename when zipping</td>
-<td><code>zip --checksums-file &lt;file&gt;</code></td>
-<td><code>checksums-file</code> in ZIP action</td>
-<td><code>checksumsFile</code></td>
-<td>Relative manifest filename beside the ZIP or inside its package root when embedded.</td>
-</tr>
-<tr>
-<td>ZIP to deploy</td>
-<td><code>--from-zip &lt;file&gt;</code></td>
-<td><code>from-zip</code></td>
-<td><code>fromZip</code></td>
-<td>Existing ZIP read as the deploy source.</td>
-</tr>
-<tr>
-<td>Git tag to compare</td>
-<td><code>--git-tag &lt;tag&gt;</code></td>
-<td></td>
-<td><code>gitTag</code></td>
-<td>Git tag checked by <code>version-check</code>.</td>
-</tr>
-<tr>
-<td>SVN tag to create</td>
-<td><code>--svn-tag &lt;version&gt;</code></td>
-<td><code>svn-tag</code></td>
-<td><code>svnTag</code></td>
-<td>Tag written by <code>deploy svn</code>, distinct from a git tag.</td>
-</tr>
-<tr>
-<td>SVN repository</td>
-<td><code>--svn-url &lt;url&gt;</code></td>
-<td><code>svn-url</code></td>
-<td><code>svnUrl</code></td>
-<td>Deploy destination.</td>
-</tr>
-<tr>
-<td>Git repository</td>
-<td><code>--git-url &lt;url&gt;</code></td>
-<td></td>
-<td><code>gitUrl</code></td>
-<td>Destination of <code>deploy git</code>. Credentials come from git, like a token in the URL or an SSH key, and are never printed.</td>
-</tr>
-<tr>
-<td>Branch and tag to release to</td>
-<td><code>--branch &lt;name&gt;</code>, <code>--tag &lt;name&gt;</code></td>
-<td></td>
-<td><code>branch</code>, <code>tag</code></td>
-<td>Refs written by <code>deploy git</code> in the Git repository, distinct from the git tag that <code>version-check</code> compares.</td>
-</tr>
-<tr>
-<td>Source history</td>
-<td><code>--split-prefix &lt;dir&gt;</code></td>
-<td></td>
-<td><code>splitPrefix</code></td>
-<td>Directory of a monorepo package whose history, split into its own commits like <code>git subtree split</code> does, becomes the source history of <code>deploy git</code> releases.</td>
-</tr>
-<tr>
-<td>SVN credentials</td>
-<td><code>--svn-username &lt;name&gt;</code>, <code>SVN_USERNAME</code> and <code>SVN_PASSWORD</code> env vars</td>
-<td><code>svn-username</code>, <code>svn-password</code></td>
-<td><code>svnUsername</code>, <code>svnPassword</code></td>
-<td>Needed only to commit. There's no password flag, since it would show in the process list; the action inputs and library options fall back to the env vars.</td>
-</tr>
-<tr>
-<td>Log format</td>
-<td><code>--log-format &lt;text|github&gt;</code>, <code>--ci</code> for <code>github</code></td>
-<td>always <code>github</code></td>
-<td><code>writer: new TextWriter()</code> or <code>new GitHubActionsWriter()</code></td>
-<td>How the log is printed: plain text, or GitHub Actions annotations and job summaries. Each name matches the start of its writer class.</td>
-</tr>
-<tr>
-<td>Release config</td>
-<td><code>--config &lt;path&gt;</code></td>
-<td><code>config</code> in ZIP, checksums and SVN actions</td>
-<td><code>configFile</code></td>
-<td>Explicit JavaScript config path for package selection, integrity settings or deployment.</td>
-</tr>
-<tr>
-<td>Release tag format</td>
-<td><code>--tag-format &lt;format&gt;</code></td>
-<td><code>tag-format</code> in SVN action</td>
-<td><code>tagFormat</code></td>
-<td>How <code>release-ref</code> identifies a package and its version.</td>
-</tr>
-<tr>
-<td>Release ref to deploy</td>
-<td><code>--release-ref &lt;ref&gt;</code></td>
-<td><code>release-ref</code> in SVN action</td>
-<td><code>ref</code></td>
-<td>Read configured packages and deployment targets from a release ref.</td>
-</tr>
-<tr>
-<td>Assets sync</td>
-<td><code>--no-assets</code> to skip</td>
-<td><code>assets: false</code> to skip</td>
-<td><code>assets</code></td>
-<td>Booleans are positive in the library and the action; <code>--no-assets</code> is only the CLI negation, never <code>noAssets</code> or a <code>no-assets</code> input.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>CLI JSON results use camelCase keys like <code>zipPath</code>, and GitHub Action outputs use kebab-case like <code>zip-path</code>. The ZIP action supports <code>package</code> and <code>config</code>, the checksums action supports <code>config</code> for codec selection, and the SVN action supports <code>release-ref</code>, repeated <code>package</code> values as newline-separated input, <code>list</code>, <code>config</code> and <code>tag-format</code>.</p>
-<p>The ZIP CLI result uses <code>checksumsEmbedded</code> for the package-relative embedded manifest path. Its <code>signatures</code> array includes external absolute paths and embedded package-relative paths, while <code>checksumsSignatures</code> contains only manifest signatures. The ZIP action exposes those locations as <code>checksums-embedded</code>, <code>signatures</code> for external signatures, and <code>signatures-embedded</code> for embedded signatures, so asset uploads receive local files. With CLI <code>--github-output</code>, signature arrays remain in the JSON <code>result</code> output.</p>
-<p>Library classes are named after the capability (<code>SvnDeploy</code>, <code>Svn</code>, <code>GitDeploy</code>) without repeating &quot;release&quot;.</p>
-<h2 id="file-selection" tabindex="-1"><a class="header-anchor" href="#file-selection">File selection</a></h2>
-<p><code>build</code>, <code>zip</code>, <code>checksums</code>, <code>deploy svn</code> and <code>deploy git</code> select files the same way:</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--distignore &lt;file&gt;</code></td>
-<td>Path to the ignore file. Defaults to <code>.distignore</code> in the source directory when present; an explicitly passed file must exist.</td>
-</tr>
-<tr>
-<td><code>--no-distignore</code></td>
-<td>Don't read any ignore file.</td>
-</tr>
-<tr>
-<td><code>--exclude &lt;patterns&gt;</code></td>
-<td>Extra gitignore-style patterns, comma-separated or repeated, like <code>--exclude build/,assets/*,images/**/*</code>. They're applied after the ignore file, so a <code>!</code> pattern can also re-include a file.</td>
-</tr>
-<tr>
-<td><code>--exclude-gitattributes</code></td>
-<td>Also exclude paths marked <code>export-ignore</code> by Git attributes. This is opt-in and requires the source directory to be inside a Git repository.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><code>.distignore</code> and <code>--exclude</code> use full gitignore syntax, including <code>!</code> negation. <code>--exclude-gitattributes</code> asks Git to evaluate <code>export-ignore</code> attributes, including nested <code>.gitattributes</code> files, then adds those paths to the exclusions. It is off by default, so releases don't unexpectedly depend on Git or change selection when a repository adds attributes. Git must be installed and the source directory must be inside a working tree; the flag is ignored by <code>deploy svn --from-zip</code>, since the ZIP is already filtered. Version control metadata (<code>.git</code>, <code>.svn</code> and <code>.hg</code>, at any depth, including the <code>.git</code> files of worktrees and submodules) is always left out, also without an ignore file and when deploying from a ZIP, and no <code>!</code> pattern can re-include it. This keeps a repository's history out of ZIPs and deploys when the source directory is the repository root. The comma-separated <code>--exclude</code> list works like <code>--exclude</code> in <code>wp i18n make-pot</code>. Selected symbolic links are an error, since ZIP archives and WordPress.org SVN don't support them.</p>
-<h2 id="plugin-and-theme-headers" tabindex="-1"><a class="header-anchor" href="#plugin-and-theme-headers">Plugin and theme headers</a></h2>
+    <p>Most commands need no config file. They read the headers that WordPress reads and use the working directory as the plugin or theme.</p>
+<h2 id="what-is-detected" tabindex="-1"><a class="header-anchor" href="#what-is-detected">What is detected</a></h2>
 <p>The commands read the same headers as WordPress. The main plugin file is the top-level <code>.php</code> file with a <code>Plugin Name:</code> header in its first 8 KB, preferring <code>{slug}.php</code> when several files have one. A directory without a plugin file and with <code>Theme Name:</code> in <code>style.css</code> is a theme. The readme headers (<code>Stable tag</code>, <code>Tested up to</code>, …) come from <code>readme.txt</code>, or <code>readme.md</code> when there's no <code>readme.txt</code>.</p>
 <p><code>--version</code> defaults to the <code>Version</code> header in <code>zip</code>, <code>checksums</code> and <code>version-check</code>, and <code>checksums --type</code> defaults to the detected package type.</p>
+<h2 id="the-config-file" tabindex="-1"><a class="header-anchor" href="#the-config-file">The config file</a></h2>
+<p>A config file is needed for monorepos, deploy targets, translation settings and <a href="checksums.html#configuration-and-custom-codecs">integrity settings</a>. Select it with the global <code>--config &lt;path&gt;</code>, where relative paths resolve from the current directory. Otherwise, commands that use the config discover <code>wp-release.config.js</code>, <code>.mjs</code> or <code>.cjs</code> at the repository root. Use ESM (<code>export default</code>) or CommonJS (<code>module.exports</code>).</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>To configure</th>
+<th>See</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packages, tags, release titles and dependents</td>
+<td><a href="monorepo-releases.html">Release a monorepo</a></td>
+</tr>
+<tr>
+<td>Deploy targets</td>
+<td><a href="deploy-packages.html">Deploy configured packages</a></td>
+</tr>
+<tr>
+<td>Checksums, signatures and custom codecs</td>
+<td><a href="checksums.html#configuration-and-custom-codecs">Write a checksums manifest</a></td>
+</tr>
+<tr>
+<td>POT extraction</td>
+<td><a href="internationalization.html#configure-extraction">Extract a POT file</a></td>
+</tr>
+<tr>
+<td>File selection</td>
+<td><a href="file-selection.html">Choose which files ship</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="config-reference" tabindex="-1"><a class="header-anchor" href="#config-reference">Config reference</a></h2>
+<p><code>defineConfig()</code> takes these top-level keys. Only <code>packages</code> is required.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it sets</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>packages</code></td>
+<td>The package groups to discover and release.</td>
+<td><a href="monorepo-releases.html">Configure packages</a></td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td>The directory that package paths and <code>{path}</code> in tag formats are relative to.</td>
+<td><a href="monorepo-releases.html#packages-and-tags">Packages and tags</a></td>
+</tr>
+<tr>
+<td><code>tagFormat</code></td>
+<td>The release tag template with <code>{name}</code>, <code>{path}</code> and <code>{version}</code>.</td>
+<td><a href="monorepo-releases.html#packages-and-tags">Packages and tags</a></td>
+</tr>
+<tr>
+<td><code>releaseTitle</code></td>
+<td>The title of a release, a template or a callback.</td>
+<td><a href="monorepo-releases.html#packages-and-tags">Packages and tags</a></td>
+</tr>
+<tr>
+<td><code>releaseNotes</code></td>
+<td>A callback that formats the release notes of a tag.</td>
+<td><a href="changesets.html#tag-a-release">Tag a release</a></td>
+</tr>
+<tr>
+<td><code>changelogEntry</code></td>
+<td>A callback that formats the <code>CHANGELOG.md</code> entry of a changeset.</td>
+<td><a href="changesets.html#version-a-release">Version a release</a></td>
+</tr>
+<tr>
+<td><code>nextVersion</code></td>
+<td>A callback that replaces the SemVer bump, for example to raise only the fourth part of a four-part version.</td>
+<td><a href="monorepo-releases.html#packages-and-tags">Packages and tags</a></td>
+</tr>
+<tr>
+<td><code>readmeChangelog</code>, <code>changelogInsertAfter</code></td>
+<td>Whether the plugin readme gets the changelog too, and where entries are inserted.</td>
+<td><a href="changesets.html#version-a-release">Version a release</a></td>
+</tr>
+<tr>
+<td><code>baseBranch</code>, <code>remote</code></td>
+<td>The branch that <code>changeset status</code> compares against and the remote that tags are pushed to.</td>
+<td><a href="changesets.html#single-project-repositories">Single-project repositories</a></td>
+</tr>
+<tr>
+<td><code>changesets</code></td>
+<td>The changeset directory, <code>.changeset</code> by default.</td>
+<td><a href="changesets.html#single-project-repositories">Single-project repositories</a></td>
+</tr>
+<tr>
+<td><code>dependents</code></td>
+<td>Packages that are re-released when a package that they bundle releases.</td>
+<td><a href="monorepo-releases.html#re-release-packages-that-bundle-a-package">Re-release packages that bundle a package</a></td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td>The ignore file and patterns that every package's deploys use.</td>
+<td><a href="deploy-packages.html#target-options">Deploy configured packages</a></td>
+</tr>
+<tr>
+<td><code>integrity</code></td>
+<td>The checksums format, placement and signing for ZIPs.</td>
+<td><a href="checksums.html#configuration-and-custom-codecs">Write a checksums manifest</a></td>
+</tr>
+<tr>
+<td><code>i18n</code></td>
+<td>Defaults for POT extraction.</td>
+<td><a href="internationalization.html#configure-extraction">Extract a POT file</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each entry of <code>packages</code> is a group of directories with shared behavior:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>What it sets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>glob</code></td>
+<td>The package directories to discover, such as <code>plugins/*</code>, or <code>.</code> for a package at the repository root.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>Package paths to leave out of the group.</td>
+</tr>
+<tr>
+<td><code>id</code>, <code>idFrom</code></td>
+<td>The changeset name of the package: a literal for a single package, or the name in <code>package.json</code> or <code>composer.json</code>.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Where the version is read from (<code>from</code>) and which files are updated (<code>to</code>). Without it, the package isn't released with changesets and only deploys branches.</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td>The ignore file and patterns of the package's deploys.</td>
+</tr>
+<tr>
+<td><code>deploy</code></td>
+<td>The Git and SVN targets of the package.</td>
+</tr>
+<tr>
+<td><code>i18n</code></td>
+<td>POT extraction settings for the package.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>version.from</code> and <code>version.to</code> take these helpers, which match the <code>--version-*</code> flags of the <a href="changesets.html#single-project-repositories">single-project commands</a>:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Helper</th>
+<th>Version in</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>packageJsonVersion()</code></td>
+<td><code>package.json</code></td>
+</tr>
+<tr>
+<td><code>composerJsonVersion()</code></td>
+<td><code>composer.json</code>. <code>ifPresent: true</code> skips a manifest without a <code>version</code>.</td>
+</tr>
+<tr>
+<td><code>wordpressPluginVersion()</code></td>
+<td>The <code>Version</code> header of the plugin file.</td>
+</tr>
+<tr>
+<td><code>wordpressThemeVersion()</code></td>
+<td>The <code>Version</code> header of the theme <code>style.css</code>.</td>
+</tr>
+<tr>
+<td><code>wordpressStableTag()</code></td>
+<td>The readme <code>Stable tag</code>. <code>ifPresent: true</code> skips a missing readme.</td>
+</tr>
+<tr>
+<td><code>phpConstantVersion( { file, constant } )</code></td>
+<td>A PHP <code>define()</code> or <code>const</code>.</td>
+</tr>
+<tr>
+<td><code>gitTagVersion( { pattern } )</code></td>
+<td>Existing stable Git tags, as a source only.</td>
+</tr>
+</tbody>
+</table>
+</div>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/comparison.html"><small>Previous</small>Comparison with other tools</a><a rel="next" href="/docs/js/wp-release/latest/deployment.html"><small>Next</small>Deployment</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/github-actions.html"><small>Previous</small>Use it in GitHub Actions</a><a rel="next" href="/docs/js/wp-release/latest/naming.html"><small>Next</small>Names across the CLI, Actions and library</a>
 </nav>
 
   </main>

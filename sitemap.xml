@@ -44,15 +44,31 @@
   <url><loc>https://wpelevator.github.io/docs/js/wp-gettext/latest/generating-pot.html</loc></url>
   <url><loc>https://wpelevator.github.io/docs/js/wp-gettext/latest/parsing.html</loc></url>
   <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/index.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/cli.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/development.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html</loc></url>
-  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/library.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/quickstart.html</loc></url>
   <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/packaging.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/file-selection.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/version-check.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/checksums.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/verify.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/signing.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/release-workflow.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/changesets.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/monorepo-releases.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/deploy-git.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/deploy-packages.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/cli.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/github-actions.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/naming.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/library.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/development.html</loc></url>
+  <url><loc>https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html</loc></url>
   <url><loc>https://wpelevator.github.io/docs/js/zip/latest/index.html</loc></url>
   <url><loc>https://wpelevator.github.io/docs/js/zip/latest/errors.html</loc></url>
   <url><loc>https://wpelevator.github.io/docs/js/zip/latest/reproducible-archives.html</loc></url>

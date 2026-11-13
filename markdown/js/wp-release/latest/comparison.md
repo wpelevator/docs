@@ -1,6 +1,4 @@
-# Comparison with other tools
-
-## Comparison with existing tools
+# Comparison with existing tools
 
 | Tool | What it does | How `wp-release` differs |
 |---|---|---|

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Sign releases – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Generate an Ed25519 key, sign a ZIP and its checksums manifest, and verify the signatures with WordPress, minisign or OpenSSH.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/signing.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/signing.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Sign releases – wp-release">
+  <meta property="og:description" content="Generate an Ed25519 key, sign a ZIP and its checksums manifest, and verify the signatures with WordPress, minisign or OpenSSH.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/signing.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/signing.html#article",
+      "headline": "Sign releases",
+      "description": "Generate an Ed25519 key, sign a ZIP and its checksums manifest, and verify the signatures with WordPress, minisign or OpenSSH.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/signing.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/signing.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Sign releases", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/signing.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/signing.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html" aria-current="page">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Sign releases</h1><p class="lede">Generate an Ed25519 key, sign a ZIP and its checksums manifest, and verify the signatures with WordPress, minisign or OpenSSH.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/signing.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/signing.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>A signature proves who published a file. Create a key once, sign the ZIP and its <a href="checksums.html">checksums manifest</a> with it, and give verifiers the public key.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release keygen</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">WP_RELEASE_SIGNING_KEY=&lt;private seed&gt;
+Public key: &lt;public key&gt;
+Minisign public key: &lt;minisign public key&gt;
+SSH public key: &lt;ssh public key&gt;
+Store the private seed securely; it cannot be recovered from the public key.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Copy the two values that you need into your shell: the private seed after <code>WP_RELEASE_SIGNING_KEY=</code>, and the line after <code>Public key:</code>. In CI, keep the seed in your secret manager or CI secrets.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token builtin class-name">export</span> <span class="token assign-left variable">WP_RELEASE_SIGNING_KEY</span><span class="token operator">=</span><span class="token string">'&lt;private seed>'</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">PUBLIC_KEY</span><span class="token operator">=</span><span class="token string">'&lt;public key>'</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The ZIP and the manifest must come from the same build, so rebuild them after any change to the plugin, with <code>zip --checksums --force</code>. Then sign:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release sign my-plugin.1.4.2.zip my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip.sig
+/home/me/my-plugin/my-plugin.1.4.2.checksums.json.sig</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>verify</code> checks the signature of the manifest before it compares any file:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.4.2.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json --public-key <span class="token string">"<span class="token variable">$PUBLIC_KEY</span>"</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Signature of /home/me/my-plugin/my-plugin.1.4.2.checksums.json is valid.
+4 files match, 0 changed, 0 missing and 0 extra.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>If the manifest changes after signing, even by one added space, the check fails before any file is compared:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Error: /home/me/my-plugin/my-plugin.1.4.2.checksums.json.sig isn't a valid signature of /home/me/my-plugin/my-plugin.1.4.2.checksums.json for the public key.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="which-format-do-i-need" tabindex="-1"><a class="header-anchor" href="#which-format-do-i-need">Which format do I need?</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>If the signature is checked by</th>
+<th>Use</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WordPress core, an update client or <code>wp-release verify</code></td>
+<td><code>wordpress</code> (default)</td>
+<td><code>&lt;file&gt;.sig</code></td>
+</tr>
+<tr>
+<td>A person who downloads the ZIP and uses minisign</td>
+<td><code>minisign</code></td>
+<td><code>&lt;file&gt;.minisig</code></td>
+</tr>
+<tr>
+<td>OpenSSH 8.1 or later, for example in a CI pipeline</td>
+<td><code>ssh</code></td>
+<td><code>&lt;file&gt;.sshsig</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>One key and one secret cover all formats. Write more than one by passing <code>--format</code>, with <code>--force</code> to replace the existing signature:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release sign my-plugin.1.4.2.zip <span class="token parameter variable">--format</span> wordpress,minisign,ssh <span class="token parameter variable">--force</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip.sig
+/home/me/my-plugin/my-plugin.1.4.2.zip.minisig
+/home/me/my-plugin/my-plugin.1.4.2.zip.sshsig</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="about-the-key" tabindex="-1"><a class="header-anchor" href="#about-the-key">About the key</a></h2>
+<p><code>wp-release keygen</code> generates the key pair. It prints the private seed once as <code>WP_RELEASE_SIGNING_KEY=…</code> and the matching public key, also as a minisign public key and an <code>ssh-ed25519</code> public key. Generate keys locally and store the private seed in your secret manager or CI secrets. Distribute the public key to verifiers. <code>keygen --github-output</code> is rejected to keep the private seed out of workflow outputs; regular and <code>--json</code> output both include the seed.</p>
+<h2 id="sign-files" tabindex="-1"><a class="header-anchor" href="#sign-files">Sign files</a></h2>
+<p>The <a href="https://github.com/wpelevator/wp-release-sign"><code>wp-release-sign</code></a> GitHub Action runs <code>sign</code>.</p>
+<p><code>sign</code> writes a detached signature next to each file, <code>&lt;file&gt;.sig</code>, so that downloads and installed copies can be trusted. Sign both the ZIP and the checksums manifest: the ZIP signature covers installs and updates, and the manifest signature covers the contents after unpacking and copies that weren't built by you.</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">WP_RELEASE_SIGNING_KEY</span><span class="token operator">=</span>… wp-release sign my-plugin.1.2.0.zip my-plugin.1.2.0.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<ul>
+<li>The signature is the one WordPress core's <code>verify_file_signature()</code> checks: a base64 Ed25519 signature of the raw SHA-384 digest of the file. The tests check it against <code>sodium_crypto_sign_verify_detached()</code> in PHP. A <code>.sig</code> file can hold several signatures, one per line, and a file is valid when any of them match, which allows a key rotation window.</li>
+<li>The key is read from the <code>WP_RELEASE_SIGNING_KEY</code> environment variable only, as a base64 32-byte Ed25519 seed or a 64-byte libsodium secret key, the formats that <code>sodium_crypto_sign_seed_keypair()</code> and the update-pilot-server package signing key take. There's no flag for it, since it would show in the process list, and it's never logged.</li>
+<li><code>--verbose</code> prints the public key of the signing key in the form of each written format. <code>--json</code> returns it as <code>publicKey</code>, and in every form as <code>publicKeys</code>. Pass it to <code>verify --public-key</code> and to the plugin that checks the signatures.</li>
+<li>An existing signature file isn't overwritten without <code>--force</code>.</li>
+<li><code>zip --sign</code> signs only the ZIP; add <code>--sign-checksums</code> to sign its manifest too. <code>signFiles()</code> signs files from a script.</li>
+</ul>
+<h2 id="format-details" tabindex="-1"><a class="header-anchor" href="#format-details">Format details</a></h2>
+<ul>
+<li><code>minisign</code> signs the BLAKE2b-512 digest of the file, like <code>minisign -S</code> does by default, and adds a trusted comment with the signing time and file name that a second signature covers. minisign generates a random key ID for its keys, but the key here is a plain Ed25519 seed, so wp-release derives the key ID from the public key. <code>wp-release verify</code> doesn't compare key IDs, so signatures of keys that minisign generated verify too.</li>
+<li><code>ssh</code> is the armored <code>SSHSIG</code> format that <code>ssh-keygen -Y sign</code> writes, with a SHA-512 digest and the <code>file</code> namespace, so that the signature can't pass as one for commits or another namespace. It's written to <code>.sshsig</code> instead of the <code>.sig</code> of <code>ssh-keygen</code>, which the <code>wordpress</code> format uses. Put the SSH public key in an <code>allowed_signers</code> file as <code>&lt;identity&gt; ssh-ed25519 AAAA…</code>.</li>
+<li>All formats are Ed25519 signatures by the same key, so one key and one secret cover all of them. The tests check each format with <code>minisign</code>, <code>ssh-keygen</code> and libsodium, and check the signatures that <code>minisign</code> and <code>ssh-keygen</code> write with <code>wp-release verify</code>.</li>
+</ul>
+<h2 id="sign-builds-and-zips" tabindex="-1"><a class="header-anchor" href="#sign-builds-and-zips">Sign builds and ZIPs</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th><code>zip</code></th>
+<th><code>build</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--checksums</code></td>
+<td>Generate an unsigned manifest beside the ZIP.</td>
+<td>Generate an unsigned manifest beside the directory.</td>
+</tr>
+<tr>
+<td><code>--sign</code></td>
+<td>Sign only the ZIP.</td>
+<td>Unsupported.</td>
+</tr>
+<tr>
+<td><code>--sign-checksums</code></td>
+<td>Generate and sign the manifest.</td>
+<td>Generate and sign the manifest.</td>
+</tr>
+<tr>
+<td><code>--sign-format</code></td>
+<td>Choose formats for explicitly requested signatures.</td>
+<td>Same; requires <code>--sign-checksums</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release <span class="token function">zip</span> <span class="token parameter variable">--slug</span> code-prettify <span class="token parameter variable">--sign</span> --sign-checksums
+wp-release build <span class="token parameter variable">--output</span> dist/code-prettify --sign-checksums --sign-format minisign</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>These flags deliberately replace the former implicit signing behavior: <code>zip --checksums --sign</code> now leaves the manifest unsigned, and <code>--sign-format</code> alone is rejected. Add <code>--sign-checksums</code> to sign a manifest and <code>--sign</code> to sign a ZIP. The standalone <code>checksums</code> and <code>sign</code> commands remain available for workflows that write and sign a manifest inside the source before packaging it.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/verify.html"><small>Previous</small>Verify a ZIP or directory</a><a rel="next" href="/docs/js/wp-release/latest/release-workflow.html"><small>Next</small>Release from GitHub Actions</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

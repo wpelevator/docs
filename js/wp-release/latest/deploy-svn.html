@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Deploy to WordPress.org – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Sync a plugin to the WordPress.org SVN repository, create the version tag and update the readme and assets in one commit.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/deploy-svn.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Deploy to WordPress.org – wp-release">
+  <meta property="og:description" content="Sync a plugin to the WordPress.org SVN repository, create the version tag and update the readme and assets in one commit.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html#article",
+      "headline": "Deploy to WordPress.org",
+      "description": "Sync a plugin to the WordPress.org SVN repository, create the version tag and update the readme and assets in one commit.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Deploy to WordPress.org", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/deploy-svn.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/deploy-svn.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html" aria-current="page">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Deploy to WordPress.org</h1><p class="lede">Sync a plugin to the WordPress.org SVN repository, create the version tag and update the readme and assets in one commit.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/deploy-svn.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/deploy-svn.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p><code>deploy svn</code> syncs a plugin to its WordPress.org SVN repository. Run it with <code>--dry-run</code> first: it checks out the repository, plans the changes and lists them, without committing. The example uses a local test repository; leave out <code>--svn-url</code> and <code>--slug</code> to use <code>https://plugins.svn.wordpress.org/{slug}/</code>.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release deploy svn --svn-url file:///home/me/svnrepo <span class="token parameter variable">--slug</span> my-plugin <span class="token parameter variable">--trunk</span> --svn-tag <span class="token number">1.5</span>.0 --dry-run</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">== Planned changes
+Check out file:///home/me/svnrepo with trunk, tags
+Stop if tags/1.5.0 already exists
+Sync /home/me/my-plugin (rules from /home/me/my-plugin/.distignore) to trunk/
+Copy trunk/ to tags/1.5.0
+Skip the commit &quot;Release version 1.5.0&quot; (dry run)
+Deploying version 1.5.0.
+== SVN status
+added       tags/1.5.0
+added       tags/1.5.0/.distignore
+added       tags/1.5.0/CHANGELOG.md
+added       tags/1.5.0/includes
+added       tags/1.5.0/includes/class-thing.php
+added       tags/1.5.0/my-plugin.php
+added       tags/1.5.0/readme.txt
+added       trunk/.distignore
+added       trunk/CHANGELOG.md
+added       trunk/includes
+added       trunk/includes/class-thing.php
+added       trunk/my-plugin.php
+added       trunk/readme.txt
+Dry run, skipped committing 13 changes.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Without <code>--dry-run</code>, the same command commits the changes:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">== Planned changes
+Check out file:///home/me/svnrepo with trunk, tags
+Stop if tags/1.5.0 already exists
+Sync /home/me/my-plugin (rules from /home/me/my-plugin/.distignore) to trunk/
+Copy trunk/ to tags/1.5.0
+Commit &quot;Release version 1.5.0&quot;
+Deploying version 1.5.0.
+== SVN status
+added       tags/1.5.0
+added       tags/1.5.0/.distignore
+added       tags/1.5.0/CHANGELOG.md
+added       tags/1.5.0/includes
+added       tags/1.5.0/includes/class-thing.php
+added       tags/1.5.0/my-plugin.php
+added       tags/1.5.0/readme.txt
+added       trunk/.distignore
+added       trunk/CHANGELOG.md
+added       trunk/includes
+added       trunk/includes/class-thing.php
+added       trunk/my-plugin.php
+added       trunk/readme.txt
+Committed revision 4.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Running it again stops, since a published tag never changes unless you pass <code>--force</code>:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Error: tags/1.5.0 already exists in file:///home/me/svnrepo. Pass --force to replace it.
+== Planned changes
+Check out file:///home/me/svnrepo with trunk, tags
+Stop if tags/1.5.0 already exists
+Sync /home/me/my-plugin (rules from /home/me/my-plugin/.distignore) to trunk/
+Copy trunk/ to tags/1.5.0
+Commit &quot;Release version 1.5.0&quot;
+Deploying version 1.5.0.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The <a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wp-release-deploy-svn</code></a> GitHub Action runs this command.</p>
+<h2 id="choose-what-to-write" tabindex="-1"><a class="header-anchor" href="#choose-what-to-write">Choose what to write</a></h2>
+<p><code>deploy svn</code> syncs a plugin to the WordPress.org plugin SVN repository. Each SVN write is a separate flag and nothing is written unless requested. All writes go into one commit.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Default</th>
+<th>Writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--trunk</code></td>
+<td>off</td>
+<td>Sync the full source directory to <code>trunk/</code></td>
+</tr>
+<tr>
+<td><code>--readme-only</code></td>
+<td>off</td>
+<td>Sync only the readme to <code>trunk/</code>, for updates between releases such as bumping <code>Tested up to</code>. Can't be combined with <code>--svn-tag</code>.</td>
+</tr>
+<tr>
+<td><code>--svn-tag &lt;version&gt;</code></td>
+<td>off</td>
+<td>Create <code>tags/&lt;version&gt;</code>. With <code>--trunk</code>, the tag is a copy of the synced <code>trunk/</code>. Without it, the tag is built directly from the source files and <code>trunk/</code> is left alone, for pre-release tags. A leading <code>v</code> is stripped, so <code>v1.2.0</code> creates <code>tags/1.2.0</code>.</td>
+</tr>
+<tr>
+<td><code>--assets-dir &lt;dir&gt;</code></td>
+<td>not set</td>
+<td>Sync this directory with banners, icons and screenshots to the SVN <code>assets/</code> directory. There's no default directory, so assets are only deployed when this is set, and it must exist.</td>
+</tr>
+<tr>
+<td><code>--no-assets</code></td>
+<td></td>
+<td>Skip the <code>--assets-dir</code> sync for one run, for example when a config always passes <code>--assets-dir</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="typical-runs" tabindex="-1"><a class="header-anchor" href="#typical-runs">Typical runs</a></h2>
+<p>Typical runs:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token comment"># Deploy 1.2.0 to trunk and the tag, and update the assets</span>
+wp-release deploy svn dist <span class="token parameter variable">--trunk</span> --svn-tag <span class="token number">1.2</span>.0 --assets-dir .wordpress-org
+
+<span class="token comment"># Tag a pre-release build without touching trunk</span>
+wp-release deploy svn dist --svn-tag <span class="token number">1.2</span>.0-rc.1
+
+<span class="token comment"># Update only the readme between releases</span>
+wp-release deploy svn dist --readme-only
+
+<span class="token comment"># Update only the assets</span>
+wp-release deploy svn --assets-dir .wordpress-org
+
+<span class="token comment"># Deploy exactly the files of a ZIP built earlier</span>
+wp-release deploy svn --from-zip my-plugin.1.2.0.zip <span class="token parameter variable">--trunk</span> --svn-tag <span class="token number">1.2</span>.0</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="how-a-deploy-works" tabindex="-1"><a class="header-anchor" href="#how-a-deploy-works">How a deploy works</a></h2>
+<p>How a deploy works:</p>
+<ol>
+<li>The options are validated, including the slug, version and readme name, before they're used in URLs or paths.</li>
+<li>With <code>--trunk</code> or <code>--svn-tag</code>, the files must be a plugin whose <code>Version</code> header matches the version. When <code>--trunk</code> and <code>--svn-tag</code> are combined, the readme <code>Stable tag</code> must match too; a tag-only run skips that, since a pre-release tag doesn't change the stable tag. <code>--readme-only</code> needs the readme. Nothing is checked out when a check fails.</li>
+<li>The repository is checked out sparsely into a new temporary directory, with only the directories that the flags write to. A missing <code>assets/</code> (or <code>trunk/</code>, <code>tags/</code>) directory is created. The deploy stops when <code>tags/&lt;version&gt;</code> exists, unless <code>--force</code> replaces it.</li>
+<li>The files are synced in Node.js, without <code>rsync</code>: new and changed files are copied, files that are no longer selected are deleted, and <code>svn add</code> and <code>svn delete</code> stage them, including files that svn ignores by default. With <code>--trunk</code>, <code>trunk/</code> is then copied to the tag with <code>svn copy</code>. Without it, the same selected files are synced into <code>tags/&lt;version&gt;</code> instead, and with <code>--force</code> an existing tag is updated to match, deleting files that are no longer in the build.</li>
+<li>Asset images get <code>svn:mime-type</code> set for PNG, JPEG, GIF and SVG, the formats that WordPress.org documents for plugin assets. Other formats keep the type that svn assigns.</li>
+<li>When <code>svn status</code> is empty, the deploy ends without a commit. A dry run logs the status and stops before the commit. Otherwise the changes are committed, and the temporary directory is always removed.</li>
+</ol>
+<p><code>--from-zip</code> reads the files from a ZIP instead of <code>&lt;source-dir&gt;</code>. The ZIP is checked before it's extracted: entries with absolute paths, <code>..</code> segments or symbolic links, and entries outside a single <code>{slug}/</code> root folder, are rejected.</p>
+<p>Credentials are only needed for the commit, not for dry runs, no-op runs or <code>file://</code> repositories. Pass the username with <code>--svn-username</code> or <code>SVN_USERNAME</code> and the password in <code>SVN_PASSWORD</code>. svn always runs non-interactively without caching credentials, and the password is passed on the standard input with <code>--password-from-stdin</code>, never on the command line or in the logs.</p>
+<h2 id="validation" tabindex="-1"><a class="header-anchor" href="#validation">Validation</a></h2>
+<p>Validation:</p>
+<ul>
+<li><code>--readme-only</code> can't be combined with <code>--svn-tag</code>, since a tag is a release snapshot that a readme update never changes.</li>
+<li><code>--version</code> defaults to <code>--svn-tag</code>, then the <code>Version</code> header of the deployed files; when <code>--version</code> and <code>--svn-tag</code> are both set they must match.</li>
+<li>Pre-release versions like <code>1.0.0-rc.1</code> can be tagged, but syncing one to <code>trunk/</code> warns, since trunk is for the development version.</li>
+<li><code>--trunk</code> without <code>--svn-tag</code> works but warns, to remind you that updating trunk alone doesn't create a version tag for stable downloads.</li>
+<li>A version mismatch throws a <code>VersionMismatchError</code>, a <code>ValidationError</code> with the <code>mismatches</code> and a problem for each, with its file and line. See <a href="library.html#logging">Logging</a>.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/deployment.html"><small>Previous</small>Deploy</a><a rel="next" href="/docs/js/wp-release/latest/deploy-git.html"><small>Next</small>Deploy to a Git repository</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

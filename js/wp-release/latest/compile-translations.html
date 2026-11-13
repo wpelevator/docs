@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Compile translations – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Compile a translated PO file into MO, script JSON and WordPress .l10n.php files, without WP-CLI or PHP.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/compile-translations.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Compile translations – wp-release">
+  <meta property="og:description" content="Compile a translated PO file into MO, script JSON and WordPress .l10n.php files, without WP-CLI or PHP.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html#article",
+      "headline": "Compile translations",
+      "description": "Compile a translated PO file into MO, script JSON and WordPress .l10n.php files, without WP-CLI or PHP.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Compile translations", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/compile-translations.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/compile-translations.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html" aria-current="page">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Compile translations</h1><p class="lede">Compile a translated PO file into MO, script JSON and WordPress .l10n.php files, without WP-CLI or PHP.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/compile-translations.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/compile-translations.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>WordPress loads compiled catalogs, not PO files. <code>i18n mo</code>, <code>i18n php</code> and <code>i18n json</code> compile a translated PO file and never change it:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release i18n mo languages/my-plugin-lv.po</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/languages/my-plugin-lv.mo</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release i18n php languages/my-plugin-lv.po</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/languages/my-plugin-lv.l10n.php</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Each command prints the path that it wrote. Add <code>--check</code> to compare the outputs without writing, which exits with <code>2</code> on a missing or stale file. To produce the POT that translators start from, see <a href="internationalization.html">Extract a POT file</a>.</p>
+<h2 id="details" tabindex="-1"><a class="header-anchor" href="#details">Details</a></h2>
+<p>Runtime formats require a translated PO, not an untranslated POT. PO updating, fuzzy matching and automatic translation are not provided. Compilation validates <code>Language</code> and <code>Plural-Forms</code>, excludes fuzzy, obsolete and untranslated entries, preserves contexts and plural forms, and never changes the input PO. An incompletely translated plural entry is excluded as a unit. Gettext parsing handles source encoding; runtime outputs use UTF-8. Each output is replaced atomically; JSON outputs are independent writes, and obsolete output files are not deleted automatically.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release i18n mo languages/my-plugin-lv.po
+wp-release i18n php languages/my-plugin-lv.po
+wp-release i18n json languages/my-plugin-lv.po <span class="token parameter variable">--domain</span> my-plugin <span class="token parameter variable">--map</span> scripts.json <span class="token parameter variable">--output</span> languages
+wp-release i18n mo languages/my-plugin-lv.po <span class="token parameter variable">--check</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>MO and <code>.l10n.php</code> default beside the PO, with <code>.mo</code> and <code>.l10n.php</code> extensions; <code>--output</code> selects an explicit file relative to cwd. WordPress PHP catalogs require WordPress 6.5 or later. JSON requires an explicit domain; <code>--output</code> is a directory, defaulting to the PO directory. <code>--check</code> compares proposed bytes without writing and exits <code>2</code> on absent/stale outputs. Compiler commands are primitives and do not select configured packages.</p>
+<p>A script map is a JSON object from normalized package-relative source references to arrays of normalized runtime script paths. Many source files can feed one bundle, and one source can feed several scripts. An explicit map selects only listed references; an empty target array excludes that source. Without a map, JS/MJS/CJS references use identity paths, while JSX/TypeScript references require mapping. PHP-only references do not enter JSON catalogs.</p>
+<div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"src/blocks/editor.tsx"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"build/editor.js"</span><span class="token punctuation">,</span> <span class="token string">"build/shared.js"</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"src/components/panel.js"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"build/editor.js"</span> <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>JSON filenames are <code>&lt;domain&gt;-&lt;Language&gt;-&lt;md5(runtime-path)&gt;.json</code>; the WordPress <code>default</code> domain uses <code>&lt;Language&gt;-&lt;md5(runtime-path)&gt;.json</code>. WordPress's <code>.min.js</code> normalization applies consistently to grouping, hashing and the JSON <code>source</code>. Jed keys preserve context through <code>\u0004</code>, plural arrays contain all translated forms, and revision dates come from the PO metadata. <code>.l10n.php</code> writes safely escaped data arrays with NUL-separated plural translations; catalog text is never treated as executable PHP.</p>
+<p>The extraction and compilation primitives are in the standalone <a href="https://www.npmjs.com/package/@wpelevator/wp-gettext"><code>@wpelevator/wp-gettext</code></a> package, without the repository and release tooling, and <code>wp-release</code> depends on it. See its README to use them in your own scripts.</p>
+<p>The package can be installed and used in any WordPress plugin or theme project; repository package selection is optional, and directory mode works without a wp-release config.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/internationalization.html"><small>Previous</small>Extract a POT file</a><a rel="next" href="/docs/js/wp-release/latest/cli.html"><small>Next</small>CLI reference</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

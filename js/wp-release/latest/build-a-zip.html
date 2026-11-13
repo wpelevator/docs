@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Build a release ZIP – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Create the reproducible plugin or theme ZIP that WordPress.org, plugin updates and WordPress Playground expect.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/build-a-zip.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Build a release ZIP – wp-release">
+  <meta property="og:description" content="Create the reproducible plugin or theme ZIP that WordPress.org, plugin updates and WordPress Playground expect.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html#article",
+      "headline": "Build a release ZIP",
+      "description": "Create the reproducible plugin or theme ZIP that WordPress.org, plugin updates and WordPress Playground expect.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Build a release ZIP", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/build-a-zip.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/build-a-zip.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html" aria-current="page">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Build a release ZIP</h1><p class="lede">Create the reproducible plugin or theme ZIP that WordPress.org, plugin updates and WordPress Playground expect.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/build-a-zip.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/build-a-zip.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p><code>zip</code> packs the files of a plugin or theme directory into <code>{slug}.{version}.zip</code>, with every file inside a <code>{slug}/</code> root folder.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The slug is the directory name, and the version is the <code>Version</code> header of the plugin. The command prints the path of the ZIP and nothing else, so a script can read it. The ZIP of the example plugin holds these files, without <code>node_modules/</code> and <code>tests/</code>, which <code>.distignore</code> lists:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">my-plugin/.distignore
+my-plugin/includes/class-thing.php
+my-plugin/my-plugin.php
+my-plugin/readme.txt</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The same files give the same ZIP: entries are sorted and use a fixed mode and timestamp. <a href="file-selection.html">Choose which files ship</a> explains how files are selected.</p>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<p>Write a checksums manifest next to the ZIP, and replace the earlier ZIP of the same version:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--checksums</span> <span class="token parameter variable">--force</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip
+/home/me/my-plugin/my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Zip a build directory under another slug:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> dist <span class="token parameter variable">--slug</span> my-plugin</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Name the file <code>my-plugin.zip</code>, without the version:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> --filename-format <span class="token punctuation">{</span>slug<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Sign the ZIP and its manifest while building: see <a href="signing.html#sign-builds-and-zips">Sign releases</a>.</p>
+<h2 id="build-a-directory-instead-of-a-zip" tabindex="-1"><a class="header-anchor" href="#build-a-directory-instead-of-a-zip">Build a directory instead of a ZIP</a></h2>
+<p><code>build</code> copies the selected files into a directory, with the same file selection as <code>zip</code> and no ZIP:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release build <span class="token parameter variable">--output</span> dist/my-plugin</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/dist/my-plugin</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release build <span class="token parameter variable">--output</span> dist/code-prettify
+wp-release build <span class="token parameter variable">--package</span> plugins/alpha <span class="token parameter variable">--output</span> dist/alpha</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The destination is required and automatically excluded when it is inside the source. It cannot be the source directory or an ancestor, including through symlinked parents. Existing destinations require <code>--force</code>, which replaces the directory and removes stale files; existing files and symbolic links are rejected. Files are copied to a temporary directory before the existing build is replaced. Selected symbolic links are rejected as with ZIP packaging. <code>--json</code> returns <code>outputDir</code>, <code>files</code> and, for configured builds, <code>package</code>; it also returns <code>checksumsPath</code> when a manifest is generated, and <code>signatures</code> and <code>publicKey</code> when signing is requested. <code>--github-output</code> exposes these results too.</p>
+<p><code>--checksums</code> writes <code>&lt;output-dir&gt;.checksums.json</code> beside the directory and hashes the copied build files. <code>--sign-checksums</code> generates and signs that manifest, implying <code>--checksums</code>. Use <code>--slug</code> and <code>--version</code> to override its metadata. The manifest and its signatures are excluded from the source selection, so rebuilding with <code>--force</code> does not package previous sidecars. Existing manifests and requested signature files also require <code>--force</code>; signing keys, formats and signature destinations are validated before creating or replacing the build. <code>--sign</code> is unsupported because a directory has no single file to sign.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release build <span class="token parameter variable">--output</span> dist/code-prettify --sign-checksums</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>In the Deploy workflow, a directory build can be deployed with <code>wp-release deploy svn dist/code-prettify --slug code-prettify --trunk --svn-tag &quot;$GITHUB_REF_NAME&quot; --no-distignore</code>. Keep <code>--from-zip</code> when the SVN deployment must match the attached ZIP exactly. Run dependency installation and compilation before <code>build</code>; it only selects and copies files.</p>
+<h2 id="zip-options" tabindex="-1"><a class="header-anchor" href="#zip-options">ZIP options</a></h2>
+<p><code>zip</code> writes <code>{slug}.{version}.zip</code> to the current directory, or to <code>--output &lt;file&gt;</code>, with the selected files in a <code>{slug}/</code> root folder:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release <span class="token function">zip</span> dist <span class="token parameter variable">--slug</span> my-plugin <span class="token parameter variable">--checksums</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<ul>
+<li><code>--root-folder &lt;name&gt;</code> changes the root folder and <code>--no-root-folder</code> puts the files at the root of the ZIP.</li>
+<li><code>--filename-format</code> changes the name, like <code>--filename-format {slug}</code> for <code>my-plugin.zip</code>.</li>
+<li>Entries are sorted and use a fixed file mode and a fixed timestamp (1980-01-01), or the <code>SOURCE_DATE_EPOCH</code> Unix time when that environment variable is set, so the same files give the same ZIP. Built-in metadata is deterministic except for embedded minisign signatures, which include their signing timestamp; custom codec callbacks control their own encoded bytes.</li>
+<li><code>--checksums</code> also writes the <a href="checksums.html">checksums manifest</a> of the archived files next to the ZIP, with <code>.checksums.json</code> instead of <code>.zip</code>.</li>
+<li><code>--sign</code> signs only the ZIP with <code>WP_RELEASE_SIGNING_KEY</code>. <code>--sign-checksums</code> generates and signs only the checksums manifest, implying <code>--checksums</code>. Use both flags to sign both files. External signatures are written alongside their files; embedded manifest signatures are written inside the package. The default format is WordPress <code>.sig</code>, unless integrity configuration selects another format.</li>
+<li><code>--sign-format</code> selects formats for requested signatures, such as <code>--sign-format wordpress,minisign,ssh</code>. It requires <code>--sign</code> or <code>--sign-checksums</code> and never enables signing by itself. Signing keys, formats and existing signature destinations are validated before writing the ZIP or manifest. <code>--force</code> also overwrites requested signatures. Job summaries include signatures and public keys; JSON results include <code>signatures</code> and <code>publicKey</code>.</li>
+<li>An existing ZIP or manifest isn't overwritten without <code>--force</code>. A ZIP or manifest written inside the source directory is never archived.</li>
+<li><code>--package &lt;name&gt;</code> zips a package of the <a href="deploy-packages.html">configured packages</a>, by identifier or path under the configured root like <code>plugins/alpha</code>, instead of a source directory: its directory with the <code>files</code> config of its package group, the same files that its deploys select. The slug defaults to the directory name and the version to the <code>Version</code> header, and <code>--slug</code> and <code>--version</code> still set them. Any package of the config works, with or without a version or deploy targets. To zip what a deploy just released, pass the <code>package</code> and <code>version</code> of the <code>deploy git --release-ref</code> result, in the same job and from the same build, so the ZIP has exactly the files of the release tag in the release repository. It can't be combined with <code>&lt;source-dir&gt;</code> or the file selection options. The <code>--json</code> result has the <code>package</code>, <code>slug</code> and <code>version</code>. <code>zipPackage()</code> builds the same ZIP from a script, with <code>getPackageFiles()</code> for the directory and the files of a package.</li>
+</ul>
+<p>To embed a signed manifest with a stable filename, use:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release <span class="token function">zip</span> dist --checksums-file checksums.json --embed-checksums --sign-checksums</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>See <a href="checksums.html">Checksums</a> for filenames, placement, formats and configuration.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/packaging.html"><small>Previous</small>Build, verify and sign</a><a rel="next" href="/docs/js/wp-release/latest/file-selection.html"><small>Next</small>Choose which files ship</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

@@ -4,14 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Comparison with other tools – wp-release | WP Elevator Docs</title>
+  <title>Comparison with existing tools – wp-release | WP Elevator Docs</title>
   <meta name="description" content="Documentation for WP Elevator packages and plugins.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/comparison.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Comparison with other tools – wp-release">
+  <meta property="og:title" content="Comparison with existing tools – wp-release">
   <meta property="og:description" content="Documentation for WP Elevator packages and plugins.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html">
   <meta name="twitter:card" content="summary">
@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html#article",
-      "headline": "Comparison with other tools",
+      "headline": "Comparison with existing tools",
       "description": "Documentation for WP Elevator packages and plugins.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Comparison with other tools", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html" }
+        { "@type": "ListItem", "position": 4, "name": "Comparison with existing tools", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html" }
       ]
     }
   ]
@@ -116,15 +116,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html" aria-current="page">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html" aria-current="page">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -139,15 +161,14 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Comparison with other tools</h1>
+    <h1>Comparison with existing tools</h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/comparison.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/comparison.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="comparison-with-existing-tools" tabindex="-1"><a class="header-anchor" href="#comparison-with-existing-tools">Comparison with existing tools</a></h2>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+    <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
 <tr>
@@ -203,7 +224,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/cli.html"><small>Previous</small>CLI</a><a rel="next" href="/docs/js/wp-release/latest/configuration.html"><small>Next</small>Configuration</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/development.html"><small>Previous</small>Development</a>
 </nav>
 
   </main>

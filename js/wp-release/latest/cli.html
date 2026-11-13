@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>CLI – wp-release | WP Elevator Docs</title>
-  <meta name="description" content="Commands of a group are one word each after the group: changeset, deploy and i18n. Run npx wp-release --help to list the commands of a group and npx…">
+  <title>CLI reference – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Every wp-release command, grouped by task, with the global options and conventions.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/cli.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/cli.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="CLI – wp-release">
-  <meta property="og:description" content="Commands of a group are one word each after the group: changeset, deploy and i18n. Run npx wp-release --help to list the commands of a group and npx…">
+  <meta property="og:title" content="CLI reference – wp-release">
+  <meta property="og:description" content="Every wp-release command, grouped by task, with the global options and conventions.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/cli.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/cli.html#article",
-      "headline": "CLI",
-      "description": "Commands of a group are one word each after the group: changeset, deploy and i18n. Run npx wp-release --help to list the commands of a group and npx…",
+      "headline": "CLI reference",
+      "description": "Every wp-release command, grouped by task, with the global options and conventions.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/cli.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/cli.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "CLI", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/cli.html" }
+        { "@type": "ListItem", "position": 4, "name": "CLI reference", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/cli.html" }
       ]
     }
   ]
@@ -116,15 +116,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html" aria-current="page">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html" aria-current="page">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -139,108 +161,182 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>CLI</h1>
+    <h1>CLI reference</h1><p class="lede">Every wp-release command, grouped by task, with the global options and conventions.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/cli.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/cli.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">npx wp-release <span class="token parameter variable">--help</span></code></pre>
+    <p>Run the CLI with <code>npx @wpelevator/wp-release &lt;command&gt;</code>, or <code>wp-release &lt;command&gt;</code> after it's installed in your project. <code>--help</code> lists the commands and <code>--help</code> after a command lists its options:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token parameter variable">--help</span>
+npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--help</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="commands" tabindex="-1"><a class="header-anchor" href="#commands">Commands</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
 <tr>
+<th>Task</th>
 <th>Command</th>
-<th>Description</th>
+<th>Page</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>wp-release build [&lt;source-dir&gt;] --output &lt;dir&gt; [options]</code></td>
-<td>Copy selected release files into a directory.</td>
-</tr>
-<tr>
+<td>Build</td>
 <td><code>wp-release zip [&lt;source-dir&gt;] [options]</code></td>
-<td>Create a ZIP archive with a <code>{slug}/</code> root folder, respecting <code>.distignore</code>.</td>
+<td><a href="build-a-zip.html">Build a release ZIP</a></td>
 </tr>
 <tr>
-<td><code>wp-release checksums [&lt;source-dir&gt;] [options]</code></td>
-<td>Write the MD5 and SHA-256 hashes of every distributed file to a checksums manifest.</td>
+<td>Build</td>
+<td><code>wp-release build [&lt;source-dir&gt;] --output &lt;dir&gt; [options]</code></td>
+<td><a href="build-a-zip.html#build-a-directory-instead-of-a-zip">Build a release ZIP</a></td>
 </tr>
 <tr>
-<td><code>wp-release sign &lt;file&gt;... [options]</code></td>
-<td>Sign files with Ed25519, writing a detached <code>&lt;file&gt;.sig</code> next to each, or minisign and SSH signatures with <code>--format</code>.</td>
-</tr>
-<tr>
-<td><code>wp-release keygen</code></td>
-<td>Generate a base64 Ed25519 private seed and its public key, also as minisign and SSH public keys.</td>
-</tr>
-<tr>
-<td><code>wp-release verify [&lt;source-dir&gt;] --checksums &lt;file&gt; [options]</code></td>
-<td>Check a plugin or theme directory, or a ZIP, against a checksums manifest.</td>
-</tr>
-<tr>
+<td>Check</td>
 <td><code>wp-release version-check [&lt;source-dir&gt;] [options]</code></td>
-<td>Check that the <code>Version</code> header, readme <code>Stable tag</code>, PHP constants and git tag agree.</td>
+<td><a href="version-check.html">Check versions</a></td>
 </tr>
 <tr>
-<td><code>wp-release deploy svn [&lt;source-dir&gt;] [options]</code></td>
-<td>Deploy a plugin to the WordPress.org plugin SVN repository.</td>
+<td>Verify</td>
+<td><code>wp-release checksums [&lt;source-dir&gt;] [options]</code></td>
+<td><a href="checksums.html">Write a checksums manifest</a></td>
 </tr>
 <tr>
-<td><code>wp-release deploy git [&lt;source-dir&gt;] --git-url &lt;url&gt; [options]</code></td>
-<td>Deploy the files of a plugin, theme or package to a Git repository as a release commit.</td>
+<td>Verify</td>
+<td><code>wp-release verify [&lt;source-dir&gt;] --checksums &lt;file&gt; [options]</code></td>
+<td><a href="verify.html">Verify a ZIP or directory</a></td>
 </tr>
 <tr>
-<td><code>wp-release deploy git --release-ref &lt;ref&gt; [--package &lt;name&gt;] [--list]</code></td>
-<td>Deploy the configured packages of a release tag or branch to their Git targets.</td>
+<td>Sign</td>
+<td><code>wp-release keygen</code></td>
+<td><a href="signing.html">Sign releases</a></td>
 </tr>
 <tr>
-<td><code>wp-release deploy svn --release-ref &lt;ref&gt; [--package &lt;name&gt;] [--list]</code></td>
-<td>Deploy the configured plugin of a release tag to WordPress.org.</td>
+<td>Sign</td>
+<td><code>wp-release sign &lt;file&gt;... [options]</code></td>
+<td><a href="signing.html">Sign releases</a></td>
 </tr>
 <tr>
-<td><code>wp-release i18n pot [&lt;source-dir&gt;] [options]</code></td>
-<td>Extract translatable strings into a reproducible POT file.</td>
-</tr>
-<tr>
-<td><code>wp-release i18n audit [&lt;source-dir&gt;] [options]</code></td>
-<td>Report translation string problems without writing files.</td>
-</tr>
-<tr>
-<td><code>wp-release i18n mo &lt;file.po&gt; [options]</code></td>
-<td>Compile a translated PO file into MO.</td>
-</tr>
-<tr>
-<td><code>wp-release i18n json &lt;file.po&gt; --domain &lt;domain&gt; [options]</code></td>
-<td>Compile the JavaScript strings of a translated PO file into WordPress script JSON files.</td>
-</tr>
-<tr>
-<td><code>wp-release i18n php &lt;file.po&gt; [options]</code></td>
-<td>Compile a translated PO file into a WordPress <code>.l10n.php</code> file.</td>
-</tr>
-<tr>
+<td>Release</td>
 <td><code>wp-release changeset add [options]</code></td>
-<td>Record the release impact of a pull request.</td>
+<td><a href="changesets.html">Changesets</a></td>
 </tr>
 <tr>
+<td>Release</td>
 <td><code>wp-release changeset status [options]</code></td>
-<td>List pending releases and check changed packages for changesets.</td>
+<td><a href="changesets.html">Changesets</a></td>
 </tr>
 <tr>
+<td>Release</td>
 <td><code>wp-release changeset version [options]</code></td>
-<td>Apply version bumps and changelog entries.</td>
+<td><a href="changesets.html">Changesets</a></td>
 </tr>
 <tr>
+<td>Release</td>
 <td><code>wp-release changeset tag [options]</code></td>
-<td>Create missing package release tags.</td>
+<td><a href="changesets.html">Changesets</a></td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td><code>wp-release deploy svn [&lt;source-dir&gt;] [options]</code></td>
+<td><a href="deploy-svn.html">Deploy to WordPress.org</a></td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td><code>wp-release deploy git [&lt;source-dir&gt;] --git-url &lt;url&gt; [options]</code></td>
+<td><a href="deploy-git.html">Deploy to a Git repository</a></td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td><code>wp-release deploy git --release-ref &lt;ref&gt; [--package &lt;name&gt;] [--list]</code></td>
+<td><a href="deploy-packages.html">Deploy configured packages</a></td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td><code>wp-release deploy svn --release-ref &lt;ref&gt; [--package &lt;name&gt;] [--list]</code></td>
+<td><a href="deploy-packages.html">Deploy configured packages</a></td>
+</tr>
+<tr>
+<td>Translate</td>
+<td><code>wp-release i18n pot [&lt;source-dir&gt;] [options]</code></td>
+<td><a href="internationalization.html">Extract a POT file</a></td>
+</tr>
+<tr>
+<td>Translate</td>
+<td><code>wp-release i18n audit [&lt;source-dir&gt;] [options]</code></td>
+<td><a href="internationalization.html">Extract a POT file</a></td>
+</tr>
+<tr>
+<td>Translate</td>
+<td><code>wp-release i18n mo &lt;file.po&gt; [options]</code></td>
+<td><a href="compile-translations.html">Compile translations</a></td>
+</tr>
+<tr>
+<td>Translate</td>
+<td><code>wp-release i18n json &lt;file.po&gt; --domain &lt;domain&gt; [options]</code></td>
+<td><a href="compile-translations.html">Compile translations</a></td>
+</tr>
+<tr>
+<td>Translate</td>
+<td><code>wp-release i18n php &lt;file.po&gt; [options]</code></td>
+<td><a href="compile-translations.html">Compile translations</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 <p>Commands of a group are one word each after the group: <code>changeset</code>, <code>deploy</code> and <code>i18n</code>. Run <code>npx wp-release &lt;group&gt; --help</code> to list the commands of a group and <code>npx wp-release &lt;group&gt; &lt;command&gt; --help</code> for their options. The earlier dashed names, like <code>changeset-add</code>, <code>deploy-svn</code> and <code>i18n-pot</code>, still run the same commands as aliases, but the docs, help and the library results use the grouped names.</p>
+<h2 id="global-options" tabindex="-1"><a class="header-anchor" href="#global-options">Global options</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-h</code>, <code>--help</code></td>
+<td>Show help for the command.</td>
+</tr>
+<tr>
+<td><code>-v</code>, <code>--verbose</code></td>
+<td>Print more output.</td>
+</tr>
+<tr>
+<td><code>-q</code>, <code>--quiet</code></td>
+<td>Print errors only.</td>
+</tr>
+<tr>
+<td><code>--json</code></td>
+<td>Print the result as JSON.</td>
+</tr>
+<tr>
+<td><code>--github-output</code></td>
+<td>Set the result as JSON to the <code>result</code> output of the GitHub Actions step. See <a href="github-actions.html">Use it in GitHub Actions</a>.</td>
+</tr>
+<tr>
+<td><code>--log-format &lt;name&gt;</code></td>
+<td><code>text</code>, or <code>github</code> for annotations and job summaries. The default is <code>github</code> when <code>GITHUB_ACTIONS=true</code>.</td>
+</tr>
+<tr>
+<td><code>--ci</code></td>
+<td>The same as <code>--log-format github</code>.</td>
+</tr>
+<tr>
+<td><code>--config &lt;path&gt;</code></td>
+<td>Path to a JavaScript release config file. See <a href="configuration.html">Configuration</a>.</td>
+</tr>
+<tr>
+<td><code>--tag-format &lt;format&gt;</code></td>
+<td>Tag format with <code>{name}</code>, <code>{path}</code> and <code>{version}</code> that replaces the <code>tagFormat</code> of the config, like <code>{path}/{version}</code>. See <a href="monorepo-releases.html#packages-and-tags">Packages and tags</a>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="conventions" tabindex="-1"><a class="header-anchor" href="#conventions">Conventions</a></h2>
 <p><code>wp-release changeset</code> without a command runs <code>changeset add</code>, with its options, so that a package.json script can map <code>changeset</code> to it:</p>
 <div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
 	<span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -250,99 +346,10 @@
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p><code>npm run changeset</code> then adds a changeset, and <code>npm run changeset -- status --since origin/main</code> runs the other changeset commands. The <code>deploy</code> and <code>i18n</code> groups need a command.</p>
 <p>Run <code>npx wp-release &lt;command&gt; --help</code> for the options of each command. Directory-based commands accept a first <code>&lt;source-dir&gt;</code> argument or <code>--source-dir</code>, defaulting to the current directory. <code>sign</code> and the <code>i18n mo</code>, <code>i18n json</code> and <code>i18n php</code> compilers take file arguments, <code>keygen</code> generates keys, and changeset commands operate on the configured repository. Every command prints its result as JSON with <code>--json</code>. Commands that take no positional arguments, like the changeset commands, reject bare arguments with the usage instead of ignoring them.</p>
-<p>In GitHub Actions, <code>--github-output</code> writes the complete result as JSON to <code>steps.&lt;id&gt;.outputs.result</code> and exposes each top-level string, number or boolean as a plain output. Use <code>steps.zip.outputs.zipPath</code> for a ZIP path, for example. Arrays and objects remain in <code>result</code>: tag metadata is read with <code>fromJSON( steps.tag.outputs.result ).tags[0].tag</code>, even when only one package is selected. There is no plain <code>steps.tag.outputs.tag</code> output.</p>
-<p>Prefer plain outputs in steps that run conditionally, since a skipped step has empty outputs. When reading JSON from a step that may be skipped, use a fallback such as <code>fromJSON( steps.tag.outputs.result || '{&quot;tags&quot;:[]}' ).tags[0].tag</code>. For several tags or deploys, read the arrays in <code>result</code> to build a job matrix or process each item.</p>
-<h2 id="github-actions-annotations-and-job-summaries" tabindex="-1"><a class="header-anchor" href="#github-actions-annotations-and-job-summaries">GitHub Actions annotations and job summaries</a></h2>
-<p>With the <code>github</code> log format, the CLI uses current GitHub Actions features to report problems where you look for them, instead of only in the log. <code>--log-format &lt;name&gt;</code> picks how the CLI logs, separately from the result that <code>--json</code> prints:</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Log format</th>
-<th>Output</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text</code></td>
-<td>Plain text. The default outside GitHub Actions.</td>
-</tr>
-<tr>
-<td><code>github</code></td>
-<td>GitHub Actions annotations and job summaries. The default when <code>GITHUB_ACTIONS=true</code>. <code>--ci</code> is a shorthand for it.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>Pass <code>--log-format text</code> for plain text in GitHub Actions. The GitHub Actions always use the <code>github</code> log format. Only the CLI checks <code>GITHUB_ACTIONS</code>: the library classes don't read the environment, and choose the format by the <a href="library.html#logging">writer</a> they get.</p>
-<p>Errors, warnings and notices are printed as <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands">workflow commands</a>, so they show up as annotations on the run and on the files of a pull request:</p>
-<ul>
-<li><code>version-check</code> and <code>deploy svn</code> annotate each version mismatch on the file and line of the version: the <code>Version</code> header, the readme <code>Stable tag</code> or the PHP constant.</li>
-<li><code>verify</code> annotates each changed file and each file that isn't in the checksums.</li>
-</ul>
-<p>Each command also adds a section to the <a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-commands#adding-a-job-summary">job summary</a> of the run, when <code>GITHUB_STEP_SUMMARY</code> is set:</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th>Summary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>deploy svn</code></td>
-<td>Plugin, linked to its WordPress.org page, version, written SVN paths, the commit linked to its WordPress.org changeset (or the dry run or no-op result), and the SVN changes in a collapsed table.</td>
-</tr>
-<tr>
-<td><code>deploy git</code></td>
-<td>Repository, release commit and the pushed branch and tag.</td>
-</tr>
-<tr>
-<td><code>build</code></td>
-<td>Output directory, number of copied files and optional manifest; requested signatures and public keys.</td>
-</tr>
-<tr>
-<td><code>zip</code></td>
-<td>ZIP, number of files and checksums manifest; with <code>--sign</code>, signature files and the public key of each written format.</td>
-</tr>
-<tr>
-<td><code>checksums</code></td>
-<td>Manifest and number of files.</td>
-</tr>
-<tr>
-<td><code>sign</code></td>
-<td>Signature files and the public key of each written format.</td>
-</tr>
-<tr>
-<td><code>verify</code></td>
-<td>That all files match, or the counts and a table of the changed, missing and extra files.</td>
-</tr>
-<tr>
-<td><code>version-check</code></td>
-<td>The matching version, or a table of the mismatches with their files and lines.</td>
-</tr>
-<tr>
-<td><code>changeset status</code></td>
-<td>Each changed package with whether it has a changeset.</td>
-</tr>
-<tr>
-<td><code>changeset version</code></td>
-<td>A table of the package releases with their version changes and bumps.</td>
-</tr>
-<tr>
-<td><code>changeset tag</code></td>
-<td>Each tag with its previous tag and status, and its release notes in a collapsed section.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>A failed command adds its error to the summary, or a table of its problems with their files and lines, listing up to 100 and counting the rest. The Markdown of the summaries isn't part of the library API. File paths are relative to <code>GITHUB_WORKSPACE</code>, or the current directory without it. Files outside it, like those of an extracted ZIP, get an annotation without a file. Multi-line messages stay one annotation.</p>
-<p>Use global <code>--config &lt;path&gt;</code> to select a config; relative paths resolve from the current directory. Otherwise, commands using the config discover <code>wp-release.config.js</code>, <code>.mjs</code> or <code>.cjs</code> at the repository root. Global <code>--tag-format &lt;format&gt;</code> replaces the <code>tagFormat</code> of the config for one command, see <a href="changesets.html#packages-and-tags">Packages and tags</a>.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/changesets.html"><small>Previous</small>Changesets</a><a rel="next" href="/docs/js/wp-release/latest/comparison.html"><small>Next</small>Comparison with other tools</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/compile-translations.html"><small>Previous</small>Compile translations</a><a rel="next" href="/docs/js/wp-release/latest/github-actions.html"><small>Next</small>Use it in GitHub Actions</a>
 </nav>
 
   </main>

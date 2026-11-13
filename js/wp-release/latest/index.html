@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>wp-release | WP Elevator Docs</title>
-  <meta name="description" content="Build and release WordPress plugins, themes, and packages.">
+  <meta name="description" content="Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/index.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/index.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="wp-release">
-  <meta property="og:description" content="Build and release WordPress plugins, themes, and packages.">
+  <meta property="og:description" content="Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/index.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -43,7 +43,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html#article",
       "headline": "wp-release",
-      "description": "Build and release WordPress plugins, themes, and packages.",
+      "description": "Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html",
       "inLanguage": "en",
@@ -115,15 +115,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html" aria-current="page">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -138,42 +160,97 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>wp-release</h1><p class="lede">Build and release WordPress plugins, themes, and packages.</p>
+    <h1>wp-release</h1><p class="lede">Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/index.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/index.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p><code>@wpelevator/wp-release</code> provides a CLI and library for building release directories and ZIPs, creating checksums and signatures, checking versions, extracting and compiling translations, and deploying to WordPress.org SVN or Git repositories.</p>
-<p>The <a href="https://github.com/wpelevator/wp-release-zip"><code>wp-release-zip</code></a>, <a href="https://github.com/wpelevator/wp-release-checksums"><code>wp-release-checksums</code></a>, <a href="https://github.com/wpelevator/wp-release-sign"><code>wp-release-sign</code></a>, and <a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wp-release-deploy-svn</code></a> GitHub Actions expose the same commands in workflows.</p>
-<p>For projects that don't use Node.js or JavaScript tooling, <a href="../../../php/php-changesets/latest/index.html">PHP Changesets</a> (<code>wpelevator/php-changesets</code>) runs the same changeset release workflow with PHP and Git alone: <code>changeset add</code>, <code>status</code>, <code>version</code> and <code>tag</code> read the same changeset files and match the options of the <code>changeset</code> commands described in <a href="changesets.html">Changesets support</a>.</p>
-<p>WordPress.org themes are released by uploading a ZIP, so <code>deploy svn</code> is for plugins only. Use <code>zip</code> to build a theme upload. Packaging and deployment options follow familiar community tools to ease migration; the <a href="./comparison.html">comparison</a> explains the differences.</p>
+    <p>Releasing a WordPress plugin means a ZIP with the right root folder, the same version in several places, a changelog and, for WordPress.org, an SVN commit. <code>wp-release</code> does each of them with one command.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span>
+npx @wpelevator/wp-release version-check
+npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.4.2.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip
+All versions match 1.4.2.
+4 files match, 0 changed, 0 missing and 0 extra.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>That is the output for a plugin whose readme <code>Stable tag</code> matches its <code>Version</code> header, and a checksums manifest built with <code>zip --checksums</code>. The <a href="quickstart.html">quickstart</a> runs each step and shows what a mismatch looks like.</p>
+<p>No config file is needed to start. <a href="quickstart.html">Try it on your plugin in a minute</a>.</p>
+<h2 id="what-you-get" tabindex="-1"><a class="header-anchor" href="#what-you-get">What you get</a></h2>
+<ul>
+<li><strong>A ZIP that WordPress.org accepts.</strong> It has the <code>{slug}/</code> root folder, leaves out what <code>.distignore</code> lists, and the same files give the same ZIP. It is built in Node.js, with no <code>zip</code> binary. <a href="build-a-zip.html">Build a release ZIP</a>.</li>
+<li><strong>Version mismatches caught before release.</strong> <code>version-check</code> compares the <code>Version</code> header with the readme <code>Stable tag</code>, and with PHP constants and the git tag when you ask. <a href="version-check.html">Check versions</a>.</li>
+<li><strong>Proof that a release wasn't tampered with.</strong> Checksums list every file, and <code>verify</code> names each file that was added or changed. Ed25519, minisign and SSH signatures cover the ZIP and the manifest. <a href="verify.html">Verify</a> and <a href="signing.html">sign</a>.</li>
+<li><strong>Releases from pull requests.</strong> Changesets turn notes in each pull request into version bumps, changelogs and tags, for one plugin or a monorepo. <a href="release-workflow.html">Release from GitHub Actions</a>.</li>
+<li><strong>One-command deploys.</strong> <a href="deploy-svn.html">Deploy to WordPress.org</a> or to a <a href="deploy-git.html">Git repository</a>, with <code>--dry-run</code> to see the changes first.</li>
+<li><strong>Translations.</strong> <a href="internationalization.html">Extract a POT file</a> and <a href="compile-translations.html">compile PO files</a> to MO, JSON and PHP.</li>
+</ul>
+<h2 id="pick-your-path" tabindex="-1"><a class="header-anchor" href="#pick-your-path">Pick your path</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>I want to</th>
+<th>Start here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build a release ZIP and check it</td>
+<td><a href="quickstart.html">Quickstart</a></td>
+</tr>
+<tr>
+<td>Automate versions, changelogs and tags</td>
+<td><a href="release-workflow.html">Release from GitHub Actions</a></td>
+</tr>
+<tr>
+<td>Publish to WordPress.org</td>
+<td><a href="deploy-svn.html">Deploy to WordPress.org</a></td>
+</tr>
+<tr>
+<td>Prove a release is unchanged</td>
+<td><a href="packaging.html">Build, verify and sign</a></td>
+</tr>
+<tr>
+<td>Release many packages from one repository</td>
+<td><a href="monorepo-releases.html">Release a monorepo</a></td>
+</tr>
+<tr>
+<td>Run commands in a workflow</td>
+<td><a href="github-actions.html">Use it in GitHub Actions</a></td>
+</tr>
+<tr>
+<td>Call it from Node.js</td>
+<td><a href="library.html">Library API</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>WordPress.org themes are released by uploading a ZIP, so <code>deploy svn</code> is for plugins only. Use <a href="build-a-zip.html"><code>zip</code></a> to build a theme upload.</p>
+<p>Projects without Node.js can use <a href="../../../php/php-changesets/latest/index.html">PHP Changesets</a> (<code>wpelevator/php-changesets</code>), which runs the same changeset workflow with PHP and Git alone.</p>
 <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
+<p>Run commands with <code>npx</code> as above, or add the package to your project:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev @wpelevator/wp-release</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Node.js 22.12 or later is required. SVN deployments also require the <code>svn</code> command line client. Git deployments and changeset commands require Git.</p>
+<p>Node.js 22.12 or later is required. SVN deployments also need the <code>svn</code> command line client. Git deployments and changeset commands need Git.</p>
 <p>The package is an ES module with TypeScript declarations. CommonJS projects can load it with <code>require( '@wpelevator/wp-release' )</code> on Node.js 22.12 or later.</p>
-<h2 id="start-with-the-cli" tabindex="-1"><a class="header-anchor" href="#start-with-the-cli">Start with the CLI</a></h2>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">npx wp-release <span class="token parameter variable">--help</span>
-npx wp-release <span class="token function">zip</span> <span class="token parameter variable">--help</span></code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
+<p>Zero-install examples in these docs use <code>npx @wpelevator/wp-release</code>, because <code>npx wp-release</code> alone runs an unrelated npm package until this one is installed. After <code>npm install</code>, <code>npx wp-release</code> and <code>wp-release</code> in npm scripts are the same command.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
 <ul>
-<li><a href="./cli.html">CLI and automation</a></li>
-<li><a href="./changesets.html">Changeset releases</a></li>
-<li><a href="./configuration.html">Configuration and file selection</a></li>
-<li><a href="./packaging.html">Packaging, checksums, signatures, and verification</a></li>
-<li><a href="./deployment.html">Git and WordPress.org deployment</a></li>
-<li><a href="./internationalization.html">WordPress internationalization</a></li>
-<li><a href="./library.html">Library API</a></li>
-<li><a href="./development.html">Development and architecture</a></li>
-<li><a href="./comparison.html">Comparison with existing tools</a></li>
+<li><a href="cli.html">CLI reference</a></li>
+<li><a href="github-actions.html">Use it in GitHub Actions</a></li>
+<li><a href="configuration.html">Configuration</a></li>
+<li><a href="naming.html">Names across the CLI, Actions and library</a></li>
+<li><a href="library.html">Library API</a></li>
+<li><a href="development.html">Development and architecture</a></li>
+<li><a href="comparison.html">Comparison with existing tools</a></li>
 </ul>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/wp-release/latest/changesets.html"><small>Next</small>Changesets</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/wp-release/latest/quickstart.html"><small>Next</small>Quickstart</a>
 </nav>
 
   </main>

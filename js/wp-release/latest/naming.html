@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Names across the CLI, Actions and library – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="How options, results and inputs are named in the CLI, the GitHub Actions and the library API.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/naming.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/naming.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Names across the CLI, Actions and library – wp-release">
+  <meta property="og:description" content="How options, results and inputs are named in the CLI, the GitHub Actions and the library API.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/naming.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/naming.html#article",
+      "headline": "Names across the CLI, Actions and library",
+      "description": "How options, results and inputs are named in the CLI, the GitHub Actions and the library API.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/naming.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/naming.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Names across the CLI, Actions and library", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/naming.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/naming.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html" aria-current="page">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Names across the CLI, Actions and library</h1><p class="lede">How options, results and inputs are named in the CLI, the GitHub Actions and the library API.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/naming.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/naming.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p><code>@wpelevator/wp-release</code> is the suite of release tools and <code>wp-release</code> is its CLI. &quot;Release&quot; is the whole workflow; each command is one operation in it. Commands are one word, or a group followed by one word: <code>changeset</code>, <code>deploy</code> and <code>i18n</code> have commands such as <code>changeset add</code>, <code>deploy svn</code> and <code>i18n pot</code>. The earlier dashed names, like <code>changeset-add</code>, <code>deploy-svn</code> and <code>i18n-pot</code>, still run the same commands as aliases. Each GitHub Action is named <code>wp-release-</code> followed by the command name, so the CLI command and the <code>uses:</code> name match.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>CLI command</th>
+<th>GitHub Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build a directory</td>
+<td><code>wp-release build</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Build a ZIP</td>
+<td><code>wp-release zip</code></td>
+<td><a href="https://github.com/wpelevator/wp-release-zip"><code>wpelevator/wp-release-zip</code></a></td>
+</tr>
+<tr>
+<td>Create a checksums manifest</td>
+<td><code>wp-release checksums</code></td>
+<td><a href="https://github.com/wpelevator/wp-release-checksums"><code>wpelevator/wp-release-checksums</code></a></td>
+</tr>
+<tr>
+<td>Sign files</td>
+<td><code>wp-release sign</code></td>
+<td><a href="https://github.com/wpelevator/wp-release-sign"><code>wpelevator/wp-release-sign</code></a></td>
+</tr>
+<tr>
+<td>Verify files against a manifest</td>
+<td><code>wp-release verify</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Check that the versions agree</td>
+<td><code>wp-release version-check</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Deploy to WordPress.org SVN</td>
+<td><code>wp-release deploy svn</code></td>
+<td><a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wpelevator/wp-release-deploy-svn</code></a></td>
+</tr>
+<tr>
+<td>Deploy to a Git repository</td>
+<td><code>wp-release deploy git</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The names below are scoped to their commands. <code>--output</code> selects the primary artifact of each command; ZIP packaging uses <code>--checksums-file</code> for its accompanying manifest:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>CLI</th>
+<th>GitHub Action</th>
+<th>Library</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plugin or theme directory</td>
+<td><code>&lt;source-dir&gt;</code> argument or <code>--source-dir</code></td>
+<td><code>source-dir</code></td>
+<td><code>sourceDir</code></td>
+<td>Directory that a command reads, whether it's the repository or a build directory.</td>
+</tr>
+<tr>
+<td>Build directory</td>
+<td><code>build --output &lt;dir&gt;</code></td>
+<td>None</td>
+<td><code>outputDir</code></td>
+<td>Directory written by <code>build</code>; files go directly inside it.</td>
+</tr>
+<tr>
+<td>ZIP file</td>
+<td><code>zip --output &lt;file&gt;</code></td>
+<td><code>output</code> in ZIP action</td>
+<td><code>zipPath</code></td>
+<td>Destination passed to <code>zipPackage()</code>; also returned as <code>zipPath</code>.</td>
+</tr>
+<tr>
+<td>Standalone checksums file</td>
+<td><code>checksums --output &lt;file&gt;</code></td>
+<td><code>output</code> in checksums action</td>
+<td>first argument of <code>writeChecksums()</code></td>
+<td>Manifest destination relative to the working directory; the CLI returns its absolute path as <code>checksumsPath</code>.</td>
+</tr>
+<tr>
+<td>Checksums filename when zipping</td>
+<td><code>zip --checksums-file &lt;file&gt;</code></td>
+<td><code>checksums-file</code> in ZIP action</td>
+<td><code>checksumsFile</code></td>
+<td>Relative manifest filename beside the ZIP or inside its package root when embedded.</td>
+</tr>
+<tr>
+<td>ZIP to deploy</td>
+<td><code>--from-zip &lt;file&gt;</code></td>
+<td><code>from-zip</code></td>
+<td><code>fromZip</code></td>
+<td>Existing ZIP read as the deploy source.</td>
+</tr>
+<tr>
+<td>Git tag to compare</td>
+<td><code>--git-tag &lt;tag&gt;</code></td>
+<td></td>
+<td><code>gitTag</code></td>
+<td>Git tag checked by <code>version-check</code>.</td>
+</tr>
+<tr>
+<td>SVN tag to create</td>
+<td><code>--svn-tag &lt;version&gt;</code></td>
+<td><code>svn-tag</code></td>
+<td><code>svnTag</code></td>
+<td>Tag written by <code>deploy svn</code>, distinct from a git tag.</td>
+</tr>
+<tr>
+<td>SVN repository</td>
+<td><code>--svn-url &lt;url&gt;</code></td>
+<td><code>svn-url</code></td>
+<td><code>svnUrl</code></td>
+<td>Deploy destination.</td>
+</tr>
+<tr>
+<td>Git repository</td>
+<td><code>--git-url &lt;url&gt;</code></td>
+<td></td>
+<td><code>gitUrl</code></td>
+<td>Destination of <code>deploy git</code>. Credentials come from git, like a token in the URL or an SSH key, and are never printed.</td>
+</tr>
+<tr>
+<td>Branch and tag to release to</td>
+<td><code>--branch &lt;name&gt;</code>, <code>--tag &lt;name&gt;</code></td>
+<td></td>
+<td><code>branch</code>, <code>tag</code></td>
+<td>Refs written by <code>deploy git</code> in the Git repository, distinct from the git tag that <code>version-check</code> compares.</td>
+</tr>
+<tr>
+<td>Source history</td>
+<td><code>--split-prefix &lt;dir&gt;</code></td>
+<td></td>
+<td><code>splitPrefix</code></td>
+<td>Directory of a monorepo package whose history, split into its own commits like <code>git subtree split</code> does, becomes the source history of <code>deploy git</code> releases.</td>
+</tr>
+<tr>
+<td>SVN credentials</td>
+<td><code>--svn-username &lt;name&gt;</code>, <code>SVN_USERNAME</code> and <code>SVN_PASSWORD</code> env vars</td>
+<td><code>svn-username</code>, <code>svn-password</code></td>
+<td><code>svnUsername</code>, <code>svnPassword</code></td>
+<td>Needed only to commit. There's no password flag, since it would show in the process list; the action inputs and library options fall back to the env vars.</td>
+</tr>
+<tr>
+<td>Log format</td>
+<td><code>--log-format &lt;text|github&gt;</code>, <code>--ci</code> for <code>github</code></td>
+<td>always <code>github</code></td>
+<td><code>writer: new TextWriter()</code> or <code>new GitHubActionsWriter()</code></td>
+<td>How the log is printed: plain text, or GitHub Actions annotations and job summaries. Each name matches the start of its writer class.</td>
+</tr>
+<tr>
+<td>Release config</td>
+<td><code>--config &lt;path&gt;</code></td>
+<td><code>config</code> in ZIP, checksums and SVN actions</td>
+<td><code>configFile</code></td>
+<td>Explicit JavaScript config path for package selection, integrity settings or deployment.</td>
+</tr>
+<tr>
+<td>Release tag format</td>
+<td><code>--tag-format &lt;format&gt;</code></td>
+<td><code>tag-format</code> in SVN action</td>
+<td><code>tagFormat</code></td>
+<td>How <code>release-ref</code> identifies a package and its version.</td>
+</tr>
+<tr>
+<td>Release ref to deploy</td>
+<td><code>--release-ref &lt;ref&gt;</code></td>
+<td><code>release-ref</code> in SVN action</td>
+<td><code>ref</code></td>
+<td>Read configured packages and deployment targets from a release ref.</td>
+</tr>
+<tr>
+<td>Assets sync</td>
+<td><code>--no-assets</code> to skip</td>
+<td><code>assets: false</code> to skip</td>
+<td><code>assets</code></td>
+<td>Booleans are positive in the library and the action; <code>--no-assets</code> is only the CLI negation, never <code>noAssets</code> or a <code>no-assets</code> input.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>CLI JSON results use camelCase keys like <code>zipPath</code>, and GitHub Action outputs use kebab-case like <code>zip-path</code>. The ZIP action supports <code>package</code> and <code>config</code>, the checksums action supports <code>config</code> for codec selection, and the SVN action supports <code>release-ref</code>, repeated <code>package</code> values as newline-separated input, <code>list</code>, <code>config</code> and <code>tag-format</code>.</p>
+<p>The ZIP CLI result uses <code>checksumsEmbedded</code> for the package-relative embedded manifest path. Its <code>signatures</code> array includes external absolute paths and embedded package-relative paths, while <code>checksumsSignatures</code> contains only manifest signatures. The ZIP action exposes those locations as <code>checksums-embedded</code>, <code>signatures</code> for external signatures, and <code>signatures-embedded</code> for embedded signatures, so asset uploads receive local files. With CLI <code>--github-output</code>, signature arrays remain in the JSON <code>result</code> output.</p>
+<p>Library classes are named after the capability (<code>SvnDeploy</code>, <code>Svn</code>, <code>GitDeploy</code>) without repeating &quot;release&quot;.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/wp-release/latest/library.html"><small>Next</small>Library API</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

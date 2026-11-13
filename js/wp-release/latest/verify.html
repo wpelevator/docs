@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Verify a ZIP or directory – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Check a ZIP, a build directory or an installed plugin against a checksums manifest, and name every changed, missing and extra file.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/verify.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/verify.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Verify a ZIP or directory – wp-release">
+  <meta property="og:description" content="Check a ZIP, a build directory or an installed plugin against a checksums manifest, and name every changed, missing and extra file.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/verify.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/verify.html#article",
+      "headline": "Verify a ZIP or directory",
+      "description": "Check a ZIP, a build directory or an installed plugin against a checksums manifest, and name every changed, missing and extra file.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/verify.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/verify.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Verify a ZIP or directory", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/verify.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/verify.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html" aria-current="page">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Verify a ZIP or directory</h1><p class="lede">Check a ZIP, a build directory or an installed plugin against a checksums manifest, and name every changed, missing and extra file.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/verify.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/verify.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p><code>verify</code> compares the files of a ZIP or a directory with a <a href="checksums.html">checksums manifest</a>. It works on a ZIP that you built, one that you downloaded and the one that WordPress.org builds for a release.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.4.2.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">4 files match, 0 changed, 0 missing and 0 extra.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>If someone adds or edits a file, the command exits with <code>2</code> and names it:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Error: Not in the checksums: evil.php
+4 files match, 0 changed, 0 missing and 1 extra.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A manifest proves only that the files match the manifest. Add <code>--public-key</code> to check its <a href="signing.html">signature</a> first.</p>
+<h2 id="how-it-checks" tabindex="-1"><a class="header-anchor" href="#how-it-checks">How it checks</a></h2>
+<p><code>verify</code> checks a directory against a manifest from <code>checksums</code> or from the WordPress.org checksums API, and reports every changed, missing and extra file. It exits with <code>2</code> unless all files match:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">wp-release verify wp-content/plugins/my-plugin <span class="token parameter variable">--checksums</span> my-plugin.1.2.0.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<ul>
+<li>A file matches when its SHA-256 equals the manifest. Manifests without SHA-256 fall back to MD5, and a hash can also be a list of accepted values.</li>
+<li><code>verify</code> doesn't read <code>.distignore</code>, so that an ignore file inside the checked directory can't hide added files. <code>--exclude &lt;patterns&gt;</code> skips paths in both the directory and the manifest, for files that aren't part of the release, such as caches.</li>
+<li>Manifest paths outside the package folder (absolute or with <code>..</code>) are rejected.</li>
+<li><code>--zip &lt;file|url&gt;</code> checks the files of a ZIP instead of a directory. The ZIP can be a URL, such as the one that WordPress.org builds for a release, and its single root folder is found automatically (or set <code>--root-folder</code>). The ZIP is extracted to a temporary directory after the same safety checks as <code>deploy svn --from-zip</code>.</li>
+<li>The version in the manifest must match the <code>Version</code> header of the checked files, so that an older release with its own valid manifest can't pass as a newer one.</li>
+<li>A manifest can't list itself. A copy of the manifest and of its signature inside the checked files, at the root with the same names as the <code>--checksums</code> file or at the path of <code>--embedded</code>, is skipped when comparing files, but it must be identical to the <code>--checksums</code> file and its signature. The signature is the <code>.sig</code> file, or the file of <code>--signature-format</code>. A path that the manifest lists is never skipped, and a file that isn't a matching copy is reported as not in the checksums. See <a href="checksums.html#manifest-inside-the-plugin">Manifest inside the plugin</a>.</li>
+</ul>
+<p>A checksums manifest proves only that the files match the manifest. With <code>--public-key &lt;key&gt;</code>, <code>verify</code> first checks <code>&lt;checksums&gt;.sig</code> against the Ed25519 public key and fails with exit code <code>2</code> before comparing any file when the signature is missing or invalid, so that the manifest itself can be trusted. <code>--signature-format minisign</code> or <code>ssh</code> checks <code>&lt;checksums&gt;.minisig</code> or <code>&lt;checksums&gt;.sshsig</code> instead. The key can be the base64 key, the minisign public key or the <code>ssh-ed25519</code> public key, since they're forms of the same key. See <a href="signing.html">Sign</a>.</p>
+<p>Verification never executes configuration from inside a downloaded package. Without <code>--checksums</code>, <code>verify</code> reads the embedded filename selected by <code>--checksums-file</code>, explicit configuration, or the codec default. For a versioned embedded filename, pass that filename explicitly. With a public key, signatures are checked before decoding; the selected signature format must exist (WordPress <code>.sig</code> by default; pass <code>--signature-format minisign</code> or <code>ssh</code> for those formats), and all other present supported signature formats are also authenticated when verifying the embedded manifest. Without a public key, checksums detect changes but do not authenticate the publisher. Trusted public keys must come from outside the package.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/checksums.html"><small>Previous</small>Write a checksums manifest</a><a rel="next" href="/docs/js/wp-release/latest/signing.html"><small>Next</small>Sign releases</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Internationalization – wp-release | WP Elevator Docs</title>
-  <meta name="description" content="i18n pot extracts plugin/theme strings and writes a reproducible UTF-8 POT. i18n audit reads the same source and returns findings without writing files…">
+  <title>Extract a POT file – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Extract the translatable strings of a plugin or theme into a reproducible POT file, and audit them, with Node.js alone.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/internationalization.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Internationalization – wp-release">
-  <meta property="og:description" content="i18n pot extracts plugin/theme strings and writes a reproducible UTF-8 POT. i18n audit reads the same source and returns findings without writing files…">
+  <meta property="og:title" content="Extract a POT file – wp-release">
+  <meta property="og:description" content="Extract the translatable strings of a plugin or theme into a reproducible POT file, and audit them, with Node.js alone.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html#article",
-      "headline": "Internationalization",
-      "description": "i18n pot extracts plugin/theme strings and writes a reproducible UTF-8 POT. i18n audit reads the same source and returns findings without writing files…",
+      "headline": "Extract a POT file",
+      "description": "Extract the translatable strings of a plugin or theme into a reproducible POT file, and audit them, with Node.js alone.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Internationalization", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html" }
+        { "@type": "ListItem", "position": 4, "name": "Extract a POT file", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/internationalization.html" }
       ]
     }
   ]
@@ -116,15 +116,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html" aria-current="page">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html" aria-current="page">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -139,14 +161,59 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Internationalization</h1>
+    <h1>Extract a POT file</h1><p class="lede">Extract the translatable strings of a plugin or theme into a reproducible POT file, and audit them, with Node.js alone.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/internationalization.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/internationalization.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="wordpress-internationalization" tabindex="-1"><a class="header-anchor" href="#wordpress-internationalization">WordPress internationalization</a></h2>
+    <p><code>i18n pot</code> reads the PHP, JavaScript, <code>block.json</code> and <code>theme.json</code> files of a plugin or theme and writes a POT file. It needs no PHP, WordPress installation, WP-CLI or network.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release i18n pot <span class="token builtin class-name">.</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin: 3 messages, 2 files.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The POT lists the plugin header strings first, then the strings of the source files in order. There are no dates, so the file changes only when the strings change:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">msgid &quot;&quot;
+msgstr &quot;&quot;
+&quot;Project-Id-Version: My Plugin 1.5.0\n&quot;
+&quot;Report-Msgid-Bugs-To: \n&quot;
+&quot;Last-Translator: \n&quot;
+&quot;Language-Team: \n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+&quot;POT-Creation-Date: \n&quot;
+&quot;PO-Revision-Date: \n&quot;
+&quot;X-Domain: my-plugin\n&quot;
+
+#. Plugin Name of the plugin
+#: my-plugin.php:3
+msgid &quot;My Plugin&quot;
+msgstr &quot;&quot;
+
+#: my-plugin.php:11
+msgid &quot;Save changes&quot;
+msgstr &quot;&quot;
+
+#: my-plugin.php:12
+#, php-format
+msgid &quot;%d item&quot;
+msgid_plural &quot;%d items&quot;
+msgstr[0] &quot;&quot;
+msgstr[1] &quot;&quot;</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>--check</code> fails when the POT is missing or stale, so CI can enforce it:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release i18n pot <span class="token builtin class-name">.</span> <span class="token parameter variable">--check</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>i18n audit</code> reads the same source and reports problems without writing files:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release i18n audit <span class="token builtin class-name">.</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Warning: Add a translators: comment explaining the placeholders. Message: &quot;%d item&quot;
+/home/me/my-plugin: 3 messages, 2 files.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>To turn a translated PO file into the files WordPress loads, see <a href="compile-translations.html">Compile translations</a>.</p>
+<h2 id="choose-what-to-extract" tabindex="-1"><a class="header-anchor" href="#choose-what-to-extract">Choose what to extract</a></h2>
 <p><code>i18n pot</code> extracts plugin/theme strings and writes a reproducible UTF-8 POT. <code>i18n audit</code> reads the same source and returns findings without writing files. Both run with Node alone: no PHP, WordPress installation, database, WP-CLI or network requests. Extraction is independent of <code>files</code>, <code>.distignore</code> and Git <code>export-ignore</code> distribution rules.</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release i18n pot <span class="token builtin class-name">.</span>
 wp-release i18n pot <span class="token parameter variable">--package</span> plugins/agent-pilot
@@ -157,6 +224,7 @@ wp-release i18n audit <span class="token builtin class-name">.</span> <span clas
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Config-free source directories must have plugin/theme headers. The actual main file is discovered using the package metadata reader, including plugins whose main filename differs from their slug. The selected domain defaults to <code>Text Domain</code>, then the directory name. Calls with omitted domains belong to WordPress's <code>default</code> domain; block metadata without a domain inherits the package domain. <code>--all-domains</code> explicitly combines domains. A block's explicit <code>textdomain</code> always controls its messages.</p>
 <p><code>--package</code> selects one configured package and permits extraction-specific overrides; <code>--all</code> requires configuration and selects enabled WordPress packages only. Source directories, package selectors and <code>--all</code> are mutually exclusive. Config-free directory mode reads only its explicit options and metadata; it does not import repository config implicitly. A disabled package fails when explicitly selected. Configuration uses <code>i18n</code> at the root and on package entries, including an exact <code>glob</code> for an individual package, following the existing group model. Package entries remain non-overlapping; there is no additional package manifest configuration source.</p>
+<h2 id="configure-extraction" tabindex="-1"><a class="header-anchor" href="#configure-extraction">Configure extraction</a></h2>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
 	<span class="token literal-property property">root</span><span class="token operator">:</span> <span class="token string">'packages'</span><span class="token punctuation">,</span>
 	<span class="token literal-property property">i18n</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -176,33 +244,18 @@ This file is distributed under the same license as the Example plugin.</span><sp
 <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Precedence is defaults, root configuration, package group/individual entry, then explicit command options. Scalars override, lists replace inherited lists, and gettext headers merge by key, case-insensitively, preserving intentionally empty values. A header set to <code>false</code> is removed, like <code>'Project-Id-Version': false</code> to keep the plugin version out of the POT so that it changes only when strings change; a later layer can set it again. <code>Content-Type</code> can't be removed, since it declares the UTF-8 charset. Options include <code>enabled</code>, <code>domain</code>, <code>allDomains</code>, <code>include</code>, <code>exclude</code>, <code>destination</code>, <code>headers</code>, <code>fileComment</code>, <code>location</code>, <code>strict</code>, <code>legacyGlobals</code> and audit <code>suppress</code>. <code>fileComment</code> adds static text above the POT header; each line is emitted as a gettext comment, and no copyright year is generated. The CLI accepts the same setting with <code>--file-comment</code>. Repeat <code>--include</code> or <code>--exclude</code> for multiple globs; these use case-sensitive <a href="https://github.com/isaacs/minimatch">minimatch</a> semantics with <code>/</code> paths, <code>**</code>, brace expansion and dotfile matching, without gitignore negation or comma splitting. Default excludes cover dependency directories, dot directories, tests, minified files and generated translations. Source/build exclusions are a repository choice; this repository excludes <code>build</code>, <code>tools</code> and isolated vendors in its config.</p>
+<h2 id="where-the-pot-is-written" tabindex="-1"><a class="header-anchor" href="#where-the-pot-is-written">Where the POT is written</a></h2>
 <p>The default output is <code>&lt;Domain Path&gt;/&lt;text-domain&gt;.pot</code>, or <code>languages/&lt;text-domain&gt;.pot</code>. A leading <code>/</code> in <code>Domain Path</code> is package-relative, and configured destinations cannot escape the package. <code>--destination</code> changes the package-relative directory. An explicit <code>--output &lt;file.pot&gt;</code> resolves against the command's working directory and requires one package. All multi-package destinations are validated before writing; each completed package replaces its file atomically, independently of other packages. <code>--check</code> compares bytes without writing and fails if the POT is absent or stale. Source references are preserved by default as <code>file:line</code>. <code>--add-location file</code> keeps only the file name, so that editing a source file doesn't change the POT unless its strings change, and <code>--no-location</code> (the same as <code>--add-location never</code>) omits them; <code>--add-location full</code> is the default. In configuration, set <code>location</code> to <code>'full'</code>, <code>'file'</code> or <code>'never'</code>. The older <code>--no-references</code> flag and <code>references: false</code> option still work as <code>--no-location</code>, and an explicit <code>location</code> wins over <code>references</code> in the same layer. Asking for locations and for none in the same command is an error. <code>POT-Creation-Date</code> and <code>PO-Revision-Date</code> default to empty values; no current date or year is inserted. Name/version headers come from metadata, and <code>--header NAME=VALUE</code> overrides any default, including with an empty value, and <code>--header NAME</code> removes the header. The POT lists the plugin or theme header strings first, then the strings of PHP, JavaScript, <code>block.json</code> and other metadata files in source order, so related strings stay together for translators. Each entry has its extracted comments, references and flags before the strings, in the usual gettext layout. The default headers come in a fixed order, and custom headers follow them. No generator header or generated copyright comment is added; set <code>fileComment</code> for a static one.</p>
-<h3 id="supported-extraction-syntax" tabindex="-1"><a class="header-anchor" href="#supported-extraction-syntax">Supported extraction syntax</a></h3>
+<h2 id="supported-syntax" tabindex="-1"><a class="header-anchor" href="#supported-syntax">Supported syntax</a></h2>
 <p>PHP extraction uses <code>php-parser</code> in PHP 8.3 mode, tested with attributes, enums, match expressions, promoted properties and readonly classes. Supported WordPress functions are <code>__</code>, <code>_e</code>, <code>_x</code>, <code>_ex</code>, <code>_n</code>, <code>_nx</code>, <code>_n_noop</code>, <code>_nx_noop</code>, <code>esc_attr__</code>, <code>esc_attr_e</code>, <code>esc_attr_x</code>, <code>esc_html__</code>, <code>esc_html_e</code> and <code>esc_html_x</code>. Global and explicitly global calls, namespace fallback and explicit function imports/aliases are supported. Known file-local declarations and unrelated namespaced imports are excluded; methods and static methods are never translation calls. Named arguments resolve by PHP parameter name. Literal strings, static concatenation and non-interpolated heredoc/nowdoc preserve decoded escapes, Unicode and newlines. Counts may be dynamic; IDs, contexts and selected domains must be static.</p>
 <p>JavaScript extraction uses Babel's parser and lexical scope traversal, without transforms or project Babel config. JS, JSX, TS, TSX, MJS, CJS, MTS and CTS are supported. Named imports/aliases and namespace imports from <code>@wordpress/i18n</code>, unshadowed <code>wp.i18n</code> calls and unbound canonical legacy <code>__</code>, <code>_x</code>, <code>_n</code> and <code>_nx</code> calls extract strings. <code>--no-legacy-globals</code> requires imported or <code>wp.i18n</code> bindings. Locally shadowed/reassigned imports are excluded. Static literals, templates without substitutions, concatenation and TypeScript assertions are supported. Destructured CommonJS imports, transpiled <code>(0, i18n.__)</code> forms and arbitrary minified bundles are outside the supported syntax; scan source and use explicit source/build mapping for compiled JSON.</p>
 <p>A <code>translators:</code> comment attaches to the first translation call whose containing expression or nearest statement immediately follows it. Whitespace, parsed comments and ternary branch punctuation may intervene, but unrelated statements or argument expressions may not. Comments before outer wrappers reach nested translation calls; a comment is consumed once, so unrelated sibling calls do not inherit it. Multiline comment content is preserved. WordPress plugin/theme header labels serialize as extracted comments. Bundled metadata tables follow <a href="https://github.com/WordPress/wordpress-develop/blob/6.8/src/wp-includes/block-i18n.json">WordPress 6.8 block fields</a> and <a href="https://github.com/WordPress/wordpress-develop/blob/6.8/src/wp-includes/theme-i18n.json">theme fields</a>, including styles, variations, presets, template names and nested block settings. Their upstream data license is GPL-2.0-or-later; tables are maintained intentionally with fixtures and never fetched during generation.</p>
+<h2 id="errors-and-audit-findings" tabindex="-1"><a class="header-anchor" href="#errors-and-audit-findings">Errors and audit findings</a></h2>
 <p>Invalid syntax, unreadable selected files, selected source symlinks, empty/reserved message IDs, conflicting plural definitions and output errors fail generation. Unsupported dynamic arguments warn and are fatal with <code>--strict</code>. Audit adds <code>placeholder-comment</code>, <code>unordered-placeholders</code>, <code>plural-placeholders</code>, <code>empty-message</code> and <code>conflicting-comments</code> findings; suppress these explicitly by code where justified. Placeholders support <code>%%</code>, positional indexes, numeric width/precision, padding/flags and PHP/JS sprintf conversion types. Audit checks extraction and message quality, not every untranslated user-facing string. Audit fails on errors; strict audit also fails on warnings. Failed checks return exit code <code>2</code>; unexpected I/O/option-loading errors follow the existing CLI error handling. <code>--json</code>, GitHub annotations, summaries and step outputs use the existing CLI reporting facilities.</p>
-<h3 id="compile-translated-catalogs" tabindex="-1"><a class="header-anchor" href="#compile-translated-catalogs">Compile translated catalogs</a></h3>
-<p>Runtime formats require a translated PO, not an untranslated POT. PO updating, fuzzy matching and automatic translation are not provided. Compilation validates <code>Language</code> and <code>Plural-Forms</code>, excludes fuzzy, obsolete and untranslated entries, preserves contexts and plural forms, and never changes the input PO. An incompletely translated plural entry is excluded as a unit. Gettext parsing handles source encoding; runtime outputs use UTF-8. Each output is replaced atomically; JSON outputs are independent writes, and obsolete output files are not deleted automatically.</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">wp-release i18n mo languages/my-plugin-lv.po
-wp-release i18n php languages/my-plugin-lv.po
-wp-release i18n json languages/my-plugin-lv.po <span class="token parameter variable">--domain</span> my-plugin <span class="token parameter variable">--map</span> scripts.json <span class="token parameter variable">--output</span> languages
-wp-release i18n mo languages/my-plugin-lv.po <span class="token parameter variable">--check</span></code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>MO and <code>.l10n.php</code> default beside the PO, with <code>.mo</code> and <code>.l10n.php</code> extensions; <code>--output</code> selects an explicit file relative to cwd. WordPress PHP catalogs require WordPress 6.5 or later. JSON requires an explicit domain; <code>--output</code> is a directory, defaulting to the PO directory. <code>--check</code> compares proposed bytes without writing and exits <code>2</code> on absent/stale outputs. Compiler commands are primitives and do not select configured packages.</p>
-<p>A script map is a JSON object from normalized package-relative source references to arrays of normalized runtime script paths. Many source files can feed one bundle, and one source can feed several scripts. An explicit map selects only listed references; an empty target array excludes that source. Without a map, JS/MJS/CJS references use identity paths, while JSX/TypeScript references require mapping. PHP-only references do not enter JSON catalogs.</p>
-<div class="code"><pre class="language-json" tabindex="0"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"src/blocks/editor.tsx"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"build/editor.js"</span><span class="token punctuation">,</span> <span class="token string">"build/shared.js"</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"src/components/panel.js"</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">"build/editor.js"</span> <span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>JSON filenames are <code>&lt;domain&gt;-&lt;Language&gt;-&lt;md5(runtime-path)&gt;.json</code>; the WordPress <code>default</code> domain uses <code>&lt;Language&gt;-&lt;md5(runtime-path)&gt;.json</code>. WordPress's <code>.min.js</code> normalization applies consistently to grouping, hashing and the JSON <code>source</code>. Jed keys preserve context through <code>\u0004</code>, plural arrays contain all translated forms, and revision dates come from the PO metadata. <code>.l10n.php</code> writes safely escaped data arrays with NUL-separated plural translations; catalog text is never treated as executable PHP.</p>
-<p>The extraction and compilation primitives are in the standalone <a href="https://www.npmjs.com/package/@wpelevator/wp-gettext"><code>@wpelevator/wp-gettext</code></a> package, without the repository and release tooling, and <code>wp-release</code> depends on it. See its README to use them in your own scripts.</p>
-<p>The package can be installed and used in any WordPress plugin or theme project; repository package selection is optional, and directory mode works without a wp-release config.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/development.html"><small>Previous</small>Development</a><a rel="next" href="/docs/js/wp-release/latest/library.html"><small>Next</small>Library API</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/deploy-packages.html"><small>Previous</small>Deploy configured packages</a><a rel="next" href="/docs/js/wp-release/latest/compile-translations.html"><small>Next</small>Compile translations</a>
 </nav>
 
   </main>

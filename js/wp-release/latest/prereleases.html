@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Pre-releases and snapshots – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="Release candidates from a branch and unique snapshot builds for pull requests, without touching the stable version.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/prereleases.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Pre-releases and snapshots – wp-release">
+  <meta property="og:description" content="Release candidates from a branch and unique snapshot builds for pull requests, without touching the stable version.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html#article",
+      "headline": "Pre-releases and snapshots",
+      "description": "Release candidates from a branch and unique snapshot builds for pull requests, without touching the stable version.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Pre-releases and snapshots", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/prereleases.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/prereleases.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html" aria-current="page">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Pre-releases and snapshots</h1><p class="lede">Release candidates from a branch and unique snapshot builds for pull requests, without touching the stable version.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/prereleases.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/prereleases.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Use a pre-release to publish a release candidate of the next version, like <code>1.3.0-rc.1</code>, and a snapshot for a test build of a pull request, like <code>1.3.0-pr-251.20261012183005</code>. Both run <code>changeset version</code> with an identifier, and both leave the readme <code>Stable tag</code> on the last stable version. The examples use <code>npx wp-release</code>, so install the package in your project first.</p>
+<h2 id="pre-releases" tabindex="-1"><a class="header-anchor" href="#pre-releases">Pre-releases</a></h2>
+<p><code>changeset version --prerelease &lt;id&gt;</code> (the <code>prerelease</code> option of <code>versionChangesets()</code>) releases pre-releases of the next versions, like <code>1.3.0-rc.1</code> for a minor bump of <code>1.2.0</code>. The identifier, like <code>alpha</code>, <code>beta</code> or <code>rc</code>, can have a number, like <code>rc.2</code>, which is used as is and fails when the version is already tagged. Without a number, the number is one above the highest existing tag of that identifier and next stable version, read with the <code>tagFormat</code> of the package, so the first one is <code>rc.1</code>, and the numbering starts again at <code>.1</code> when later changesets raise the next version. The dependents of a source become pre-releases too, so that they bundle its pre-release, unless they're left out with <code>--no-dependents</code>.</p>
+<p>A pre-release writes every version target except the readme <code>Stable tag</code>, which keeps the last stable version since WordPress.org offers it to every site, and <code>changeset tag</code> skips the <code>Stable tag</code> when it verifies a pre-release. The changelog gets a section for the pre-release, like <code>## 1.3.0-rc.1 (2026-10-12)</code>, so that <code>changeset tag</code> finds its release notes, and the changesets are consumed like in any release.</p>
+<p>Since a pre-release consumes the changesets that the stable release needs, run it on a branch that isn't merged, and tag that branch commit:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">git</span> switch --force-create prerelease/plugins/alpha
+npx wp-release changeset version <span class="token parameter variable">--package</span> plugins/alpha <span class="token parameter variable">--prerelease</span> rc
+<span class="token function">git</span> <span class="token function">add</span> <span class="token parameter variable">--all</span>
+<span class="token function">git</span> commit <span class="token parameter variable">--message</span> <span class="token string">"Prerelease plugins/alpha"</span>
+npx wp-release changeset tag <span class="token parameter variable">--package</span> plugins/alpha <span class="token parameter variable">--version</span> <span class="token number">1.3</span>.0-rc.1 <span class="token parameter variable">--push</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The base branch keeps its stable versions and pending changesets, so the stable release later versions them as usual, in one changelog section. The tag keeps the pre-release commit reachable after the branch is reset or deleted. The release notes of a stable release compare with the previous stable release, skipping the pre-releases before it, and the <code>git-tag</code> version source ignores pre-release tags, so packages versioned by git tags keep building on their last stable version.</p>
+<h2 id="snapshots" tabindex="-1"><a class="header-anchor" href="#snapshots">Snapshots</a></h2>
+<p><code>changeset version --snapshot &lt;id&gt;</code> (the <code>snapshot</code> option of <code>versionChangesets()</code>) releases snapshots of the next versions for test builds, like <code>1.3.0-pr-251.20261012183005</code> for a pull request: the next version with the identifier, like <code>pr-251</code> or <code>pr-251.0abc123</code> with a commit hash, and the UTC time, so that every snapshot is unique and they sort by time. Snapshots aren't numbered from tags and can't be combined with <code>--prerelease</code>. Like a pre-release, a snapshot writes every version target except the readme <code>Stable tag</code>. Build and publish the versioned files without committing them, for example under an npm dist-tag like <code>pr-251</code>, since a snapshot consumes the changesets:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx wp-release changeset version <span class="token parameter variable">--package</span> @vendor/library <span class="token parameter variable">--snapshot</span> pr-251
+<span class="token function">npm</span> publish <span class="token parameter variable">--workspace</span> packages/library <span class="token parameter variable">--tag</span> pr-251</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/monorepo-releases.html"><small>Previous</small>Release a monorepo</a><a rel="next" href="/docs/js/wp-release/latest/deployment.html"><small>Next</small>Deploy</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

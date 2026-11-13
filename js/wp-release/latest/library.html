@@ -116,15 +116,37 @@
 <nav aria-label="wp-release documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
-    <li><a href="/docs/js/wp-release/latest/cli.html">CLI</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with other tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/wp-release/latest/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/wp-release/latest/internationalization.html">Internationalization</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html" aria-current="page">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
   </ul>
 </nav>
 
@@ -230,7 +252,7 @@
 <p><code>Logger</code> filters messages by level and passes them to a writer, like the transports of other Node.js loggers. The writer decides how messages look:</p>
 <ul>
 <li><code>TextWriter</code> prints plain text to <code>stdout</code> and <code>stderr</code>. It's the default.</li>
-<li><code>GitHubActionsWriter</code> prints <a href="cli.html#github-actions-annotations-and-job-summaries">workflow commands</a>, so that notices, warnings and errors with a file are annotations, and appends summaries to <code>GITHUB_STEP_SUMMARY</code>. It's the CLI's <code>github</code> log format, and the GitHub Actions pass it to their logger. Its <code>workspace</code> and <code>summaryPath</code> options default to <code>GITHUB_WORKSPACE</code> and <code>GITHUB_STEP_SUMMARY</code>.</li>
+<li><code>GitHubActionsWriter</code> prints <a href="github-actions.html#annotations-and-job-summaries">workflow commands</a>, so that notices, warnings and errors with a file are annotations, and appends summaries to <code>GITHUB_STEP_SUMMARY</code>. It's the CLI's <code>github</code> log format, and the GitHub Actions pass it to their logger. Its <code>workspace</code> and <code>summaryPath</code> options default to <code>GITHUB_WORKSPACE</code> and <code>GITHUB_STEP_SUMMARY</code>.</li>
 </ul>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> GitHubActionsWriter<span class="token punctuation">,</span> Logger<span class="token punctuation">,</span> logError <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
 
@@ -318,7 +340,7 @@ logger<span class="token punctuation">.</span><span class="token function">summa
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/internationalization.html"><small>Previous</small>Internationalization</a><a rel="next" href="/docs/js/wp-release/latest/packaging.html"><small>Next</small>Packaging and integrity</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/naming.html"><small>Previous</small>Names across the CLI, Actions and library</a><a rel="next" href="/docs/js/wp-release/latest/development.html"><small>Next</small>Development</a>
 </nav>
 
   </main>
