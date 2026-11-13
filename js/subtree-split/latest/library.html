@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/library.html#article",
-      "headline": "Library API",
+      "headline": "",
       "description": "splitHistory() returns the hash of the split commit, or null when the directory doesn't exist at the ref. Like the command, it writes the commits to the…",
       "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/library.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/library.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "subtree-split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Library API", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/library.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/library.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -126,14 +131,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Library API</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/latest/library.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/subtree-split/latest/library.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> splitHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/subtree-split'</span><span class="token punctuation">;</span>
+    <h2 id="library-api" tabindex="-1"><a class="header-anchor" href="#library-api">Library API</a></h2>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> splitHistory <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/subtree-split'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> tip <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">splitHistory</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
 	<span class="token literal-property property">cwd</span><span class="token operator">:</span> <span class="token string">'/path/to/repository'</span><span class="token punctuation">,</span>

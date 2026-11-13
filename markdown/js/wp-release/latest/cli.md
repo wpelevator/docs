@@ -1,7 +1,5 @@
 # CLI
 
-## CLI
-
 ```bash
 npx wp-release --help
 ```

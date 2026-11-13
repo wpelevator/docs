@@ -1,7 +1,5 @@
 # Development
 
-## Development
-
 The source is TypeScript in `src/`, with tests next to the files they test (`*.test.ts`). The published package contains only the compiled `dist/` with JavaScript and `.d.ts` files; tests and translation fixtures stay in the repository.
 
 ```bash

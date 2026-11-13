@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html#article",
-      "headline": "subtree-split",
+      "headline": "",
       "description": "Split a monorepo directory into its own history, with the same commit hashes as git subtree split.",
       "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html",
@@ -84,9 +84,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -125,21 +130,22 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>subtree-split</h1><p class="lede">Split a monorepo directory into its own history, with the same commit hashes as git subtree split.</p>
+    <h1></h1><p class="lede">Split a monorepo directory into its own history, with the same commit hashes as git subtree split.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/latest/index.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/subtree-split/latest/index.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>Split a directory of a monorepo into its own history, with the same commit hashes as <code>git subtree split</code>, in about a tenth of a second instead of several seconds.</p>
+    <h2 id="subtree-split" tabindex="-1"><a class="header-anchor" href="#subtree-split">subtree-split</a></h2>
+<p>Split a directory of a monorepo into its own history, with the same commit hashes as <code>git subtree split</code>, in about a tenth of a second instead of several seconds.</p>
 <p>In a monorepo with 477 commits, <code>git subtree split</code> takes 6 to 8 seconds for one package and <code>subtree-split</code> takes 0.1 seconds. On <a href="https://github.com/WordPress/gutenberg">WordPress/gutenberg</a> (43,568 commits) it splits <code>packages/components</code> in 1.7 seconds. The hashes are the same as <code>git subtree split</code> makes, so a repository that you already split that way keeps its history when you switch.</p>
 <p><a href="https://www.npmjs.com/package/@wpelevator/wp-release"><code>@wpelevator/wp-release</code></a> uses it for <code>deploy git --split-prefix</code>.</p>
-<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
+<h3 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h3>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev @wpelevator/subtree-split</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>It needs Node.js 22.12 or later, Git 2.29 or later, and the full history of the repository. It works in a bare clone, and it fails with a message on a shallow one, so in CI check out with <code>fetch-depth: 0</code>.</p>
-<h2 id="quick-start" tabindex="-1"><a class="header-anchor" href="#quick-start">Quick start</a></h2>
+<h3 id="quick-start" tabindex="-1"><a class="header-anchor" href="#quick-start">Quick start</a></h3>
 <p>Run it in the monorepo, with the directory that you want to split:</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">npx @wpelevator/subtree-split <span class="token parameter variable">--prefix</span> packages/my-library</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -148,7 +154,7 @@
 <span class="token function">git</span> push git@github.com:acme/my-library.git <span class="token string">"<span class="token variable">$tip</span>:refs/heads/main"</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>To keep it in a local branch instead, run <code>git update-ref refs/heads/split/my-library &quot;$tip&quot;</code>.</p>
-<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
+<h3 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h3>
 <ul>
 <li><a href="./cli.html">CLI</a></li>
 <li><a href="./github-actions.html">GitHub Actions</a></li>

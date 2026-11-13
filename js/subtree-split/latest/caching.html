@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/caching.html#article",
-      "headline": "Caching",
+      "headline": "",
       "description": "Every run splits the whole history again. --git-dir-cache remembers the results in .git/subtree-split-cache/, so the next run only processes the commits…",
       "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/caching.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/caching.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "subtree-split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Caching", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/caching.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/caching.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -126,14 +131,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Caching</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/latest/caching.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/subtree-split/latest/caching.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>Every run splits the whole history again. <code>--git-dir-cache</code> remembers the results in <code>.git/subtree-split-cache/</code>, so the next run only processes the commits that are new. On gutenberg that takes <code>packages/components</code> from 1.7 seconds to 0.3. On a small repository it makes no difference.</p>
+    <h2 id="caching" tabindex="-1"><a class="header-anchor" href="#caching">Caching</a></h2>
+<p>Every run splits the whole history again. <code>--git-dir-cache</code> remembers the results in <code>.git/subtree-split-cache/</code>, so the next run only processes the commits that are new. On gutenberg that takes <code>packages/components</code> from 1.7 seconds to 0.3. On a small repository it makes no difference.</p>
 <p>A fresh CI checkout has no cache. Give <code>--cache</code> a file that you save and restore between runs, or set it once with <code>SUBTREE_SPLIT_CACHE</code>.</p>
 <p>A cache that is missing, belongs to another prefix, or has commits that were garbage collected is ignored and the history is split again, so it only costs time. To start over, delete the file.</p>
 

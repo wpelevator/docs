@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html#article",
-      "headline": "Configuration",
+      "headline": "",
       "description": "Settings come from the CHOP environment variables of the command, from the options of createConfig(), or from a few command line flags. A number or…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Configuration", "item": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -135,14 +140,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Configuration</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/configuration.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/configuration.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>Settings come from the <code>CHOP_*</code> environment variables of the command, from the options of <a href="library.html"><code>createConfig()</code></a>, or from a few <a href="cli.html">command line flags</a>. A number or boolean that can't be parsed is reported with the name of the variable, and a value that can't be used is an invalid setting.</p>
+    <h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration">Configuration</a></h2>
+<p>Settings come from the <code>CHOP_*</code> environment variables of the command, from the options of <a href="library.html"><code>createConfig()</code></a>, or from a few <a href="cli.html">command line flags</a>. A number or boolean that can't be parsed is reported with the name of the variable, and a value that can't be used is an invalid setting.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>

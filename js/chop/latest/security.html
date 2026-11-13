@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/security.html#article",
-      "headline": "Securing remote origins",
+      "headline": "",
       "description": "Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/security.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/security.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Securing remote origins", "item": "https://wpelevator.github.io/docs/js/chop/latest/security.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/security.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -135,14 +140,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Securing remote origins</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/security.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/security.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy still passes the path of the request to chop, so the protection against reaching internal hosts has to be in chop, and it is. Don't assume that a proxy rule is the only thing between a client and an internal address.</p>
+    <h2 id="securing-remote-origins" tabindex="-1"><a class="header-anchor" href="#securing-remote-origins">Securing remote origins</a></h2>
+<p>Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy still passes the path of the request to chop, so the protection against reaching internal hosts has to be in chop, and it is. Don't assume that a proxy rule is the only thing between a client and an internal address.</p>
 <p>Prefer the configured origin. The host is fixed by you, so a client can only choose a path under it, and there is nothing to allow-list. Use <code>CHOP_ALLOWED_HOSTS</code> only when a client has to choose the host, and list the hosts that you mean. Every host on the list is reachable by every client that can reach chop.</p>
 <p><code>CHOP_ALLOWED_HOSTS=*</code> makes chop an open image proxy: anyone who can send a request to chop can make it fetch and process images from any public host. The address checks, https, the size and time limits and the fetch limit still apply, but they can't stop someone from using your server and your bandwidth to fetch from the public internet, or from reaching a service that only accepts connections from your server's network, at a public address. The protection that matters then is outside of chop. If you use <code>*</code>:</p>
 <ul>

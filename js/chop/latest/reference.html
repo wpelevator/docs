@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/reference.html#article",
-      "headline": "Reference",
+      "headline": "",
       "description": "How chop behaves, in short. The guides describe each area in more detail: requests, sources, URL schemes, formats and quality, responses and…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/reference.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/reference.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Reference", "item": "https://wpelevator.github.io/docs/js/chop/latest/reference.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/reference.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -135,15 +140,16 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Reference</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/reference.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/reference.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>How chop behaves, in short. The guides describe each area in more detail: <a href="requests.html">requests</a>, <a href="sources.html">sources</a>, <a href="url-schemes.html">URL schemes</a>, <a href="formats.html">formats and quality</a>, <a href="responses.html">responses</a> and <a href="configuration.html">configuration</a>. The IDs in parentheses, like <code>R-OP-8</code>, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.</p>
-<h2 id="requests" tabindex="-1"><a class="header-anchor" href="#requests">Requests</a></h2>
+    <h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>How chop behaves, in short. The guides describe each area in more detail: <a href="requests.html">requests</a>, <a href="sources.html">sources</a>, <a href="url-schemes.html">URL schemes</a>, <a href="formats.html">formats and quality</a>, <a href="responses.html">responses</a> and <a href="configuration.html">configuration</a>. The IDs in parentheses, like <code>R-OP-8</code>, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.</p>
+<h3 id="requests" tabindex="-1"><a class="header-anchor" href="#requests">Requests</a></h3>
 <ul>
 <li><code>GET</code> and <code>HEAD</code> are answered, other methods get <code>405</code> with <code>Allow: GET, HEAD</code> (R-REQ-1).</li>
 <li>The path selects the original under the data directory or the configured origin, and a URL scheme selects the operations (R-REQ-2, S-1). Unknown arguments are ignored, so cache busters like <code>ver=3</code> are harmless.</li>
@@ -153,7 +159,7 @@
 <li>The real path, with symbolic links resolved, must be inside the real data directory. A missing file, a directory and an escape are all the same <code>404</code> (R-PATH-2).</li>
 <li>A file over <code>maxInputBytes</code> is a <code>413</code>, checked before the read and again after it (R-PATH-3). These checks are for the local data directory.</li>
 </ul>
-<h2 id="sources" tabindex="-1"><a class="header-anchor" href="#sources">Sources</a></h2>
+<h3 id="sources" tabindex="-1"><a class="header-anchor" href="#sources">Sources</a></h3>
 <p>Where the original comes from. The data directory is the default and its behavior is the one above.</p>
 <ul>
 <li>Plain paths go to the configured origin (<code>origin</code>, <code>CHOP_ORIGIN</code>) when there is one, and to the data directory when there isn't. A URL source goes to the HTTP fetcher with the allow-list (R-SRC-1).</li>
@@ -174,7 +180,7 @@
 <li><code>allowedHosts</code> entries are <code>host</code>, <code>*.example.com</code> (subdomains on a dot boundary, not the apex), either with <code>:port</code>, or <code>*</code> for every host on the default ports. <code>*</code> can't be mixed with other entries, and it is a warning at startup. Even with <code>*</code> everything else of this section applies, and <code>originAllowPrivate</code> never applies to a URL source (R-SRC-15).</li>
 <li>A data directory that is set explicitly and an origin together are an invalid setting (R-SRC-16).</li>
 </ul>
-<h3 id="s3-origin" tabindex="-1"><a class="header-anchor" href="#s3-origin">S3 origin</a></h3>
+<h4 id="s3-origin" tabindex="-1"><a class="header-anchor" href="#s3-origin">S3 origin</a></h4>
 <p><code>origin</code> set to <code>s3://bucket[/prefix]</code> reads the originals from an S3 bucket or an S3-compatible service. It is the HTTP origin of the section above for requests of the bucket, with signed requests, and every rule of that section applies unless it is changed here.</p>
 <ul>
 <li><code>origin</code> is parsed into a bucket and a prefix: the bucket has 3 to 63 lower case letters, digits, dots and hyphens and isn't an IP address, and the prefix can't have empty, <code>.</code> or <code>..</code> segments, a query string or a fragment. <code>http://</code> and <code>https://</code> origins are unchanged, and a data directory that is set explicitly together with an <code>s3://</code> origin is an invalid setting (R-S3-1).</li>
@@ -188,7 +194,7 @@
 <li>The secret key and the session token are only read from the environment by the command, and are not in any error message, warning or log line (R-S3-9).</li>
 <li><code>CHOP_S3_ENDPOINT</code>, <code>CHOP_S3_REGION</code>, <code>CHOP_S3_PATH_STYLE</code>, <code>CHOP_S3_ACCESS_KEY_ID</code>, <code>CHOP_S3_SECRET_ACCESS_KEY</code> and <code>CHOP_S3_SESSION_TOKEN</code> are read, with <code>AWS_REGION</code>, <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code> and <code>AWS_SESSION_TOKEN</code> as the fallbacks, and <code>--origin s3://bucket</code> works. Credentials are read once at startup and aren't refreshed (R-S3-10).</li>
 </ul>
-<h2 id="query-scheme-arguments" tabindex="-1"><a class="header-anchor" href="#query-scheme-arguments">Query scheme arguments</a></h2>
+<h3 id="query-scheme-arguments" tabindex="-1"><a class="header-anchor" href="#query-scheme-arguments">Query scheme arguments</a></h3>
 <p>This is the default scheme, named <code>query</code>. All arguments are optional, and a malformed value of a known argument is a <code>400</code> that names it.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -253,7 +259,7 @@
 <p>Operations run in a fixed order, whatever the order in the URL: orientation, <code>crop</code>, size, <code>lb</code>, then encoding. Sizes always refer to the displayed (oriented) image (R-OP-1).</p>
 <p>Without <code>upscale=1</code> nothing is enlarged: sizes clamp to the original, <code>resize</code> crops at the largest size with the requested aspect ratio, and <code>lb</code> pads without enlarging (R-OP-8). The output can't exceed <code>maxOutputDimension</code> (R-OP-12).</p>
 <p>Animated sources keep all frames for <code>crop</code> and sizes. <code>lb</code> and <code>gravity=attention</code> are ignored for them (R-OP-13). Image adjustments (R-OP-10) and filters (R-OP-11) aren't supported, and their arguments are ignored.</p>
-<h2 id="url-schemes" tabindex="-1"><a class="header-anchor" href="#url-schemes">URL schemes</a></h2>
+<h3 id="url-schemes" tabindex="-1"><a class="header-anchor" href="#url-schemes">URL schemes</a></h3>
 <p>A scheme turns a URL into the path of the original and the operations. All the schemes produce the same operations, so every scheme gets the same negotiation, limits and path safety.</p>
 <ul>
 <li>Schemes are tried in the configured order, and the first one that recognizes the URL wins. The default is <code>query</code> only (S-1). The <code>query</code> scheme recognizes every URL, so it has to be listed last when it's enabled with others. The <code>cloudflare</code> scheme only recognizes URLs that start with <code>/cdn-cgi/image/</code>.</li>
@@ -262,7 +268,7 @@
 <li>A scheme ignores the options that chop doesn't support, and a malformed value of one that it supports is a <code>400</code> (S-4).</li>
 <li>Different schemes that give the same operations give the same bytes and <code>ETag</code> (S-5).</li>
 </ul>
-<h3 id="cloudflare" tabindex="-1"><a class="header-anchor" href="#cloudflare"><code>cloudflare</code></a></h3>
+<h4 id="cloudflare" tabindex="-1"><a class="header-anchor" href="#cloudflare"><code>cloudflare</code></a></h4>
 <p>The <code>/cdn-cgi/image/&lt;options&gt;/&lt;path&gt;</code> form of Cloudflare Image Resizing, with comma separated <code>name=value</code> options.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -309,7 +315,7 @@
 </table>
 </div>
 <p>Other Cloudflare options, like <code>trim</code>, <code>rotate</code>, <code>blur</code>, <code>sharpen</code> and <code>onerror</code>, are ignored. A source that starts with <code>http://</code> or <code>https://</code> is a URL source (see <a href="sources.html">Sources</a>) and is a <code>404</code> without <code>allowedHosts</code>.</p>
-<h2 id="output-format" tabindex="-1"><a class="header-anchor" href="#output-format">Output format</a></h2>
+<h3 id="output-format" tabindex="-1"><a class="header-anchor" href="#output-format">Output format</a></h3>
 <ul>
 <li><code>Accept</code> is parsed per RFC 9110. Only a listed <code>image/avif</code> or <code>image/webp</code> makes those formats acceptable, so <code>image/*</code> and <code>*/*</code> don't (R-FMT-1).</li>
 <li>An explicit <code>format</code> is used even when <code>Accept</code> doesn't list it. Transparency is flattened onto white for formats that can't hold it (R-FMT-2).</li>
@@ -321,29 +327,29 @@
 <li>A source whose detected format isn't in <code>allowedInputFormats</code> is a <code>415</code> with the same message as other unsupported content, which doesn't tell which formats are allowed. The check follows the header detection and comes before any pixel decoding or processing (R-FMT-9).</li>
 <li><code>autoFormats</code> lists the formats (<code>avif</code>, <code>webp</code>) that <code>auto</code> can negotiate, in order of preference. Among the listed formats that <code>Accept</code> lists with <code>q</code> above 0 (and that pass the checks of R-FMT-3), the one with the highest <code>q</code> is used, and the earlier entry of <code>autoFormats</code> wins a tie. An empty list disables the upgrades. An explicit <code>format</code> is not restricted by <code>autoFormats</code>, and <code>avif: false</code> removes AVIF from the list (R-FMT-10).</li>
 </ul>
-<h2 id="quality-and-size" tabindex="-1"><a class="header-anchor" href="#quality-and-size">Quality and size</a></h2>
+<h3 id="quality-and-size" tabindex="-1"><a class="header-anchor" href="#quality-and-size">Quality and size</a></h3>
 <ul>
 <li>The defaults are JPEG 82, WebP 80 and AVIF 55, lowered to the estimated quality of a JPEG source, so that a recompressed JPEG never gets a higher quality than it has. The estimate compares the file's luminance quantization table with the standard table scaled for each quality. An explicit <code>quality</code> is used as given (R-QLT-2, R-QLT-3).</li>
 <li>A request that changes nothing about the pixels and keeps the source format sends the original bytes when the re-encoded image isn't smaller, and with <code>strip=none</code> it always sends them (R-QLT-4).</li>
 </ul>
-<h2 id="responses" tabindex="-1"><a class="header-anchor" href="#responses">Responses</a></h2>
+<h3 id="responses" tabindex="-1"><a class="header-anchor" href="#responses">Responses</a></h3>
 <ul>
 <li><code>200</code> has the output <code>Content-Type</code>, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong SHA-256 <code>ETag</code> (R-RES-1). <code>X-Bytes-Saved</code> appears when the output is smaller than the original (R-RES-3).</li>
 <li><code>If-None-Match</code> that matches, including weak comparison, lists and <code>*</code>, gets a <code>304</code> without a body (R-RES-2).</li>
 <li>Errors are plain text with <code>Cache-Control: no-store</code> and no file system paths: <code>400</code> invalid request, <code>404</code> not found, <code>405</code> method, <code>413</code> original too large, <code>415</code> unsupported type, <code>422</code> unreadable image, <code>500</code> unexpected, <code>502</code> the origin failed, <code>503</code> busy and <code>504</code> the origin was too slow (R-RES-4).</li>
 </ul>
-<h2 id="caching" tabindex="-1"><a class="header-anchor" href="#caching">Caching</a></h2>
+<h3 id="caching" tabindex="-1"><a class="header-anchor" href="#caching">Caching</a></h3>
 <ul>
 <li>Responses depend on <code>Accept</code> and the URL only, so a cache can key on the URL and a bucket of <code>Accept</code>: <code>image/avif</code>, <code>image/webp</code> or neither. Send the bucket as <code>Accept</code> upstream so that the body matches the key. The <a href="caching.html">caching guide</a> has an nginx recipe.</li>
 </ul>
-<h2 id="limits" tabindex="-1"><a class="header-anchor" href="#limits">Limits</a></h2>
+<h3 id="limits" tabindex="-1"><a class="header-anchor" href="#limits">Limits</a></h3>
 <ul>
 <li>At most <code>maxConcurrency</code> images are processed at once and <code>maxQueue</code> more wait in order. A request that finds the queue full gets <code>503</code> with <code>Retry-After: 1</code>, and a failing request frees its slot (R-LIM-1, R-LIM-2).</li>
 <li>Decoding is limited by <code>maxInputPixels</code> (R-LIM-3).</li>
 <li><code>allowedWidths</code> optionally restricts the output widths to a list (R-LIM-4).</li>
 <li>chop never writes to disk, and makes no network requests unless an origin or <code>allowedHosts</code> is configured, and then only to those hosts (R-LIM-5).</li>
 </ul>
-<h2 id="settings" tabindex="-1"><a class="header-anchor" href="#settings">Settings</a></h2>
+<h3 id="settings" tabindex="-1"><a class="header-anchor" href="#settings">Settings</a></h3>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -482,7 +488,7 @@
 </tbody>
 </table>
 </div>
-<h2 id="interfaces" tabindex="-1"><a class="header-anchor" href="#interfaces">Interfaces</a></h2>
+<h3 id="interfaces" tabindex="-1"><a class="header-anchor" href="#interfaces">Interfaces</a></h3>
 <ul>
 <li><code>createHandler( settings? )</code> returns <code>( request ) =&gt; Promise&lt; Response &gt;</code> with <code>{ method, url, headers }</code> in and <code>{ status, headers, body }</code> out. It never throws for a request, never uses <code>node:http</code> and reports unexpected errors to an optional <code>onError</code>, risky settings to <code>onWarning</code> and the failures of an origin to <code>onOriginError</code> (R-API-1).</li>
 <li><code>createConfig()</code>, <code>configFromEnv( env )</code>, <code>configWarnings()</code>, the <code>Origin</code> interface with <code>createOrigin()</code>, <code>createLocalOrigin()</code> and <code>createHttpOrigin()</code>, <code>createS3Origin()</code>, <code>isBlockedAddress()</code>, <code>parseQuery()</code>, <code>createServer()</code>, the URL schemes <code>queryScheme</code> and <code>cloudflareScheme</code> with their <code>SCHEMES</code> registry and the <code>UrlScheme</code> type (<code>{ name, parse( url, options ) }</code>, where <code>parse</code> returns <code>{ segments, ops }</code>, with <code>url</code> set for a URL source, or <code>null</code>), and the other types are exported too (R-API-2, S-1).</li>

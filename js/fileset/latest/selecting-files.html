@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Selecting files – fileset | WP Elevator Docs</title>
+  <meta name="description" content="selectFiles() returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra exclude…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/fileset/latest/selecting-files.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Selecting files – fileset">
+  <meta property="og:description" content="selectFiles() returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra exclude…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html#article",
+      "headline": "",
+      "description": "selectFiles() returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra exclude…",
+      "url": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "fileset", "item": "https://wpelevator.github.io/docs/js/fileset/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/fileset/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html" selected>fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+</div>
+<nav aria-label="fileset documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/fileset/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/fileset/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/fileset/latest/selecting-files.html" aria-current="page">Selecting files</a></li>
+    <li><a href="/docs/js/fileset/latest/syncing.html">Syncing a directory</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/fileset/latest/index.html">fileset</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1></h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/fileset/latest/selecting-files.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/fileset/latest/selecting-files.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="selecting-files" tabindex="-1"><a class="header-anchor" href="#selecting-files">Selecting files</a></h2>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> loadFileRules<span class="token punctuation">,</span> resolveFileSelection<span class="token punctuation">,</span> selectFiles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/fileset'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span>
+	<span class="token function">resolveFileSelection</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+		<span class="token literal-property property">cwd</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token string">'tests/,*.md'</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> <span class="token function">selectFiles</span><span class="token punctuation">(</span> <span class="token string">'dist'</span><span class="token punctuation">,</span> rules <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [ 'includes/class-plugin.php', 'my-plugin.php' ]</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>selectFiles()</code> returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra <code>exclude</code> patterns, which are a string separated by commas or newlines, or a list of them. A rule can't re-include a file from an ignored directory, as in Git.</p>
+<ul>
+<li>The default ignore file is <code>.distignore</code> in the source directory, and it's optional. Pass <code>ignoreFilename</code> to use another name, <code>distignore</code> with a path to use a file that must exist, or <code>distignore: false</code> to not read one.</li>
+<li><code>.git</code>, <code>.svn</code> and <code>.hg</code> (<code>ALWAYS_EXCLUDED</code>) are never selected, at any depth, and no rule can re-include them.</li>
+<li>Selected symbolic links throw an error, since ZIP archives and WordPress.org SVN don't support them. Exclude them or replace them with the files.</li>
+</ul>
+<p><code>ignoreOwnFile( rules, sourceDir, path )</code> and <code>ignoreOwnSignature( rules, sourceDir, path, extensions )</code> add rules for the files that a command writes inside the directory, such as a manifest and the signature files next to it.</p>
+<h3 id="exclude-more-files" tabindex="-1"><a class="header-anchor" href="#exclude-more-files">Exclude more files</a></h3>
+<p>The package doesn't depend on Git, but it takes a function as <code>listExcluded</code> that returns more files to exclude, from the candidates that the other rules keep. This is how to exclude the paths that Git marks with <code>export-ignore</code>:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> execFile <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'node:child_process'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> promisify <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'node:util'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> run <span class="token operator">=</span> <span class="token function">promisify</span><span class="token punctuation">(</span> execFile <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">listExcluded</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> sourceDir<span class="token punctuation">,</span> files <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+	<span class="token keyword">const</span> <span class="token punctuation">{</span> stdout <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">run</span><span class="token punctuation">(</span>
+		<span class="token string">'git'</span><span class="token punctuation">,</span>
+		<span class="token punctuation">[</span> <span class="token string">'check-attr'</span><span class="token punctuation">,</span> <span class="token string">'-z'</span><span class="token punctuation">,</span> <span class="token string">'export-ignore'</span><span class="token punctuation">,</span> <span class="token string">'--'</span><span class="token punctuation">,</span> <span class="token operator">...</span>files <span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> sourceDir <span class="token punctuation">}</span>
+	<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> fields <span class="token operator">=</span> stdout<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span> <span class="token string">'\0'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+	<span class="token keyword">return</span> files<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span> <span class="token punctuation">(</span> <span class="token parameter">file<span class="token punctuation">,</span> index</span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">'set'</span> <span class="token operator">===</span> fields<span class="token punctuation">[</span> index <span class="token operator">*</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">2</span> <span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token operator">...</span><span class="token function">resolveFileSelection</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+	listExcluded<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/fileset/latest/errors.html"><small>Previous</small>Errors</a><a rel="next" href="/docs/js/fileset/latest/syncing.html"><small>Next</small>Syncing a directory</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

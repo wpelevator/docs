@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/github-actions.html#article",
-      "headline": "GitHub Actions",
+      "headline": "",
       "description": "--github-output sets the hash, prefix, ref and result outputs of the step. result has all of them as JSON.",
       "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/github-actions.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/github-actions.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "subtree-split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "GitHub Actions", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/github-actions.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/github-actions.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -126,14 +131,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>GitHub Actions</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/latest/github-actions.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/subtree-split/latest/github-actions.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p><code>--github-output</code> sets the <code>hash</code>, <code>prefix</code>, <code>ref</code> and <code>result</code> outputs of the step. <code>result</code> has all of them as JSON.</p>
+    <h2 id="github-actions" tabindex="-1"><a class="header-anchor" href="#github-actions">GitHub Actions</a></h2>
+<p><code>--github-output</code> sets the <code>hash</code>, <code>prefix</code>, <code>ref</code> and <code>result</code> outputs of the step. <code>result</code> has all of them as JSON.</p>
 <div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v7
   <span class="token key atrule">with</span><span class="token punctuation">:</span>
     <span class="token key atrule">fetch-depth</span><span class="token punctuation">:</span> <span class="token number">0</span>

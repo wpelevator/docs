@@ -1,7 +1,5 @@
 # Configuration
 
-## Configuration
-
 The configuration lives in `changesets.config.php` at the project root, the analog of `wp-release.config.mjs`. The global `--config PATH` selects another file for one command.
 
 With no config, `init` infers the single project from a root Composer manifest or WordPress plugin headers as one group, tagged `v{version}` like the `wp-release` single-project default. The package is named by its Composer `name`, or for a plugin without one, by the slug of its main plugin file, like `demo` for `demo.php`, never by the checkout directory. `--project-name NAME` names any other project without a config. Readme changelog updates are opt-in, like in `wp-release`, so the scaffold of a plugin carries `readmeChangelog` commented out. When every directory under `packages/*` declares a Composer name and version, inference adds a second group for them. Other layouts keep the single group, and the scaffold carries a commented template that shows how to add groups. The config lives outside the changeset directory, so `.changeset/` holds only the Markdown changesets and its `README.md`.

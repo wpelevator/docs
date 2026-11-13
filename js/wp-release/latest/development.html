@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html#article",
-      "headline": "Development",
+      "headline": "",
       "description": "The source is TypeScript in src/, with tests next to the files they test (.test.ts). The published package contains only the compiled dist/ with…",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Development", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -134,14 +139,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Development</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/development.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/development.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>The source is TypeScript in <code>src/</code>, with tests next to the files they test (<code>*.test.ts</code>). The published package contains only the compiled <code>dist/</code> with JavaScript and <code>.d.ts</code> files; tests and translation fixtures stay in the repository.</p>
+    <h2 id="development" tabindex="-1"><a class="header-anchor" href="#development">Development</a></h2>
+<p>The source is TypeScript in <code>src/</code>, with tests next to the files they test (<code>*.test.ts</code>). The published package contains only the compiled <code>dist/</code> with JavaScript and <code>.d.ts</code> files; tests and translation fixtures stay in the repository.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> run build <span class="token parameter variable">--workspace</span> @wpelevator/wp-release
 <span class="token function">npm</span> <span class="token builtin class-name">test</span> <span class="token parameter variable">--workspace</span> @wpelevator/wp-release
 <span class="token function">npm</span> run lint <span class="token parameter variable">--workspace</span> @wpelevator/wp-release</code></pre>
@@ -154,7 +160,7 @@
 <p>The i18n tests in <code>@wpelevator/wp-gettext</code> validate gettext round trips, script catalogs and generated PHP data without launching PHP, WP-CLI or WordPress, covering contexts, plural forms, comments, flags, Unicode, escaping and PHP-looking input as data.</p>
 <p>The <code>wpelevator-source</code> export condition points at <code>src/index.ts</code>. The wp-release tests and monorepo CLI scripts use it to work with the source instead of a <code>dist/</code> build. Action builds use the declared dependency's default export, which resolves to <code>dist/</code> for the workspace copy and the published package. Build wp-release before building the actions.</p>
 <p><code>execute( 'deploy svn', args, { cwd, logger, svnRunner } )</code> runs a single-plugin deployment or a configured plan or deployment. The optional <code>svnRunner</code> replaces the external command runner in both modes; without it, the command uses its normal runner.</p>
-<h2 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture">Architecture</a></h2>
+<h3 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture">Architecture</a></h3>
 <p>wp-release has two layers, so that it fits any repository layout:</p>
 <ul>
 <li><strong>Primitives</strong> work on the directory, file or values they're given and know nothing about the repository: <code>build &lt;dir&gt;</code>, <code>zip &lt;dir&gt;</code>, <code>checksums</code>, <code>sign</code>, <code>verify</code>, <code>version-check</code>, <code>deploy git &lt;dir&gt;</code>, <code>deploy svn &lt;dir&gt;</code>, <code>i18n pot &lt;dir&gt;</code>, <code>i18n audit &lt;dir&gt;</code> and the <code>i18n mo</code>, <code>i18n json</code> and <code>i18n php</code> compilers.</li>

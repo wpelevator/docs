@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/index.html#article",
-      "headline": "chop",
+      "headline": "",
       "description": "An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/index.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/index.html",
@@ -84,9 +84,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -134,24 +139,25 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>chop</h1><p class="lede">An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.</p>
+    <h1></h1><p class="lede">An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/index.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/index.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p><code>@wpelevator/chop</code> is an HTTP image server for responsive images. It serves resized, converted and optimized copies of originals from a local data directory, from an HTTP(S) origin or from an S3 bucket, and chooses AVIF, WebP or the original format from the <code>Accept</code> header of each request. It's built on <a href="https://sharp.pixelplumbing.com/">sharp</a>, which is its only runtime dependency, and works as a command line server or as a library with a request handler that doesn't depend on an HTTP framework.</p>
+    <h2 id="chop" tabindex="-1"><a class="header-anchor" href="#chop">chop</a></h2>
+<p><code>@wpelevator/chop</code> is an HTTP image server for responsive images. It serves resized, converted and optimized copies of originals from a local data directory, from an HTTP(S) origin or from an S3 bucket, and chooses AVIF, WebP or the original format from the <code>Accept</code> header of each request. It's built on <a href="https://sharp.pixelplumbing.com/">sharp</a>, which is its only runtime dependency, and works as a command line server or as a library with a request handler that doesn't depend on an HTTP framework.</p>
 <p>It's read-only: it never writes to the data directory or any other directory. With a data directory, which is the default, it makes no network requests. Remote originals are opt-in, are fetched with strict <a href="security.html">safeguards</a>, and only from the configured origin or from hosts that you list. Authentication, URL signing and per-client rate limits are left to a CDN or a reverse proxy. The behavior is summarized in the <a href="reference.html">reference</a>.</p>
-<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
+<h3 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h3>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Requires Node.js 22.12 or later. There is also a container image, <code>ghcr.io/wpelevator/chop</code>, described in the <a href="https://github.com/wpelevator/basement/tree/main/packages/docker/chop">chop Docker README</a>.</p>
-<h2 id="start-the-server" tabindex="-1"><a class="header-anchor" href="#start-the-server">Start the server</a></h2>
+<h3 id="start-the-server" tabindex="-1"><a class="header-anchor" href="#start-the-server">Start the server</a></h3>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">chop <span class="token parameter variable">--data</span> /var/www/wp-content/uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Then request <code>http://localhost:8080/2026/05/photo.jpg?w=300</code> to get <code>&lt;data&gt;/2026/05/photo.jpg</code> at 300 pixels wide, as AVIF or WebP when the <code>Accept</code> header of the client lists them. The <a href="cli.html">CLI</a> page lists the options and exit codes.</p>
-<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
+<h3 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h3>
 <ul>
 <li><a href="./cli.html">CLI</a></li>
 <li><a href="./requests.html">Requests and query arguments</a></li>

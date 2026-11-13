@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/responses.html#article",
-      "headline": "Responses",
+      "headline": "",
       "description": "A success is 200 with the Content-Type of the output, Content-Length, Cache-Control: public, max-age=, Vary: Accept, X-Content-Type-Options: nosniff and a…",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/responses.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/responses.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Responses", "item": "https://wpelevator.github.io/docs/js/chop/latest/responses.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/chop/latest/responses.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -135,14 +140,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Responses</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/responses.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/responses.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>A success is <code>200</code> with the <code>Content-Type</code> of the output, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong <code>ETag</code> that is a SHA-256 of the body. An <code>If-None-Match</code> that matches the <code>ETag</code> (weak comparison, lists and <code>*</code>) gets <code>304</code> with the same <code>ETag</code>, <code>Cache-Control</code> and <code>Vary</code> and no body. A <code>HEAD</code> response has the headers of the <code>GET</code> response, including <code>Content-Length</code>, and no body.</p>
+    <h2 id="responses" tabindex="-1"><a class="header-anchor" href="#responses">Responses</a></h2>
+<p>A success is <code>200</code> with the <code>Content-Type</code> of the output, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong <code>ETag</code> that is a SHA-256 of the body. An <code>If-None-Match</code> that matches the <code>ETag</code> (weak comparison, lists and <code>*</code>) gets <code>304</code> with the same <code>ETag</code>, <code>Cache-Control</code> and <code>Vary</code> and no body. A <code>HEAD</code> response has the headers of the <code>GET</code> response, including <code>Content-Length</code>, and no body.</p>
 <p>Errors are plain text with a short message that doesn't reveal file system paths, <code>Cache-Control: no-store</code> and <code>X-Content-Type-Options: nosniff</code>.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>

@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html#article",
-      "headline": "Configuration",
+      "headline": "",
       "description": "@wpelevator/wp-release is the suite of release tools and wp-release is its CLI. \"Release\" is the whole workflow; each command is one operation in it…",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Configuration", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/configuration.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -134,14 +139,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Configuration</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/configuration.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/configuration.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="naming-convention" tabindex="-1"><a class="header-anchor" href="#naming-convention">Naming convention</a></h2>
+    <h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration">Configuration</a></h2>
+<h3 id="naming-convention" tabindex="-1"><a class="header-anchor" href="#naming-convention">Naming convention</a></h3>
 <p><code>@wpelevator/wp-release</code> is the suite of release tools and <code>wp-release</code> is its CLI. &quot;Release&quot; is the whole workflow; each command is one operation in it. Commands are flat: a single word or dashed words like <code>version-check</code> and <code>deploy svn</code>, without command groups or aliases. Each GitHub Action is named <code>wp-release-</code> followed by the command name, so the CLI command and the <code>uses:</code> name always match:</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -341,7 +347,7 @@
 <p>CLI JSON results use camelCase keys like <code>zipPath</code>, and GitHub Action outputs use kebab-case like <code>zip-path</code>. The ZIP action supports <code>package</code> and <code>config</code>, the checksums action supports <code>config</code> for codec selection, and the SVN action supports <code>release-ref</code>, repeated <code>package</code> values as newline-separated input, <code>list</code>, <code>config</code> and <code>tag-format</code>.</p>
 <p>The ZIP CLI result uses <code>checksumsEmbedded</code> for the package-relative embedded manifest path. Its <code>signatures</code> array includes external absolute paths and embedded package-relative paths, while <code>checksumsSignatures</code> contains only manifest signatures. The ZIP action exposes those locations as <code>checksums-embedded</code>, <code>signatures</code> for external signatures, and <code>signatures-embedded</code> for embedded signatures, so asset uploads receive local files. With CLI <code>--github-output</code>, signature arrays remain in the JSON <code>result</code> output.</p>
 <p>Library classes are named after the capability (<code>SvnDeploy</code>, <code>Svn</code>, <code>GitDeploy</code>) without repeating &quot;release&quot;.</p>
-<h2 id="file-selection" tabindex="-1"><a class="header-anchor" href="#file-selection">File selection</a></h2>
+<h4 id="file-selection" tabindex="-1"><a class="header-anchor" href="#file-selection">File selection</a></h4>
 <p><code>build</code>, <code>zip</code>, <code>checksums</code>, <code>deploy svn</code> and <code>deploy git</code> select files the same way:</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -372,7 +378,7 @@
 </table>
 </div>
 <p><code>.distignore</code> and <code>--exclude</code> use full gitignore syntax, including <code>!</code> negation. <code>--exclude-gitattributes</code> asks Git to evaluate <code>export-ignore</code> attributes, including nested <code>.gitattributes</code> files, then adds those paths to the exclusions. It is off by default, so releases don't unexpectedly depend on Git or change selection when a repository adds attributes. Git must be installed and the source directory must be inside a working tree; the flag is ignored by <code>deploy svn --from-zip</code>, since the ZIP is already filtered. Version control metadata (<code>.git</code>, <code>.svn</code> and <code>.hg</code>, at any depth, including the <code>.git</code> files of worktrees and submodules) is always left out, also without an ignore file and when deploying from a ZIP, and no <code>!</code> pattern can re-include it. This keeps a repository's history out of ZIPs and deploys when the source directory is the repository root. The comma-separated <code>--exclude</code> list works like <code>--exclude</code> in <code>wp i18n make-pot</code>. Selected symbolic links are an error, since ZIP archives and WordPress.org SVN don't support them.</p>
-<h2 id="plugin-and-theme-headers" tabindex="-1"><a class="header-anchor" href="#plugin-and-theme-headers">Plugin and theme headers</a></h2>
+<h4 id="plugin-and-theme-headers" tabindex="-1"><a class="header-anchor" href="#plugin-and-theme-headers">Plugin and theme headers</a></h4>
 <p>The commands read the same headers as WordPress. The main plugin file is the top-level <code>.php</code> file with a <code>Plugin Name:</code> header in its first 8 KB, preferring <code>{slug}.php</code> when several files have one. A directory without a plugin file and with <code>Theme Name:</code> in <code>style.css</code> is a theme. The readme headers (<code>Stable tag</code>, <code>Tested up to</code>, …) come from <code>readme.txt</code>, or <code>readme.md</code> when there's no <code>readme.txt</code>.</p>
 <p><code>--version</code> defaults to the <code>Version</code> header in <code>zip</code>, <code>checksums</code> and <code>version-check</code>, and <code>checksums --type</code> defaults to the detected package type.</p>
 

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Usage – signatures | WP Elevator Docs</title>
+  <meta name="description" content="The core functions take bytes and strings: signBytes(), verifyBytes(), signMinisignBytes(), verifyMinisignBytes(), signSshBytes() and verifySshBytes()…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/signatures/latest/usage.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/signatures/latest/usage.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Usage – signatures">
+  <meta property="og:description" content="The core functions take bytes and strings: signBytes(), verifyBytes(), signMinisignBytes(), verifyMinisignBytes(), signSshBytes() and verifySshBytes()…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/signatures/latest/usage.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/signatures/latest/usage.html#article",
+      "headline": "",
+      "description": "The core functions take bytes and strings: signBytes(), verifyBytes(), signMinisignBytes(), verifyMinisignBytes(), signSshBytes() and verifySshBytes()…",
+      "url": "https://wpelevator.github.io/docs/js/signatures/latest/usage.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/signatures/latest/usage.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "signatures", "item": "https://wpelevator.github.io/docs/js/signatures/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/signatures/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/signatures/latest/usage.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html" selected>signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+</div>
+<nav aria-label="signatures documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/signatures/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/signatures/latest/command-line.html">Command line</a></li>
+    <li><a href="/docs/js/signatures/latest/formats.html">Formats</a></li>
+    <li><a href="/docs/js/signatures/latest/usage.html" aria-current="page">Usage</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/signatures/latest/index.html">signatures</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1></h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/signatures/latest/usage.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/signatures/latest/usage.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="usage" tabindex="-1"><a class="header-anchor" href="#usage">Usage</a></h2>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	generateSigningKeyPair<span class="token punctuation">,</span>
+	parsePublicKey<span class="token punctuation">,</span>
+	parseSigningKey<span class="token punctuation">,</span>
+	signBytes<span class="token punctuation">,</span>
+	signFiles<span class="token punctuation">,</span>
+	verifyBytes<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/signatures'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> privateKey<span class="token punctuation">,</span> publicKey<span class="token punctuation">,</span> publicKeys <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">generateSigningKeyPair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Bytes first: no files are read.</span>
+<span class="token keyword">const</span> data <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span> <span class="token string">'hello'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> signature <span class="token operator">=</span> <span class="token function">signBytes</span><span class="token punctuation">(</span> data<span class="token punctuation">,</span> <span class="token function">parseSigningKey</span><span class="token punctuation">(</span> privateKey <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">verifyBytes</span><span class="token punctuation">(</span> data<span class="token punctuation">,</span> signature<span class="token punctuation">,</span> <span class="token function">parsePublicKey</span><span class="token punctuation">(</span> publicKey <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+
+<span class="token comment">// Files: writes &lt;file>.sig, &lt;file>.minisig and &lt;file>.sshsig next to each file.</span>
+<span class="token keyword">await</span> <span class="token function">signFiles</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">paths</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'/path/to/plugin.zip'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">formats</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'wordpress'</span><span class="token punctuation">,</span> <span class="token string">'minisign'</span><span class="token punctuation">,</span> <span class="token string">'ssh'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">key</span><span class="token operator">:</span> privateKey<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The core functions take bytes and strings: <code>signBytes()</code>, <code>verifyBytes()</code>, <code>signMinisignBytes()</code>, <code>verifyMinisignBytes()</code>, <code>signSshBytes()</code> and <code>verifySshBytes()</code>. <code>signFile()</code>, <code>writeSignature()</code>, <code>signFiles()</code>, <code>verifyFileSignature()</code> and the other functions with paths are wrappers that read and write files.</p>
+<p><code>signFiles()</code> reads the key from <code>input.key</code>, or from the environment variable named by <code>input.keyEnv</code>, which is <code>SIGNING_KEY</code> by default. Pass <code>keyEnv</code> to use another variable. The key is a base64 32-byte seed or a 64-byte libsodium secret key.</p>
+<p>Verification returns <code>false</code> for a signature that doesn't match. Invalid input throws a <code>SigningError</code> with a Node.js style <code>code</code>: <code>ERR_INVALID_SIGNING_KEY</code>, <code>ERR_INVALID_PUBLIC_KEY</code>, <code>ERR_MISSING_SIGNING_KEY</code>, <code>ERR_SIGNATURE_EXISTS</code>, <code>ERR_NOT_A_FILE</code> or <code>ERR_KEY_EXPORT</code>. Use <code>isSignatureError( error )</code> instead of <code>instanceof</code>, which fails when two copies of the package are installed.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/signatures/latest/formats.html"><small>Previous</small>Formats</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/github-actions.html#article",
-      "headline": "GitHub Actions",
+      "headline": "",
       "description": "The CLI prepares releases, and other actions publish them. These workflows check that pull requests add changesets, open a release pull request whenever…",
       "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/github-actions.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/github-actions.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "GitHub Actions", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/github-actions.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/github-actions.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html" selected>php-changesets</option>
@@ -125,16 +130,17 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>GitHub Actions</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/latest/github-actions.md">Copy as Markdown</button>
       <a href="/docs/markdown/php/php-changesets/latest/github-actions.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="release-with-github-actions" tabindex="-1"><a class="header-anchor" href="#release-with-github-actions">Release with GitHub Actions</a></h2>
+    <h2 id="github-actions" tabindex="-1"><a class="header-anchor" href="#github-actions">GitHub Actions</a></h2>
+<h3 id="release-with-github-actions" tabindex="-1"><a class="header-anchor" href="#release-with-github-actions">Release with GitHub Actions</a></h3>
 <p>The CLI prepares releases, and other actions publish them. These workflows check that pull requests add changesets, open a release pull request whenever changesets are pending on <code>main</code>, and after it's merged, create the tag and GitHub release of every released package. Packagist picks up the new tags of Composer packages; add the <a href="https://github.com/marketplace/actions/wp-release-zip">WP Release Zip</a> and <a href="https://github.com/marketplace/actions/wp-release-deploy-svn">WP Release Deploy SVN</a> actions to the <code>release</code> job to ship a WordPress plugin.</p>
-<h3 id="check-pull-requests" tabindex="-1"><a class="header-anchor" href="#check-pull-requests">Check pull requests</a></h3>
+<h4 id="check-pull-requests" tabindex="-1"><a class="header-anchor" href="#check-pull-requests">Check pull requests</a></h4>
 <div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Changesets
 
 <span class="token key atrule">on</span><span class="token punctuation">:</span>
@@ -152,7 +158,7 @@
       <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> vendor/bin/changeset status <span class="token punctuation">-</span><span class="token punctuation">-</span>since origin/$<span class="token punctuation">{</span><span class="token punctuation">{</span> github.base_ref <span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">-</span><span class="token punctuation">-</span>ci</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>A pull request that changes a package without adding a changeset fails with an annotation on a changed file of the package and a job summary of the changed packages. Contributors fix it with <code>changeset add</code>, or with <code>changeset add --empty</code> for a change that needs no release.</p>
-<h3 id="release" tabindex="-1"><a class="header-anchor" href="#release">Release</a></h3>
+<h4 id="release" tabindex="-1"><a class="header-anchor" href="#release">Release</a></h4>
 <div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Release
 
 <span class="token key atrule">on</span><span class="token punctuation">:</span>

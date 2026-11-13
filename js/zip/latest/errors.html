@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Errors – zip | WP Elevator Docs</title>
+  <meta name="description" content="Invalid input throws a ZipError with a Node-style code: ERRINVALIDROOTFOLDER, ERRINVALIDSOURCEDATEEPOCH, ERRZIPEXISTS, ERRINVALIDZIP or ERRUNSAFEZIP. Use…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/zip/latest/errors.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/zip/latest/errors.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Errors – zip">
+  <meta property="og:description" content="Invalid input throws a ZipError with a Node-style code: ERRINVALIDROOTFOLDER, ERRINVALIDSOURCEDATEEPOCH, ERRZIPEXISTS, ERRINVALIDZIP or ERRUNSAFEZIP. Use…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/zip/latest/errors.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/zip/latest/errors.html#article",
+      "headline": "",
+      "description": "Invalid input throws a ZipError with a Node-style code: ERRINVALIDROOTFOLDER, ERRINVALIDSOURCEDATEEPOCH, ERRZIPEXISTS, ERRINVALIDZIP or ERRUNSAFEZIP. Use…",
+      "url": "https://wpelevator.github.io/docs/js/zip/latest/errors.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/zip/latest/errors.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "zip", "item": "https://wpelevator.github.io/docs/js/zip/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/zip/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/zip/latest/errors.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html" selected>zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+</div>
+<nav aria-label="zip documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/zip/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/zip/latest/errors.html" aria-current="page">Errors</a></li>
+    <li><a href="/docs/js/zip/latest/reproducible-archives.html">Reproducible archives</a></li>
+    <li><a href="/docs/js/zip/latest/safe-extraction.html">Safe extraction</a></li>
+    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/zip/latest/index.html">zip</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1></h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/zip/latest/errors.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/zip/latest/errors.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="errors" tabindex="-1"><a class="header-anchor" href="#errors">Errors</a></h2>
+<p>Invalid input throws a <code>ZipError</code> with a Node-style <code>code</code>: <code>ERR_INVALID_ROOT_FOLDER</code>, <code>ERR_INVALID_SOURCE_DATE_EPOCH</code>, <code>ERR_ZIP_EXISTS</code>, <code>ERR_INVALID_ZIP</code> or <code>ERR_UNSAFE_ZIP</code>. Use <code>isZipError( error )</code> to check for one, which also works when two copies of the package are installed, unlike <code>instanceof</code>. Other errors, like a missing source file, are the original errors of Node.js.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/zip/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/js/zip/latest/reproducible-archives.html"><small>Next</small>Reproducible archives</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Sub-path exports – wp-gettext | WP Elevator Docs</title>
+  <meta name="description" content="Every feature has its own entry, so that you only load the parsers you use. The main entry never imports the PHP or JavaScript parsers, or the PO parser.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-gettext/latest/entries.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-gettext/latest/entries.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Sub-path exports – wp-gettext">
+  <meta property="og:description" content="Every feature has its own entry, so that you only load the parsers you use. The main entry never imports the PHP or JavaScript parsers, or the PO parser.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-gettext/latest/entries.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-gettext/latest/entries.html#article",
+      "headline": "",
+      "description": "Every feature has its own entry, so that you only load the parsers you use. The main entry never imports the PHP or JavaScript parsers, or the PO parser.",
+      "url": "https://wpelevator.github.io/docs/js/wp-gettext/latest/entries.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-gettext/latest/entries.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-gettext", "item": "https://wpelevator.github.io/docs/js/wp-gettext/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-gettext/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/wp-gettext/latest/entries.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html" selected>wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-gettext documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-gettext/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/command-line.html">Command line</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/compiling.html">Compiling translations</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/entries.html" aria-current="page">Sub-path exports</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/generating-pot.html">Generating a POT</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/parsing.html">Parsing a source</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/index.html">wp-gettext</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1></h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-gettext/latest/entries.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-gettext/latest/entries.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="sub-path-exports" tabindex="-1"><a class="header-anchor" href="#sub-path-exports">Sub-path exports</a></h2>
+<p>Every feature has its own entry, so that you only load the parsers you use. The main entry never imports the PHP or JavaScript parsers, or the PO parser.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Exports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@wpelevator/wp-gettext</code></td>
+<td><code>GettextError</code>, <code>isGettextError()</code>, the catalog model and <code>aggregateCatalog()</code>, <code>resolveI18nOptions()</code> and the other option helpers, <code>discoverI18nFiles()</code>, <code>extractHeaderTranslations()</code>, <code>parseMetadataTranslations()</code> and the output path checks.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/php</code></td>
+<td><code>parsePhpTranslations()</code>, which uses <code>php-parser</code>.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/javascript</code></td>
+<td><code>parseJavascriptTranslations()</code>, which uses Babel.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/pot</code></td>
+<td><code>serializePot()</code>.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/po</code></td>
+<td><code>parseTranslatedPo()</code> and <code>compileMo()</code>.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/json</code></td>
+<td><code>compileScriptTranslations()</code>, the JED JSON files of WordPress scripts.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/l10n-php</code></td>
+<td><code>compilePhpTranslations()</code>, the <code>.l10n.php</code> files of WordPress 6.5 and later.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/audit</code></td>
+<td><code>auditCatalog()</code>.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/generate</code></td>
+<td><code>extractCatalog()</code>, <code>generatePackagePot()</code>, <code>resolvePotPath()</code> and <code>validatePotDestinations()</code>, which read a plugin or theme directory with both parsers.</td>
+</tr>
+<tr>
+<td><code>@wpelevator/wp-gettext/compile</code></td>
+<td><code>compileTranslations()</code>, which compiles a PO file and writes or checks the MO, JSON or <code>.l10n.php</code> outputs.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-gettext/latest/compiling.html"><small>Previous</small>Compiling translations</a><a rel="next" href="/docs/js/wp-gettext/latest/errors.html"><small>Next</small>Errors</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

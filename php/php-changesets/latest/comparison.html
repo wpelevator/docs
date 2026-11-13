@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html#article",
-      "headline": "Comparison with wp-release",
+      "headline": "",
       "description": "PHP Changesets is the PHP counterpart of the changeset commands of wp-release, for projects that release with PHP and Git alone and don't use Node.js or…",
       "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Comparison with wp-release", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html" selected>php-changesets</option>
@@ -125,14 +130,15 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Comparison with wp-release</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/latest/comparison.md">Copy as Markdown</button>
       <a href="/docs/markdown/php/php-changesets/latest/comparison.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>PHP Changesets is the PHP counterpart of the <code>changeset</code> commands of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose <code>wp-release</code> when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same <code>releases[]</code> plan, so a repository can switch between them.</p>
+    <h2 id="comparison-with-wp-release" tabindex="-1"><a class="header-anchor" href="#comparison-with-wp-release">Comparison with wp-release</a></h2>
+<p>PHP Changesets is the PHP counterpart of the <code>changeset</code> commands of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose <code>wp-release</code> when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same <code>releases[]</code> plan, so a repository can switch between them.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -182,7 +188,7 @@
 </table>
 </div>
 <p>They also share these conventions: <code>--json</code> and <code>--github-output</code> on every command, <code>--log-format github</code> annotations and job summaries, global <code>--config</code>, <code>--tag-format</code> and <code>--project-name</code>, the <code>remote</code> and <code>baseBranch</code> settings with their <code>--remote</code> and <code>--base-branch</code> options, the <code>{path}/{version}</code> tag format with <code>v{version}</code> for an inferred root project, and the exit codes 0, 1 and 2.</p>
-<h2 id="deliberate-differences" tabindex="-1"><a class="header-anchor" href="#deliberate-differences">Deliberate differences</a></h2>
+<h3 id="deliberate-differences" tabindex="-1"><a class="header-anchor" href="#deliberate-differences">Deliberate differences</a></h3>
 <ul>
 <li><code>wp-release changeset</code> without a subcommand runs <code>changeset add</code>, so that a package.json script can map <code>changeset</code> to it, like the JavaScript Changesets CLI. <code>changeset</code> alone prints the usage here. Run <code>changeset --help</code> for the commands.</li>
 <li>No single-project version flags like <code>--version-composer-json</code>: without a config, the project is inferred, and <code>changeset init</code> writes the inferred settings to <code>changesets.config.php</code> to change them.</li>
@@ -195,7 +201,7 @@
 <li>A pre-release current version graduates like <code>semver inc</code> on a stable release, where <code>wp-release</code> rejects bumping one.</li>
 <li>Package groups can set their own <code>changelog</code> and <code>tagFormat</code>.</li>
 </ul>
-<h2 id="excluded-by-design" tabindex="-1"><a class="header-anchor" href="#excluded-by-design">Excluded by design</a></h2>
+<h4 id="excluded-by-design" tabindex="-1"><a class="header-anchor" href="#excluded-by-design">Excluded by design</a></h4>
 <p>These <code>wp-release</code> features are left out, and the CLI never commits or publishes versions. Their settings and options are rejected as unknown:</p>
 <ul>
 <li>Fixed and linked version groups: every package releases from its own changesets and version descriptors.</li>

@@ -42,7 +42,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/compatibility.html#article",
-      "headline": "Compatibility with git subtree split",
+      "headline": "",
       "description": "The package is a port of the rules of processsplitcommit and copyorskip in git-subtree.sh, including its oddities. A commit that doesn't have the…",
       "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/compatibility.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/compatibility.html",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "subtree-split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Compatibility with git subtree split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/compatibility.html" }
+        { "@type": "ListItem", "position": 4, "name": "", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/compatibility.html" }
       ]
     }
   ]
@@ -85,9 +85,14 @@
     <span>Package</span>
     <select data-navigate autocomplete="off">
       <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
         <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
         <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
         <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
       </optgroup>
       <optgroup label="PHP">
         <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
@@ -126,20 +131,21 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Compatibility with git subtree split</h1>
+    <h1></h1>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/latest/compatibility.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/subtree-split/latest/compatibility.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="limits" tabindex="-1"><a class="header-anchor" href="#limits">Limits</a></h2>
+    <h2 id="compatibility-with-git-subtree-split" tabindex="-1"><a class="header-anchor" href="#compatibility-with-git-subtree-split">Compatibility with git subtree split</a></h2>
+<h3 id="limits" tabindex="-1"><a class="header-anchor" href="#limits">Limits</a></h3>
 <ul>
 <li>Git 2.29 or later. The rules of <code>git subtree split</code> for merges changed in Git 2.20, and older versions make other commits that this package doesn't reproduce.</li>
 <li>One prefix per call. There is no <code>--rejoin</code>, <code>--squash</code>, <code>--onto</code> or <code>--annotate</code>, and the <code>git-subtree-*</code> trailers of earlier <code>git subtree add</code> and <code>split --rejoin</code> commands aren't read.</li>
 <li>A name with a backslash, or a commit in an encoding that <code>TextDecoder</code> doesn't know, may differ from what the shell script writes.</li>
 </ul>
-<h2 id="how-it-matches-git-subtree-split" tabindex="-1"><a class="header-anchor" href="#how-it-matches-git-subtree-split">How it matches git subtree split</a></h2>
+<h3 id="how-it-matches-git-subtree-split" tabindex="-1"><a class="header-anchor" href="#how-it-matches-git-subtree-split">How it matches git subtree split</a></h3>
 <p>The package is a port of the rules of <code>process_split_commit</code> and <code>copy_or_skip</code> in <code>git-subtree.sh</code>, including its oddities. A commit that doesn't have the directory but whose parents do maps to itself, and a commit is only dropped in favor of a parent with the same tree when no history of another branch would be lost. Commits are written with the author, committer, dates and message of the original, without signatures and other extra headers, and with the names cleaned like <code>git commit-tree</code> does. The hashes are calculated in Node and written with one <code>git fast-import</code> process, which checks that Git wrote the same hash.</p>
 <p>The tests in <code>src</code> run both implementations on the same repositories and compare the tips and the commit objects. They cover linear history, merges where one or both sides touch the directory, branches that make the same change, octopus merges, a directory that is added late, removed and added back or renamed, empty commits, authors that differ from committers, time zones, names with punctuation, messages without a trailing newline, a commit in another encoding, signed commits, and random histories of branches and merges built to often end up with the same tree.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token builtin class-name">test</span>

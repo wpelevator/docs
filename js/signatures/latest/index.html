@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>signatures | WP Elevator Docs</title>
+  <meta name="description" content="Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/signatures/latest/index.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/signatures/latest/index.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="signatures">
+  <meta property="og:description" content="Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/signatures/latest/index.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/signatures/latest/index.html#article",
+      "headline": "",
+      "description": "Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.",
+      "url": "https://wpelevator.github.io/docs/js/signatures/latest/index.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/signatures/latest/index.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "signatures", "item": "https://wpelevator.github.io/docs/js/signatures/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/signatures/latest/index.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html" selected>signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+</div>
+<nav aria-label="signatures documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/signatures/latest/index.html" aria-current="page">Overview</a></li>
+    <li><a href="/docs/js/signatures/latest/command-line.html">Command line</a></li>
+    <li><a href="/docs/js/signatures/latest/formats.html">Formats</a></li>
+    <li><a href="/docs/js/signatures/latest/usage.html">Usage</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/signatures/latest/index.html">signatures</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1></h1><p class="lede">Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/signatures/latest/index.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/signatures/latest/index.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="signatures" tabindex="-1"><a class="header-anchor" href="#signatures">signatures</a></h2>
+<p>Generate Ed25519 keys, sign files and verify signatures in three formats that share one key: the detached signature that WordPress core's <code>verify_file_signature()</code> checks, <a href="https://jedisct1.github.io/minisign/">minisign</a> and OpenSSH (<code>ssh-keygen -Y sign</code>). It uses only <code>node:crypto</code>, with no runtime dependencies.</p>
+<h3 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h3>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/signatures</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Requires Node.js 22.12 or later.</p>
+<h3 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h3>
+<ul>
+<li><a href="./formats.html">Formats</a></li>
+<li><a href="./usage.html">Usage</a></li>
+<li><a href="./command-line.html">Command line</a></li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/signatures/latest/command-line.html"><small>Next</small>Command line</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>
