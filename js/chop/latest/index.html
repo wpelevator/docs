@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>chop | WP Elevator Docs</title>
-  <meta name="description" content="An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.">
+  <meta name="description" content="An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/index.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/index.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="chop">
-  <meta property="og:description" content="An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.">
+  <meta property="og:description" content="An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/index.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -43,7 +43,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/index.html#article",
       "headline": "chop",
-      "description": "An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.",
+      "description": "An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/index.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/index.html",
       "inLanguage": "en",
@@ -112,19 +112,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html" aria-current="page">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -139,43 +155,121 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>chop</h1><p class="lede">An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.</p>
+    <h1>chop</h1><p class="lede">An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/index.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/index.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p><code>@wpelevator/chop</code> is an HTTP image server for responsive images. It serves resized, converted and optimized copies of originals from a local data directory, from an HTTP(S) origin or from an S3 bucket, and chooses AVIF, WebP or the original format from the <code>Accept</code> header of each request. It's built on <a href="https://sharp.pixelplumbing.com/">sharp</a>, which is its only runtime dependency, and works as a command line server or as a library with a request handler that doesn't depend on an HTTP framework.</p>
-<p>It's read-only: it never writes to the data directory or any other directory. With a data directory, which is the default, it makes no network requests. Remote originals are opt-in, are fetched with strict <a href="security.html">safeguards</a>, and only from the configured origin or from hosts that you list. Authentication, URL signing and per-client rate limits are left to a CDN or a reverse proxy. The behavior is summarized in the <a href="reference.html">reference</a>.</p>
-<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/chop</code></pre>
+    <p>Serve one original image as many sizes and formats, from a URL, with no build step. chop reads originals from a folder, an HTTPS origin or an S3 bucket, resizes them with <a href="https://sharp.pixelplumbing.com/">sharp</a>, and picks AVIF, WebP or the source format from the <code>Accept</code> header of each request.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/chop <span class="token parameter variable">--data</span> /var/www/wp-content/uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Requires Node.js 22.12 or later. There is also a container image, <code>ghcr.io/wpelevator/chop</code>, described in the <a href="https://github.com/wpelevator/basement/tree/main/packages/docker/chop">chop Docker README</a>.</p>
-<h2 id="start-the-server" tabindex="-1"><a class="header-anchor" href="#start-the-server">Start the server</a></h2>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">chop <span class="token parameter variable">--data</span> /var/www/wp-content/uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /var/www/wp-content/uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Then request <code>http://localhost:8080/2026/05/photo.jpg?w=300</code> to get <code>&lt;data&gt;/2026/05/photo.jpg</code> at 300 pixels wide, as AVIF or WebP when the <code>Accept</code> header of the client lists them. The <a href="cli.html">CLI</a> page lists the options and exit codes.</p>
-<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
+<p>A browser that accepts AVIF and requests <code>/2026/05/photo.jpg?w=300</code> gets a 300 pixel wide AVIF of the original. The <a href="quickstart.html">quickstart</a> shows the request and the response headers.</p>
+<h2 id="what-you-get" tabindex="-1"><a class="header-anchor" href="#what-you-get">What you get</a></h2>
 <ul>
-<li><a href="./cli.html">CLI</a></li>
-<li><a href="./requests.html">Requests and query arguments</a></li>
-<li><a href="./url-schemes.html">URL schemes</a></li>
-<li><a href="./sources.html">Sources: data directory, HTTP origin and URL sources</a></li>
-<li><a href="./s3.html">S3 and S3-compatible storage</a></li>
-<li><a href="./security.html">Securing remote origins</a></li>
-<li><a href="./formats.html">Formats and quality</a></li>
-<li><a href="./responses.html">Responses and errors</a></li>
-<li><a href="./caching.html">Caching with nginx and a CDN</a></li>
-<li><a href="./configuration.html">Configuration</a></li>
-<li><a href="./library.html">Library API</a></li>
-<li><a href="./development.html">Development</a></li>
-<li><a href="./reference.html">Reference</a></li>
+<li>Resizing, cropping and padding from query arguments such as <code>w</code>, <code>resize</code> and <code>lb</code>, or from Cloudflare-style <code>/cdn-cgi/image/</code> URLs. See <a href="resize-and-crop.html">Resize, crop and pad images</a> and <a href="from-cloudflare.html">Migrate from Cloudflare Image Resizing</a>.</li>
+<li>AVIF or WebP when the client lists them in <code>Accept</code>, with <code>Vary: Accept</code>, a strong <code>ETag</code> and a one year <code>Cache-Control</code>. See <a href="formats.html">Serve AVIF and WebP</a>.</li>
+<li>Read-only access. chop never writes to the data directory or any other directory, and with a data directory, the default, it makes no network requests.</li>
+<li>Opt-in remote originals with <a href="security.html">safeguards</a>: no redirects, checked addresses, a size cap and timeouts.</li>
+<li>A command line server and a <a href="library.html">library</a> with a request handler that doesn't depend on an HTTP framework. sharp is the only runtime dependency.</li>
 </ul>
+<p>Authentication, URL signing and per-client rate limits belong to a CDN or a reverse proxy in front of chop.</p>
+<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/chop</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Requires Node.js 22.12 or later. The examples use the bare <code>chop</code> command, which exists after the install. Before it, use <code>npx @wpelevator/chop</code>, because bare <code>npx chop</code> doesn't run this package. The container image is <code>ghcr.io/wpelevator/chop</code>, described in <a href="docker.html">Run chop in Docker</a>.</p>
+<h2 id="pick-a-task" tabindex="-1"><a class="header-anchor" href="#pick-a-task">Pick a task</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>You want to</th>
+<th>Page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Try it in a minute</td>
+<td><a href="quickstart.html">Quickstart</a></td>
+</tr>
+<tr>
+<td>Resize, crop or pad an image</td>
+<td><a href="resize-and-crop.html">Resize, crop and pad images</a></td>
+</tr>
+<tr>
+<td>Write a <code>srcset</code> and limit the widths</td>
+<td><a href="responsive-images.html">Serve responsive images</a></td>
+</tr>
+<tr>
+<td>Serve AVIF and WebP</td>
+<td><a href="formats.html">Serve AVIF and WebP</a></td>
+</tr>
+<tr>
+<td>Set quality or remove metadata</td>
+<td><a href="quality-and-metadata.html">Set quality and strip metadata</a></td>
+</tr>
+<tr>
+<td>Serve transparent PNGs and animated GIFs</td>
+<td><a href="animated-and-transparent.html">Serve transparent and animated images</a></td>
+</tr>
+<tr>
+<td>Read originals from a folder, a site, S3 or named hosts</td>
+<td><a href="sources.html">Choose where originals come from</a>, <a href="s3.html">Serve images from S3</a></td>
+</tr>
+<tr>
+<td>Expose a remote origin safely</td>
+<td><a href="security.html">Secure remote origins</a></td>
+</tr>
+<tr>
+<td>Run it in a container</td>
+<td><a href="docker.html">Run chop in Docker</a></td>
+</tr>
+<tr>
+<td>Get ready for real traffic</td>
+<td><a href="production-checklist.html">Prepare chop for production</a></td>
+</tr>
+<tr>
+<td>Cache each variant once, with nginx or at a CDN</td>
+<td><a href="caching.html">Cache images</a>, <a href="nginx-cache.html">Cache with nginx</a></td>
+</tr>
+<tr>
+<td>Fix an error</td>
+<td><a href="troubleshooting.html">Troubleshoot chop</a></td>
+</tr>
+<tr>
+<td>Move from Photon or Cloudflare Image Resizing</td>
+<td><a href="from-photon.html">Migrate from Photon</a>, <a href="from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></td>
+</tr>
+<tr>
+<td>Run the server and read its logs</td>
+<td><a href="cli.html">Run the server</a></td>
+</tr>
+<tr>
+<td>Look up a setting or a status code</td>
+<td><a href="configuration.html">Configuration</a>, <a href="responses.html">Responses and errors</a></td>
+</tr>
+<tr>
+<td>Embed the handler in your own server</td>
+<td><a href="library.html">Library API</a></td>
+</tr>
+<tr>
+<td>See what changed in each release</td>
+<td><a href="https://wpelevator.github.io/docs/js/chop/latest/changelog.html">Changelog</a></td>
+</tr>
+<tr>
+<td>Work on chop itself</td>
+<td><a href="development.html">Development</a></td>
+</tr>
+</tbody>
+</table>
+</div>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/chop/latest/caching.html"><small>Next</small>Caching</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/chop/latest/quickstart.html"><small>Next</small>Quickstart</a>
 </nav>
 
   </main>

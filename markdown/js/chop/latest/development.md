@@ -1,5 +1,7 @@
 # Development
 
+Run the tests, lint and build of the chop package from the monorepo.
+
 Run these from the repository root:
 
 ```bash
@@ -10,8 +12,6 @@ npm run format --workspace @wpelevator/chop
 docker compose run --rm --no-deps wordpress npm run test --workspace=@wpelevator/chop
 ```
 
-The source runs directly with Node's type stripping through the `wpelevator-source` export condition, and `dist` is only for publishing. Tests are co-located `*.test.ts` files that use `node:test`, and each test name starts with the requirement ID of the specification that it covers, like `R-FMT-3`. `src/test-fixtures.ts` creates temporary data directories and generates the images with sharp, so there are no binary fixtures.
+To run the server from a checkout, use `npm start --workspace @wpelevator/chop -- --data ./uploads`.
 
-## License
-
-MIT. chop was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server. The [reference](reference.md) summarizes that behavior.
+The source runs directly with Node's type stripping through the `wpelevator-source` export condition, and `dist` is only for publishing. Tests are co-located `*.test.ts` files that use `node:test`. `src/test-fixtures.ts` creates temporary data directories and generates the images with sharp, so there are no binary fixtures.

@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Formats and quality – chop | WP Elevator Docs</title>
-  <meta name="description" content="With format=auto (the default), the format is chosen from the Accept header for a still image among the formats of autoFormats (avif,webp by default)…">
+  <title>Serve AVIF and WebP – chop | WP Elevator Docs</title>
+  <meta name="description" content="Serve AVIF or WebP to browsers that accept them and the original format to the rest, from one URL, with chop's format negotiation.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/formats.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/formats.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Formats and quality – chop">
-  <meta property="og:description" content="With format=auto (the default), the format is chosen from the Accept header for a still image among the formats of autoFormats (avif,webp by default)…">
+  <meta property="og:title" content="Serve AVIF and WebP – chop">
+  <meta property="og:description" content="Serve AVIF or WebP to browsers that accept them and the original format to the rest, from one URL, with chop's format negotiation.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/formats.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/formats.html#article",
-      "headline": "Formats and quality",
-      "description": "With format=auto (the default), the format is chosen from the Accept header for a still image among the formats of autoFormats (avif,webp by default)…",
+      "headline": "Serve AVIF and WebP",
+      "description": "Serve AVIF or WebP to browsers that accept them and the original format to the rest, from one URL, with chop's format negotiation.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/formats.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/formats.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Formats and quality", "item": "https://wpelevator.github.io/docs/js/chop/latest/formats.html" }
+        { "@type": "ListItem", "position": 4, "name": "Serve AVIF and WebP", "item": "https://wpelevator.github.io/docs/js/chop/latest/formats.html" }
       ]
     }
   ]
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html" aria-current="page">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html" aria-current="page">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,15 +156,60 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Formats and quality</h1>
+    <h1>Serve AVIF and WebP</h1><p class="lede">Serve AVIF or WebP to browsers that accept them and the original format to the rest, from one URL, with chop's format negotiation.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/formats.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/formats.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>With <code>format=auto</code> (the default), the format is chosen from the <code>Accept</code> header for a still image among the formats of <code>autoFormats</code> (<code>avif,webp</code> by default): AVIF if it's listed and the output is lossy, or WebP if it's listed and the output fits the 16383 pixel limit of WebP, otherwise the fallback format. When the client lists both, the format with the highest <code>q</code> is used, and the earlier format of <code>autoFormats</code> wins a tie. Browsers send no <code>q</code> for image types, so they get the first format of <code>autoFormats</code> that they accept, as before, while a header like <code>image/avif;q=0.5,image/webp</code> now gives WebP. The fallback is GIF for a GIF source, PNG for lossless or transparent output, and JPEG otherwise.</p>
-<p>The header is parsed per RFC 9110, ignoring whitespace and case, and a type with <code>q=0</code> is not accepted. <code>image/*</code> and <code>*/*</code> never make AVIF or WebP acceptable: only a listed <code>image/avif</code> or <code>image/webp</code> does, so clients that don't list them get a format that they can display. An explicit <code>format</code> is used even if <code>Accept</code> doesn't list it, and it isn't restricted by <code>autoFormats</code>, which only governs the negotiation.</p>
+    <p>chop picks the output format from the <code>Accept</code> header, so one URL gives each browser the smallest format it can display. No argument is needed, because <code>format=auto</code> is the default.</p>
+<p>The same URL, <code>/2026/05/photo.jpg?w=300</code>, requested with three different headers:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th><code>Accept</code> header</th>
+<th><code>content-type</code></th>
+<th><code>content-length</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image/avif,image/webp</code></td>
+<td><code>image/avif</code></td>
+<td>2364</td>
+</tr>
+<tr>
+<td><code>image/webp</code></td>
+<td><code>image/webp</code></td>
+<td>2144</td>
+</tr>
+<tr>
+<td>none</td>
+<td><code>image/jpeg</code></td>
+<td>4548</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The test image is a synthetic gradient, so the sizes are small and the ranking depends on the image. Every one of these responses has <code>vary: Accept</code>, so a cache keeps one copy per header. See <a href="caching.html">Cache images</a>.</p>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<h3 id="force-a-format" tabindex="-1"><a class="header-anchor" href="#force-a-format">Force a format</a></h3>
+<p><code>?format=webp</code> is used even when <code>Accept</code> doesn't list it. <code>jpeg</code>, <code>png</code>, <code>webp</code>, <code>avif</code> and <code>gif</code> work the same way, and the choice isn't limited by <code>CHOP_AUTO_FORMATS</code>.</p>
+<h3 id="turn-avif-off" tabindex="-1"><a class="header-anchor" href="#turn-avif-off">Turn AVIF off</a></h3>
+<p>AVIF costs more CPU to encode than WebP. <code>CHOP_AUTO_FORMATS</code> (chop 0.2.0 or later) set to <code>webp</code> stops <code>auto</code> from choosing it, and <code>CHOP_AVIF=false</code> does the same, also when <code>CHOP_AUTO_FORMATS</code> lists <code>avif</code>. An explicit <code>format=avif</code> still works. <code>CHOP_AUTO_FORMATS=none</code> turns all upgrades off, so <code>auto</code> always gives the fallback format.</p>
+<h3 id="accept-only-some-source-formats" tabindex="-1"><a class="header-anchor" href="#accept-only-some-source-formats">Accept only some source formats</a></h3>
+<p><code>CHOP_ALLOWED_INPUT_FORMATS=jpeg,png,webp</code> makes any other source a <code>415</code> before a pixel is decoded. <code>jpg</code> is accepted as an alias of <code>jpeg</code>, and the format is detected from the content of the file, never the extension. The <code>415</code> message is the same as for any unsupported file, so it doesn't reveal which formats are allowed.</p>
+<h3 id="set-the-quality-or-keep-the-original-bytes" tabindex="-1"><a class="header-anchor" href="#set-the-quality-or-keep-the-original-bytes">Set the quality or keep the original bytes</a></h3>
+<p>See <a href="quality-and-metadata.html">Set quality and strip metadata</a>.</p>
+<h3 id="serve-transparent-pngs-and-animated-gifs" tabindex="-1"><a class="header-anchor" href="#serve-transparent-pngs-and-animated-gifs">Serve transparent PNGs and animated GIFs</a></h3>
+<p>See <a href="animated-and-transparent.html">Serve transparent and animated images</a>.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<h3 id="how-auto-chooses" tabindex="-1"><a class="header-anchor" href="#how-auto-chooses">How <code>auto</code> chooses</a></h3>
+<p>For a still image, <code>auto</code> chooses among the formats of <code>autoFormats</code> (<code>avif,webp</code> by default). It picks AVIF if it's listed and the output is lossy, or WebP if it's listed and the output fits the 16383 pixel limit of WebP, and otherwise the fallback format. The fallback is GIF for a GIF source, PNG for lossless or transparent output, and JPEG otherwise.</p>
+<p>When the client lists both, the format with the highest <code>q</code> is used, and the earlier format of <code>autoFormats</code> wins a tie. Browsers send no <code>q</code> for image types, so they get the first format of <code>autoFormats</code> that they accept, and a header like <code>image/avif;q=0.5,image/webp</code> gives WebP.</p>
+<p>The header is parsed per RFC 9110, ignoring whitespace and case, and a type with <code>q=0</code> is not accepted. Entries with an invalid <code>q</code> are ignored, and a listed type counts only if every entry of it has <code>q</code> above 0. <code>image/*</code> and <code>*/*</code> never make AVIF or WebP acceptable. Only a listed <code>image/avif</code> or <code>image/webp</code> does, so clients that don't list them get a format that they can display.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -187,46 +248,11 @@
 </tbody>
 </table>
 </div>
-<p>PNG, GIF and lossless WebP sources stay lossless unless <code>lossy=1</code> or a <code>quality</code> below 100 is given. Lossy output of a lossless source is AVIF, WebP or a palette PNG. A JPEG, lossy WebP or AVIF source always gives lossy output. An animated source is never AVIF. With an explicit format that can't hold the image (JPEG for an image with transparency, or any format other than WebP and GIF for an animation), transparency is flattened onto white and only the first frame is kept. Sources are detected from the content, not the extension. Other content is a <code>415</code> and an unreadable or corrupt file is a <code>422</code>.</p>
-<p>Every successful response has <code>Vary: Accept</code>, also when it ends up in the source format.</p>
-<h2 id="restricting-formats" tabindex="-1"><a class="header-anchor" href="#restricting-formats">Restricting formats</a></h2>
-<ul>
-<li><code>CHOP_AUTO_FORMATS=webp</code> never negotiates AVIF, which avoids its encode cost. <code>CHOP_AUTO_FORMATS=none</code> disables all upgrades, so <code>auto</code> always gives the fallback format. <code>CHOP_AVIF=false</code> is a shorthand that removes <code>avif</code> from the list, also when <code>autoFormats</code> lists it. An explicit <code>format=avif</code> still works with either.</li>
-<li><code>CHOP_ALLOWED_INPUT_FORMATS=jpeg,png,webp</code> is for a site that only serves those. The format is detected from the content of the file, never the extension, and <code>jpg</code> is accepted as an alias of <code>jpeg</code>. A source in another format is a <code>415</code> with the message of any unsupported file, which doesn't tell which formats are allowed. It's rejected after the header is read and before any pixel is decoded or processed.</li>
-</ul>
-<h2 id="quality-and-size" tabindex="-1"><a class="header-anchor" href="#quality-and-size">Quality and size</a></h2>
-<ul>
-<li><code>quality</code> is raised to 20 when it's lower, for lossy encoders. <code>quality=100</code> on WebP is lossless WebP.</li>
-<li>Without <code>quality</code> the defaults are JPEG 82, WebP 80 and AVIF 55 (configurable). A palette PNG uses <code>quality</code> or 80. PNG output of a lossless source is lossless with maximum compression.</li>
-<li>A JPEG source isn't re-encoded with a higher quality than it has: the quality of the source is estimated from its luminance quantization table, and the default is lowered to it when it's lower.</li>
-<li>When a request changes nothing about the pixels (no <code>crop</code>, size or <code>lb</code>, and no orientation to apply), the output format equals the source format and the source has no metadata that <code>strip</code> would remove, the original bytes are sent if the re-encoded image isn't smaller. With <code>strip=none</code> an untouched request in the source format sends the original bytes without re-encoding.</li>
-<li>Pixel values are never converted to another color space because of <code>strip</code>: the ICC profile is kept or dropped, and the pixels stay as they are. CMYK sources are always converted to sRGB.</li>
-<li>Responses have <code>X-Bytes-Saved</code> when the output is smaller than the original.</li>
-</ul>
-<h2 id="choices-where-the-specification-is-silent" tabindex="-1"><a class="header-anchor" href="#choices-where-the-specification-is-silent">Choices where the specification is silent</a></h2>
-<ul>
-<li>An explicit <code>quality</code> or <code>lossy=1</code> turns off the <code>strip=none</code> shortcut that sends the original bytes, because the client asked for a re-encoding. The &quot;never larger&quot; check still applies.</li>
-<li>The source quality cap of a JPEG applies when <code>quality</code> is absent. An explicit <code>quality</code> is used as given (with the floor of 20).</li>
-<li>Transparency means that the source has an alpha channel, even if every pixel is opaque.</li>
-<li>An explicit <code>format=png</code> is lossless unless <code>lossy=1</code> or a <code>quality</code> below 100 is given, also for a JPEG source. An explicit <code>format=avif</code> or <code>format=jpeg</code> is always lossy.</li>
-<li><code>contrast</code>, <code>brightness</code> and <code>filter</code> arguments are not parsed at all, so a malformed value of one of them is not an error.</li>
-<li>Repeated arguments use the first value. Crop numbers are non-negative and <code>zoom</code> may have up to three decimals.</li>
-<li>An empty segment in the path (<code>//</code> or a trailing slash) is a <code>400</code>.</li>
-<li>With <code>strip=none</code>, EXIF, XMP, IPTC and the profile are kept when the encoder can write them. CMYK sources only keep EXIF and XMP.</li>
-<li>The <code>Accept</code> entries that have an invalid <code>q</code> are ignored. A listed type counts as accepted only if every entry of it has <code>q</code> above 0.</li>
-<li>The encoders use the sharp defaults, except for progressive JPEG, WebP <code>effort</code> 4 and PNG <code>compressionLevel</code> 9.</li>
-<li><code>maxConcurrency</code> defaults to the number of CPUs and <code>CHOP_PORT</code>, <code>CHOP_HOST</code> and <code>CHOP_ACCESS_LOG</code> are CLI-only variables.</li>
-<li>A first path segment of <code>http:</code> or <code>https:</code> always starts a <a href="sources.html">URL source</a>, so a directory with that name can't be addressed by a plain path, and with an empty allow-list it is a <code>404</code>.</li>
-<li>The credentials of <code>CHOP_ORIGIN_AUTH</code> are never sent to a URL source, not even to the host of the configured origin. A URL source of that host is fetched like any other, with the address checks.</li>
-<li><code>*</code> allows every host on the default ports, and a custom port needs its own entry. An allow-list entry is a name or an IPv4 address and not an IPv6 literal, so only <code>*</code> allows an IPv6 literal, and the address checks still apply to it.</li>
-<li>An empty segment inside a URL source (<code>//</code> in its path) is sent to the origin as it is, while it's a <code>400</code> in a plain path.</li>
-<li>The <code>Accept</code> header of the client is not forwarded to the origin, so the origin can't vary its answer, and the bytes of an original don't depend on who asked.</li>
-<li>A <code>HEAD</code> request downloads and processes the original like a <code>GET</code>, since it has the same headers, including <code>Content-Length</code>, which depend on the output bytes. Don't forward <code>HEAD</code> requests for remote originals or URL sources from a proxy unless you need them, since each one costs a download and a conversion.</li>
-</ul>
+<p>Every successful response has <code>Vary: Accept</code>, also when it ends up in the source format. JPEG, PNG, GIF, WebP and AVIF are read. Other content is a <code>415</code>, and an unreadable or corrupt file is a <code>422</code>. The encoders use the sharp defaults, except for progressive JPEG, WebP <code>effort</code> 4 and PNG <code>compressionLevel</code> 9.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/development.html"><small>Previous</small>Development</a><a rel="next" href="/docs/js/chop/latest/library.html"><small>Next</small>Library API</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/responsive-images.html"><small>Previous</small>Serve responsive images</a><a rel="next" href="/docs/js/chop/latest/quality-and-metadata.html"><small>Next</small>Set quality and strip metadata</a>
 </nav>
 
   </main>

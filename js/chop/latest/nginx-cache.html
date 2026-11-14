@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Cache with nginx – chop | WP Elevator Docs</title>
+  <meta name="description" content="An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/nginx-cache.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Cache with nginx – chop">
+  <meta property="og:description" content="An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html#article",
+      "headline": "Cache with nginx",
+      "description": "An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Cache with nginx", "item": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/nginx-cache.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html" aria-current="page">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Cache with nginx</h1><p class="lede">An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/nginx-cache.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/latest/nginx-cache.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Run an nginx cache in front of chop so each variant of an image is built once. Responses depend on the <code>Accept</code> header, and <code>Vary: Accept</code> alone makes nginx cache a separate copy for every distinct <code>Accept</code> string. Browsers send dozens of them, but chop only produces three variants of an image: AVIF, WebP and the source format. Collapse the header into those three buckets, use the bucket in the cache key, and send the same bucket upstream, so that the body in the cache always matches its key.</p>
+<p>Save this as an nginx configuration for the <code>http</code> context (in <code>/etc/nginx/conf.d</code> it already is) and point <code>proxy_pass</code> at chop:</p>
+<div class="code"><pre class="language-nginx" tabindex="0"><code class="language-nginx"><span class="token comment"># A listed image/avif or image/webp, unless its q is 0, selects the bucket. The first match wins, so AVIF goes first.</span>
+<span class="token directive"><span class="token keyword">map</span> <span class="token variable">$http_accept</span> <span class="token variable">$chop_bucket</span></span> <span class="token punctuation">{</span>
+	<span class="token directive"><span class="token keyword">default</span>                         original</span><span class="token punctuation">;</span>
+	"~*image/avif(?!\s*<span class="token punctuation">;</span>\s*q=0(\.0<span class="token punctuation">{</span>0,3<span class="token punctuation">}</span>)?\s*(,|<span class="token punctuation">;</span>|$))"    <span class="token directive"><span class="token keyword">avif</span></span><span class="token punctuation">;</span>
+	"~*image/webp(?!\s*<span class="token punctuation">;</span>\s*q=0(\.0<span class="token punctuation">{</span>0,3<span class="token punctuation">}</span>)?\s*(,|<span class="token punctuation">;</span>|$))"    <span class="token directive"><span class="token keyword">webp</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># The Accept header that chop gets for each bucket. An empty value removes the header.</span>
+<span class="token directive"><span class="token keyword">map</span> <span class="token variable">$chop_bucket</span> <span class="token variable">$chop_accept</span></span> <span class="token punctuation">{</span>
+	<span class="token directive"><span class="token keyword">default</span>  <span class="token string">""</span></span><span class="token punctuation">;</span>
+	<span class="token directive"><span class="token keyword">avif</span>     <span class="token string">"image/avif,image/webp"</span></span><span class="token punctuation">;</span>
+	<span class="token directive"><span class="token keyword">webp</span>     <span class="token string">"image/webp"</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">proxy_cache_path</span> /var/cache/nginx/chop levels=1:2 keys_zone=chop:50m max_size=10g inactive=30d use_temp_path=off</span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+	<span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+
+	<span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+		<span class="token directive"><span class="token keyword">proxy_pass</span> http://chop:8080</span><span class="token punctuation">;</span>
+		<span class="token directive"><span class="token keyword">proxy_cache</span> chop</span><span class="token punctuation">;</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_key</span> <span class="token string">"<span class="token variable">$host</span><span class="token variable">$uri</span><span class="token variable">$is_args</span><span class="token variable">$args</span>|<span class="token variable">$chop_bucket</span>"</span></span><span class="token punctuation">;</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_lock</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># Cache 200 only. Errors have Cache-Control: no-store, which nginx respects.</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_valid</span> <span class="token number">200</span> <span class="token number">30d</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># For remote originals, keep one-off requests for unusual sizes out of the cache.</span>
+		<span class="token comment"># proxy_cache_min_uses 2;</span>
+
+		<span class="token comment"># Send chop the bucket, so the body in the cache always matches its key.</span>
+		<span class="token directive"><span class="token keyword">proxy_set_header</span> Accept <span class="token variable">$chop_accept</span></span><span class="token punctuation">;</span>
+
+		<span class="token comment"># The bucket is the cache key, so don't add a second key from the raw Accept header.</span>
+		<span class="token directive"><span class="token keyword">proxy_ignore_headers</span> Vary</span><span class="token punctuation">;</span>
+
+		<span class="token comment"># chop's Vary: Accept still reaches clients and CDNs in front of nginx.</span>
+		<span class="token directive"><span class="token keyword">add_header</span> X-Cache-Status <span class="token variable">$upstream_cache_status</span> always</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="how-it-works" tabindex="-1"><a class="header-anchor" href="#how-it-works">How it works</a></h2>
+<ul>
+<li>A request without <code>image/avif</code> or <code>image/webp</code>, or with <code>q=0</code> for them, is the <code>original</code> bucket. A type with any other <code>q</code>, such as <code>image/avif;q=0.5</code>, counts as listed, and chop answers in the source format, as it would for any client without <code>Accept</code>.</li>
+<li><code>image/*</code> and <code>*/*</code> don't select a bucket, the same as in chop, so a client that only accepts wildcards gets a format that it can display.</li>
+<li>A cached response always has the format that its bucket gets from chop, since the key and the upstream header come from the same variable.</li>
+<li>Only the <code>Accept</code> header and the URL select a variant, so a purge needs three keys per URL, one for each bucket, like <code>$host$uri$is_args$args|avif</code>.</li>
+<li>chop's strong <code>ETag</code> and <code>If-None-Match</code> handling work through the cache, and the <code>ETag</code> of an image is the same for every <code>Accept</code> that gets the same bytes.</li>
+<li>The recipe caches <code>200</code> only. A <code>502</code> or <code>504</code> means that the origin failed for a moment, and caching it would keep a broken image for as long as the <code>proxy_cache_valid</code> time. chop sends <code>Cache-Control: no-store</code> with every error, so nginx doesn't cache a <code>404</code> either. To cache <code>404</code> responses for a short time, add <code>proxy_ignore_headers Cache-Control</code> with <code>proxy_cache_valid 404 1m</code>, and don't use <code>any</code>.</li>
+<li>For remote originals, <code>proxy_cache_lock on</code> makes concurrent requests for the same variant wait for one fetch, and <code>proxy_cache_min_uses 2</code> (commented out in the recipe) keeps one-off requests for unusual sizes out of the cache. See <a href="security.html">Secure remote origins</a>.</li>
+<li>If you turn AVIF off in chop (<code>CHOP_AVIF=false</code>), the <code>avif</code> bucket holds WebP, which is correct but caches the same image twice. Remove the AVIF line from the first <code>map</code> then.</li>
+</ul>
+<p>A CDN in front of nginx needs the same buckets: see <a href="caching.html#at-a-cdn">Cache at a CDN</a>.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/caching.html"><small>Previous</small>Cache images</a><a rel="next" href="/docs/js/chop/latest/troubleshooting.html"><small>Next</small>Troubleshoot chop</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Caching – chop | WP Elevator Docs</title>
-  <meta name="description" content="Put an nginx cache in front of chop. Responses depend on the Accept header, and Vary: Accept alone makes nginx cache a separate copy for every distinct…">
+  <title>Cache images – chop | WP Elevator Docs</title>
+  <meta name="description" content="What chop sends so caches can keep each image variant, and how to cache it at a CDN or with nginx next to chop.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/caching.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/caching.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Caching – chop">
-  <meta property="og:description" content="Put an nginx cache in front of chop. Responses depend on the Accept header, and Vary: Accept alone makes nginx cache a separate copy for every distinct…">
+  <meta property="og:title" content="Cache images – chop">
+  <meta property="og:description" content="What chop sends so caches can keep each image variant, and how to cache it at a CDN or with nginx next to chop.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/caching.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/caching.html#article",
-      "headline": "Caching",
-      "description": "Put an nginx cache in front of chop. Responses depend on the Accept header, and Vary: Accept alone makes nginx cache a separate copy for every distinct…",
+      "headline": "Cache images",
+      "description": "What chop sends so caches can keep each image variant, and how to cache it at a CDN or with nginx next to chop.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/caching.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/caching.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Caching", "item": "https://wpelevator.github.io/docs/js/chop/latest/caching.html" }
+        { "@type": "ListItem", "position": 4, "name": "Cache images", "item": "https://wpelevator.github.io/docs/js/chop/latest/caching.html" }
       ]
     }
   ]
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html" aria-current="page">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html" aria-current="page">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,71 +156,59 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Caching</h1>
+    <h1>Cache images</h1><p class="lede">What chop sends so caches can keep each image variant, and how to cache it at a CDN or with nginx next to chop.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/caching.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/caching.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <h2 id="caching-with-nginx" tabindex="-1"><a class="header-anchor" href="#caching-with-nginx">Caching with nginx</a></h2>
-<p>Put an nginx cache in front of chop. Responses depend on the <code>Accept</code> header, and <code>Vary: Accept</code> alone makes nginx cache a separate copy for every distinct <code>Accept</code> string. Browsers send dozens of them, but chop only produces three variants of an image: AVIF, WebP and the source format. Collapse the header into those three buckets, use the bucket in the cache key, and send the same bucket upstream, so that the body in the cache always matches its key:</p>
-<div class="code"><pre class="language-nginx" tabindex="0"><code class="language-nginx"><span class="token comment"># A listed image/avif or image/webp (without q=0) selects the bucket. The first match wins, so AVIF goes first.</span>
-<span class="token directive"><span class="token keyword">map</span> <span class="token variable">$http_accept</span> <span class="token variable">$chop_bucket</span></span> <span class="token punctuation">{</span>
-	<span class="token directive"><span class="token keyword">default</span>                         original</span><span class="token punctuation">;</span>
-	"~*image/avif(?!\s*<span class="token punctuation">;</span>\s*q=0)"    <span class="token directive"><span class="token keyword">avif</span></span><span class="token punctuation">;</span>
-	"~*image/webp(?!\s*<span class="token punctuation">;</span>\s*q=0)"    <span class="token directive"><span class="token keyword">webp</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment"># The Accept header that chop gets for each bucket. An empty value removes the header.</span>
-<span class="token directive"><span class="token keyword">map</span> <span class="token variable">$chop_bucket</span> <span class="token variable">$chop_accept</span></span> <span class="token punctuation">{</span>
-	<span class="token directive"><span class="token keyword">default</span>  <span class="token string">""</span></span><span class="token punctuation">;</span>
-	<span class="token directive"><span class="token keyword">avif</span>     <span class="token string">"image/avif,image/webp"</span></span><span class="token punctuation">;</span>
-	<span class="token directive"><span class="token keyword">webp</span>     <span class="token string">"image/webp"</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token directive"><span class="token keyword">proxy_cache_path</span> /var/cache/nginx/chop levels=1:2 keys_zone=chop:50m max_size=10g inactive=30d use_temp_path=off</span><span class="token punctuation">;</span>
-
-<span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
-	<span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
-
-	<span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
-		<span class="token directive"><span class="token keyword">proxy_pass</span> http://chop:8080</span><span class="token punctuation">;</span>
-		<span class="token directive"><span class="token keyword">proxy_cache</span> chop</span><span class="token punctuation">;</span>
-		<span class="token directive"><span class="token keyword">proxy_cache_key</span> <span class="token string">"<span class="token variable">$host</span><span class="token variable">$uri</span><span class="token variable">$is_args</span><span class="token variable">$args</span>|<span class="token variable">$chop_bucket</span>"</span></span><span class="token punctuation">;</span>
-		<span class="token directive"><span class="token keyword">proxy_cache_lock</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
-		<span class="token directive"><span class="token keyword">proxy_cache_valid</span> <span class="token number">200</span> <span class="token number">30d</span></span><span class="token punctuation">;</span>
-		<span class="token directive"><span class="token keyword">proxy_cache_valid</span> <span class="token number">404</span> <span class="token number">1m</span></span><span class="token punctuation">;</span>
-		<span class="token comment"># Not "any": a 502 or 504 from a slow origin must not be cached.</span>
-		<span class="token directive"><span class="token keyword">proxy_set_header</span> Accept <span class="token variable">$chop_accept</span></span><span class="token punctuation">;</span>
-
-		<span class="token comment"># The bucket is the cache key, so don't add a second key from the raw Accept header.</span>
-		<span class="token directive"><span class="token keyword">proxy_ignore_headers</span> Vary</span><span class="token punctuation">;</span>
-
-		<span class="token comment"># chop's Vary: Accept still reaches clients and CDNs in front of nginx.</span>
-		<span class="token directive"><span class="token keyword">add_header</span> X-Cache-Status <span class="token variable">$upstream_cache_status</span></span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+    <p>Every variant of an image is built once and then served from a cache. chop sends what a cache needs: a strong <code>ETag</code>, a one year <code>Cache-Control</code> and <code>Vary: Accept</code>. A request that repeats the <code>ETag</code> in <code>If-None-Match</code> gets a <code>304</code> with no body:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-D</span> - <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-H</span> <span class="token string">'If-None-Match: "n-Yo3BGjnbvonRM2dNUyTQCA3dloKdxSNJ2CqjeBGDs"'</span> <span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=300'</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>How it works:</p>
-<ul>
-<li>A request without <code>image/avif</code> or <code>image/webp</code>, or with <code>q=0</code> for them, is the <code>original</code> bucket, and chop answers in the source format, as it would for any client without <code>Accept</code>.</li>
-<li><code>image/*</code> and <code>*/*</code> don't select a bucket, the same as in chop, so a client that only accepts wildcards gets a format that it can display.</li>
-<li>A cached response always has the format that its bucket gets from chop, since the key and the upstream header come from the same variable.</li>
-<li>Only the <code>Accept</code> header and the URL select a variant, so a purge needs three keys per URL, one for each bucket, like <code>$host$uri$is_args$args|avif</code>.</li>
-<li>chop's strong <code>ETag</code> and <code>If-None-Match</code> handling work through the cache, and the <code>ETag</code> of an image is the same for every <code>Accept</code> that gets the same bytes.</li>
-<li>Cache only <code>200</code> and <code>404</code>, as the recipe does, and not <code>any</code>. A <code>502</code> or <code>504</code> means that the origin failed for a moment, and caching it would keep a broken image for as long as the <code>proxy_cache_valid</code> time. chop sends <code>Cache-Control: no-store</code> with every error, which nginx respects unless you ignore that header.</li>
-<li>For remote originals, <code>proxy_cache_lock on</code> makes concurrent requests for the same variant wait for one fetch, and <code>proxy_cache_min_uses 2</code> keeps one-off requests for unusual sizes out of the cache. See <a href="security.html">Securing remote origins</a>.</li>
-<li>If you disable AVIF in chop (<code>CHOP_AVIF=false</code>), the <code>avif</code> bucket holds WebP, which is correct but caches the same image twice. Remove the AVIF line from the first <code>map</code> then.</li>
-</ul>
-<p>Pass the <code>Accept</code> buckets on to any CDN in front of nginx in the same way, with a custom cache key built from a normalized header, and see <a href="caching.html#cdn-and-caching">CDN and caching</a>.</p>
-<h2 id="cdn-and-caching" tabindex="-1"><a class="header-anchor" href="#cdn-and-caching">CDN and caching</a></h2>
-<p>The <a href="caching.html#caching-with-nginx">nginx recipe</a> covers the cache next to chop. Responses depend on the <code>Accept</code> header, so the CDN must use it in the cache key, or at least whether it lists <code>image/avif</code> and <code>image/webp</code>. Every response has <code>Vary: Accept</code>, but many CDNs ignore <code>Vary</code> unless configured, and without it a cached AVIF can be sent to a browser that can't display it. Normalizing <code>Accept</code> at the edge to a small set of values (<code>image/avif,image/webp</code>, <code>image/webp</code> and none) keeps the number of cached variants low.</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 304 Not Modified
+etag: &quot;n-Yo3BGjnbvonRM2dNUyTQCA3dloKdxSNJ2CqjeBGDs&quot;
+cache-control: public, max-age=31536000
+vary: Accept
+x-content-type-options: nosniff</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The <code>ETag</code> is a SHA-256 of the output, so it changes only when the bytes change, and it is the same for every <code>Accept</code> header that gets the same bytes. Take the value from the response to your own first request, because it depends on the image. The same URL and <code>Accept</code> header always give the same bytes.</p>
+<p>chop doesn't cache anything itself. <code>Vary: Accept</code> makes a plain cache keep one copy per distinct <code>Accept</code> string, so the cache has to reduce that to the variants chop makes.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Where the cache runs</th>
+<th>Where to read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Next to chop, on your own server</td>
+<td><a href="nginx-cache.html">Cache with nginx</a></td>
+</tr>
+<tr>
+<td>At a CDN in front of your server</td>
+<td><a href="#at-a-cdn">At a CDN</a> below</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="at-a-cdn" tabindex="-1"><a class="header-anchor" href="#at-a-cdn">At a CDN</a></h2>
+<p>Responses depend on the <code>Accept</code> header, so the CDN must use it in the cache key, or at least whether it lists <code>image/avif</code> and <code>image/webp</code>. Every response has <code>Vary: Accept</code>, but many CDNs ignore <code>Vary</code> unless configured, and without it a cached AVIF can be sent to a browser that can't display it. Normalizing <code>Accept</code> at the edge to a small set of values (<code>image/avif,image/webp</code>, <code>image/webp</code> and none) keeps the number of cached variants low.</p>
 <p>The responses are immutable by design (<code>Cache-Control: public, max-age=31536000</code> by default and a strong <code>ETag</code>), so change the URL, for example with <code>?ver=3</code>, when an original changes, which also holds for a remote origin, since chop doesn't cache originals and doesn't look at the cache headers of the origin. Set <code>allowedWidths</code> to the widths of your <code>srcset</code> so that the server can't be used to generate unbounded variants, and put the server behind the CDN only. Use <code>/healthz</code> for health checks.</p>
+<p>The <a href="nginx-cache.html">nginx recipe</a> shows the same normalization for a cache that runs next to chop.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<ul>
+<li>Only the <code>Accept</code> header and the URL select a variant. A cache can key on the URL and one of three buckets: <code>image/avif</code>, <code>image/webp</code> or neither.</li>
+<li>Errors have <code>Cache-Control: no-store</code>. Don't cache a <code>502</code> or a <code>504</code>, because they mean the origin failed for a moment.</li>
+<li><code>/healthz</code> answers <code>ok</code> for health checks and has <code>Cache-Control: no-store</code>.</li>
+<li>A <code>HEAD</code> request is processed like a <code>GET</code>, because its headers include <code>Content-Length</code>. Don't forward <code>HEAD</code> requests for remote originals from a proxy unless you need them.</li>
+</ul>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/js/chop/latest/cli.html"><small>Next</small>CLI</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/production-checklist.html"><small>Previous</small>Prepare chop for production</a><a rel="next" href="/docs/js/chop/latest/nginx-cache.html"><small>Next</small>Cache with nginx</a>
 </nav>
 
   </main>

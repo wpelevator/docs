@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Quickstart – chop | WP Elevator Docs</title>
+  <meta name="description" content="Serve a folder of images as resized AVIF, WebP or JPEG copies from one command, and see the response headers that make them cacheable.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/quickstart.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/quickstart.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Quickstart – chop">
+  <meta property="og:description" content="Serve a folder of images as resized AVIF, WebP or JPEG copies from one command, and see the response headers that make them cacheable.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/quickstart.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/quickstart.html#article",
+      "headline": "Quickstart",
+      "description": "Serve a folder of images as resized AVIF, WebP or JPEG copies from one command, and see the response headers that make them cacheable.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/quickstart.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/quickstart.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Quickstart", "item": "https://wpelevator.github.io/docs/js/chop/latest/quickstart.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/quickstart.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html" aria-current="page">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Quickstart</h1><p class="lede">Serve a folder of images as resized AVIF, WebP or JPEG copies from one command, and see the response headers that make them cacheable.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/quickstart.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/latest/quickstart.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Point chop at a folder of images and get resized copies in the best format each browser accepts. You need Node.js 22.12 or later and a folder with a JPEG in it. There is nothing to configure. The sizes below come from a 2400 by 1600 synthetic test image, so yours will differ.</p>
+<p>The examples run the published package with <code>npx @wpelevator/chop</code>. Use the scoped name until you install it, because bare <code>npx chop</code> doesn't run this package. After <code>npm install @wpelevator/chop</code> the bare <code>chop</code> command works.</p>
+<h2 id="1-start-the-server" tabindex="-1"><a class="header-anchor" href="#1-start-the-server">1. Start the server</a></h2>
+<p>Create the folder and copy any JPEG into it, then start the server from the folder that holds <code>uploads</code>:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> uploads/2026/05
+<span class="token function">cp</span> ~/Pictures/photo.jpg uploads/2026/05/photo.jpg</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The server:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /home/me/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The path of a request selects the file, so <code>/2026/05/photo.jpg</code> is <code>uploads/2026/05/photo.jpg</code>. chop only reads that folder.</p>
+<h2 id="2-request-a-smaller-copy" tabindex="-1"><a class="header-anchor" href="#2-request-a-smaller-copy">2. Request a smaller copy</a></h2>
+<p>In a second terminal, ask for the image 300 pixels wide as a browser that supports AVIF does:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-D</span> - <span class="token parameter variable">-o</span> photo.avif <span class="token parameter variable">-H</span> <span class="token string">'Accept: image/avif,image/webp'</span> <span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=300'</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-iE</span> <span class="token string">'^(HTTP|content-|vary|x-bytes)'</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 200 OK
+content-type: image/avif
+content-length: 2364
+vary: Accept
+x-bytes-saved: 1350587</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The <code>Accept</code> header listed AVIF, so the body is an AVIF image 300 pixels wide. <code>x-bytes-saved</code> is the difference to the size of the original, which was 1352951 bytes here. <code>vary: Accept</code> tells caches that the answer depends on the header.</p>
+<p>Send the same request without <code>Accept</code>, or with <code>image/webp</code> only, and the format changes with it:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-D</span> - <span class="token parameter variable">-o</span> photo.jpg <span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=300'</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-iE</span> <span class="token string">'^(HTTP|content-|vary|x-bytes)'</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 200 OK
+content-type: image/jpeg
+content-length: 4548
+vary: Accept
+x-bytes-saved: 1348403</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="3-crop-to-a-square" tabindex="-1"><a class="header-anchor" href="#3-crop-to-a-square">3. Crop to a square</a></h2>
+<p><code>resize</code> covers the box and crops the overflow, and <code>gravity</code> picks the part to keep:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-o</span> card.jpg <span class="token string">'http://localhost:8080/2026/05/photo.jpg?resize=400,400&amp;gravity=north'</span>
+<span class="token function">file</span> card.jpg</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">card.jpg: JPEG image data, progressive, precision 8, 400x400, components 3</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A bad argument is a <code>400</code> that names it, and a missing file is a plain <code>404</code>. Take the first as an example:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=abc'</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Invalid &quot;w&quot; argument: expected a whole number.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">'http://localhost:8080/missing.jpg'</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Not found.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="where-next" tabindex="-1"><a class="header-anchor" href="#where-next">Where next</a></h2>
+<ul>
+<li>Write a <code>srcset</code> and limit the widths: <a href="responsive-images.html">Serve responsive images</a>.</li>
+<li>Read originals from another host or a bucket: <a href="sources.html">Choose where originals come from</a>.</li>
+<li>Run it in a container: <a href="docker.html">Run chop in Docker</a>.</li>
+<li>Put a cache in front so each variant is made once: <a href="caching.html">Cache images</a>.</li>
+<li>Get ready for real traffic: <a href="production-checklist.html">Prepare chop for production</a>.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/js/chop/latest/resize-and-crop.html"><small>Next</small>Resize, crop and pad images</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

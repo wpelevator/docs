@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Migrate from Cloudflare Image Resizing – chop | WP Elevator Docs</title>
+  <meta name="description" content="Serve Cloudflare Image Resizing URLs from chop by enabling the cloudflare scheme next to the query scheme, with the option mapping.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/from-cloudflare.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/from-cloudflare.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Migrate from Cloudflare Image Resizing – chop">
+  <meta property="og:description" content="Serve Cloudflare Image Resizing URLs from chop by enabling the cloudflare scheme next to the query scheme, with the option mapping.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/from-cloudflare.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/from-cloudflare.html#article",
+      "headline": "Migrate from Cloudflare Image Resizing",
+      "description": "Serve Cloudflare Image Resizing URLs from chop by enabling the cloudflare scheme next to the query scheme, with the option mapping.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/from-cloudflare.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/from-cloudflare.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Migrate from Cloudflare Image Resizing", "item": "https://wpelevator.github.io/docs/js/chop/latest/from-cloudflare.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/from-cloudflare.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html" aria-current="page">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Migrate from Cloudflare Image Resizing</h1><p class="lede">Serve Cloudflare Image Resizing URLs from chop by enabling the cloudflare scheme next to the query scheme, with the option mapping.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/from-cloudflare.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/latest/from-cloudflare.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Serve the <code>/cdn-cgi/image/</code> URLs that your markup already uses from chop, without rewriting them. Enable the <code>cloudflare</code> scheme next to the default <code>query</code> scheme:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads <span class="token parameter variable">--scheme</span> cloudflare <span class="token parameter variable">--scheme</span> query</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /home/me/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Both of these URLs now work:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/cdn-cgi/image/width=300,format=auto/2026/05/photo.jpg
+/2026/05/photo.jpg?w=300</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Requested with the same <code>Accept</code> header, they return identical bytes:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-H</span> <span class="token string">'Accept: image/avif'</span> <span class="token parameter variable">-o</span> a.avif <span class="token string">'http://localhost:8080/cdn-cgi/image/width=300,format=auto/2026/05/photo.jpg'</span>
+<span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-H</span> <span class="token string">'Accept: image/avif'</span> <span class="token parameter variable">-o</span> b.avif <span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=300'</span>
+<span class="token function">cmp</span> a.avif b.avif <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> same bytes</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">same bytes</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A scheme only changes how the URL is read, so every scheme gets the same format negotiation, limits and path safety, and the same operations give the same <code>ETag</code>.</p>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<h3 id="mirror-an-existing-cloudflare-url" tabindex="-1"><a class="header-anchor" href="#mirror-an-existing-cloudflare-url">Mirror an existing Cloudflare URL</a></h3>
+<p><code>/cdn-cgi/image/width=300,height=300,fit=cover/2026/05/photo.jpg</code> becomes a 300 by 300 <code>resize</code> that enlarges when it has to. The table under Reference lists every option and what it maps to.</p>
+<h3 id="use-only-the-cloudflare-scheme" tabindex="-1"><a class="header-anchor" href="#use-only-the-cloudflare-scheme">Use only the Cloudflare scheme</a></h3>
+<p><code>--scheme cloudflare</code> alone makes every other URL a <code>404</code>, apart from <code>/healthz</code>.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>Enable schemes with <code>schemes</code> in the settings, <code>CHOP_SCHEMES</code> or <code>--scheme</code>, which can be repeated. The schemes are tried in the configured order, and the first one that recognizes the URL wins. A URL that none of them recognizes is a <code>404</code>. <code>/healthz</code> doesn't depend on the schemes. The <code>query</code> scheme recognizes every URL, so when it's enabled together with other schemes, list it last. The path of a scheme goes through the same checks as any path: dot segments, empty segments, slashes, backslashes and NUL bytes in a decoded segment are a <code>400</code>, and the real path must stay inside the data directory. A scheme can also find a <a href="sources.html">URL source</a> in the URL.</p>
+<h3 id="query" tabindex="-1"><a class="header-anchor" href="#query"><code>query</code></a></h3>
+<p>The default scheme. The path is the path of the original and the arguments in <a href="resize-and-crop.html">Resize, crop and pad images</a> are in the query string. A path that starts with <code>http://</code> or <code>https://</code> (also <code>https:/</code> and <code>https%3A//</code>) is a <a href="sources.html">URL source</a>, like <code>/https://uploads.example.com/photo.jpg?w=300</code>, and the query string is still chop's arguments, so the source URL can't have its own.</p>
+<h3 id="cloudflare" tabindex="-1"><a class="header-anchor" href="#cloudflare"><code>cloudflare</code></a></h3>
+<p>The <code>/cdn-cgi/image/&lt;options&gt;/&lt;path&gt;</code> form of <a href="https://developers.cloudflare.com/images/transform-images/transform-via-url/">Cloudflare Image Resizing</a>, with comma separated <code>name=value</code> options. It only recognizes URLs that start with <code>/cdn-cgi/image/</code>. Options that chop doesn't support, like <code>trim</code>, <code>rotate</code>, <code>blur</code>, <code>sharpen</code> and <code>onerror</code>, are ignored, and a malformed value of a supported option is a <code>400</code> that names the option. The first value wins when an option repeats. A source after the options that starts with <code>http://</code> or <code>https://</code> (also <code>https:/</code> and <code>https%3A//</code>) is a <a href="sources.html">URL source</a>, which is a <code>404</code> unless <code>CHOP_ALLOWED_HOSTS</code> is set. A query string on a URL source is a <code>400</code>, and on a path under the origin it is ignored.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Maps to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>width</code>, <code>height</code></td>
+<td><code>w</code>, <code>h</code>.</td>
+</tr>
+<tr>
+<td><code>fit</code></td>
+<td><code>scale-down</code> (default) is <code>w</code> and <code>h</code> that never enlarge, <code>contain</code> is the same with <code>upscale=1</code>, <code>cover</code> is <code>resize</code> with <code>upscale=1</code>, <code>crop</code> is <code>resize</code>, and <code>pad</code> is <code>lb</code> with <code>upscale=1</code>. <code>cover</code>, <code>crop</code> and <code>pad</code> need both <code>width</code> and <code>height</code>, and with one of them they scale like <code>scale-down</code> (<code>crop</code>) or <code>contain</code> (<code>cover</code> and <code>pad</code>).</td>
+</tr>
+<tr>
+<td><code>gravity</code></td>
+<td><code>left</code>, <code>right</code>, <code>top</code> and <code>bottom</code> are <code>west</code>, <code>east</code>, <code>north</code> and <code>south</code>, <code>auto</code> and <code>face</code> are <code>attention</code>, and <code>center</code> and coordinates like <code>0.5x0.3</code> are the center.</td>
+</tr>
+<tr>
+<td><code>quality</code></td>
+<td><code>quality</code>, as a number from 1 to 100.</td>
+</tr>
+<tr>
+<td><code>format</code></td>
+<td><code>auto</code>, <code>avif</code>, <code>webp</code>, <code>jpeg</code>, <code>png</code> and <code>gif</code> are <code>format</code>, and <code>baseline-jpeg</code> is <code>jpeg</code>. <code>json</code> is a <code>400</code>.</td>
+</tr>
+<tr>
+<td><code>dpr</code></td>
+<td><code>zoom</code>, from 1 to 10.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>keep</code> is <code>strip=none</code>, <code>copyright</code> is <code>strip=metadata</code> and <code>none</code> is <code>strip=all</code>.</td>
+</tr>
+<tr>
+<td><code>background</code></td>
+<td>The <code>lb</code> color for <code>fit=pad</code>, as 3 or 6 hex digits with an optional <code>#</code> (encoded as <code>%23</code> in a URL).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/from-photon.html"><small>Previous</small>Migrate from Photon</a><a rel="next" href="/docs/js/chop/latest/cli.html"><small>Next</small>Run the server</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

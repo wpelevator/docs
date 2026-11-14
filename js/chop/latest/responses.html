@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Responses – chop | WP Elevator Docs</title>
-  <meta name="description" content="A success is 200 with the Content-Type of the output, Content-Length, Cache-Control: public, max-age=, Vary: Accept, X-Content-Type-Options: nosniff and a…">
+  <title>Responses and errors – chop | WP Elevator Docs</title>
+  <meta name="description" content="The headers of a chop response and what each status code and error message means.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/responses.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/responses.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Responses – chop">
-  <meta property="og:description" content="A success is 200 with the Content-Type of the output, Content-Length, Cache-Control: public, max-age=, Vary: Accept, X-Content-Type-Options: nosniff and a…">
+  <meta property="og:title" content="Responses and errors – chop">
+  <meta property="og:description" content="The headers of a chop response and what each status code and error message means.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/responses.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/responses.html#article",
-      "headline": "Responses",
-      "description": "A success is 200 with the Content-Type of the output, Content-Length, Cache-Control: public, max-age=, Vary: Accept, X-Content-Type-Options: nosniff and a…",
+      "headline": "Responses and errors",
+      "description": "The headers of a chop response and what each status code and error message means.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/responses.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/responses.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Responses", "item": "https://wpelevator.github.io/docs/js/chop/latest/responses.html" }
+        { "@type": "ListItem", "position": 4, "name": "Responses and errors", "item": "https://wpelevator.github.io/docs/js/chop/latest/responses.html" }
       ]
     }
   ]
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html" aria-current="page">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html" aria-current="page">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,63 +156,103 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Responses</h1>
+    <h1>Responses and errors</h1><p class="lede">The headers of a chop response and what each status code and error message means.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/responses.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/responses.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>A success is <code>200</code> with the <code>Content-Type</code> of the output, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong <code>ETag</code> that is a SHA-256 of the body. An <code>If-None-Match</code> that matches the <code>ETag</code> (weak comparison, lists and <code>*</code>) gets <code>304</code> with the same <code>ETag</code>, <code>Cache-Control</code> and <code>Vary</code> and no body. A <code>HEAD</code> response has the headers of the <code>GET</code> response, including <code>Content-Length</code>, and no body.</p>
+    <p>Every success is a <code>200</code> with the headers a cache needs, and every error is plain text that is never cached. A successful request for the test image at 300 pixels wide with <code>Accept: image/avif</code>, then a request for a file that doesn't exist:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 200 OK
+content-type: image/avif
+content-length: 2364
+etag: &quot;K2I_n1NeFESPeswIg97fQI_m5l2EXCOn5F2-2AcJ5iQ&quot;
+cache-control: public, max-age=31536000
+vary: Accept
+x-content-type-options: nosniff
+x-bytes-saved: 1350587</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 404 Not Found
+content-type: text/plain; charset=utf-8
+cache-control: no-store
+x-content-type-options: nosniff
+
+Not found.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A path that tries to leave the data directory is refused before any file is read:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> --path-as-is <span class="token parameter variable">-i</span> <span class="token string">'http://localhost:8080/../etc/passwd'</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 400 Bad Request
+content-type: text/plain; charset=utf-8
+cache-control: no-store
+x-content-type-options: nosniff
+
+Invalid path.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>A success is <code>200</code> with the <code>Content-Type</code> of the output, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong <code>ETag</code> that is a SHA-256 of the body. An <code>If-None-Match</code> that matches the <code>ETag</code> (weak comparison, lists and <code>*</code>) gets <code>304</code> with the same <code>ETag</code>, <code>Cache-Control</code> and <code>Vary</code> and no body. A <code>HEAD</code> response has the headers of the <code>GET</code> response, including <code>Content-Length</code>, and no body.</p>
 <p>Errors are plain text with a short message that doesn't reveal file system paths, <code>Cache-Control: no-store</code> and <code>X-Content-Type-Options: nosniff</code>.</p>
+<h3 id="status-codes" tabindex="-1"><a class="header-anchor" href="#status-codes">Status codes</a></h3>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
 <tr>
 <th>Status</th>
+<th>Message</th>
 <th>Meaning</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>400</code></td>
+<td><code>Invalid &quot;w&quot; argument: expected a whole number.</code>, <code>Invalid path.</code></td>
 <td>Invalid request: an unsafe path, a malformed argument, a size over <code>maxOutputDimension</code> or a width that isn't in <code>allowedWidths</code>.</td>
 </tr>
 <tr>
 <td><code>404</code></td>
+<td><code>Not found.</code></td>
 <td>Not found: a missing file, a directory, or a path that resolves outside the data directory, which all look the same. For a remote origin also an upstream <code>404</code>, <code>410</code>, <code>401</code>, <code>403</code> or <code>407</code>, a URL source that isn't allowed and a destination at a blocked address.</td>
 </tr>
 <tr>
 <td><code>405</code></td>
+<td><code>Method not allowed.</code></td>
 <td>A method other than <code>GET</code> and <code>HEAD</code>, with <code>Allow: GET, HEAD</code>.</td>
 </tr>
 <tr>
 <td><code>413</code></td>
+<td><code>The original image is too large.</code></td>
 <td>The original is over <code>maxInputBytes</code>, which is checked before the file is read.</td>
 </tr>
 <tr>
 <td><code>415</code></td>
+<td><code>This file is not a supported image.</code></td>
 <td>The file is not a JPEG, PNG, GIF, WebP or AVIF image.</td>
 </tr>
 <tr>
 <td><code>422</code></td>
+<td><code>The image can not be processed.</code>, <code>The image can not be read.</code></td>
 <td>The image is corrupt, or has more than <code>maxInputPixels</code> pixels.</td>
 </tr>
 <tr>
-<td><code>502</code></td>
-<td>The origin failed: it couldn't be reached, it answered with a <code>5xx</code> or another unexpected status, it redirected, or it sent a compressed or incomplete body.</td>
-</tr>
-<tr>
-<td><code>504</code></td>
-<td>The origin was too slow to connect or to send the whole image.</td>
-</tr>
-<tr>
 <td><code>500</code></td>
+<td>Plain text</td>
 <td>An unexpected error.</td>
 </tr>
 <tr>
+<td><code>502</code></td>
+<td>Plain text</td>
+<td>The origin failed: it couldn't be reached, it answered with a <code>5xx</code> or another unexpected status, it redirected, or it sent a compressed or incomplete body.</td>
+</tr>
+<tr>
 <td><code>503</code></td>
+<td>Plain text</td>
 <td>The queue of images or of downloads is full, with <code>Retry-After: 1</code>.</td>
+</tr>
+<tr>
+<td><code>504</code></td>
+<td>Plain text</td>
+<td>The origin was too slow to connect or to send the whole image.</td>
 </tr>
 </tbody>
 </table>
@@ -205,7 +261,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/requests.html"><small>Previous</small>Requests</a><a rel="next" href="/docs/js/chop/latest/s3.html"><small>Next</small>S3 and S3-compatible storage</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/chop/latest/library.html"><small>Next</small>Library API</a>
 </nav>
 
   </main>

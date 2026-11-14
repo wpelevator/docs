@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Library API – chop | WP Elevator Docs</title>
-  <meta name="description" content="The request handler doesn't depend on an HTTP framework, so it can run in a node:http server, a serverless function or a test. Install the package as…">
+  <meta name="description" content="Embed chop in your own server with createHandler, and look up its exports and error codes.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/library.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/library.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Library API – chop">
-  <meta property="og:description" content="The request handler doesn't depend on an HTTP framework, so it can run in a node:http server, a serverless function or a test. Install the package as…">
+  <meta property="og:description" content="Embed chop in your own server with createHandler, and look up its exports and error codes.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/library.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -43,7 +43,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/library.html#article",
       "headline": "Library API",
-      "description": "The request handler doesn't depend on an HTTP framework, so it can run in a node:http server, a serverless function or a test. Install the package as…",
+      "description": "Embed chop in your own server with createHandler, and look up its exports and error codes.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/library.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/library.html",
       "inLanguage": "en",
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html" aria-current="page">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,19 +156,19 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Library API</h1>
+    <h1>Library API</h1><p class="lede">Embed chop in your own server with createHandler, and look up its exports and error codes.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/library.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/library.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>The request handler doesn't depend on an HTTP framework, so it can run in a <code>node:http</code> server, a serverless function or a test. Install the package as described in the <a href="index.html#install">overview</a>.</p>
+    <p>Call chop from your own code: pass a request object to the handler and get a response object back, with no HTTP framework in between. That runs in a <code>node:http</code> server, a serverless function or a test. Install the package as described in the <a href="index.html#install">overview</a>.</p>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createHandler<span class="token punctuation">,</span> createServer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/chop'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> handle <span class="token operator">=</span> <span class="token function">createHandler</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
 	<span class="token literal-property property">dataDir</span><span class="token operator">:</span> <span class="token string">'/var/www/uploads'</span><span class="token punctuation">,</span>
-	<span class="token function-variable function">onError</span><span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token parameter">error</span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">reportError</span><span class="token punctuation">(</span> error <span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token function-variable function">onError</span><span class="token operator">:</span> <span class="token punctuation">(</span> <span class="token parameter">error</span> <span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span> error <span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> response <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">handle</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
@@ -164,6 +180,8 @@
 
 <span class="token function">createServer</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">dataDir</span><span class="token operator">:</span> <span class="token string">'/var/www/uploads'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span> <span class="token number">8080</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<h3 id="exports" tabindex="-1"><a class="header-anchor" href="#exports">Exports</a></h3>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -175,7 +193,7 @@
 <tbody>
 <tr>
 <td><code>createHandler( settings? )</code></td>
-<td>Returns <code>( request ) =&gt; Promise&lt; Response &gt;</code>. The request is <code>{ method, url, headers }</code>, where <code>url</code> is the path and query string and <code>headers</code> is a plain object with lower-case names. The response is <code>{ status, headers, body }</code> with a <code>Buffer</code> body. It doesn't depend on <code>node:http</code>, never throws for a request (errors become responses) and takes optional callbacks, because the library never logs: <code>onError( error )</code> for unexpected errors, <code>onWarning( message )</code> for each risky setting (like <code>allowedHosts: [ '*' ]</code>) when the handler is created, and <code>onOriginError( error )</code> for a refused or failed origin, where <code>error.detail</code> says why and has no credentials. Give it the same settings that you give <code>createConfig()</code>: a settings object that <code>createConfig()</code> returned has a <code>dataDir</code>, which counts as set.</td>
+<td>Returns <code>( request ) =&gt; Promise&lt; Response &gt;</code>. The request is <code>{ method, url, headers }</code>, where <code>url</code> is the path and query string and <code>headers</code> is a plain object with lower-case names. The response is <code>{ status, headers, body }</code> with a <code>Buffer</code> body. It doesn't depend on <code>node:http</code>, never throws for a request (errors become responses) and takes optional callbacks, because the library never logs: <code>onError( error )</code> for unexpected errors, <code>onWarning( message )</code> for each risky setting (like <code>allowedHosts: [ '*' ]</code>) when the handler is created, and <code>onOriginError( error )</code> for a refused or failed origin, where <code>error.detail</code> says why and has no credentials. Pass the settings that you want to change, such as <code>{ origin: 'https://uploads.example.com' }</code>. Don't pass the result of <code>createConfig()</code> together with an <code>origin</code>, because <code>createConfig()</code> fills in the default <code>dataDir</code>, and a data directory together with an origin is an invalid setting.</td>
 </tr>
 <tr>
 <td><code>createConfig( overrides? )</code>, <code>configWarnings( settings )</code></td>
@@ -190,16 +208,28 @@
 <td>Parses a <code>URLSearchParams</code> into typed operations.</td>
 </tr>
 <tr>
-<td><code>queryScheme</code>, <code>cloudflareScheme</code>, <code>SCHEMES</code>, <code>UrlScheme</code></td>
-<td>The built-in <a href="url-schemes.html">URL schemes</a>, the registry of them by name, and the type of a scheme: <code>{ name, parse( url, options ) }</code>, where <code>parse</code> returns <code>{ segments, ops }</code>, with <code>url</code> set instead of <code>segments</code> for a <a href="sources.html">URL source</a>, or <code>null</code> for a URL that it doesn't recognize. <code>options.urlSources</code> tells whether URL sources are enabled.</td>
+<td><code>queryScheme</code>, <code>cloudflareScheme</code>, <code>SCHEMES</code>, <code>SCHEME_NAMES</code></td>
+<td>The built-in <a href="from-cloudflare.html">URL schemes</a>, the registry of them by name, and the list of names. The <code>UrlScheme</code> type describes a scheme: <code>{ name, parse( url, options ) }</code>, where <code>url</code> is a <code>URL</code> object and not a string, and <code>parse</code> returns <code>{ segments, ops }</code>, with <code>url</code> set instead of <code>segments</code> for a <a href="sources.html">URL source</a>, or <code>null</code> for a URL that it doesn't recognize. <code>options.urlSources</code> tells whether URL sources are enabled.</td>
 </tr>
 <tr>
-<td><code>createOrigin( settings )</code>, <code>createLocalOrigin()</code>, <code>createHttpOrigin()</code>, <code>Origin</code></td>
-<td>The sources of originals: an <code>Origin</code> has <code>open( reference )</code>, which finds an original and returns its size and a <code>read()</code> for its bytes. The HTTP origin does the downloads and their checks.</td>
+<td><code>createOrigin( settings )</code>, <code>createLocalOrigin()</code>, <code>createHttpOrigin()</code>, <code>createS3Origin()</code></td>
+<td>The sources of originals. <code>createOrigin()</code> takes the full settings that <code>createConfig()</code> returns, and partial settings throw a <code>TypeError</code>. The <code>Origin</code> type has <code>open( reference )</code>, which finds an original and returns its size and a <code>read()</code> for its bytes. The HTTP origin does the downloads and their checks.</td>
 </tr>
 <tr>
 <td><code>isBlockedAddress( address )</code>, <code>createBlockList()</code>, <code>parseAllowedHosts()</code>, <code>parseSourceUrl()</code></td>
 <td>The building blocks of the safeguards, for code that wants to apply the same checks.</td>
+</tr>
+<tr>
+<td><code>DEFAULT_SETTINGS</code>, <code>INPUT_FORMATS</code>, <code>AUTO_FORMATS</code></td>
+<td>The default settings, the readable input formats and the formats that <code>auto</code> can negotiate.</td>
+</tr>
+<tr>
+<td><code>parseAccept( header )</code>, <code>acceptsType( header, type )</code></td>
+<td>Parse an <code>Accept</code> header per RFC 9110, and check that a media type is listed the way chop does. Wildcards don't count.</td>
+</tr>
+<tr>
+<td><code>planGeometry()</code>, <code>estimateJpegQuality()</code>, <code>createLimiter()</code></td>
+<td>Lower-level parts of the pipeline: the size plan for a request, the quality estimate of a JPEG, and the queue that limits concurrent work.</td>
 </tr>
 <tr>
 <td><code>createServer( settings? )</code></td>
@@ -210,12 +240,13 @@
 <td>The command, which returns an exit code. <code>io</code> has <code>stdout</code>, <code>stderr</code>, <code>env</code>, <code>cwd</code> and <code>signals</code>, all replaceable in tests.</td>
 </tr>
 <tr>
-<td><code>ChopError</code>, <code>isChopError( value )</code>, <code>CHOP_ERROR_CODES</code>, <code>CHOP_ERROR_STATUS</code></td>
-<td>Errors with a <code>code</code>. <code>isChopError</code> checks the code instead of <code>instanceof</code>.</td>
+<td><code>ChopError</code>, <code>isChopError( value )</code>, <code>statusOf( error )</code>, <code>CHOP_ERROR_CODES</code>, <code>CHOP_ERROR_STATUS</code></td>
+<td>Errors with a <code>code</code>. <code>isChopError</code> checks the code instead of <code>instanceof</code>, and <code>statusOf</code> returns the HTTP status of any error.</td>
 </tr>
 </tbody>
 </table>
 </div>
+<h3 id="error-codes" tabindex="-1"><a class="header-anchor" href="#error-codes">Error codes</a></h3>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
@@ -275,7 +306,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/formats.html"><small>Previous</small>Formats and quality</a><a rel="next" href="/docs/js/chop/latest/reference.html"><small>Next</small>Reference</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/responses.html"><small>Previous</small>Responses and errors</a><a rel="next" href="/docs/js/chop/latest/development.html"><small>Next</small>Development</a>
 </nav>
 
   </main>

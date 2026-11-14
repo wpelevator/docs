@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Sources – chop | WP Elevator Docs</title>
-  <meta name="description" content="An original comes from one of four places, and every request reads exactly one of them:">
+  <title>Choose where originals come from – chop | WP Elevator Docs</title>
+  <meta name="description" content="Choose between a data directory, one HTTPS origin, an S3 bucket and URL sources for the originals chop serves.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/sources.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/sources.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Sources – chop">
-  <meta property="og:description" content="An original comes from one of four places, and every request reads exactly one of them:">
+  <meta property="og:title" content="Choose where originals come from – chop">
+  <meta property="og:description" content="Choose between a data directory, one HTTPS origin, an S3 bucket and URL sources for the originals chop serves.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/sources.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/sources.html#article",
-      "headline": "Sources",
-      "description": "An original comes from one of four places, and every request reads exactly one of them:",
+      "headline": "Choose where originals come from",
+      "description": "Choose between a data directory, one HTTPS origin, an S3 bucket and URL sources for the originals chop serves.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/sources.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/sources.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Sources", "item": "https://wpelevator.github.io/docs/js/chop/latest/sources.html" }
+        { "@type": "ListItem", "position": 4, "name": "Choose where originals come from", "item": "https://wpelevator.github.io/docs/js/chop/latest/sources.html" }
       ]
     }
   ]
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html" aria-current="page">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html" aria-current="page">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,76 +156,60 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Sources</h1>
+    <h1>Choose where originals come from</h1><p class="lede">Choose between a data directory, one HTTPS origin, an S3 bucket and URL sources for the originals chop serves.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/sources.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/sources.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>An original comes from one of four places, and every request reads exactly one of them:</p>
-<ul>
-<li><strong>The data directory.</strong> The default. A plain path like <code>/2026/05/photo.jpg</code> is a file under <code>dataDir</code>, with the path checks of <a href="responses.html">Responses</a>.</li>
-<li><strong>The configured origin.</strong> With <code>CHOP_ORIGIN=https://uploads.example.com/base</code>, the same plain path is appended to the base URL: <code>/2026/05/photo.jpg</code> is fetched from <code>https://uploads.example.com/base/2026/05/photo.jpg</code>. Clients never supply a host. This is the recommended way to use a remote origin, and plain paths go to the origin instead of the data directory, so <code>CHOP_ORIGIN</code> can't be combined with an explicitly set <code>CHOP_DATA_DIR</code> or <code>--data</code>. The origin must be an <code>https://</code> URL without user information, a query string or a fragment, or <code>http://</code> with <code>CHOP_ORIGIN_ALLOW_HTTP=1</code>.</li>
-<li><strong>An S3 bucket.</strong> With <code>CHOP_ORIGIN=s3://my-bucket/uploads</code>, the plain path <code>/2026/05/photo.jpg</code> is the object <code>uploads/2026/05/photo.jpg</code> of the bucket, which chop reads with signed <code>GET</code> requests. It works with AWS S3 and with services that have an S3 API, like SeaweedFS, MinIO and Cloudflare R2, and it follows all the rules of the configured origin. See <a href="s3.html">S3 and S3-compatible storage</a>.</li>
-<li><strong>URL sources.</strong> With <code>CHOP_ALLOWED_HOSTS</code> set, a request can name the full URL of the original, and chop fetches it if the host is on the list. Plain paths keep their meaning, and only a path that starts with <code>http://</code> or <code>https://</code> is a URL source. Without the setting, which is the default, these URLs are a <code>404</code>.</li>
-</ul>
-<p>URL sources work in both schemes. In the <code>query</code> scheme the URL is the path and the query string is chop's arguments, and in the <code>cloudflare</code> scheme the URL comes after the options:</p>
-<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/https://uploads.example.com/2026/05/photo.jpg?w=300
-/cdn-cgi/image/width=300,format=auto/https://uploads.example.com/2026/05/photo.jpg</code></pre>
+    <p>chop reads originals from a directory, from one HTTPS origin, from an S3 bucket, or from hosts that you list. Every request reads exactly one of them. The first, a directory, is the default and makes no network requests:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>A proxy that merges slashes turns <code>https://</code> into <code>https:/</code>, and some clients escape it as <code>https%3A//</code>. chop understands all three forms, with any number of slashes after the colon. A URL source can't have user information, a fragment or a query string of its own: the query string of the <code>query</code> scheme is chop's arguments, so the source can't have one, and in the <code>cloudflare</code> scheme a query string on a URL source is a <code>400</code> rather than a guess about which part it belongs to. User information and fragments are a <code>400</code> too. Ports other than 80 and 443 must be named in the allow-list.</p>
-<p>Each entry of <code>CHOP_ALLOWED_HOSTS</code> is a comma separated list item:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /home/me/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A plain path like <code>/2026/05/photo.jpg</code> is the file <code>uploads/2026/05/photo.jpg</code>. The real path, with symbolic links resolved, must be inside the data directory, and a missing file, a directory and an escape are all the same <code>404</code>. A file over <code>maxInputBytes</code> is a <code>413</code>.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
 <thead>
 <tr>
-<th>Entry</th>
-<th>Matches</th>
+<th>Originals are in</th>
+<th>Setting</th>
+<th>Page</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>uploads.example.com</code></td>
-<td>That host, on the default port of the scheme.</td>
+<td>A directory on the server</td>
+<td><code>CHOP_DATA_DIR</code> or <code>--data</code></td>
+<td>This page</td>
 </tr>
 <tr>
-<td><code>*.example.com</code></td>
-<td>Any subdomain at any depth, on a dot boundary, so <code>a.example.com</code> and <code>a.b.example.com</code> match, but <code>example.com</code> and <code>evilexample.com</code> don't. List the apex too if you need it.</td>
+<td>One HTTPS site</td>
+<td><code>CHOP_ORIGIN=https://host/base</code></td>
+<td><a href="https-origin.html">Serve images from an HTTPS origin</a></td>
 </tr>
 <tr>
-<td><code>uploads.example.com:8443</code></td>
-<td>That host on that port, and not on the default port.</td>
+<td>An S3 bucket, R2, MinIO or SeaweedFS</td>
+<td><code>CHOP_ORIGIN=s3://bucket/prefix</code></td>
+<td><a href="s3.html">Serve images from S3</a></td>
 </tr>
 <tr>
-<td><code>*</code></td>
-<td>Every host, on the default ports. It can't be mixed with other entries, and it prints a warning on startup. See <a href="security.html">Securing remote origins</a>.</td>
+<td>Any of several hosts, chosen by the request</td>
+<td><code>CHOP_ALLOWED_HOSTS</code></td>
+<td><a href="url-sources.html">Let requests name the image URL</a></td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Hosts are compared in lower case and without a trailing dot. International names must be written in punycode (<code>xn--...</code>). An empty list means no URL sources.</p>
-<p>Whatever the source, the original is downloaded into memory, up to <code>maxInputBytes</code>, before it is processed. <code>X-Bytes-Saved</code> is measured against the downloaded size, the <code>ETag</code> is still a hash of the output, and when re-encoding doesn't make the image smaller, the downloaded bytes are sent as they are. The type of the image is found from its content, and the <code>Content-Type</code> that the origin states is ignored.</p>
-<h2 id="what-chop-does-for-every-remote-fetch" tabindex="-1"><a class="header-anchor" href="#what-chop-does-for-every-remote-fetch">What chop does for every remote fetch</a></h2>
-<p>These apply to the configured origin and to URL sources, with any allow-list, including <code>*</code>:</p>
-<ul>
-<li>Only <code>https</code> is used, unless <code>CHOP_ORIGIN_ALLOW_HTTP</code> is set.</li>
-<li>The request is a <code>GET</code> with fresh headers: <code>Accept: image/*</code>, <code>Accept-Encoding: identity</code> and <code>User-Agent: chop</code>. No cookie, <code>Authorization</code>, <code>Referer</code> or other header of the client is forwarded. A compressed response is a <code>502</code>.</li>
-<li>Redirects are not followed. A <code>3xx</code> from the origin is a <code>502</code>.</li>
-<li>The host name is resolved once, every address is checked, and the connection is made to one of the addresses that were checked, so DNS rebinding can't swap the address between the check and the connection. An address literal in a URL is checked too, in any notation (<code>2130706433</code>, <code>0x7f.1</code>, <code>[::ffff:7f00:1]</code>). Loopback, private, link-local (including the cloud metadata address <code>169.254.169.254</code>), carrier-grade NAT, documentation, multicast and reserved ranges are never connected to, for IPv4 and IPv6, including IPv4-mapped and NAT64 forms. If a name resolves to several addresses and any of them is blocked, the request is not made.</li>
-<li>The body is cut off at <code>maxInputBytes</code> while it is read, whether or not the origin sends <code>Content-Length</code>, and a larger <code>Content-Length</code> is a <code>413</code> before the body is read.</li>
-<li>Connecting, including the TLS handshake, must finish within <code>CHOP_ORIGIN_CONNECT_TIMEOUT</code> (3000 ms) and the whole download within <code>CHOP_ORIGIN_TIMEOUT</code> (10000 ms), or the answer is a <code>504</code>.</li>
-<li>At most <code>CHOP_ORIGIN_CONCURRENCY</code> downloads (4) run at the same time and <code>CHOP_ORIGIN_QUEUE</code> (32) wait. More are a <code>503</code> with <code>Retry-After: 1</code>. Downloads don't use a processing slot, so a slow origin doesn't stop images from being processed, but the memory in use can reach <code>CHOP_ORIGIN_CONCURRENCY</code> times <code>maxInputBytes</code>, so lower one of them on a small machine.</li>
-<li>The body of a response that isn't a <code>200</code> is dropped without being read. The only exception is an S3 bucket, where chop reads the first 2048 bytes of the body of an error, for at most two seconds, to find the error code for the operator.</li>
-<li>A host name that can't be resolved is a <code>502</code> for the configured origin and the same plain <code>404</code> for a URL source, so that a client can't tell which names exist. The reason is only written to the standard error, as a host and an error code, never an error message.</li>
-<li>Upstream <code>404</code> and <code>410</code> are a <code>404</code>. A <code>401</code>, <code>403</code> or <code>407</code> from the origin and a destination that isn't allowed are the same plain <code>404</code>, so that a client can't tell which hosts exist, which are blocked or whether the origin needs credentials. The reason is only written to the standard error. An origin that fails or answers with another status is a <code>502</code>.</li>
-</ul>
-<p><code>CHOP_ORIGIN_AUTH</code> is the value of an <code>Authorization</code> header, like <code>Bearer &lt;token&gt;</code>, for a private origin. It is only sent to the configured origin and never to URL sources, it is read from the environment only, and it is never logged. A value with a line break or a control character is an invalid setting.</p>
-<p><code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code> lets the configured origin be at a loopback, private or link-local address, like another container or a service on your private network. It applies only to the configured origin, never to a URL that a client supplied, and chop prints a warning on startup. Without it, an origin whose address is an IP literal in a blocked range is an invalid setting, and one whose name resolves to a blocked range is a <code>404</code>.</p>
+<p>An origin and an explicitly set data directory together are an invalid setting. The flag <code>--origin</code> replaces <code>CHOP_DATA_DIR</code>, and <code>--data</code> replaces <code>CHOP_ORIGIN</code>, so a flag works in an environment that sets the other one.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>Whatever the source, the original is downloaded or read into memory, up to <code>maxInputBytes</code>, before it is processed. <code>X-Bytes-Saved</code> is measured against that size, the <code>ETag</code> is still a hash of the output, and when re-encoding doesn't make the image smaller, the original bytes are sent as they are. The type of the image is found from its content, and the <code>Content-Type</code> that an origin states is ignored. chop doesn't cache originals.</p>
+<p>Read <a href="security.html">Secure remote origins</a> before you use any remote source.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/security.html"><small>Previous</small>Securing remote origins</a><a rel="next" href="/docs/js/chop/latest/url-schemes.html"><small>Next</small>URL schemes</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/animated-and-transparent.html"><small>Previous</small>Serve transparent and animated images</a><a rel="next" href="/docs/js/chop/latest/https-origin.html"><small>Next</small>Serve images from an HTTPS origin</a>
 </nav>
 
   </main>

@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>Securing remote origins – chop | WP Elevator Docs</title>
-  <meta name="description" content="Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy…">
+  <title>Secure remote origins – chop | WP Elevator Docs</title>
+  <meta name="description" content="Protect a chop server that fetches remote originals, and see what it checks on every fetch.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/security.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/security.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Securing remote origins – chop">
-  <meta property="og:description" content="Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy…">
+  <meta property="og:title" content="Secure remote origins – chop">
+  <meta property="og:description" content="Protect a chop server that fetches remote originals, and see what it checks on every fetch.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/security.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/security.html#article",
-      "headline": "Securing remote origins",
-      "description": "Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy…",
+      "headline": "Secure remote origins",
+      "description": "Protect a chop server that fetches remote originals, and see what it checks on every fetch.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/security.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/security.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "Securing remote origins", "item": "https://wpelevator.github.io/docs/js/chop/latest/security.html" }
+        { "@type": "ListItem", "position": 4, "name": "Secure remote origins", "item": "https://wpelevator.github.io/docs/js/chop/latest/security.html" }
       ]
     }
   ]
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html" aria-current="page">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html" aria-current="page">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,34 +156,81 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Securing remote origins</h1>
+    <h1>Secure remote origins</h1><p class="lede">Protect a chop server that fetches remote originals, and see what it checks on every fetch.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/security.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/security.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p>Putting chop behind a trusted proxy or a CDN limits who can send requests to it, and that's worth having. It doesn't decide where chop connects: the proxy still passes the path of the request to chop, so the protection against reaching internal hosts has to be in chop, and it is. Don't assume that a proxy rule is the only thing between a client and an internal address.</p>
-<p>Prefer the configured origin. The host is fixed by you, so a client can only choose a path under it, and there is nothing to allow-list. Use <code>CHOP_ALLOWED_HOSTS</code> only when a client has to choose the host, and list the hosts that you mean. Every host on the list is reachable by every client that can reach chop.</p>
-<p><code>CHOP_ALLOWED_HOSTS=*</code> makes chop an open image proxy: anyone who can send a request to chop can make it fetch and process images from any public host. The address checks, https, the size and time limits and the fetch limit still apply, but they can't stop someone from using your server and your bandwidth to fetch from the public internet, or from reaching a service that only accepts connections from your server's network, at a public address. The protection that matters then is outside of chop. If you use <code>*</code>:</p>
+    <p>Remote originals are off by default, and chop checks every connection it makes. A URL source that names a loopback address is refused even when its host is on <code>CHOP_ALLOWED_HOSTS</code>, and the reason goes to the standard error while the client gets a plain <code>404</code>:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN_ALLOW_HTTP</span><span class="token operator">=</span><span class="token number">1</span> <span class="token assign-left variable">CHOP_ALLOWED_HOSTS</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1:9000 npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">warning: originAllowHttp is on: images are fetched over plain http, which anyone on the network path can read or change.
+chop listening on http://0.0.0.0:8080, serving /home/me/uploads
+origin ERR_NOT_FOUND: 127.0.0.1 is a blocked address</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The last line appeared when a client requested <code>/http://127.0.0.1:9000/2026/05/photo.jpg?w=300</code>. The same request without <code>CHOP_ALLOWED_HOSTS</code> is a <code>404</code> and prints nothing.</p>
+<p>Opening the server to every host prints a warning at startup:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_HOSTS</span><span class="token operator">=</span><span class="token string">'*'</span> npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">warning: allowedHosts is &quot;*&quot;: any client can make chop fetch images from any public host, which makes it an open image proxy. Only the address checks (no loopback, private, link local or metadata addresses), the size and time limits and the fetch limit still apply. Put an egress firewall in front of this server, and pair it with allowedWidths, maxInputBytes and a proxy cache.
+chop listening on http://0.0.0.0:8080, serving /home/me/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="recommendations" tabindex="-1"><a class="header-anchor" href="#recommendations">Recommendations</a></h2>
+<p>A trusted proxy or a CDN limits who can send requests to chop. It doesn't decide where chop connects, because the proxy passes the path of the request through. The protection against reaching internal hosts is in chop, and a proxy rule shouldn't be the only thing between a client and an internal address.</p>
+<p>Prefer the configured origin. You fix the host, so a client can only choose a path under it, and there is no allow-list to maintain. Use <code>CHOP_ALLOWED_HOSTS</code> only when a client has to choose the host, and list the hosts that you mean. Every client that can reach chop can reach every host on the list.</p>
+<p><code>CHOP_ALLOWED_HOSTS=*</code> makes chop an open image proxy. Anyone who can send a request to chop can make it fetch and process images from any public host. The address checks, https, the size and time limits and the fetch limit still apply. They can't stop someone from spending your server and your bandwidth on the public internet, or from reaching a service at a public address that only accepts connections from your network. The protection that matters then is outside chop. If you use <code>*</code>:</p>
 <ul>
-<li>Run chop with an egress firewall that only allows what it needs, so that a mistake in an address range can't reach your network.</li>
-<li>Set <code>allowedWidths</code> to the widths of your <code>srcset</code>, so that the output sizes are bounded, and keep <code>maxInputBytes</code>, <code>maxInputPixels</code> and the <code>CHOP_ORIGIN_*</code> limits low.</li>
-<li>Cache in front: <code>proxy_cache_min_uses 2</code> in the <a href="caching.html#caching-with-nginx">nginx recipe</a> keeps one-off URLs out of the cache, and <code>proxy_cache_lock on</code> limits the fetches to one for each variant.</li>
+<li>Run chop with an egress firewall that allows only what it needs, so that a gap in the address checks can't reach your network.</li>
+<li>Set <code>allowedWidths</code> to the widths of your <code>srcset</code>, and keep <code>maxInputBytes</code>, <code>maxInputPixels</code> and the <code>CHOP_ORIGIN_*</code> limits low.</li>
+<li>Cache in front, with <code>proxy_cache_min_uses 2</code> and <code>proxy_cache_lock on</code> as in the <a href="nginx-cache.html">nginx recipe</a>.</li>
 <li>Let only the proxy reach chop, and authenticate or sign the URLs there.</li>
 </ul>
-<p>More to know about remote originals:</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<h3 id="remote-originals-in-practice" tabindex="-1"><a class="header-anchor" href="#remote-originals-in-practice">Remote originals in practice</a></h3>
 <ul>
-<li>chop doesn't cache originals. The proxy caches the output, and a request that isn't cached downloads the original again. An original that changes at the same URL stays stale until the cached outputs expire or are purged, so use new URLs for new versions (WordPress uploads do), or a short <code>CHOP_MAX_AGE</code>. The upstream <code>Cache-Control</code>, <code>ETag</code> and <code>Last-Modified</code> headers are ignored, and the output headers are the same as for local files.</li>
-<li>A <code>502</code> and a <code>504</code> have <code>Cache-Control: no-store</code>, and the proxy must not cache them. The nginx recipe only caches <code>200</code> and <code>404</code>.</li>
-<li>Redirects are not followed, so an origin that redirects (a CDN that moves an object, a trailing slash redirect) needs the final URL in <code>CHOP_ORIGIN</code>.</li>
-<li>Only HTTP/1.1 is used and TLS certificates are always verified. A private CA is added to Node.js with <code>NODE_EXTRA_CA_CERTS</code>.</li>
-<li>An alternative that keeps chop local-only is to let nginx <code>proxy_pass</code> to the origin and store the files in a directory that chop serves, or to mount the bucket with rclone or s3fs (or to use the <a href="s3.html">S3 origin</a>, which needs no mount). That needs a second hop and a shared directory, but chop makes no network requests then.</li>
+<li>chop doesn't cache originals. The proxy caches the output, and a request that isn't cached downloads the original again.</li>
+<li>An original that changes at the same URL stays stale until the cached outputs expire or are purged. Use new URLs for new versions, as WordPress uploads do, or a short <code>CHOP_MAX_AGE</code>. chop ignores the upstream <code>Cache-Control</code>, <code>ETag</code> and <code>Last-Modified</code>.</li>
+<li>A <code>502</code> and a <code>504</code> have <code>Cache-Control: no-store</code>, and the proxy must not cache them. The <a href="nginx-cache.html">nginx recipe</a> caches only <code>200</code>.</li>
+<li>Redirects aren't followed. An origin that redirects, such as a CDN that moves an object or adds a trailing slash, needs the final URL in <code>CHOP_ORIGIN</code>.</li>
+<li>chop uses HTTP/1.1 and always verifies TLS certificates. Add a private CA to Node.js with <code>NODE_EXTRA_CA_CERTS</code>.</li>
+<li>The credentials of <code>CHOP_ORIGIN_AUTH</code> go only to the configured origin, not even to a URL source on the same host. The <code>Accept</code> header of the client is never forwarded, so the bytes of an original don't depend on who asked.</li>
+<li>To keep chop local-only, let nginx <code>proxy_pass</code> to the origin and store the files in a directory that chop serves, or mount the bucket with rclone or s3fs. The <a href="s3.html">S3 origin</a> needs no mount. Both options add a hop or a shared directory.</li>
+</ul>
+<h3 id="what-chop-checks-on-every-remote-fetch" tabindex="-1"><a class="header-anchor" href="#what-chop-checks-on-every-remote-fetch">What chop checks on every remote fetch</a></h3>
+<p>These checks apply to the configured origin and to URL sources, with any allow-list, including <code>*</code>.</p>
+<p>Request:</p>
+<ul>
+<li>Only <code>https</code> is used, unless <code>CHOP_ORIGIN_ALLOW_HTTP</code> is set.</li>
+<li>The request is a <code>GET</code> with fresh headers: <code>Accept: image/*</code>, <code>Accept-Encoding: identity</code> and <code>User-Agent: chop</code>. chop forwards no cookie, <code>Authorization</code>, <code>Referer</code> or other header of the client.</li>
+<li>Redirects aren't followed. A <code>3xx</code> from the origin is a <code>502</code>, and so is a compressed response.</li>
+</ul>
+<p>Addresses:</p>
+<ul>
+<li>chop resolves the host name once, checks every address, and connects to one of the addresses that it checked. DNS rebinding can't swap the address between the check and the connection.</li>
+<li>An address literal in a URL is checked in any notation, such as <code>2130706433</code>, <code>0x7f.1</code> or <code>[::ffff:7f00:1]</code>.</li>
+<li>chop never connects to loopback, private, link-local (including the cloud metadata address <code>169.254.169.254</code>), carrier-grade NAT, documentation, multicast or reserved ranges, for IPv4 and IPv6, including IPv4-mapped and NAT64 forms.</li>
+<li>If a name resolves to several addresses and any of them is blocked, chop makes no request.</li>
+</ul>
+<p>Limits:</p>
+<ul>
+<li>chop cuts the body off at <code>maxInputBytes</code> while it reads it, whether or not the origin sends <code>Content-Length</code>. A larger <code>Content-Length</code> is a <code>413</code> before the body is read.</li>
+<li>Connecting, including the TLS handshake, must finish within <code>CHOP_ORIGIN_CONNECT_TIMEOUT</code> (3000 ms), and the whole download within <code>CHOP_ORIGIN_TIMEOUT</code> (10000 ms), or the answer is a <code>504</code>.</li>
+<li>At most <code>CHOP_ORIGIN_CONCURRENCY</code> downloads (4) run at the same time, and <code>CHOP_ORIGIN_QUEUE</code> (32) wait. More are a <code>503</code> with <code>Retry-After: 1</code>.</li>
+<li>Downloads don't use a processing slot, so a slow origin doesn't stop images from being processed. The memory in use can reach <code>CHOP_ORIGIN_CONCURRENCY</code> times <code>maxInputBytes</code>, so lower one of them on a small machine.</li>
+</ul>
+<p>What the client learns:</p>
+<ul>
+<li>The body of a response that isn't a <code>200</code> is dropped without being read. The exception is an S3 bucket, where chop reads the first 2048 bytes of an error to find the error code for the operator.</li>
+<li>Upstream <code>404</code> and <code>410</code> are a <code>404</code>. A <code>401</code>, <code>403</code> or <code>407</code> and a destination that isn't allowed are the same plain <code>404</code>, so a client can't tell which hosts exist, which are blocked or whether the origin needs credentials.</li>
+<li>A host name that can't be resolved is a <code>502</code> for the configured origin and a plain <code>404</code> for a URL source.</li>
+<li>The reason goes only to the standard error, as a host and a short reason such as <code>127.0.0.1 is a blocked address</code>, and never to the client. An origin that fails or answers with another status is a <code>502</code>.</li>
 </ul>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/s3.html"><small>Previous</small>S3 and S3-compatible storage</a><a rel="next" href="/docs/js/chop/latest/sources.html"><small>Next</small>Sources</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/url-sources.html"><small>Previous</small>Let requests name the image URL</a><a rel="next" href="/docs/js/chop/latest/docker.html"><small>Next</small>Run chop in Docker</a>
 </nav>
 
   </main>

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Resize, crop and pad images – chop | WP Elevator Docs</title>
+  <meta name="description" content="Resize, crop, pad and scale images with chop query arguments such as w, resize, crop and lb.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/resize-and-crop.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/resize-and-crop.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Resize, crop and pad images – chop">
+  <meta property="og:description" content="Resize, crop, pad and scale images with chop query arguments such as w, resize, crop and lb.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/resize-and-crop.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/resize-and-crop.html#article",
+      "headline": "Resize, crop and pad images",
+      "description": "Resize, crop, pad and scale images with chop query arguments such as w, resize, crop and lb.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/resize-and-crop.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/resize-and-crop.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Resize, crop and pad images", "item": "https://wpelevator.github.io/docs/js/chop/latest/resize-and-crop.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/resize-and-crop.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html" aria-current="page">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Resize, crop and pad images</h1><p class="lede">Resize, crop, pad and scale images with chop query arguments such as w, resize, crop and lb.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/resize-and-crop.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/latest/resize-and-crop.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Add query arguments to the path of an image to get a resized, cropped or padded copy. The path selects the original, so <code>/2026/05/photo.jpg</code> is <code>&lt;data&gt;/2026/05/photo.jpg</code>, or <code>&lt;origin&gt;/2026/05/photo.jpg</code> when an <a href="sources.html">origin</a> is configured.</p>
+<p>Each row is a request for the same 2400 by 1600 JPEG, and the size of the image that came back:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/2026/05/photo.jpg?w=300</code></td>
+<td>300 by 200, the aspect ratio kept</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?resize=400,400&amp;gravity=north</code></td>
+<td>400 by 400, covering the box and keeping the top</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?w=300&amp;lb=400,400,f5f5f5</code></td>
+<td>400 by 400, the 300 pixel image centered on a <code>f5f5f5</code> background</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?crop=10,10,50,50&amp;w=400</code></td>
+<td>400 by 267, a region that starts 10% in from the top left and covers 50% of each side</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?w=300&amp;zoom=2</code></td>
+<td>600 by 400, for a 2x display</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?w=5000</code></td>
+<td>2400 by 1600, because nothing enlarges the image</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?w=3000&amp;upscale=1</code></td>
+<td>3000 by 2000</td>
+</tr>
+<tr>
+<td><code>/2026/05/photo.jpg?w=300&amp;format=png</code></td>
+<td>A 300 by 200 PNG</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The same 400 by 400 box applied to the 2400 by 1600 original:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">w=400 or fit=400,400     resize=400,400         lb=400,400
+
++------------+           +----------+           +----------+
+|   image    |           |  image,  |           |   pad    |
+|  400x267   |           |  cropped |           +----------+
++------------+           |          |           |  image   |
+                         |          |           |  400x267 |
+                         +----------+           +----------+
+                           400x400              |   pad    |
+                                                +----------+
+                                                  400x400</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>w</code> and <code>fit</code> shrink the image inside the box and keep the whole image. <code>resize</code> fills the box and crops the overflow. <code>lb</code> shrinks the image inside the box and pads the rest, so the result is exactly the box.</p>
+<p>A malformed value of a known argument is a <code>400</code> that names it, such as <code>Invalid &quot;w&quot; argument: expected a whole number.</code> for <code>?w=abc</code>. Unknown arguments are ignored, so cache-busting arguments like <code>ver=3</code> change the URL and nothing else.</p>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<h3 id="limit-the-widths-that-can-be-requested" tabindex="-1"><a class="header-anchor" href="#limit-the-widths-that-can-be-requested">Limit the widths that can be requested</a></h3>
+<p>Set <code>CHOP_ALLOWED_WIDTHS</code> to the widths of your markup. See <a href="responsive-images.html">Serve responsive images</a>.</p>
+<h3 id="make-square-thumbnails" tabindex="-1"><a class="header-anchor" href="#make-square-thumbnails">Make square thumbnails</a></h3>
+<p>Use <code>resize=400,400</code>. Add <code>gravity=attention</code> to keep the busiest part, or <code>north</code>, <code>south</code>, <code>east</code> or <code>west</code> to keep an edge.</p>
+<h3 id="keep-the-whole-image-in-a-fixed-box" tabindex="-1"><a class="header-anchor" href="#keep-the-whole-image-in-a-fixed-box">Keep the whole image in a fixed box</a></h3>
+<p>Use <code>lb=400,400</code> to pad, or <code>fit=400,400</code> to scale inside the box and leave the other dimension shorter.</p>
+<h3 id="remove-metadata-or-change-quality" tabindex="-1"><a class="header-anchor" href="#remove-metadata-or-change-quality">Remove metadata or change quality</a></h3>
+<p>See <a href="quality-and-metadata.html">Set quality and strip metadata</a>.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>Only <code>GET</code> and <code>HEAD</code> are allowed, and <code>GET /healthz</code> answers <code>ok</code> without touching the data directory or the origin. The default <code>query</code> scheme reads the operations from the query string. <a href="from-cloudflare.html">Migrate from Cloudflare Image Resizing</a> covers the other scheme.</p>
+<p>Operations run in a fixed order, whatever the order in the URL: orientation, <code>crop</code>, size, <code>lb</code>, then encoding. The EXIF orientation is applied to the pixels first, so every size and offset refers to the displayed image, and the output has no orientation tag.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Does</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#w-and-h"><code>w</code>, <code>h</code></a></td>
+<td>Scale to a width or height, or inside a box</td>
+<td>Original size</td>
+</tr>
+<tr>
+<td><a href="#fit"><code>fit</code></a></td>
+<td>The same as <code>w</code> and <code>h</code> together</td>
+<td>Unset</td>
+</tr>
+<tr>
+<td><a href="#resize-and-gravity"><code>resize</code></a></td>
+<td>Fill a box and crop the overflow</td>
+<td>Unset</td>
+</tr>
+<tr>
+<td><a href="#resize-and-gravity"><code>gravity</code></a></td>
+<td>Which part <code>resize</code> keeps</td>
+<td><code>center</code></td>
+</tr>
+<tr>
+<td><a href="#crop"><code>crop</code></a></td>
+<td>Take a region of the original first</td>
+<td>Unset</td>
+</tr>
+<tr>
+<td><a href="#lb"><code>lb</code></a></td>
+<td>Pad to an exact box</td>
+<td>Unset</td>
+</tr>
+<tr>
+<td><a href="#upscale"><code>upscale</code></a></td>
+<td>Allow enlarging</td>
+<td>Off</td>
+</tr>
+<tr>
+<td><a href="#zoom"><code>zoom</code></a></td>
+<td>Multiply sizes for dense screens</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>format</code>, <code>quality</code>, <code>lossy</code></td>
+<td>See <a href="formats.html">Serve AVIF and WebP</a> and <a href="quality-and-metadata.html">Set quality and strip metadata</a></td>
+<td><code>auto</code></td>
+</tr>
+<tr>
+<td><code>strip</code></td>
+<td>See <a href="quality-and-metadata.html">Set quality and strip metadata</a></td>
+<td><code>metadata</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="w-and-h" tabindex="-1"><a class="header-anchor" href="#w-and-h"><code>w</code> and <code>h</code></a></h3>
+<p><code>?w=800</code> scales to 800 pixels wide and keeps the aspect ratio. <code>?h=600</code> does the same for height. With both, as in <code>?w=800&amp;h=600</code>, the image fits inside the box without cropping or padding, so one dimension can end up shorter. Default: the original size.</p>
+<h3 id="fit" tabindex="-1"><a class="header-anchor" href="#fit"><code>fit</code></a></h3>
+<p><code>?fit=800,600</code> is the same as <code>w=800&amp;h=600</code>, and wins over them.</p>
+<h3 id="resize-and-gravity" tabindex="-1"><a class="header-anchor" href="#resize-and-gravity"><code>resize</code> and <code>gravity</code></a></h3>
+<p><code>?resize=400,400</code> covers the box and crops the overflow, so the result is exactly 400 by 400. It wins over <code>fit</code>, <code>w</code> and <code>h</code>. <code>gravity</code> picks the part to keep: <code>center</code>, <code>north</code>, <code>south</code>, <code>east</code>, <code>west</code> or <code>attention</code>. Default: <code>center</code>.</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/2026/05/photo.jpg?resize=400,400&amp;gravity=north</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h3 id="crop" tabindex="-1"><a class="header-anchor" href="#crop"><code>crop</code></a></h3>
+<p><code>?crop=x,y,w,h</code> takes a region of the oriented original before any scaling. Numbers are percentages of the width (<code>x</code>, <code>w</code>) or the height (<code>y</code>, <code>h</code>), with decimals allowed, or pixels with a <code>px</code> suffix, as in <code>?crop=0px,0px,600px,400px</code>. A region past the edge is clipped, and a region with no area is a <code>400</code>. <code>crop</code> numbers can't be negative.</p>
+<h3 id="lb" tabindex="-1"><a class="header-anchor" href="#lb"><code>lb</code></a></h3>
+<p><code>?lb=w,h[,color]</code> is a letterbox. It fits the image inside the box, then pads it with <code>color</code> to exactly <code>w</code> by <code>h</code>, centered. <code>color</code> is 3 or 6 hex digits with an optional <code>#</code>. Default: <code>ffffff</code>. <code>lb</code> runs after the size operation, so <code>?w=300&amp;lb=400,400,f5f5f5</code> scales to 300 wide, then pads to 400 by 400.</p>
+<h3 id="upscale" tabindex="-1"><a class="header-anchor" href="#upscale"><code>upscale</code></a></h3>
+<p><code>?w=1200&amp;upscale=1</code> allows enlarging, up to <code>maxUpscaleDimension</code> on the long side, which is <code>4096</code> by default and never less than the long side of the image. Without it, nothing enlarges the image. A requested size above the image clamps to the original size for <code>w</code>, <code>h</code> and <code>fit</code>, <code>resize</code> crops to the requested aspect ratio at the largest size that fits, and <code>lb</code> pads without enlarging the image inside.</p>
+<h3 id="zoom" tabindex="-1"><a class="header-anchor" href="#zoom"><code>zoom</code></a></h3>
+<p><code>?w=300&amp;zoom=2</code> multiplies <code>w</code>, <code>h</code>, <code>fit</code>, <code>resize</code> and <code>lb</code> sizes before the limits apply, so the result is 600 pixels wide. Values are from 1 to 10 and can have up to three decimals. Default: <code>1</code>.</p>
+<h3 id="limits-and-animated-sources" tabindex="-1"><a class="header-anchor" href="#limits-and-animated-sources">Limits and animated sources</a></h3>
+<p>The output may not exceed <code>maxOutputDimension</code> in either dimension, which is checked after clamping and is a <code>400</code> when a request asks for more. When <code>allowedWidths</code> is set, the width of the output must be in the list, or the request is a <code>400</code>. The check runs on the width of the output after clamping. A request without <code>w</code>, and a <code>w</code> larger than a small original, can produce a width that isn't on the list, and that request is a <code>400</code>. Add <code>upscale=1</code> to enlarge small originals to a listed width, or add the original widths to the list. For an animated source, <code>crop</code>, <code>w</code>, <code>h</code>, <code>fit</code> and <code>resize</code> apply to every frame and keep their timing, while <code>lb</code> and <code>gravity=attention</code> are ignored. See <a href="animated-and-transparent.html">Serve transparent and animated images</a>.</p>
+<h3 id="other-details" tabindex="-1"><a class="header-anchor" href="#other-details">Other details</a></h3>
+<ul>
+<li>Repeated arguments use the first value.</li>
+<li>An empty segment in the path, such as <code>//</code> or a trailing slash, is a <code>400</code>.</li>
+<li>chop ignores arguments it doesn't know, such as <code>brightness</code>, <code>contrast</code>, <code>filter</code> and <code>webp</code>, and doesn't parse them, so a malformed value of one is not an error. If you are moving from Photon, see <a href="from-photon.html">Migrate from Photon</a>.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/quickstart.html"><small>Previous</small>Quickstart</a><a rel="next" href="/docs/js/chop/latest/responsive-images.html"><small>Next</small>Serve responsive images</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

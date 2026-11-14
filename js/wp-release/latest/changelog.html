@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Changelog – wp-release | WP Elevator Docs</title>
+  <meta name="description" content="What changed in each release.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/changelog.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/changelog.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Changelog – wp-release">
+  <meta property="og:description" content="What changed in each release.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/changelog.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/changelog.html#article",
+      "headline": "Changelog",
+      "description": "What changed in each release.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/changelog.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/changelog.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Changelog", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/changelog.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/changelog.html" selected>latest</option>
+      <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/index.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/index.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/index.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/index.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/latest/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/latest/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/latest/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/latest/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/latest/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/latest/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/latest/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/latest/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/latest/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/latest/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/latest/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/latest/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/latest/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/latest/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/latest/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/changelog.html" aria-current="page">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Changelog</h1><p class="lede">What changed in each release.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/changelog.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/latest/changelog.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="0210-2026-11-11" tabindex="-1"><a class="header-anchor" href="#0210-2026-11-11">0.21.0 (2026-11-11)</a></h2>
+<ul>
+<li>Group the wp-release commands as <code>changeset add|status|version|tag</code>, <code>deploy svn|git</code> and <code>i18n pot|audit|mo|json|php</code>, and run <code>changeset add</code> for a bare <code>wp-release changeset</code>, so that a <code>&quot;changeset&quot;: &quot;wp-release changeset&quot;</code> script runs <code>npm run changeset</code>. The dashed names like <code>changeset-add</code> keep working as aliases, and <code>execute()</code> and <code>CommandResults</code> use the grouped names. (<a href="https://github.com/wpelevator/basement/commit/0bb0b187cc93d3dd1ea9378764e00ef0a7a32f87"><code>0bb0b18</code></a>)</li>
+<li>Document complete release workflows for single-package repositories, with the <code>--github-output</code> result shapes of <code>changeset version</code> and <code>changeset tag</code>, the push-triggered <code>changeset tag --since HEAD^1</code> idiom and the distribution setups that decide what a release tag must contain. (<a href="https://github.com/wpelevator/basement/commit/0bb0b187cc93d3dd1ea9378764e00ef0a7a32f87"><code>0bb0b18</code></a>)</li>
+<li>Bundle subtree-split 0.2.2.</li>
+<li>Bundle wp-gettext 0.2.1.</li>
+</ul>
+<h2 id="0202-2026-11-07" tabindex="-1"><a class="header-anchor" href="#0202-2026-11-07">0.20.2 (2026-11-07)</a></h2>
+<ul>
+<li>Publish the <code>docs/</code> directory in the npm package, so that agents and editors can read the documentation of the installed version. (<a href="https://github.com/wpelevator/basement/commit/da8652c9da98ef8962c0f7dce9c398bb814c8620"><code>da8652c</code></a>)</li>
+<li>Bundle subtree-split 0.2.1.</li>
+</ul>
+<h2 id="0201-2026-11-04" tabindex="-1"><a class="header-anchor" href="#0201-2026-11-04">0.20.1 (2026-11-04)</a></h2>
+<ul>
+<li>Bundle subtree-split 0.2.0.</li>
+</ul>
+<h2 id="0200-2026-11-03" tabindex="-1"><a class="header-anchor" href="#0200-2026-11-03">0.20.0 (2026-11-03)</a></h2>
+<ul>
+<li>Split the history of a package for <code>deploy-git --split-prefix</code> with <code>@wpelevator/subtree-split</code> instead of running <code>git subtree split</code>, which makes the same commits in about a tenth of a second instead of several seconds for each package. The full history is needed, so a shallow clone fails. (<a href="https://github.com/wpelevator/basement/commit/1498645ea54ddecbb8bdd4b76ea8b8d9cc9cc91e"><code>1498645</code></a>)</li>
+<li>Bundle subtree-split 0.1.0.</li>
+</ul>
+<h2 id="0190-2026-10-31" tabindex="-1"><a class="header-anchor" href="#0190-2026-10-31">0.19.0 (2026-10-31)</a></h2>
+<ul>
+<li>Choose how POT entries name their source with <code>--add-location &lt;full|file|never&gt;</code> and <code>--no-location</code>, or <code>location</code> in the i18n configuration. <code>file</code> writes <code>#: path/to/file.php</code> without the line number, so that editing a source file does not change the POT unless its strings change. <code>--no-references</code> and <code>references: false</code> keep working and mean <code>never</code>. (<a href="https://github.com/wpelevator/basement/commit/9a7a89b6b7988818a0fa82ac9e7aa15ee2e816a2"><code>9a7a89b</code></a>)</li>
+<li>Release the 0.18.2 changes to npm. The 0.18.2 publish failed because building wp-release needed the <code>dist/</code> of the workspace packages it depends on; it now type-checks their source instead. (<a href="https://github.com/wpelevator/basement/commit/621c656a4678562c287521d165f805bee206e544"><code>621c656</code></a>)</li>
+<li>Bundle wp-gettext 0.2.0.</li>
+</ul>
+<h2 id="0182-2026-10-29" tabindex="-1"><a class="header-anchor" href="#0182-2026-10-29">0.18.2 (2026-10-29)</a></h2>
+<ul>
+<li>Use the new @wpelevator/fileset and @wpelevator/checksums packages for file selection, directory syncing and checksums manifests. The library API, CLI flags, output and manifest bytes are unchanged. Git <code>export-ignore</code> paths that contain glob characters like <code>*</code>, <code>?</code> or <code>[</code> are now matched literally instead of as patterns. (<a href="https://github.com/wpelevator/basement/commit/16bf135248f281d24e6ec41d6848e546e70dff9e"><code>16bf135</code></a>)</li>
+<li>Use the new @wpelevator/wp-gettext package for string extraction, POT files and translation compilers. The library API, the <code>i18n-*</code> command flags and output and the generated POT, MO, JSON and <code>.l10n.php</code> bytes are unchanged. (<a href="https://github.com/wpelevator/basement/commit/16bf135248f281d24e6ec41d6848e546e70dff9e"><code>16bf135</code></a>)</li>
+<li>Use the new @wpelevator/zip package for ZIP archives. The library API, the <code>zip</code> command flags and output are unchanged, except that <code>SOURCE_DATE_EPOCH</code> now sets the modification time of the archive entries when it's set. (<a href="https://github.com/wpelevator/basement/commit/16bf135248f281d24e6ec41d6848e546e70dff9e"><code>16bf135</code></a>)</li>
+<li>Use the new @wpelevator/signatures package for signing. The library API, CLI flags and output, and the WP_RELEASE_SIGNING_KEY variable are unchanged. (<a href="https://github.com/wpelevator/basement/commit/16bf135248f281d24e6ec41d6848e546e70dff9e"><code>16bf135</code></a>)</li>
+<li>Bundle checksums 0.1.0.</li>
+<li>Bundle fileset 0.1.0.</li>
+<li>Bundle signatures 0.1.0.</li>
+<li>Bundle wp-gettext 0.1.0.</li>
+<li>Bundle zip 0.1.0.</li>
+</ul>
+<h2 id="0181-2026-10-29" tabindex="-1"><a class="header-anchor" href="#0181-2026-10-29">0.18.1 (2026-10-29)</a></h2>
+<ul>
+<li>Expose configured package metadata and tag formatting for the documentation build. (<a href="https://github.com/wpelevator/basement/commit/033c5c2e7ba1585f94de69e9af59f3dee11a78a0"><code>033c5c2</code></a>)</li>
+</ul>
+<h2 id="0180-2026-10-29" tabindex="-1"><a class="header-anchor" href="#0180-2026-10-29">0.18.0 (2026-10-29)</a></h2>
+<ul>
+<li>Explain a git-tag version source that finds no tags: name the pattern, an example tag, the checked-out history, and the tagFormat that names release tags. (<a href="https://github.com/wpelevator/basement/commit/a6f60dcca78ed83ea80d3569eec7317edf4c51b2"><code>a6f60dc</code></a>)</li>
+<li>Add --project-name to name a config-free root package instead of using its manifest name or checkout directory, and an id config to name the package of a group with a literal identifier. (<a href="https://github.com/wpelevator/basement/commit/a6f60dcca78ed83ea80d3569eec7317edf4c51b2"><code>a6f60dc</code></a>)</li>
+<li>Add changeset-tag --release-title to fill the release titles of one run, replacing the releaseTitle of the config. (<a href="https://github.com/wpelevator/basement/commit/a6f60dcca78ed83ea80d3569eec7317edf4c51b2"><code>a6f60dc</code></a>)</li>
+<li>Add a releaseTitle config for release titles, a template or callback with the name, path, version and tag of a release. A package at the repository root is titled with its version like its tag, without a name or path prefix, and an empty path leaves no leading or repeated slashes. (<a href="https://github.com/wpelevator/basement/commit/a6f60dcca78ed83ea80d3569eec7317edf4c51b2"><code>a6f60dc</code></a>)</li>
+<li>Release the sole package of a repository without --package options, with a single changeset-add --bump and with changeset-tag --version. (<a href="https://github.com/wpelevator/basement/commit/a6f60dcca78ed83ea80d3569eec7317edf4c51b2"><code>a6f60dc</code></a>)</li>
+<li>Reject positional arguments that the command doesn't accept instead of ignoring them, so a stray word fails with the usage instead of running another command flow. (<a href="https://github.com/wpelevator/basement/commit/a6f60dcca78ed83ea80d3569eec7317edf4c51b2"><code>a6f60dc</code></a>)</li>
+</ul>
+<h2 id="0170-2026-10-13" tabindex="-1"><a class="header-anchor" href="#0170-2026-10-13">0.17.0 (2026-10-13)</a></h2>
+<ul>
+<li>Add native WordPress POT extraction and auditing, with the POT layout of <code>wp i18n make-pot</code>, plus translated PO compilation into MO, script JSON and .l10n.php with reproducible atomic outputs. (<a href="https://github.com/wpelevator/basement/commit/6cd4598fd6f44c04355ca5da027572b1fd15d86f"><code>6cd4598</code></a>)</li>
+</ul>
+<h2 id="0160-2026-10-13" tabindex="-1"><a class="header-anchor" href="#0160-2026-10-13">0.16.0 (2026-10-13)</a></h2>
+<ul>
+<li>Make ZIP and manifest signing independent: --sign signs only ZIPs, --sign-checksums generates and signs manifests for ZIPs and directory builds, and --sign-format requires an explicit signing target. Update the ZIP Action and release examples. (<a href="https://github.com/wpelevator/basement/commit/e515a537ddb1b08a5b5839e81eb492f47f55911e"><code>e515a53</code></a>)</li>
+<li>Add a build command that copies selected release files into an output directory using the same ignore and configured package rules as ZIP packaging. (<a href="https://github.com/wpelevator/basement/commit/e515a537ddb1b08a5b5839e81eb492f47f55911e"><code>e515a53</code></a>)</li>
+<li>Expose checksum filenames, formats, embedding and configured signing overrides in the release actions. Separate embedded metadata outputs from uploadable files and align action examples, verification and CI instructions with the coordinated release. (<a href="https://github.com/wpelevator/basement/commit/4b3e41112cb4c432f322441c72e87af11dd6a779"><code>4b3e411</code></a>)</li>
+<li>Add independent checksum filenames, embedded signed manifests, GNU SHA256SUMS and custom manifest codecs with configuration and verification support. (<a href="https://github.com/wpelevator/basement/commit/fd95713c244d45965c0919bdd2f12da398818f84"><code>fd95713</code></a>)</li>
+<li>Release single-project repositories without a config file, with shared changeset CLI options for version files, PHP constants, Git tag sources and changelog settings. (<a href="https://github.com/wpelevator/basement/commit/9c3d34b24e180f0b4056534c8b30e358b2e28a0b"><code>9c3d34b</code></a>)</li>
+</ul>
+<h2 id="0150-2026-10-13" tabindex="-1"><a class="header-anchor" href="#0150-2026-10-13">0.15.0 (2026-10-13)</a></h2>
+<ul>
+<li>
+<p>Add ZIP signing inputs and signature outputs, expose WordPress, minisign and SSH formats in the sign action, and update action documentation to match wp-release.</p>
+<p>Support configured SVN deployment with release-ref, package, list, config and tag-format inputs, preserve single-plugin deployment outputs, and expose configured plans and outcomes as JSON. Add the ZIP config input. Run the SVN action through the shared command with an injected runner that installs SVN only when needed. (<a href="https://github.com/wpelevator/basement/commit/ff25f5188bcbfa03f98e8ce4dadf3324b79c1b84"><code>ff25f51</code></a>)</p>
+</li>
+<li>
+<p>Set each top-level string, number or boolean of a result as its own GitHub Actions step output with <code>--github-output</code>, next to the <code>result</code> JSON, so that a workflow reads values like <code>steps.&lt;id&gt;.outputs.zipPath</code> without <code>fromJSON()</code>, also in steps that are skipped. Add <code>zip --sign</code> to sign the ZIP and the checksums manifest as they're written, with <code>--sign-format</code> for the signature formats of <code>sign --format</code>, and <code>signFiles()</code> to sign files from a script.</p>
+<p>Validate the signing key, formats and existing signature destinations before writing a signed ZIP or manifest, so invalid signing inputs leave no new artifacts and can be corrected without forcing an overwrite. Include the signature files and public keys in the job summary of <code>zip --sign</code>. (<a href="https://github.com/wpelevator/basement/commit/afd7d9470e70551cb81218da19d1729c54fc9fbd"><code>afd7d94</code></a>)</p>
+</li>
+</ul>
+<h2 id="0140-2026-10-13" tabindex="-1"><a class="header-anchor" href="#0140-2026-10-13">0.14.0 (2026-10-13)</a></h2>
+<ul>
+<li>Report the <code>target</code>, <code>targetRef</code> and, for remote repositories, the <code>targetHost</code> and <code>targetPath</code> of each deploy in the <code>deploy-git</code> and <code>deploy-svn --release-ref</code> results, and the <code>host</code> and <code>path</code> of the targets of <code>--list</code>, so that a workflow can create the release of the deployed tag with the API of the forge that hosts the repository. <code>parseRepositoryUrl()</code> reads the host and path of a repository URL. (<a href="https://github.com/wpelevator/basement/commit/f8b330e4d5c0a7c8dce8fd390d68f033121e4cf3"><code>f8b330e</code></a>)</li>
+<li>Make the config layer independent of the repository layout. Remove the <code>{type}</code> placeholder and the <code>tagType</code> package group setting, which guessed a type from the first directory of the package path, and the <code>{slug}</code> placeholder of the tag format, version source patterns and deploy templates; use <code>{path}</code>, like <code>{path}/{version}</code> for <code>plugins/alpha/1.2.0</code>, or a callback. A package at the repository root has an empty <code>{path}</code>, and tags have no leading or repeated slashes, so the default <code>{path}/{version}</code> tag format gives it tags like <code>1.2.0</code>. The WordPress.org slug of an SVN deploy target defaults to the name of the package directory. Add the global <code>--tag-format &lt;format&gt;</code> option to replace the <code>tagFormat</code> of the config for one command, and the <code>remote</code> setting for the git remote that <code>changeset-tag --push</code> pushes to and that the base branch is compared on, <code>origin</code> by default. (<a href="https://github.com/wpelevator/basement/commit/f8b330e4d5c0a7c8dce8fd390d68f033121e4cf3"><code>f8b330e</code></a>)</li>
+<li>Sign files as minisign (<code>.minisig</code>) and SSH (<code>.sshsig</code>) signatures with <code>sign --format</code>, using the same Ed25519 key as the WordPress <code>.sig</code>. <code>verify --signature-format</code> checks the manifest signature of those formats, <code>verify --public-key</code> also accepts minisign and <code>ssh-ed25519</code> public keys, and <code>keygen</code> prints the public key in both forms. (<a href="https://github.com/wpelevator/basement/commit/7d641fd19cd6d8f02f9305e4854dc16a0e4f438e"><code>7d641fd</code></a>)</li>
+<li>Add <code>zip --package &lt;name&gt;</code> to zip a package of the config with the <code>files</code> config of its package group, the same files that its deploys ship, and <code>zipPackage()</code> and <code>getPackageFiles()</code> to build the same ZIP from a script. The <code>zip</code> result also has the <code>slug</code> and <code>version</code>. (<a href="https://github.com/wpelevator/basement/commit/f8b330e4d5c0a7c8dce8fd390d68f033121e4cf3"><code>f8b330e</code></a>)</li>
+</ul>
+<h2 id="0130-2026-10-12" tabindex="-1"><a class="header-anchor" href="#0130-2026-10-12">0.13.0 (2026-10-12)</a></h2>
+<ul>
+<li>Ask for the packages, bumps and release note of <code>changeset-add</code> in a terminal, preselecting the changed packages; add the changed packages with a single <code>--bump</code>; and accept package paths in <code>changeset-add</code>, <code>changeset-version</code> and <code>changeset-tag</code>. (<a href="https://github.com/wpelevator/basement/commit/93593980ab11b5897f6ece2c5aeebbb0afc7e04a"><code>9359398</code></a>)</li>
+<li>Add <code>deploy-git --release-ref &lt;ref&gt;</code> and <code>deploy-svn --release-ref &lt;ref&gt;</code> to deploy the configured packages of a release tag or branch to the Git and WordPress.org targets in the new <code>deploy</code> config of their package groups, with <code>--package</code> to deploy one package and <code>--list</code> to list the deploys. Targets take templates or callbacks with the package, its release and the source commit, also for the commit message, and a list of them deploys to several repositories. The new <code>files</code> config sets the files that the deploys ship, and package groups without <code>version</code> only deploy branches, without changesets. (<a href="https://github.com/wpelevator/basement/commit/0f520f8feceb05db8682d5e30da58600af3d5fb0"><code>0f520f8</code></a>)</li>
+<li>Require a changeset for a dependent whose package manifest changes beyond the pin of a source that the pull request releases. (<a href="https://github.com/wpelevator/basement/commit/1fa364414520c2ab7e0f19a036cac8f2eb616990"><code>1fa3644</code></a>)</li>
+<li>Add <code>changeset-version --prerelease &lt;id&gt;</code> and the <code>prerelease</code> option of <code>versionChangesets()</code> to release pre-releases like <code>1.3.0-rc.1</code>, numbered from the package tags, and <code>--snapshot &lt;id&gt;</code> for test builds like <code>1.3.0-pr-251.20261012183005</code>. The readme <code>Stable tag</code> keeps the last stable version for a pre-release, and the release notes of a stable release compare with the previous stable release instead of its pre-releases. (<a href="https://github.com/wpelevator/basement/commit/40c4283516c4ae8ad1c468ff2c84299aa530b542"><code>40c4283</code></a>)</li>
+<li>Bump the <code>x.y</code> and <code>x.y.z.w</code> versions common in WordPress plugins without a custom <code>nextVersion</code> strategy. A version keeps its number of parts, so a minor bump of <code>2.1</code> is <code>2.2</code> and of <code>1.2.3.4</code> is <code>1.3.0.0</code>, while a patch bump of <code>2.1</code> is <code>2.1.1</code>. Tags with these versions are now sorted and found as the previous release, comparing every part. (<a href="https://github.com/wpelevator/basement/commit/e64fc2f4ad478c3395f45c6c53b5a790a7c2f414"><code>e64fc2f</code></a>)</li>
+</ul>
+<h2 id="0120-2026-10-12" tabindex="-1"><a class="header-anchor" href="#0120-2026-10-12">0.12.0 (2026-10-12)</a></h2>
+<ul>
+<li>Remove the <code>getGitHubPullRequest()</code> export, so wp-release no longer needs the <code>gh</code> CLI. A <code>changelogEntry</code> callback can link each entry to the commit that added its changeset with the <code>commit</code> it receives. (<a href="https://github.com/wpelevator/basement/commit/f463fc74e4cf6c35c1b130a7e9c8319eea7e7584"><code>f463fc7</code></a>)</li>
+</ul>
+<h2 id="0110-2026-10-12" tabindex="-1"><a class="header-anchor" href="#0110-2026-10-12">0.11.0 (2026-10-12)</a></h2>
+<ul>
+<li>Add the <code>ChangesetRelease</code> class, which runs the changeset release operations with an injectable git runner. The changeset release code is split into focused modules, and the README documents the package architecture. (<a href="https://github.com/wpelevator/basement/pull/242">#242</a> by @kasparsd, <a href="https://github.com/wpelevator/basement/commit/bf1279de74d70223a62f26fc7266d05379973618"><code>bf1279d</code></a>)</li>
+<li>Remove the <code>--github-release</code> flag of <code>changeset-tag</code> and the <code>githubRelease</code> option of <code>tagChangesets()</code>; create GitHub Releases with a workflow step like <code>softprops/action-gh-release</code> instead. Each tag in the <code>changeset-tag</code> result now has a <code>title</code>, like <code>plugins/alpha@1.2.0</code>, for that step. (<a href="https://github.com/wpelevator/basement/pull/242">#242</a> by @kasparsd, <a href="https://github.com/wpelevator/basement/commit/bf1279de74d70223a62f26fc7266d05379973618"><code>bf1279d</code></a>)</li>
+<li>Detect the changes of a package at the repository root, so that <code>changeset-status</code> reports its missing changesets and <code>changeset-tag --since</code> tags it. (<a href="https://github.com/wpelevator/basement/pull/242">#242</a> by @kasparsd, <a href="https://github.com/wpelevator/basement/commit/bf1279de74d70223a62f26fc7266d05379973618"><code>bf1279d</code></a>)</li>
+</ul>
+<h2 id="0100-2026-10-12" tabindex="-1"><a class="header-anchor" href="#0100-2026-10-12">0.10.0 (2026-10-12)</a></h2>
+<ul>
+<li>Add a <code>dependents</code> changeset configuration, which re-releases packages that bundle another configured package whenever it releases, so that bundled dependencies like the <code>wp-release-*</code> GitHub Actions ship the new version at the same time. The dependents come from the dependencies that each package declares in <code>package.json</code>: a dependent releases when the next version of the source falls outside its declared range, or always with <code>when: 'always'</code>, and versioning rewrites its declared specs of the source to the released version, keeping their range prefixes. Dependents release with a <code>bump</code> bump (default <code>patch</code>) and a &quot;Bundle <source> <version>.&quot; changelog entry unless they have their own changeset, <code>--package</code> selections pull in the dependents of the selected sources, and <code>dependents.exclude</code> leaves packages out of the automatic re-releases, while they still release with their own changesets, and versioning a dependent while a dependency it declares has pending changesets fails, so a release can't bundle unreleased source code; <code>--no-dependents</code> skips the dependents and the check. The <code>dependents.dependency</code> hooks add specs of couplings that other manifests declare to the built-in npm scan, and replace its spec rewrite, so that the same range rule and rewrite apply to them. (<a href="https://github.com/wpelevator/basement/pull/238">#238</a> by @kasparsd, <a href="https://github.com/wpelevator/basement/commit/04fa1be25aeef5e39e018d874d9a8dde54a5179a"><code>04fa1be</code></a>)</li>
+</ul>
+<h2 id="090-2026-10-12" tabindex="-1"><a class="header-anchor" href="#090-2026-10-12">0.9.0 (2026-10-12)</a></h2>
+<ul>
+<li>Add <code>keygen</code> and opt-in Git <code>export-ignore</code> support to release file selection. (<a href="https://github.com/wpelevator/basement/pull/234">#234</a> by @kasparsd, <a href="https://github.com/wpelevator/basement/commit/1eb51e47f159d895abd15e3f26823b17e0be0038"><code>1eb51e4</code></a>)</li>
+</ul>
+<h2 id="080-2026-10-11" tabindex="-1"><a class="header-anchor" href="#080-2026-10-11">0.8.0 (2026-10-11)</a></h2>
+<ul>
+<li>New <code>changelogEntry</code> config callback, which formats the changelog entry of each changeset with the commit that added it, for example to credit its pull request and author. The formatted entries go into <code>CHANGELOG.md</code>, the <code>changeset-version</code> result and the release notes. New library exports: <code>getGitHubPullRequest()</code>, which finds the pull request and author of a commit with the <code>gh</code> CLI, and <code>formatChangelogList()</code>. (<a href="https://github.com/wpelevator/basement/pull/228">#228</a> by @kasparsd, <a href="https://github.com/wpelevator/basement/commit/7fce8f7b09a1b8e59b1d934b033eaac1d4cc47c6"><code>7fce8f7</code></a>)</li>
+</ul>
+<h2 id="070-2026-10-11" tabindex="-1"><a class="header-anchor" href="#070-2026-10-11">0.7.0 (2026-10-11)</a></h2>
+<ul>
+<li>New library exports: <code>GitDeploy</code>, <code>resolveGitDeployOptions()</code>, <code>isValidRefName()</code>, <code>createGitRunner()</code>, <code>GitError</code>, <code>redactUrls()</code> and <code>getGitDeployInputFromArgs()</code>, with the <code>GitDeployInput</code>, <code>GitDeployOptions</code>, <code>GitDeployResult</code>, <code>GitRunner</code>, <code>GitCommandInput</code> and <code>GitCommandOutput</code> types.</li>
+<li>New <code>deploy-git</code> command, which deploys the files of a plugin, theme or package to a Git repository as a release commit, selected like <code>zip</code> with <code>.distignore</code> and <code>--exclude</code>. The release commit's parents are the previous release and the source history, the source commit or with <code>--split-prefix</code> the history of a monorepo package from <code>git subtree split</code>, so the repository keeps the history. Pushes are never forced: the branch only moves forward, releases without changes aren't pushed, an older build that runs again doesn't move the branch back to older files, a tag that already has the same files is reused without pushing, and a tag with other files fails with exit code 2 before anything is pushed.</li>
+<li><code>changeset-tag</code> can release a single package with <code>--package &lt;name&gt;</code> and check its version with <code>--version &lt;version&gt;</code>. It checks that every configured version target matches before it creates a tag, marks the GitHub Releases of pre-release versions like <code>1.0.0-rc.1</code> as pre-releases, falls back to the commits since the previous tag for the release notes when the version has no <code>CHANGELOG.md</code> section, prints the release notes in dry runs and adds the tags to the job summary. The new <code>releaseNotes</code> config callback formats the release notes, for example to add links. The <code>changeset-version</code> result has the changelog entries of each release, and its job summary lists the package releases. <code>changeset-version --package &lt;name&gt;</code> versions only the named packages: a changeset that also names other packages keeps only their entries, so it still applies to their releases. New library exports: <code>getChangesetPackages()</code> and <code>formatChangelogEntries()</code>.</li>
+</ul>
+<h2 id="061-2026-10-11" tabindex="-1"><a class="header-anchor" href="#061-2026-10-11">0.6.1 (2026-10-11)</a></h2>
+<ul>
+<li>Push release tags one at a time with <code>changeset-tag --push</code>, so that GitHub triggers tag workflows for each of them, add <code>changeset-tag --untagged</code> to list the releases that don't have a tag yet, and add the global <code>--github-output</code> option to set the command result as a GitHub Actions step output.</li>
+</ul>
+<h2 id="060-2026-10-11" tabindex="-1"><a class="header-anchor" href="#060-2026-10-11">0.6.0 (2026-10-11)</a></h2>
+<ul>
+<li>Keep the release actions pinned to a stable wp-release version while the monorepo root resolves them to its local workspace; support explicit changelog insertion markers before the first version heading.</li>
+<li>Add experimental Changesets-compatible release commands and JavaScript configuration for WordPress plugins, themes, PHP packages, and JavaScript packages.</li>
+</ul>
+<h2 id="050-2026-10-11" tabindex="-1"><a class="header-anchor" href="#050-2026-10-11">0.5.0 (2026-10-11)</a></h2>
+<ul>
+<li>With the <code>github</code> log format, <code>version-check</code> and <code>deploy-svn</code> annotate each version mismatch on the file and line of the <code>Version</code> header, readme <code>Stable tag</code> or PHP constant, and <code>verify</code> reports changed files and files that aren't in the checksums as problems on their files.</li>
+<li>Workflow command messages are escaped, so a multi-line error stays one annotation.</li>
+<li><code>ValidationError</code> can list <code>problems</code> with a file and line, and <code>logError()</code> reports each one on its own file and line. <code>deploy-svn</code> throws a <code>VersionMismatchError</code>, a <code>ValidationError</code> with the <code>mismatches</code> and their problems, when the versions don't agree. The message is unchanged.</li>
+<li><code>VersionMismatch</code> has the <code>line</code> of the version.</li>
+<li>With the <code>github</code> log format, <code>deploy-svn</code>, <code>zip</code>, <code>checksums</code>, <code>sign</code>, <code>verify</code> and <code>version-check</code> add a section to the job summary of the run when <code>GITHUB_STEP_SUMMARY</code> is set. A deploy summary links the plugin to its WordPress.org page and the commit to its changeset, and lists the SVN changes. Failed commands add their error, and version mismatches add a table with their files and lines.</li>
+<li><code>Logger</code> passes messages to a writer instead of formatting them: <code>new Logger( { writer: new GitHubActionsWriter() } )</code> replaces <code>new Logger( { ci: true } )</code>, and <code>TextWriter</code> is the default. The <code>ci</code>, <code>stdout</code> and <code>stderr</code> options moved to the writers, and <code>Logger</code> no longer reads <code>GITHUB_ACTIONS</code>. <code>error()</code>, <code>warning()</code> and <code>notice()</code> take an annotation with a <code>file</code>, <code>line</code> and <code>title</code>, and <code>summary()</code> takes a function that builds the summary Markdown.</li>
+<li>New <code>--log-format &lt;text|github&gt;</code> option that picks how the CLI logs. It defaults to <code>github</code> when <code>GITHUB_ACTIONS=true</code>, as <code>--ci</code> documented, and to <code>text</code> elsewhere. <code>--ci</code> is a shorthand for <code>--log-format github</code>, and <code>--log-format text</code> prints plain text in GitHub Actions. Before, annotations needed <code>--ci</code>.</li>
+<li>New library exports: <code>TextWriter</code>, <code>GitHubActionsWriter</code>, <code>logError()</code>, <code>logProblems()</code>, <code>VersionMismatchError</code>, <code>getVersionMismatchProblems()</code>, <code>findConstantDefinitions()</code>, <code>findFileHeaderLine()</code>, <code>findReadmeHeaderLine()</code>, and the <code>LogWriter</code>, <code>LogEntry</code>, <code>SummaryBuilder</code>, <code>SummaryContext</code>, <code>Annotation</code> and <code>Problem</code> types. The Markdown helpers that build the summaries stay internal.</li>
+</ul>
+<h2 id="041-2026-10-10" tabindex="-1"><a class="header-anchor" href="#041-2026-10-10">0.4.1 (2026-10-10)</a></h2>
+<ul>
+<li><code>verify --embedded &lt;path&gt;</code> now requires both the <code>--checksums</code> file and its <code>.sig</code> next to it, and both shipped copies, instead of passing when the signature is absent on both sides. It fails when the manifest lists the embedded path.</li>
+<li><code>verify</code> without <code>--embedded</code> skips a manifest or <code>.sig</code> copy at the root only when the copy exists, the matching original exists and the manifest doesn't list it. Before, a file with the name of the manifest was ignored in both the directory and the manifest, so a listed file like <code>checksums.json</code> could be deleted without being noticed, and a shipped <code>.sig</code> without an original was skipped instead of reported as not in the checksums.</li>
+</ul>
+<h2 id="040-2026-10-10" tabindex="-1"><a class="header-anchor" href="#040-2026-10-10">0.4.0 (2026-10-10)</a></h2>
+<ul>
+<li><code>deploy-svn --svn-tag</code> without <code>--trunk</code> now builds the tag from the source files instead of copying the repository's trunk, so a pre-release like <code>1.5.1-rc.1</code> can be tagged without touching trunk. The tag run checks that the <code>Version</code> header matches the tag, but not the readme <code>Stable tag</code>. With <code>--force</code>, an existing tag is updated to match the build. <code>--trunk --svn-tag</code> still copies the synced trunk.</li>
+<li><code>checksums</code>, <code>zip</code> and <code>verify</code> skip the <code>.sig</code> next to the manifest or ZIP they write, so a signed manifest can be shipped inside the plugin.</li>
+<li>New <code>verify --zip &lt;file|url&gt;</code> and <code>--root-folder</code> options check the files of a ZIP, including one downloaded from a URL such as the ZIP that WordPress.org builds for a release.</li>
+<li><code>verify</code> skips a copy of the manifest and its <code>.sig</code> at the root of the checked files, and fails when the copy differs from the <code>--checksums</code> file.</li>
+<li>New <code>verify --embedded &lt;path&gt;</code> option for a manifest and signature shipped at another path than the root. The copies must exist and match the <code>--checksums</code> file and its <code>.sig</code>.</li>
+<li><code>checksums --output</code> creates missing folders.</li>
+<li><code>verify</code> fails when the version in the manifest differs from the <code>Version</code> header of the checked files.</li>
+<li>New <code>sign</code> command, which writes a detached Ed25519 <code>&lt;file&gt;.sig</code> of the SHA-384 digest in the format that WordPress core's <code>verify_file_signature()</code> checks. The key comes from the <code>WP_RELEASE_SIGNING_KEY</code> environment variable.</li>
+<li>New <code>verify --public-key</code> option, which checks the signature of the checksums manifest before comparing any file.</li>
+<li>New library exports for signing (<code>signFile()</code>, <code>writeSignature()</code>, <code>verifyFileSignature()</code>, <code>parseSigningKey()</code>, <code>parsePublicKey()</code>, <code>getPublicKey()</code>) and <code>execute()</code> to run a command by name and get its result, which the GitHub Actions use.</li>
+</ul>
+<h2 id="030-2026-10-10" tabindex="-1"><a class="header-anchor" href="#030-2026-10-10">0.3.0 (2026-10-10)</a></h2>
+<ul>
+<li>Pre-release versions like <code>1.5.1-rc.1</code> can now be used as an SVN tag. Syncing a pre-release version to <code>trunk/</code> still warns.</li>
+<li>Restored <code>deploy-svn --readme-only</code>, which 0.2.0 removed. It syncs only the readme to <code>trunk/</code> for updates between releases, and can't be combined with <code>--svn-tag</code>. The <code>gitRef</code> deploy option stays removed.</li>
+</ul>
+<h2 id="020-2026-10-09" tabindex="-1"><a class="header-anchor" href="#020-2026-10-09">0.2.0 (2026-10-09)</a></h2>
+<ul>
+<li><code>deploy-svn --svn-tag</code> no longer requires <code>--trunk</code>. Without <code>--trunk</code>, the tag is copied from the current <code>trunk/</code> in the repository, without checking out trunk. With <code>--trunk</code> the tag is copied from the working copy, so it includes the changes of the run.</li>
+<li>Removed <code>deploy-svn --readme-only</code>: a deploy writes the whole trunk or nothing to it. Assets can still be updated alone with <code>--assets-dir</code>.</li>
+<li>Removed the <code>gitRef</code> deploy option, which only guarded <code>--readme-only</code>.</li>
+</ul>
+<h2 id="011-2026-10-09" tabindex="-1"><a class="header-anchor" href="#011-2026-10-09">0.1.1 (2026-10-09)</a></h2>
+<ul>
+<li>First release published by the release workflow with npm trusted publishing. No changes to the package.</li>
+</ul>
+<h2 id="010-2026-10-09" tabindex="-1"><a class="header-anchor" href="#010-2026-10-09">0.1.0 (2026-10-09)</a></h2>
+<ul>
+<li>First release with the <code>zip</code>, <code>checksums</code>, <code>verify</code>, <code>version-check</code> and <code>deploy-svn</code> commands.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/comparison.html"><small>Previous</small>Comparison with existing tools</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

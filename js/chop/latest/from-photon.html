@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Migrate from Photon – chop | WP Elevator Docs</title>
+  <meta name="description" content="Map the query arguments of the Photon image service to chop's, and see which Photon arguments chop ignores.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/from-photon.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/from-photon.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Migrate from Photon – chop">
+  <meta property="og:description" content="Map the query arguments of the Photon image service to chop's, and see which Photon arguments chop ignores.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/from-photon.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/from-photon.html#article",
+      "headline": "Migrate from Photon",
+      "description": "Map the query arguments of the Photon image service to chop's, and see which Photon arguments chop ignores.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/from-photon.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/from-photon.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Migrate from Photon", "item": "https://wpelevator.github.io/docs/js/chop/latest/from-photon.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/from-photon.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html" aria-current="page">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Migrate from Photon</h1><p class="lede">Map the query arguments of the Photon image service to chop's, and see which Photon arguments chop ignores.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/from-photon.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/latest/from-photon.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>chop has its own small set of arguments and isn't a drop-in replacement for the Photon image service. Most resizing URLs keep working, because <code>w</code>, <code>h</code>, <code>resize</code>, <code>fit</code>, <code>crop</code>, <code>lb</code>, <code>zoom</code>, <code>quality</code> and <code>strip</code> have the same names. Arguments that chop doesn't support are ignored like any unknown argument, so an old URL still returns an image. The exception is <code>strip</code>, because chop knows it and checks its value.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Photon argument</th>
+<th>In chop</th>
+<th>What to change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>w</code>, <code>h</code>, <code>fit</code>, <code>resize</code>, <code>crop</code>, <code>lb</code>, <code>zoom</code>, <code>quality</code></td>
+<td>Same name</td>
+<td>Check one URL of each shape. <a href="resize-and-crop.html">Resize, crop and pad images</a> has the exact meaning in chop.</td>
+</tr>
+<tr>
+<td><code>strip</code></td>
+<td><code>strip=metadata</code>, <code>all</code> or <code>none</code></td>
+<td>Use one of these three values. A value that chop doesn't know, such as <code>info</code> or <code>color</code>, is a <code>400</code> that names the argument.</td>
+</tr>
+<tr>
+<td><code>webp</code></td>
+<td><code>format</code> or the <code>Accept</code> header</td>
+<td>Drop it. chop gives WebP or AVIF to clients that list them, and <code>?format=webp</code> forces WebP.</td>
+</tr>
+<tr>
+<td><code>ssl</code></td>
+<td>None</td>
+<td>Drop it. chop is not a proxy for other hosts. To fetch from another host, see <a href="url-sources.html">Let requests name the image URL</a>.</td>
+</tr>
+<tr>
+<td><code>brightness</code>, <code>contrast</code></td>
+<td>None</td>
+<td>Ignored. Adjust the original or do it in CSS.</td>
+</tr>
+<tr>
+<td><code>filter</code> (<code>grayscale</code>, <code>sepia</code>, <code>negate</code>, <code>blur</code>, <code>sharpen</code>)</td>
+<td>None</td>
+<td>Ignored.</td>
+</tr>
+<tr>
+<td><code>colorize</code>, <code>smooth</code></td>
+<td>None</td>
+<td>Ignored.</td>
+</tr>
+<tr>
+<td><code>ulb</code></td>
+<td>None</td>
+<td>Ignored. <code>lb</code> pads but doesn't scale the background color.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="steps" tabindex="-1"><a class="header-anchor" href="#steps">Steps</a></h2>
+<ol>
+<li>Point the host that served Photon URLs at chop, with the data directory or <a href="sources.html">origin</a> that holds the originals.</li>
+<li>Check one URL of each shape that your site uses, and compare the sizes. A request for an unsupported argument still returns an image, so look at the result and not the status code.</li>
+<li>Set <code>CHOP_ALLOWED_WIDTHS</code> to the widths of your <code>srcset</code>, so that the output sizes are bounded. See <a href="responsive-images.html">Serve responsive images</a>.</li>
+</ol>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/troubleshooting.html"><small>Previous</small>Troubleshoot chop</a><a rel="next" href="/docs/js/chop/latest/from-cloudflare.html"><small>Next</small>Migrate from Cloudflare Image Resizing</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

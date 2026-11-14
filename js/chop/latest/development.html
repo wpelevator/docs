@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Development – chop | WP Elevator Docs</title>
-  <meta name="description" content="Run these from the repository root:">
+  <meta name="description" content="Run the tests, lint and build of the chop package from the monorepo.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/development.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/development.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Development – chop">
-  <meta property="og:description" content="Run these from the repository root:">
+  <meta property="og:description" content="Run the tests, lint and build of the chop package from the monorepo.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/development.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -43,7 +43,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/development.html#article",
       "headline": "Development",
-      "description": "Run these from the repository root:",
+      "description": "Run the tests, lint and build of the chop package from the monorepo.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/development.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/development.html",
       "inLanguage": "en",
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html" aria-current="page">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html" aria-current="page">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,7 +156,7 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Development</h1>
+    <h1>Development</h1><p class="lede">Run the tests, lint and build of the chop package from the monorepo.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/development.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/development.md">Open as Markdown</a>
@@ -154,13 +170,12 @@
 <span class="token function">npm</span> run <span class="token function">format</span> <span class="token parameter variable">--workspace</span> @wpelevator/chop
 <span class="token function">docker</span> compose run <span class="token parameter variable">--rm</span> --no-deps wordpress <span class="token function">npm</span> run <span class="token builtin class-name">test</span> <span class="token parameter variable">--workspace</span><span class="token operator">=</span>@wpelevator/chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>The source runs directly with Node's type stripping through the <code>wpelevator-source</code> export condition, and <code>dist</code> is only for publishing. Tests are co-located <code>*.test.ts</code> files that use <code>node:test</code>, and each test name starts with the requirement ID of the specification that it covers, like <code>R-FMT-3</code>. <code>src/test-fixtures.ts</code> creates temporary data directories and generates the images with sharp, so there are no binary fixtures.</p>
-<h2 id="license" tabindex="-1"><a class="header-anchor" href="#license">License</a></h2>
-<p>MIT. chop was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server. The <a href="reference.html">reference</a> summarizes that behavior.</p>
+<p>To run the server from a checkout, use <code>npm start --workspace @wpelevator/chop -- --data ./uploads</code>.</p>
+<p>The source runs directly with Node's type stripping through the <code>wpelevator-source</code> export condition, and <code>dist</code> is only for publishing. Tests are co-located <code>*.test.ts</code> files that use <code>node:test</code>. <code>src/test-fixtures.ts</code> creates temporary data directories and generates the images with sharp, so there are no binary fixtures.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/chop/latest/formats.html"><small>Next</small>Formats and quality</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/library.html"><small>Previous</small>Library API</a><a rel="next" href="/docs/js/chop/latest/changelog.html"><small>Next</small>Changelog</a>
 </nav>
 
   </main>

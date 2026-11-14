@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Set quality and strip metadata – chop | WP Elevator Docs</title>
+  <meta name="description" content="Set the quality of AVIF, WebP and JPEG output, remove metadata, and know when chop sends the original bytes instead of a re-encoded copy.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/quality-and-metadata.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/quality-and-metadata.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Set quality and strip metadata – chop">
+  <meta property="og:description" content="Set the quality of AVIF, WebP and JPEG output, remove metadata, and know when chop sends the original bytes instead of a re-encoded copy.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/quality-and-metadata.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/quality-and-metadata.html#article",
+      "headline": "Set quality and strip metadata",
+      "description": "Set the quality of AVIF, WebP and JPEG output, remove metadata, and know when chop sends the original bytes instead of a re-encoded copy.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/quality-and-metadata.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/quality-and-metadata.html",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Set quality and strip metadata", "item": "https://wpelevator.github.io/docs/js/chop/latest/quality-and-metadata.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>docs</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/quality-and-metadata.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html" aria-current="page">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">latest</span></li>
+  </ol>
+</nav>
+<article data-pagefind-body>
+  <header class="page-head">
+    <h1>Set quality and strip metadata</h1><p class="lede">Set the quality of AVIF, WebP and JPEG output, remove metadata, and know when chop sends the original bytes instead of a re-encoded copy.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/quality-and-metadata.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/latest/quality-and-metadata.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p><code>quality</code> trades file size for fidelity per request, and chop never returns a file larger than the original when a request changes nothing about the pixels. The same 800 pixel wide JPEG at three qualities:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token keyword">for</span> <span class="token for-or-select variable">q</span> <span class="token keyword">in</span> <span class="token number">40</span> <span class="token number">70</span> <span class="token number">90</span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-w</span> <span class="token string">"quality=<span class="token variable">$q</span> %{size_download}<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"http://localhost:8080/2026/05/photo.jpg?w=800&amp;quality=<span class="token variable">$q</span>"</span><span class="token punctuation">;</span> <span class="token keyword">done</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">quality=40 7453
+quality=70 18365
+quality=90 58154</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The numbers are bytes of a synthetic test image. Without <code>quality</code>, the defaults are JPEG 82, WebP 80 and AVIF 55.</p>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<h3 id="change-the-defaults" tabindex="-1"><a class="header-anchor" href="#change-the-defaults">Change the defaults</a></h3>
+<p><code>CHOP_JPEG_QUALITY</code>, <code>CHOP_WEBP_QUALITY</code> and <code>CHOP_AVIF_QUALITY</code> set them for every request. <code>CHOP_AVIF_EFFORT</code> sets the AVIF encoder effort from 0 (fast) to 9 (small), and defaults to 4.</p>
+<h3 id="remove-metadata" tabindex="-1"><a class="header-anchor" href="#remove-metadata">Remove metadata</a></h3>
+<p><code>strip=metadata</code> is the default. It removes EXIF, XMP and IPTC and keeps the ICC profile. <code>strip=all</code> removes everything, and <code>strip=none</code> keeps everything the encoder can write. <code>strip</code> never converts pixel values to another color space: it keeps or drops the profile only.</p>
+<h3 id="get-a-lossy-copy-of-a-png-or-gif" tabindex="-1"><a class="header-anchor" href="#get-a-lossy-copy-of-a-png-or-gif">Get a lossy copy of a PNG or GIF</a></h3>
+<p>PNG, GIF and lossless WebP sources stay lossless unless the request has <code>lossy=1</code> or a <code>quality</code> below 100. The lossy output is AVIF, WebP or a palette PNG.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<ul>
+<li><code>quality</code> is an integer from 1 to 100. Values below 20 are raised to 20 for lossy encoders, and <code>quality=100</code> on WebP is lossless WebP.</li>
+<li>A palette PNG uses <code>quality</code>, or 80 without it. PNG output of a lossless source is lossless with maximum compression.</li>
+<li>A JPEG source isn't re-encoded with a higher quality than it has. chop estimates the quality of the source from its luminance quantization table, and lowers the default to it when it's lower. An explicit <code>quality</code> is used as given, with the floor of 20.</li>
+<li>When a request changes nothing about the pixels (no <code>crop</code>, size or <code>lb</code>, and no orientation to apply), the output format equals the source format and the source has no metadata that <code>strip</code> would remove, chop sends the original bytes if the re-encoded image isn't smaller. With <code>strip=none</code>, an untouched request in the source format always sends the original bytes. An explicit <code>quality</code> or <code>lossy=1</code> turns that shortcut off, because the client asked for a re-encoding, but the check that the output isn't larger still applies.</li>
+<li>An explicit <code>format=png</code> is lossless unless <code>lossy=1</code> or a <code>quality</code> below 100 is given, also for a JPEG source. An explicit <code>format=avif</code> or <code>format=jpeg</code> is always lossy.</li>
+<li>With <code>strip=none</code>, EXIF, XMP, IPTC and the profile are kept when the encoder can write them. CMYK sources only keep EXIF and XMP, and are always converted to sRGB.</li>
+<li>Responses have <code>X-Bytes-Saved</code> when the output is smaller than the original.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/formats.html"><small>Previous</small>Serve AVIF and WebP</a><a rel="next" href="/docs/js/chop/latest/animated-and-transparent.html"><small>Next</small>Serve transparent and animated images</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; WP Elevator. Documentation of the <a href="https://github.com/wpelevator">open source packages</a>.</p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

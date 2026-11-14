@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
-  <title>S3 and S3-compatible storage – chop | WP Elevator Docs</title>
-  <meta name="description" content="CHOPORIGIN=s3://bucket or CHOPORIGIN=s3://bucket/prefix reads the originals from a bucket, and --origin s3://bucket works too. The path of a request is…">
+  <title>Serve images from S3 – chop | WP Elevator Docs</title>
+  <meta name="description" content="Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/s3.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/s3.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="S3 and S3-compatible storage – chop">
-  <meta property="og:description" content="CHOPORIGIN=s3://bucket or CHOPORIGIN=s3://bucket/prefix reads the originals from a bucket, and --origin s3://bucket works too. The path of a request is…">
+  <meta property="og:title" content="Serve images from S3 – chop">
+  <meta property="og:description" content="Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/s3.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -42,8 +42,8 @@
     {
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/s3.html#article",
-      "headline": "S3 and S3-compatible storage",
-      "description": "CHOPORIGIN=s3://bucket or CHOPORIGIN=s3://bucket/prefix reads the originals from a bucket, and --origin s3://bucket works too. The path of a request is…",
+      "headline": "Serve images from S3",
+      "description": "Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/s3.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/s3.html",
       "inLanguage": "en",
@@ -57,7 +57,7 @@
         { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
         { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
         { "@type": "ListItem", "position": 3, "name": "latest", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
-        { "@type": "ListItem", "position": 4, "name": "S3 and S3-compatible storage", "item": "https://wpelevator.github.io/docs/js/chop/latest/s3.html" }
+        { "@type": "ListItem", "position": 4, "name": "Serve images from S3", "item": "https://wpelevator.github.io/docs/js/chop/latest/s3.html" }
       ]
     }
   ]
@@ -113,19 +113,35 @@
 <nav aria-label="chop documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/chop/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/chop/latest/caching.html">Caching</a></li>
-    <li><a href="/docs/js/chop/latest/cli.html">CLI</a></li>
+    <li><a href="/docs/js/chop/latest/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/latest/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/latest/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/latest/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/latest/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/latest/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/latest/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/latest/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/latest/s3.html" aria-current="page">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/latest/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/latest/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/latest/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/latest/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/latest/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/latest/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/latest/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/latest/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/latest/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/latest/cli.html">Run the server</a></li>
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
-    <li><a href="/docs/js/chop/latest/formats.html">Formats and quality</a></li>
+    <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/reference.html">Reference</a></li>
-    <li><a href="/docs/js/chop/latest/requests.html">Requests</a></li>
-    <li><a href="/docs/js/chop/latest/responses.html">Responses</a></li>
-    <li><a href="/docs/js/chop/latest/s3.html" aria-current="page">S3 and S3-compatible storage</a></li>
-    <li><a href="/docs/js/chop/latest/security.html">Securing remote origins</a></li>
-    <li><a href="/docs/js/chop/latest/sources.html">Sources</a></li>
-    <li><a href="/docs/js/chop/latest/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -140,91 +156,73 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>S3 and S3-compatible storage</h1>
+    <h1>Serve images from S3</h1><p class="lede">Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/s3.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/s3.md">Open as Markdown</a>
     </div>
   </header>
   <div class="prose">
-    <p><code>CHOP_ORIGIN=s3://bucket</code> or <code>CHOP_ORIGIN=s3://bucket/prefix</code> reads the originals from a bucket, and <code>--origin s3://bucket</code> works too. The path of a request is appended to the prefix to make the key, so with <code>s3://my-bucket/uploads</code> the request <code>/2026/05/photo.jpg</code> reads the key <code>uploads/2026/05/photo.jpg</code>. Each segment is percent-encoded once, which is what S3 signs, so spaces, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code> and non-ASCII names work. The bucket name follows the S3 rules (3 to 63 lower case letters, digits, dots and hyphens), and a prefix can't have empty, <code>.</code> or <code>..</code> segments. An <code>s3://</code> origin can't be combined with an explicit <code>CHOP_DATA_DIR</code> or <code>--data</code>.</p>
-<p>chop signs every request to the bucket with AWS Signature Version 4, using only <code>node:crypto</code>. Everything else is the same as for an HTTP origin: the pinned DNS lookup and address checks, no redirects, the size cap while reading, the timeouts, and the fetch limit and queue. <code>CHOP_ORIGIN_ALLOW_HTTP</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE</code> apply to the endpoint, and URL sources from <code>CHOP_ALLOWED_HOSTS</code> still work next to an S3 origin. They are fetched without a signature, and the credentials are never sent to them.</p>
-<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Environment variable</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>s3Endpoint</code></td>
-<td><code>CHOP_S3_ENDPOINT</code></td>
-<td>Base URL of an S3-compatible service, like <code>http://seaweedfs:8333</code>. Unset means AWS. It is checked like an origin: <code>https://</code>, or <code>http://</code> with <code>CHOP_ORIGIN_ALLOW_HTTP</code>, without user information, a query string or a fragment, and a loopback, private or link-local address needs <code>CHOP_ORIGIN_ALLOW_PRIVATE</code>.</td>
-</tr>
-<tr>
-<td><code>s3Region</code></td>
-<td><code>CHOP_S3_REGION</code>, then <code>AWS_REGION</code></td>
-<td>Region that requests are signed for. Required for AWS, and an invalid setting at startup without it. With an endpoint it defaults to <code>us-east-1</code>, and Cloudflare R2 uses <code>auto</code>.</td>
-</tr>
-<tr>
-<td><code>s3PathStyle</code></td>
-<td><code>CHOP_S3_PATH_STYLE</code></td>
-<td><code>true</code> puts the bucket in the path (<code>https://host/bucket/key</code>), <code>false</code> in the host (<code>https://bucket.host/key</code>). Defaults to <code>true</code> with an endpoint and <code>false</code> for AWS.</td>
-</tr>
-<tr>
-<td><code>s3AccessKeyId</code></td>
-<td><code>CHOP_S3_ACCESS_KEY_ID</code>, then <code>AWS_ACCESS_KEY_ID</code></td>
-<td>Access key.</td>
-</tr>
-<tr>
-<td><code>s3SecretAccessKey</code></td>
-<td><code>CHOP_S3_SECRET_ACCESS_KEY</code>, then <code>AWS_SECRET_ACCESS_KEY</code></td>
-<td>Secret of the access key. Environment only, there is no flag, and it is never logged.</td>
-</tr>
-<tr>
-<td><code>s3SessionToken</code></td>
-<td><code>CHOP_S3_SESSION_TOKEN</code>, then <code>AWS_SESSION_TOKEN</code></td>
-<td>Token of temporary credentials, sent and signed as <code>x-amz-security-token</code>. Environment only, and it is never logged.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>On AWS the default is the virtual-hosted form, <code>bucket.s3.&lt;region&gt;.amazonaws.com</code>. A bucket name with dots falls back to the path-style form, <code>s3.&lt;region&gt;.amazonaws.com/bucket/key</code>, because the wildcard certificate of AWS doesn't cover dotted names, and <code>CHOP_S3_PATH_STYLE=true</code> forces it. With an endpoint the default is <code>endpoint/bucket/key</code>, and <code>CHOP_S3_PATH_STYLE=false</code> uses <code>bucket.endpoint-host</code> instead, which needs a host name that can have subdomains and not an IP address.</p>
-<p>Credentials need both a key and a secret. With only one of them, or with a session token alone, chop doesn't start (an invalid setting, which names the settings and not their values). With neither, requests are sent unsigned, which only works for a bucket with public read access, and chop prints a warning on startup that there are no credentials.</p>
-<p>AWS or Lambda, with the credentials of the execution role that Lambda puts in the environment:</p>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://my-bucket/uploads <span class="token assign-left variable">AWS_REGION</span><span class="token operator">=</span>eu-west-1 chop</code></pre>
+    <p>Serve the images of an S3 bucket, or of an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS, with one environment variable and the credentials that the bucket needs:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://my-bucket/uploads <span class="token assign-left variable">AWS_REGION</span><span class="token operator">=</span>eu-west-1 <span class="token punctuation">\</span>
+<span class="token assign-left variable">AWS_ACCESS_KEY_ID</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token assign-left variable">AWS_SECRET_ACCESS_KEY</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token punctuation">\</span>
+npx @wpelevator/chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>SeaweedFS with its S3 gateway on the private network, over plain http:</p>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://photos <span class="token punctuation">\</span>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving s3://my-bucket/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The request <code>/2026/05/photo.jpg</code> reads the key <code>uploads/2026/05/photo.jpg</code>. The S3 origin needs chop 0.2.0 or later. Lambda puts the same <code>AWS_*</code> variables in the environment for its execution role, so there is nothing to add there.</p>
+<p>Without a region, chop exits with code <code>2</code>:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">An S3 origin on AWS needs a region: set s3Region (CHOP_S3_REGION or AWS_REGION).</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Without credentials, chop sends unsigned requests, which only work for a bucket with public read access, and prints a warning at startup:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">warning: The S3 origin has no credentials (s3AccessKeyId and s3SecretAccessKey): requests are unsigned, which only works for a bucket with public read access.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<h3 id="use-aws-lambda-or-a-public-bucket" tabindex="-1"><a class="header-anchor" href="#use-aws-lambda-or-a-public-bucket">Use AWS, Lambda or a public bucket</a></h3>
+<p>The first command covers AWS. A public bucket needs only a region, and chop prints the warning that there are no credentials:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://public-photos/uploads <span class="token assign-left variable">CHOP_S3_REGION</span><span class="token operator">=</span>eu-west-1 chop</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h3 id="use-seaweedfs-or-minio-on-a-private-network" tabindex="-1"><a class="header-anchor" href="#use-seaweedfs-or-minio-on-a-private-network">Use SeaweedFS or MinIO on a private network</a></h3>
+<p>An endpoint on a private network needs <code>CHOP_ORIGIN_ALLOW_PRIVATE</code>, and plain http also needs <code>CHOP_ORIGIN_ALLOW_HTTP</code>:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://photos <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_S3_ENDPOINT</span><span class="token operator">=</span>http://seaweedfs:8333 <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_ORIGIN_ALLOW_HTTP</span><span class="token operator">=</span><span class="token number">1</span> <span class="token assign-left variable">CHOP_ORIGIN_ALLOW_PRIVATE</span><span class="token operator">=</span><span class="token number">1</span> <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_S3_ACCESS_KEY_ID</span><span class="token operator">=</span>chop <span class="token assign-left variable">CHOP_S3_SECRET_ACCESS_KEY</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token punctuation">\</span>
 chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Cloudflare R2:</p>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://photos <span class="token punctuation">\</span>
+<h3 id="use-cloudflare-r2" tabindex="-1"><a class="header-anchor" href="#use-cloudflare-r2">Use Cloudflare R2</a></h3>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://photos <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_S3_ENDPOINT</span><span class="token operator">=</span>https://<span class="token operator">&lt;</span>account-id<span class="token operator">></span>.r2.cloudflarestorage.com <span class="token assign-left variable">CHOP_S3_REGION</span><span class="token operator">=</span>auto <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_S3_ACCESS_KEY_ID</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token assign-left variable">CHOP_S3_SECRET_ACCESS_KEY</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token punctuation">\</span>
 chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>A public bucket, without credentials (and with the warning):</p>
-<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://public-photos/uploads <span class="token assign-left variable">CHOP_S3_REGION</span><span class="token operator">=</span>eu-west-1 chop</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>SeaweedFS can also serve a bucket through its filer over plain HTTP, which needs no signature and no S3 settings. That is the <a href="sources.html">HTTP origin</a> with the filer URL, <code>CHOP_ORIGIN=http://seaweedfs:8888/buckets/&lt;bucket&gt;</code>, together with <code>CHOP_ORIGIN_ALLOW_HTTP=1</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code>. Use it when the filer isn't exposed to anyone else, and the S3 origin when you want access keys.</p>
-<p>Errors are answered like those of an HTTP origin. A missing key (<code>NoSuchKey</code>), a <code>403</code> and a <code>404</code> are a plain <code>404</code> for the client, a <code>5xx</code>, a network or TLS error and a redirect are a <code>502</code>, a timeout is a <code>504</code> and an object over <code>maxInputBytes</code> is a <code>413</code>. S3 explains an error in an XML body, and because a signature problem, a wrong key and a missing permission all look like a missing image to the client, chop reads at most the first 2048 bytes of the body of an error (and waits at most two seconds for them) and writes the <code>&lt;Code&gt;</code> to the standard error, like <code>origin ERR_NOT_FOUND: s3.example.com answered 403 SignatureDoesNotMatch</code>. Look there first when images are missing. Other codes to know are <code>AccessDenied</code>, <code>InvalidAccessKeyId</code>, <code>ExpiredToken</code>, <code>RequestTimeTooSkewed</code>, <code>NoSuchBucket</code> and <code>AuthorizationHeaderMalformed</code> (the region is wrong). The codes never reach the client, and neither do the credentials, which are not in any log, warning or error message. A <code>301</code> or <code>307</code> from S3 means that the bucket is in another region, which chop reports as <code>bucket is in another region (check CHOP_S3_REGION)</code> and doesn't follow.</p>
+<h3 id="find-out-why-images-are-missing" tabindex="-1"><a class="header-anchor" href="#find-out-why-images-are-missing">Find out why images are missing</a></h3>
+<p>A signature problem, a wrong key and a missing permission all look like a <code>404</code> to the client. chop writes the S3 error code to the standard error, like <code>origin ERR_NOT_FOUND: s3.example.com answered 403 SignatureDoesNotMatch</code>. Look there first. <a href="troubleshooting.html#s3-error-codes">Troubleshoot chop</a> lists the codes.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>The settings are in the <a href="configuration.html#s3">S3 group of the configuration reference</a>.</p>
+<h3 id="keys-and-signing" tabindex="-1"><a class="header-anchor" href="#keys-and-signing">Keys and signing</a></h3>
+<p><code>CHOP_ORIGIN=s3://bucket</code> or <code>s3://bucket/prefix</code> reads the originals from a bucket, and <code>--origin s3://bucket</code> works too. The path of a request is appended to the prefix to make the key. With <code>s3://my-bucket/uploads</code>, the request <code>/2026/05/photo.jpg</code> reads the key <code>uploads/2026/05/photo.jpg</code>.</p>
+<p>Each segment is percent-encoded once, which is what S3 signs, so spaces, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code> and non-ASCII names work. The bucket name follows the S3 rules: 3 to 63 lower case letters, digits, dots and hyphens. A prefix can't have empty, <code>.</code> or <code>..</code> segments. An <code>s3://</code> origin can't be combined with an explicit <code>CHOP_DATA_DIR</code> or <code>--data</code>.</p>
+<p>chop signs every request to the bucket with AWS Signature Version 4, using only <code>node:crypto</code>. The rest follows the <a href="https-origin.html">HTTP origin</a>: the pinned DNS lookup and address checks, no redirects, the size cap while reading, the timeouts, and the fetch limit and queue. <code>CHOP_ORIGIN_ALLOW_HTTP</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE</code> apply to the endpoint. URL sources from <code>CHOP_ALLOWED_HOSTS</code> still work next to an S3 origin. They are fetched without a signature, and the credentials are never sent to them.</p>
+<h3 id="endpoints-and-addressing" tabindex="-1"><a class="header-anchor" href="#endpoints-and-addressing">Endpoints and addressing</a></h3>
+<p>On AWS the default is the virtual-hosted form, <code>bucket.s3.&lt;region&gt;.amazonaws.com</code>. A bucket name with dots uses the path-style form, <code>s3.&lt;region&gt;.amazonaws.com/bucket/key</code>, because the wildcard certificate of AWS doesn't cover dotted names. <code>CHOP_S3_PATH_STYLE=true</code> forces path style.</p>
+<p>With a custom endpoint the default is <code>endpoint/bucket/key</code>. <code>CHOP_S3_PATH_STYLE=false</code> uses <code>bucket.endpoint-host</code> instead, which needs a host name that can have subdomains and not an IP address. The endpoint is checked like an origin: <code>https://</code>, or <code>http://</code> with <code>CHOP_ORIGIN_ALLOW_HTTP</code>, without user information, a query string or a fragment. A loopback, private or link-local address needs <code>CHOP_ORIGIN_ALLOW_PRIVATE</code>.</p>
+<h3 id="credentials" tabindex="-1"><a class="header-anchor" href="#credentials">Credentials</a></h3>
+<p>Credentials need both a key and a secret. With only one of them, or with a session token alone, chop doesn't start. The error names the settings and not their values. With neither, requests are unsigned, which only works for a bucket with public read access, and chop prints a warning at startup.</p>
+<p>chop reads credentials once at startup and doesn't refresh them. Temporary credentials with a session token stop working when they expire in a long-running process, so restart chop when they rotate, or use static keys for a server. chop doesn't read instance metadata, shared credential files or web identity. The secret key and the session token are only read from the environment, there is no flag, and they never appear in a log, warning or error message.</p>
+<h3 id="errors" tabindex="-1"><a class="header-anchor" href="#errors">Errors</a></h3>
+<p>Errors are answered like those of an HTTP origin. A missing key, a <code>403</code> and a <code>404</code> are a plain <code>404</code> for the client. A <code>5xx</code>, a network or TLS error and a redirect are a <code>502</code>. A timeout is a <code>504</code>, and an object over <code>maxInputBytes</code> is a <code>413</code>.</p>
+<p>S3 explains an error in an XML body. A signature problem, a wrong key and a missing permission all look like a missing image to the client, so chop reads at most the first 2048 bytes of an error body, waits at most two seconds for them, and writes the <code>&lt;Code&gt;</code> to the standard error. The codes and their usual causes are in <a href="troubleshooting.html#s3-error-codes">Troubleshoot chop</a>. The codes never reach the client.</p>
+<h3 id="limits-of-the-s3-origin" tabindex="-1"><a class="header-anchor" href="#limits-of-the-s3-origin">Limits of the S3 origin</a></h3>
 <ul>
-<li><strong>Clock skew.</strong> S3 rejects a signature when the clock of the server is more than 15 minutes off, with <code>RequestTimeTooSkewed</code> or a <code>403</code>. That looks like a permission error, so check the code in the standard error and the time of the container.</li>
-<li><strong>Credentials from the environment.</strong> They are for Lambda and for static keys. chop reads them once at startup and doesn't refresh them, so temporary credentials with a session token stop working when they expire in a long-running process. Restart chop when they rotate, or use static keys for a server. It doesn't read instance metadata, shared credential files or web identity.</li>
-<li><strong>Interface VPC endpoints.</strong> A private endpoint for S3 resolves to private addresses, which chop blocks unless <code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code> is set. With a custom endpoint that is a host name, set it together with the endpoint.</li>
 <li><strong>GET only.</strong> chop reads whole objects with a signed <code>GET</code>. It doesn't list buckets, use ranges or presigned URLs.</li>
+<li><strong>Interface VPC endpoints.</strong> A private endpoint for S3 resolves to private addresses, which chop blocks unless <code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code> is set. Set it together with the endpoint.</li>
+<li><strong>SeaweedFS filer.</strong> SeaweedFS can also serve a bucket through its filer over plain HTTP, which needs no signature and no S3 settings. Use the <a href="https-origin.html">HTTP origin</a> with <code>CHOP_ORIGIN=http://seaweedfs:8888/buckets/&lt;bucket&gt;</code>, <code>CHOP_ORIGIN_ALLOW_HTTP=1</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code>, when the filer isn't exposed to anyone else. Use the S3 origin when you want access keys.</li>
 </ul>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/responses.html"><small>Previous</small>Responses</a><a rel="next" href="/docs/js/chop/latest/security.html"><small>Next</small>Securing remote origins</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/https-origin.html"><small>Previous</small>Serve images from an HTTPS origin</a><a rel="next" href="/docs/js/chop/latest/url-sources.html"><small>Next</small>Let requests name the image URL</a>
 </nav>
 
   </main>
