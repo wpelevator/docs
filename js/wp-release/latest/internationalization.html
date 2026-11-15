@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/wp-release">wp-release · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/internationalization.html" selected>latest</option>
+      <option value="/docs/js/wp-release/latest/internationalization.html" selected>Development (main)</option>
       <option value="/docs/js/wp-release/v0.21.0/internationalization.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/internationalization.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/internationalization.html">v0.20.1</option>
@@ -147,8 +153,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
@@ -159,10 +165,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/internationalization.html">Stable documentation (v0.21.0)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
+  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>Extract a POT file</h1><p class="lede">Extract the translatable strings of a plugin or theme into a reproducible POT file, and audit them, with Node.js alone.</p>
     <div class="actions" data-pagefind-ignore>
@@ -170,6 +178,12 @@
       <a href="/docs/markdown/js/wp-release/latest/internationalization.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#choose-what-to-extract">Choose what to extract</a></li><li data-level="2"><a href="#configure-extraction">Configure extraction</a></li><li data-level="2"><a href="#where-the-pot-is-written">Where the POT is written</a></li><li data-level="2"><a href="#supported-syntax">Supported syntax</a></li><li data-level="2"><a href="#errors-and-audit-findings">Errors and audit findings</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <p><code>i18n pot</code> reads the PHP, JavaScript, <code>block.json</code> and <code>theme.json</code> files of a plugin or theme and writes a POT file. It needs no PHP, WordPress installation, WP-CLI or network.</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release i18n pot <span class="token builtin class-name">.</span></code></pre>

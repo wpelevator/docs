@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/s3.html">latest</option>
+      <option value="/docs/js/chop/latest/s3.html">Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/s3.html" selected>v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -119,7 +125,6 @@
     <li><a href="/docs/js/chop/v0.2.1/caching.html">Caching</a></li>
     <li><a href="/docs/js/chop/v0.2.1/cli.html">CLI</a></li>
     <li><a href="/docs/js/chop/v0.2.1/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
     <li><a href="/docs/js/chop/v0.2.1/formats.html">Formats and quality</a></li>
     <li><a href="/docs/js/chop/v0.2.1/library.html">Library API</a></li>
     <li><a href="/docs/js/chop/v0.2.1/reference.html">Reference</a></li>
@@ -129,6 +134,7 @@
     <li><a href="/docs/js/chop/v0.2.1/security.html">Securing remote origins</a></li>
     <li><a href="/docs/js/chop/v0.2.1/sources.html">Sources</a></li>
     <li><a href="/docs/js/chop/v0.2.1/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -141,8 +147,9 @@
     <li><span aria-current="page">v0.2.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/s3.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/s3.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>S3 and S3-compatible storage</h1>
     <div class="actions" data-pagefind-ignore>
@@ -150,6 +157,7 @@
       <a href="/docs/markdown/js/chop/v0.2.1/s3.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p><code>CHOP_ORIGIN=s3://bucket</code> or <code>CHOP_ORIGIN=s3://bucket/prefix</code> reads the originals from a bucket, and <code>--origin s3://bucket</code> works too. The path of a request is appended to the prefix to make the key, so with <code>s3://my-bucket/uploads</code> the request <code>/2026/05/photo.jpg</code> reads the key <code>uploads/2026/05/photo.jpg</code>. Each segment is percent-encoded once, which is what S3 signs, so spaces, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code> and non-ASCII names work. The bucket name follows the S3 rules (3 to 63 lower case letters, digits, dots and hyphens), and a prefix can't have empty, <code>.</code> or <code>..</code> segments. An <code>s3://</code> origin can't be combined with an explicit <code>CHOP_DATA_DIR</code> or <code>--data</code>.</p>
 <p>chop signs every request to the bucket with AWS Signature Version 4, using only <code>node:crypto</code>. Everything else is the same as for an HTTP origin: the pinned DNS lookup and address checks, no redirects, the size cap while reading, the timeouts, and the fetch limit and queue. <code>CHOP_ORIGIN_ALLOW_HTTP</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE</code> apply to the endpoint, and URL sources from <code>CHOP_ALLOWED_HOSTS</code> still work next to an S3 origin. They are fetched without a signature, and the credentials are never sent to them.</p>

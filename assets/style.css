@@ -56,8 +56,8 @@
   --section: var(--space-6);
   --page-bottom: var(--space-7);
   --flow: 1.25rem;
-  /* The bottom bar: a control with the same space above and below it. */
-  --bar: 4.25rem;
+  /* Two search controls, their gap, symmetric padding and the top border. */
+  --bar: calc(var(--control-sm) + var(--control) + var(--space-1) + var(--space-3) * 2 + 1px);
 
   /* Colors: one definition per token for both schemes, light first. The dark palette
    * follows the main site at wpelevator.com. Borders of outlined controls reach 3:1 against
@@ -393,10 +393,23 @@ select {
 .search {
   display: none;
 
-  .js & { display: block; min-block-size: var(--control); }
+  .js & { display: grid; gap: var(--space-1); min-block-size: var(--control); }
+
+  .search-scope select {
+    inline-size: 100%;
+    min-block-size: var(--control-sm);
+    padding-inline-start: var(--space-2);
+    border: 1px solid var(--field-border);
+    border-radius: var(--radius);
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: var(--text-sm);
+
+    @media (width < 60rem) { font-size: var(--text-base); }
+  }
 
   /* Until the search script loads, a placeholder field holds the space. */
-  .bar-search &:empty::before {
+  .bar-search [data-search-widget]:empty::before {
     content: 'Search docs';
     display: block;
     block-size: var(--control);
@@ -438,7 +451,7 @@ article { display: grid; grid-template-columns: var(--col); gap: var(--space-5);
   gap: var(--space-3);
 
   h1 { font-size: var(--h1); }
-  .lede { margin-block-end: var(--space-3); color: var(--muted); font-size: var(--text-lg); line-height: 1.4; }
+  .lede { color: var(--muted); font-size: var(--text-lg); line-height: 1.4; }
 }
 
 .actions {
@@ -446,25 +459,37 @@ article { display: grid; grid-template-columns: var(--col); gap: var(--space-5);
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
-  padding-block-end: var(--space-4);
-  border-block-end: 1px solid var(--border);
+  font-size: var(--text-sm);
 
   :is(button, a) {
     display: inline-flex;
     align-items: center;
     min-block-size: var(--control);
-    padding-inline: var(--space-4);
-    border: 1px solid var(--field-border);
+    padding-inline: var(--space-2);
+    border: 0;
     border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--text);
-    text-decoration: none;
+    background: transparent;
+    color: var(--muted);
+    text-decoration: underline;
     cursor: pointer;
 
     @media (hover: hover) { &:hover { background: var(--hover); } }
   }
 
   button { display: none; .js & { display: inline-flex; } }
+}
+
+/* A compact, keyboard-operable outline of long pages. */
+.outline {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: var(--text-sm);
+
+  summary { font-weight: 600; cursor: pointer; }
+  ul { display: grid; gap: var(--space-1); margin-block-start: var(--space-2); list-style: none; }
+  li[data-level='3'] { padding-inline-start: var(--space-4); }
+  li[data-level='4'], li[data-level='5'], li[data-level='6'] { padding-inline-start: var(--space-6); }
 }
 
 /* Prose: the Markdown of a page. Its blocks are separated by one flow space, headings by more. */
@@ -630,7 +655,7 @@ article { display: grid; grid-template-columns: var(--col); gap: var(--space-5);
 
 /* Short screens, such as a phone on its side: a slimmer bar, and sheets that use the room. */
 @media (width < 60rem) and (height < 32rem) {
-  :root { --bar: 3.25rem; }
+  :root { --bar: calc(var(--control-sm) + var(--control) + var(--space-1) * 3 + 1px); }
 
   .js .bottom-bar { padding-block: var(--space-1); padding-block-end: calc(var(--space-1) + env(safe-area-inset-bottom, 0px)); }
   .js .sidebar, .bar-search .pagefind-ui__drawer { max-block-size: calc(100dvh - var(--bar) - var(--space-4)); }
@@ -661,6 +686,7 @@ article { display: grid; grid-template-columns: var(--col); gap: var(--space-5);
   /* The widget resets every property on its elements (`all: unset`), which drops the rule of the base layer. */
   :is(input, button, a) { touch-action: manipulation; }
   .pagefind-ui__search-input { font-size: var(--text-sm); font-weight: 400; }
+  .pagefind-ui__filter-panel { display: none; }
   .pagefind-ui__message { margin: 0 0 var(--space-2); padding-inline: var(--space-3); font-size: var(--text-sm); }
 
   /* A result is one link: the title link stretches over it. The rounded line Pagefind draws

@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/wp-release">wp-release · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/changelog.html" selected>latest</option>
+      <option value="/docs/js/wp-release/latest/changelog.html" selected>Development (main)</option>
       <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
@@ -147,8 +153,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html" aria-current="page">Changelog</a></li>
   </ul>
 </nav>
@@ -159,10 +165,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/index.html">Stable documentation (v0.21.0)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
+  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>Changelog</h1><p class="lede">What changed in each release.</p>
     <div class="actions" data-pagefind-ignore>
@@ -170,6 +178,12 @@
       <a href="/docs/markdown/js/wp-release/latest/changelog.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#0210-2026-11-11">0.21.0 (2026-11-11)</a></li><li data-level="2"><a href="#0202-2026-11-07">0.20.2 (2026-11-07)</a></li><li data-level="2"><a href="#0201-2026-11-04">0.20.1 (2026-11-04)</a></li><li data-level="2"><a href="#0200-2026-11-03">0.20.0 (2026-11-03)</a></li><li data-level="2"><a href="#0190-2026-10-31">0.19.0 (2026-10-31)</a></li><li data-level="2"><a href="#0182-2026-10-29">0.18.2 (2026-10-29)</a></li><li data-level="2"><a href="#0181-2026-10-29">0.18.1 (2026-10-29)</a></li><li data-level="2"><a href="#0180-2026-10-29">0.18.0 (2026-10-29)</a></li><li data-level="2"><a href="#0170-2026-10-13">0.17.0 (2026-10-13)</a></li><li data-level="2"><a href="#0160-2026-10-13">0.16.0 (2026-10-13)</a></li><li data-level="2"><a href="#0150-2026-10-13">0.15.0 (2026-10-13)</a></li><li data-level="2"><a href="#0140-2026-10-13">0.14.0 (2026-10-13)</a></li><li data-level="2"><a href="#0130-2026-10-12">0.13.0 (2026-10-12)</a></li><li data-level="2"><a href="#0120-2026-10-12">0.12.0 (2026-10-12)</a></li><li data-level="2"><a href="#0110-2026-10-12">0.11.0 (2026-10-12)</a></li><li data-level="2"><a href="#0100-2026-10-12">0.10.0 (2026-10-12)</a></li><li data-level="2"><a href="#090-2026-10-12">0.9.0 (2026-10-12)</a></li><li data-level="2"><a href="#080-2026-10-11">0.8.0 (2026-10-11)</a></li><li data-level="2"><a href="#070-2026-10-11">0.7.0 (2026-10-11)</a></li><li data-level="2"><a href="#061-2026-10-11">0.6.1 (2026-10-11)</a></li><li data-level="2"><a href="#060-2026-10-11">0.6.0 (2026-10-11)</a></li><li data-level="2"><a href="#050-2026-10-11">0.5.0 (2026-10-11)</a></li><li data-level="2"><a href="#041-2026-10-10">0.4.1 (2026-10-10)</a></li><li data-level="2"><a href="#040-2026-10-10">0.4.0 (2026-10-10)</a></li><li data-level="2"><a href="#030-2026-10-10">0.3.0 (2026-10-10)</a></li><li data-level="2"><a href="#020-2026-10-09">0.2.0 (2026-10-09)</a></li><li data-level="2"><a href="#011-2026-10-09">0.1.1 (2026-10-09)</a></li><li data-level="2"><a href="#010-2026-10-09">0.1.0 (2026-10-09)</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <h2 id="0210-2026-11-11" tabindex="-1"><a class="header-anchor" href="#0210-2026-11-11">0.21.0 (2026-11-11)</a></h2>
 <ul>
@@ -349,8 +363,6 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/latest/comparison.html"><small>Previous</small>Comparison with existing tools</a>
-</nav>
 
   </main>
 </div>

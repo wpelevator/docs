@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="php/php-changesets">php-changesets · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/github-actions.html">latest</option>
+      <option value="/docs/php/php-changesets/latest/github-actions.html">Development (main)</option>
       <option value="/docs/php/php-changesets/v2.0.1/github-actions.html">v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/github-actions.html" selected>v2.0.0</option>
     </select>
@@ -117,8 +123,8 @@
     <li><a href="/docs/php/php-changesets/v2.0.0/cli.html">Command line</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.0/comparison.html">Comparison with wp-release</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.0/configuration.html">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/v2.0.0/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.0/github-actions.html" aria-current="page">GitHub Actions</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.0/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -131,8 +137,9 @@
     <li><span aria-current="page">v2.0.0</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v2.0.0</strong>. <a href="/docs/php/php-changesets/latest/github-actions.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v2.0.0</strong>. <a href="/docs/php/php-changesets/latest/github-actions.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
   <header class="page-head">
     <h1>GitHub Actions</h1>
     <div class="actions" data-pagefind-ignore>
@@ -140,6 +147,7 @@
       <a href="/docs/markdown/php/php-changesets/v2.0.0/github-actions.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <h2 id="release-with-github-actions" tabindex="-1"><a class="header-anchor" href="#release-with-github-actions">Release with GitHub Actions</a></h2>
 <p>The CLI prepares releases, and other actions publish them. These workflows check that pull requests add changesets, open a release pull request whenever changesets are pending on <code>main</code>, and after it's merged, create the tag and GitHub release of every released package. Packagist picks up the new tags of Composer packages; add the <a href="https://github.com/marketplace/actions/wp-release-zip">WP Release Zip</a> and <a href="https://github.com/marketplace/actions/wp-release-deploy-svn">WP Release Deploy SVN</a> actions to the <code>release</code> job to ship a WordPress plugin.</p>
@@ -238,7 +246,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/v2.0.0/development.html"><small>Previous</small>Development</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/v2.0.0/configuration.html"><small>Previous</small>Configuration</a>
 </nav>
 
   </main>

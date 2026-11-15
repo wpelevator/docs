@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/nginx-cache.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/nginx-cache.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Cache with nginx</h1><p class="lede">An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,6 +173,7 @@
       <a href="/docs/markdown/js/chop/latest/nginx-cache.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Run an nginx cache in front of chop so each variant of an image is built once. Responses depend on the <code>Accept</code> header, and <code>Vary: Accept</code> alone makes nginx cache a separate copy for every distinct <code>Accept</code> string. Browsers send dozens of them, but chop only produces three variants of an image: AVIF, WebP and the source format. Collapse the header into those three buckets, use the bucket in the cache key, and send the same bucket upstream, so that the body in the cache always matches its key.</p>
 <p>Save this as an nginx configuration for the <code>http</code> context (in <code>/etc/nginx/conf.d</code> it already is) and point <code>proxy_pass</code> at chop:</p>

@@ -80,7 +80,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/checksums">checksums · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,12 +110,12 @@
 <nav aria-label="checksums documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/checksums/latest/index.html" aria-current="page">Overview</a></li>
-    <li><a href="/docs/js/checksums/latest/changelog.html">Changelog</a></li>
-    <li><a href="/docs/js/checksums/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/checksums/latest/formats.html">Formats</a></li>
     <li><a href="/docs/js/checksums/latest/hashing.html">Hashing</a></li>
     <li><a href="/docs/js/checksums/latest/manifests.html">Manifests</a></li>
     <li><a href="/docs/js/checksums/latest/verifying.html">Comparing and verifying</a></li>
+    <li><a href="/docs/js/checksums/latest/formats.html">Formats</a></li>
+    <li><a href="/docs/js/checksums/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/checksums/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -119,10 +125,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/checksums/latest/index.html">checksums</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/checksums">
+  <span class="visually-hidden" data-pagefind-meta="package">checksums</span>
   <header class="page-head">
     <h1>checksums</h1><p class="lede">Hash bytes and files, and write, read and verify checksum manifests in the sha256sum and WordPress.org formats.</p>
     <div class="actions" data-pagefind-ignore>
@@ -130,12 +138,22 @@
       <a href="/docs/markdown/js/checksums/latest/index.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Hash bytes and files, write and read checksum manifests in the <code>sha256sum</code> text format or the JSON format of the WordPress.org plugin checksums API, and compare them with the files. It uses only <code>node:crypto</code> and <code>node:fs</code>, with no runtime dependencies.</p>
 <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/checksums</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Requires Node.js 22.12 or later.</p>
+<h2 id="hash-your-first-bytes" tabindex="-1"><a class="header-anchor" href="#hash-your-first-bytes">Hash your first bytes</a></h2>
+<p>Save this as <code>example.mjs</code>:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> hashBytes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token function">hashBytes</span><span class="token punctuation">(</span> <span class="token string">'abc'</span> <span class="token punctuation">)</span><span class="token punctuation">.</span>sha256 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Run <code>node example.mjs</code>:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
 <ul>
 <li><a href="./hashing.html">Hashing</a></li>
@@ -147,7 +165,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/checksums/latest/changelog.html"><small>Next</small>Changelog</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/checksums/latest/hashing.html"><small>Next</small>Hashing</a>
 </nav>
 
   </main>

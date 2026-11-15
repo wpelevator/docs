@@ -178,7 +178,7 @@ function resultWithFragment(result) {
   const fragment = textFragment(section?.excerpt ?? result.excerpt);
   const target = fragment ? `${url}${url.includes('#') ? '' : '#'}${fragment}` : url;
 
-  return { ...result, url: target };
+  return { ...result, url: target, meta: { ...result.meta, title: result.meta.package ? `${result.meta.package} → ${result.meta.title}` : result.meta.title } };
 }
 
 // Search: Pagefind indexes the latest docs at build time, so it is missing
@@ -192,9 +192,18 @@ if (search) {
   const script = document.createElement('script');
   script.src = `${base}pagefind-ui.js`;
   script.onload = () => {
-    new PagefindUI({ element: search, showImages: false, showSubResults: false, baseUrl: root.dataset.base, translations: { placeholder: 'Search docs' }, processResult: resultWithFragment });
-    // The input only has a placeholder, which is not a label.
-    search.querySelector('input')?.setAttribute('aria-label', 'Search docs');
+    const scope = search.querySelector('[data-search-scope]');
+    const widget = search.querySelector('[data-search-widget]');
+    const ui = new PagefindUI({ element: widget, showImages: false, showSubResults: false, baseUrl: root.dataset.base, translations: { placeholder: 'Search development docs' }, processResult: resultWithFragment });
+    const input = widget.querySelector('input');
+    input?.setAttribute('aria-label', 'Search development documentation');
+    const applyScope = () => {
+      const query = input?.value ?? '';
+      ui.triggerFilters({ package: scope.value ? [scope.value] : [] });
+      if (query) ui.triggerSearch(query);
+    };
+    scope.addEventListener('change', applyScope);
+    applyScope();
   };
   script.onerror = () => search.remove();
   // The widget's stylesheet goes before ours, so our overrides win at equal specificity.

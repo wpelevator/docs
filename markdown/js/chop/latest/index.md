@@ -30,7 +30,9 @@ Authentication, URL signing and per-client rate limits belong to a CDN or a reve
 npm install @wpelevator/chop
 ```
 
-Requires Node.js 22.12 or later. The examples use the bare `chop` command, which exists after the install. Before it, use `npx @wpelevator/chop`, because bare `npx chop` doesn't run this package. The container image is `ghcr.io/wpelevator/chop`, described in [Run chop in Docker](docker.md).
+Requires Node.js 22.12 or later. After local installation, run `npx --no-install chop` from the project directory; local npm binaries are not normally on your shell's PATH. Without installation, use `npx @wpelevator/chop`, because bare `npx chop` doesn't run this package. The container image is `ghcr.io/wpelevator/chop`, described in [Run chop in Docker](docker.md).
+
+The unversioned `npx @wpelevator/chop` command uses the published npm package; development documentation can describe newer behavior. For the published `0.2.1` release documented here, see [chop 0.2.1 documentation](https://wpelevator.github.io/docs/js/chop/v0.2.1/). Check your installed version when choosing instructions.
 
 ## Pick a task
 

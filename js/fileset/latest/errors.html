@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/fileset">fileset · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,10 +111,10 @@
 <nav aria-label="fileset documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/fileset/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/fileset/latest/changelog.html">Changelog</a></li>
-    <li><a href="/docs/js/fileset/latest/errors.html" aria-current="page">Errors</a></li>
     <li><a href="/docs/js/fileset/latest/selecting-files.html">Selecting files</a></li>
     <li><a href="/docs/js/fileset/latest/syncing.html">Syncing a directory</a></li>
+    <li><a href="/docs/js/fileset/latest/errors.html" aria-current="page">Errors</a></li>
+    <li><a href="/docs/js/fileset/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -118,10 +124,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/fileset/latest/index.html">fileset</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/fileset">
+  <span class="visually-hidden" data-pagefind-meta="package">fileset</span>
   <header class="page-head">
     <h1>Errors</h1>
     <div class="actions" data-pagefind-ignore>
@@ -129,12 +137,13 @@
       <a href="/docs/markdown/js/fileset/latest/errors.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Invalid input throws a <code>FilesetError</code> with a Node-style <code>code</code>: <code>ERR_IGNORE_FILE_NOT_FOUND</code>, <code>ERR_MISSING_SOURCE_DIR</code> or <code>ERR_SYMLINK_SELECTED</code>. Use <code>isFilesetError( error )</code> to check for one, which also works when two copies of the package are installed, unlike <code>instanceof</code>. Other errors, like an unreadable directory, are the original errors of Node.js.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/fileset/latest/changelog.html"><small>Previous</small>Changelog</a><a rel="next" href="/docs/js/fileset/latest/selecting-files.html"><small>Next</small>Selecting files</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/fileset/latest/syncing.html"><small>Previous</small>Syncing a directory</a>
 </nav>
 
   </main>

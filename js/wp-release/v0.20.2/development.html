@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/wp-release">wp-release · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/development.html">latest</option>
+      <option value="/docs/js/wp-release/latest/development.html">Development (main)</option>
       <option value="/docs/js/wp-release/v0.21.0/development.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/development.html" selected>v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/development.html">v0.20.1</option>
@@ -124,10 +130,10 @@
     <li><a href="/docs/js/wp-release/v0.20.2/comparison.html">Comparison with other tools</a></li>
     <li><a href="/docs/js/wp-release/v0.20.2/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/v0.20.2/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/v0.20.2/development.html" aria-current="page">Development</a></li>
     <li><a href="/docs/js/wp-release/v0.20.2/internationalization.html">Internationalization</a></li>
     <li><a href="/docs/js/wp-release/v0.20.2/library.html">Library API</a></li>
     <li><a href="/docs/js/wp-release/v0.20.2/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/v0.20.2/development.html" aria-current="page">Development</a></li>
   </ul>
 </nav>
 
@@ -140,8 +146,9 @@
     <li><span aria-current="page">v0.20.2</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.20.2</strong>. <a href="/docs/js/wp-release/latest/development.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.20.2</strong>. <a href="/docs/js/wp-release/latest/development.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>Development</h1>
     <div class="actions" data-pagefind-ignore>
@@ -149,6 +156,7 @@
       <a href="/docs/markdown/js/wp-release/v0.20.2/development.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>The source is TypeScript in <code>src/</code>, with tests next to the files they test (<code>*.test.ts</code>). The published package contains only the compiled <code>dist/</code> with JavaScript and <code>.d.ts</code> files; tests and translation fixtures stay in the repository.</p>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> run build <span class="token parameter variable">--workspace</span> @wpelevator/wp-release
@@ -284,8 +292,6 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.20.2/deployment.html"><small>Previous</small>Deployment</a><a rel="next" href="/docs/js/wp-release/v0.20.2/internationalization.html"><small>Next</small>Internationalization</a>
-</nav>
 
   </main>
 </div>

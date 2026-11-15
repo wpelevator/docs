@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/security.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/security.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/security.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/security.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Secure remote origins</h1><p class="lede">Protect a chop server that fetches remote originals, and see what it checks on every fetch.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,6 +173,12 @@
       <a href="/docs/markdown/js/chop/latest/security.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#recommendations">Recommendations</a></li><li data-level="2"><a href="#reference">Reference</a></li><li data-level="3"><a href="#remote-originals-in-practice">Remote originals in practice</a></li><li data-level="3"><a href="#what-chop-checks-on-every-remote-fetch">What chop checks on every remote fetch</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <p>Remote originals are off by default, and chop checks every connection it makes. A URL source that names a loopback address is refused even when its host is on <code>CHOP_ALLOWED_HOSTS</code>, and the reason goes to the standard error while the client gets a plain <code>404</code>:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN_ALLOW_HTTP</span><span class="token operator">=</span><span class="token number">1</span> <span class="token assign-left variable">CHOP_ALLOWED_HOSTS</span><span class="token operator">=</span><span class="token number">127.0</span>.0.1:9000 npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>

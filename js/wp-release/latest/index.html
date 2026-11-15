@@ -80,7 +80,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/wp-release">wp-release · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -103,7 +109,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/index.html" selected>latest</option>
+      <option value="/docs/js/wp-release/latest/index.html" selected>Development (main)</option>
       <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
@@ -146,8 +152,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
+    <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
@@ -158,10 +164,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/index.html">Stable documentation (v0.21.0)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
+  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>wp-release</h1><p class="lede">Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.</p>
     <div class="actions" data-pagefind-ignore>
@@ -169,13 +177,15 @@
       <a href="/docs/markdown/js/wp-release/latest/index.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Releasing a WordPress plugin means a ZIP with the right root folder, the same version in several places, a changelog and, for WordPress.org, an SVN commit. <code>wp-release</code> does each of them with one command.</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--checksums</span>
 npx @wpelevator/wp-release version-check
 npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.4.2.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip
+/home/me/my-plugin/my-plugin.1.4.2.checksums.json
 All versions match 1.4.2.
 4 files match, 0 changed, 0 missing and 0 extra.</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -240,6 +250,7 @@ All versions match 1.4.2.
 <p>Node.js 22.12 or later is required. SVN deployments also need the <code>svn</code> command line client. Git deployments and changeset commands need Git.</p>
 <p>The package is an ES module with TypeScript declarations. CommonJS projects can load it with <code>require( '@wpelevator/wp-release' )</code> on Node.js 22.12 or later.</p>
 <p>Zero-install examples in these docs use <code>npx @wpelevator/wp-release</code>, because <code>npx wp-release</code> alone runs an unrelated npm package until this one is installed. After <code>npm install</code>, <code>npx wp-release</code> and <code>wp-release</code> in npm scripts are the same command.</p>
+<p>The unversioned <code>npx @wpelevator/wp-release</code> command uses the published npm package; development documentation can describe newer behavior. For the published <code>0.21.0</code> release documented here, see <a href="https://wpelevator.github.io/docs/js/wp-release/v0.21.0/">wp-release 0.21.0 documentation</a>. Check your installed version when choosing instructions.</p>
 <h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
 <ul>
 <li><a href="cli.html">CLI reference</a></li>

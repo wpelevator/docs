@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="php/php-changesets">php-changesets · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/cli.html">latest</option>
+      <option value="/docs/php/php-changesets/latest/cli.html">Development (main)</option>
       <option value="/docs/php/php-changesets/v2.0.1/cli.html">v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/cli.html" selected>v2.0.0</option>
     </select>
@@ -117,8 +123,8 @@
     <li><a href="/docs/php/php-changesets/v2.0.0/cli.html" aria-current="page">Command line</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.0/comparison.html">Comparison with wp-release</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.0/configuration.html">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/v2.0.0/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.0/github-actions.html">GitHub Actions</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.0/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -131,8 +137,9 @@
     <li><span aria-current="page">v2.0.0</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v2.0.0</strong>. <a href="/docs/php/php-changesets/latest/cli.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v2.0.0</strong>. <a href="/docs/php/php-changesets/latest/cli.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
   <header class="page-head">
     <h1>Command line</h1>
     <div class="actions" data-pagefind-ignore>
@@ -140,6 +147,12 @@
       <a href="/docs/markdown/php/php-changesets/v2.0.0/cli.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#commands">Commands</a></li><li data-level="2"><a href="#add-a-changeset">Add a changeset</a></li><li data-level="2"><a href="#check-pull-requests-for-changesets">Check pull requests for changesets</a></li><li data-level="2"><a href="#preview-and-apply-a-release">Preview and apply a release</a></li><li data-level="2"><a href="#version-some-packages">Version some packages</a></li><li data-level="2"><a href="#tags-and-release-notes">Tags and release notes</a></li><li data-level="2"><a href="#pre-releases">Pre-releases</a></li><li data-level="2"><a href="#github-actions-output">GitHub Actions output</a></li><li data-level="2"><a href="#annotations-and-job-summaries">Annotations and job summaries</a></li><li data-level="2"><a href="#exit-codes">Exit codes</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <h2 id="commands" tabindex="-1"><a class="header-anchor" href="#commands">Commands</a></h2>
 <p>Run commands from the project root, or pass <code>--root DIRECTORY</code>.</p>

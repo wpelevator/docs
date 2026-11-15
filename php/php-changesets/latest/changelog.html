@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="php/php-changesets">php-changesets · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/changelog.html" selected>latest</option>
+      <option value="/docs/php/php-changesets/latest/changelog.html" selected>Development (main)</option>
       <option value="/docs/php/php-changesets/v2.0.1/index.html">v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/index.html">v2.0.0</option>
     </select>
@@ -113,12 +119,12 @@
 <nav aria-label="php-changesets documentation">
   <ul class="nav-list">
     <li><a href="/docs/php/php-changesets/latest/index.html">Overview</a></li>
-    <li><a href="/docs/php/php-changesets/latest/changelog.html" aria-current="page">Changelog</a></li>
     <li><a href="/docs/php/php-changesets/latest/cli.html">Command line</a></li>
-    <li><a href="/docs/php/php-changesets/latest/comparison.html">Comparison with wp-release</a></li>
-    <li><a href="/docs/php/php-changesets/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/latest/github-actions.html">GitHub Actions</a></li>
+    <li><a href="/docs/php/php-changesets/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/latest/comparison.html">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/latest/changelog.html" aria-current="page">Changelog</a></li>
   </ul>
 </nav>
 
@@ -128,10 +134,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · revision a0529e4. <a href="/docs/php/php-changesets/v2.0.1/index.html">Stable documentation (v2.0.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:php/php-changesets">
+  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
   <header class="page-head">
     <h1>Changelog</h1><p class="lede">What changed in each release.</p>
     <div class="actions" data-pagefind-ignore>
@@ -139,6 +147,12 @@
       <a href="/docs/markdown/php/php-changesets/latest/changelog.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#201-2026-11-11">2.0.1 (2026-11-11)</a></li><li data-level="2"><a href="#200-2026-10-29">2.0.0 (2026-10-29)</a></li><li data-level="2"><a href="#100-2026-10-29">1.0.0 (2026-10-29)</a></li><li data-level="2"><a href="#011-2026-10-29">0.1.1 (2026-10-29)</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <h2 id="201-2026-11-11" tabindex="-1"><a class="header-anchor" href="#201-2026-11-11">2.0.1 (2026-11-11)</a></h2>
 <ul>
@@ -160,8 +174,6 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/php/php-changesets/latest/cli.html"><small>Next</small>Command line</a>
-</nav>
 
   </main>
 </div>

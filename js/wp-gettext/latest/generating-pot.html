@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/wp-gettext">wp-gettext · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,13 +111,13 @@
 <nav aria-label="wp-gettext documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/wp-gettext/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/wp-gettext/latest/changelog.html">Changelog</a></li>
-    <li><a href="/docs/js/wp-gettext/latest/command-line.html">Command line</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/parsing.html">Parsing a source</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/generating-pot.html" aria-current="page">Generating a POT</a></li>
     <li><a href="/docs/js/wp-gettext/latest/compiling.html">Compiling translations</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/command-line.html">Command line</a></li>
     <li><a href="/docs/js/wp-gettext/latest/entries.html">Sub-path exports</a></li>
     <li><a href="/docs/js/wp-gettext/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/wp-gettext/latest/generating-pot.html" aria-current="page">Generating a POT</a></li>
-    <li><a href="/docs/js/wp-gettext/latest/parsing.html">Parsing a source</a></li>
+    <li><a href="/docs/js/wp-gettext/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -121,10 +127,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-gettext/latest/index.html">wp-gettext</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/wp-gettext">
+  <span class="visually-hidden" data-pagefind-meta="package">wp-gettext</span>
   <header class="page-head">
     <h1>Generating a POT</h1>
     <div class="actions" data-pagefind-ignore>
@@ -132,6 +140,7 @@
       <a href="/docs/markdown/js/wp-gettext/latest/generating-pot.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> generatePackagePot <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-gettext/generate'</span><span class="token punctuation">;</span>
 
@@ -155,7 +164,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-gettext/latest/errors.html"><small>Previous</small>Errors</a><a rel="next" href="/docs/js/wp-gettext/latest/parsing.html"><small>Next</small>Parsing a source</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-gettext/latest/parsing.html"><small>Previous</small>Parsing a source</a><a rel="next" href="/docs/js/wp-gettext/latest/compiling.html"><small>Next</small>Compiling translations</a>
 </nav>
 
   </main>

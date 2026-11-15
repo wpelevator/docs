@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/index.html">latest</option>
+      <option value="/docs/js/chop/latest/index.html">Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/index.html" selected>v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -118,7 +124,6 @@
     <li><a href="/docs/js/chop/v0.2.1/caching.html">Caching</a></li>
     <li><a href="/docs/js/chop/v0.2.1/cli.html">CLI</a></li>
     <li><a href="/docs/js/chop/v0.2.1/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
     <li><a href="/docs/js/chop/v0.2.1/formats.html">Formats and quality</a></li>
     <li><a href="/docs/js/chop/v0.2.1/library.html">Library API</a></li>
     <li><a href="/docs/js/chop/v0.2.1/reference.html">Reference</a></li>
@@ -128,6 +133,7 @@
     <li><a href="/docs/js/chop/v0.2.1/security.html">Securing remote origins</a></li>
     <li><a href="/docs/js/chop/v0.2.1/sources.html">Sources</a></li>
     <li><a href="/docs/js/chop/v0.2.1/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -140,8 +146,9 @@
     <li><span aria-current="page">v0.2.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>chop</h1><p class="lede">An HTTP image server for responsive images, with AVIF and WebP chosen from the Accept header.</p>
     <div class="actions" data-pagefind-ignore>
@@ -149,6 +156,7 @@
       <a href="/docs/markdown/js/chop/v0.2.1/index.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p><code>@wpelevator/chop</code> is an HTTP image server for responsive images. It serves resized, converted and optimized copies of originals from a local data directory, from an HTTP(S) origin or from an S3 bucket, and chooses AVIF, WebP or the original format from the <code>Accept</code> header of each request. It's built on <a href="https://sharp.pixelplumbing.com/">sharp</a>, which is its only runtime dependency, and works as a command line server or as a library with a request handler that doesn't depend on an HTTP framework.</p>
 <p>It's read-only: it never writes to the data directory or any other directory. With a data directory, which is the default, it makes no network requests. Remote originals are opt-in, are fetched with strict <a href="security.html">safeguards</a>, and only from the configured origin or from hosts that you list. Authentication, URL signing and per-client rate limits are left to a CDN or a reverse proxy. The behavior is summarized in the <a href="reference.html">reference</a>.</p>

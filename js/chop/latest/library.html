@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/library.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/library.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/library.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html" aria-current="page">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/library.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Library API</h1><p class="lede">Embed chop in your own server with createHandler, and look up its exports and error codes.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,6 +173,7 @@
       <a href="/docs/markdown/js/chop/latest/library.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Call chop from your own code: pass a request object to the handler and get a response object back, with no HTTP framework in between. That runs in a <code>node:http</code> server, a serverless function or a test. Install the package as described in the <a href="index.html#install">overview</a>.</p>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createHandler<span class="token punctuation">,</span> createServer <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/chop'</span><span class="token punctuation">;</span>
@@ -308,7 +318,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/responses.html"><small>Previous</small>Responses and errors</a><a rel="next" href="/docs/js/chop/latest/development.html"><small>Next</small>Development</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/latest/responses.html"><small>Previous</small>Responses and errors</a><a rel="next" href="/docs/js/chop/latest/legacy-reference.html"><small>Next</small>Former reference pages</a>
 </nav>
 
   </main>

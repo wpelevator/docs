@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="php/php-changesets">php-changesets · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/configuration.html" selected>latest</option>
+      <option value="/docs/php/php-changesets/latest/configuration.html" selected>Development (main)</option>
       <option value="/docs/php/php-changesets/v2.0.1/configuration.html">v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/configuration.html">v2.0.0</option>
     </select>
@@ -113,12 +119,12 @@
 <nav aria-label="php-changesets documentation">
   <ul class="nav-list">
     <li><a href="/docs/php/php-changesets/latest/index.html">Overview</a></li>
-    <li><a href="/docs/php/php-changesets/latest/changelog.html">Changelog</a></li>
     <li><a href="/docs/php/php-changesets/latest/cli.html">Command line</a></li>
-    <li><a href="/docs/php/php-changesets/latest/comparison.html">Comparison with wp-release</a></li>
-    <li><a href="/docs/php/php-changesets/latest/configuration.html" aria-current="page">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/latest/github-actions.html">GitHub Actions</a></li>
+    <li><a href="/docs/php/php-changesets/latest/configuration.html" aria-current="page">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/latest/comparison.html">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -128,10 +134,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · revision a0529e4. <a href="/docs/php/php-changesets/v2.0.1/configuration.html">Stable documentation (v2.0.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:php/php-changesets">
+  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
   <header class="page-head">
     <h1>Configuration</h1>
     <div class="actions" data-pagefind-ignore>
@@ -139,6 +147,12 @@
       <a href="/docs/markdown/php/php-changesets/latest/configuration.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#workspace-settings">Workspace settings</a></li><li data-level="2"><a href="#hooks">Hooks</a></li><li data-level="2"><a href="#version-descriptors">Version descriptors</a></li><li data-level="2"><a href="#builder-helpers">Builder helpers</a></li><li data-level="2"><a href="#callback-descriptors">Callback descriptors</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <p>The configuration lives in <code>changesets.config.php</code> at the project root, the analog of <code>wp-release.config.mjs</code>. The global <code>--config PATH</code> selects another file for one command.</p>
 <p>With no config, <code>init</code> infers the single project from a root Composer manifest or WordPress plugin headers as one group, tagged <code>v{version}</code> like the <code>wp-release</code> single-project default. The package is named by its Composer <code>name</code>, or for a plugin without one, by the slug of its main plugin file, like <code>demo</code> for <code>demo.php</code>, never by the checkout directory. <code>--project-name NAME</code> names any other project without a config. Readme changelog updates are opt-in, like in <code>wp-release</code>, so the scaffold of a plugin carries <code>readmeChangelog</code> commented out. When every directory under <code>packages/*</code> declares a Composer name and version, inference adds a second group for them. Other layouts keep the single group, and the scaffold carries a commented template that shows how to add groups. The config lives outside the changeset directory, so <code>.changeset/</code> holds only the Markdown changesets and its <code>README.md</code>.</p>
@@ -452,7 +466,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/latest/comparison.html"><small>Previous</small>Comparison with wp-release</a><a rel="next" href="/docs/php/php-changesets/latest/development.html"><small>Next</small>Development</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/latest/github-actions.html"><small>Previous</small>GitHub Actions</a><a rel="next" href="/docs/php/php-changesets/latest/comparison.html"><small>Next</small>Comparison with wp-release</a>
 </nav>
 
   </main>

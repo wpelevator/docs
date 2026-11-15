@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/docker.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/docker.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Run chop in Docker</h1><p class="lede">Run chop from the ghcr.io/wpelevator/chop container image with a read-only mount, environment settings, a health check and an nginx cache.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,6 +173,7 @@
       <a href="/docs/markdown/js/chop/latest/docker.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Run the published image with the originals mounted read-only and the port published. The image installs the published npm package, so the documentation of that version applies.</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">docker</span> run <span class="token parameter variable">--rm</span> --read-only --cap-drop ALL <span class="token punctuation">\</span>

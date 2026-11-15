@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/zip">zip · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,11 +111,11 @@
 <nav aria-label="zip documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/zip/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/zip/latest/changelog.html" aria-current="page">Changelog</a></li>
-    <li><a href="/docs/js/zip/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
     <li><a href="/docs/js/zip/latest/reproducible-archives.html">Reproducible archives</a></li>
     <li><a href="/docs/js/zip/latest/safe-extraction.html">Safe extraction</a></li>
-    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
+    <li><a href="/docs/js/zip/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/zip/latest/changelog.html" aria-current="page">Changelog</a></li>
   </ul>
 </nav>
 
@@ -119,10 +125,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/zip/latest/index.html">zip</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/zip">
+  <span class="visually-hidden" data-pagefind-meta="package">zip</span>
   <header class="page-head">
     <h1>Changelog</h1><p class="lede">What changed in each release.</p>
     <div class="actions" data-pagefind-ignore>
@@ -130,6 +138,7 @@
       <a href="/docs/markdown/js/zip/latest/changelog.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <h2 id="010-2026-10-29" tabindex="-1"><a class="header-anchor" href="#010-2026-10-29">0.1.0 (2026-10-29)</a></h2>
 <ul>
@@ -138,8 +147,6 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/zip/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/js/zip/latest/errors.html"><small>Next</small>Errors</a>
-</nav>
 
   </main>
 </div>

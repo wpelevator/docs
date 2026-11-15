@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/subtree-split">subtree-split · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/subtree-split/latest/cli.html">latest</option>
+      <option value="/docs/js/subtree-split/latest/cli.html">Development (main)</option>
       <option value="/docs/js/subtree-split/v0.2.2/cli.html" selected>v0.2.2</option>
       <option value="/docs/js/subtree-split/v0.2.1/cli.html">v0.2.1</option>
     </select>
@@ -117,9 +123,9 @@
     <li><a href="/docs/js/subtree-split/v0.2.2/caching.html">Caching</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/cli.html" aria-current="page">CLI</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/compatibility.html">Compatibility with git subtree split</a></li>
-    <li><a href="/docs/js/subtree-split/v0.2.2/development.html">Development</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/github-actions.html">GitHub Actions</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/library.html">Library API</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.2/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -132,8 +138,9 @@
     <li><span aria-current="page">v0.2.2</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.2.2</strong>. <a href="/docs/js/subtree-split/latest/cli.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.2.2</strong>. <a href="/docs/js/subtree-split/latest/cli.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">subtree-split</span>
   <header class="page-head">
     <h1>CLI</h1>
     <div class="actions" data-pagefind-ignore>
@@ -141,6 +148,7 @@
       <a href="/docs/markdown/js/subtree-split/v0.2.2/cli.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">subtree-split <span class="token parameter variable">--prefix</span> packages/my-library <span class="token parameter variable">--ref</span> main --git-dir-cache</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>

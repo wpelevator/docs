@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/production-checklist.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/production-checklist.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Prepare chop for production</h1><p class="lede">The settings and surroundings to check before chop serves real traffic, limits, allowed widths, a cache, a read-only container and the startup warnings.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,6 +173,7 @@
       <a href="/docs/markdown/js/chop/latest/production-checklist.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Set the limits, allow the widths you use, and put a cache in front. A server with the defaults accepts originals up to 50 MiB and any output width up to 8192, which is more than a typical site needs. This run lowers the limits, allows four widths and prints an access log:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span>,960,1280 <span class="token punctuation">\</span>
@@ -171,7 +181,7 @@
 <span class="token assign-left variable">CHOP_MAX_INPUT_PIXELS</span><span class="token operator">=</span><span class="token number">50000000</span> <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_AUTO_FORMATS</span><span class="token operator">=</span>webp <span class="token punctuation">\</span>
 <span class="token assign-left variable">CHOP_ACCESS_LOG</span><span class="token operator">=</span><span class="token number">1</span> <span class="token punctuation">\</span>
-chop <span class="token parameter variable">--data</span> /var/www/uploads</code></pre>
+npx @wpelevator/chop <span class="token parameter variable">--data</span> /var/www/uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>An original over the limit is then a <code>413</code> with a plain message, and the client learns nothing about your files:</p>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 413 Payload Too Large

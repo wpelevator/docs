@@ -12,6 +12,22 @@ npm install @wpelevator/checksums
 
 Requires Node.js 22.12 or later.
 
+## Hash your first bytes
+
+Save this as `example.mjs`:
+
+```js
+import { hashBytes } from '@wpelevator/checksums';
+
+console.log( hashBytes( 'abc' ).sha256 );
+```
+
+Run `node example.mjs`:
+
+```text
+ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+```
+
 ## Guides
 
 - [Hashing](./hashing.md)

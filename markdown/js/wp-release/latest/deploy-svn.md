@@ -2,11 +2,30 @@
 
 Sync a plugin to the WordPress.org SVN repository, create the version tag and update the readme and assets in one commit.
 
-`deploy svn` syncs a plugin to its WordPress.org SVN repository. Run it with `--dry-run` first: it checks out the repository, plans the changes and lists them, without committing. The example uses a local test repository; leave out `--svn-url` and `--slug` to use `https://plugins.svn.wordpress.org/{slug}/`.
+`deploy svn` syncs a plugin to its WordPress.org SVN repository. From your plugin directory, with Node.js 22.12 or later, npm, the `svn` client and an existing WordPress.org plugin repository, preview a release without committing:
 
 ```sh
-npx @wpelevator/wp-release deploy svn --svn-url file:///home/me/svnrepo --slug my-plugin --trunk --svn-tag 1.5.0 --dry-run
+npx @wpelevator/wp-release deploy svn --trunk --svn-tag 1.5.0 --dry-run
 ```
+
+Replace `1.5.0` with your version. The command checks out `https://plugins.svn.wordpress.org/{slug}/`, plans the changes and lists SVN status; the files and counts depend on the plugin and repository. A dry run still contacts and checks out the repository, but does not commit. A local SVN fixture produced this excerpt without contacting WordPress.org:
+
+```text
+Deploying version 1.5.0.
+== SVN status
+added       tags/1.5.0
+added       tags/1.5.0/my-plugin.php
+added       tags/1.5.0/readme.txt
+added       trunk/my-plugin.php
+added       trunk/readme.txt
+Dry run, skipped committing 5 changes.
+```
+
+The [`wp-release-deploy-svn`](https://github.com/wpelevator/wp-release-deploy-svn) GitHub Action runs this command.
+
+## Example transcript from a local repository
+
+The following transcript uses a disposable local SVN repository and a sample plugin, not WordPress.org. Paths are normalized. It illustrates the detailed output for `--svn-url file:///home/me/svnrepo --slug my-plugin --trunk --svn-tag 1.5.0 --dry-run`:
 
 ```text
 == Planned changes
@@ -72,8 +91,6 @@ Copy trunk/ to tags/1.5.0
 Commit "Release version 1.5.0"
 Deploying version 1.5.0.
 ```
-
-The [`wp-release-deploy-svn`](https://github.com/wpelevator/wp-release-deploy-svn) GitHub Action runs this command.
 
 ## Choose what to write
 

@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="php/php-changesets">php-changesets · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/comparison.html">latest</option>
+      <option value="/docs/php/php-changesets/latest/comparison.html">Development (main)</option>
       <option value="/docs/php/php-changesets/v2.0.1/comparison.html" selected>v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/comparison.html">v2.0.0</option>
     </select>
@@ -117,8 +123,8 @@
     <li><a href="/docs/php/php-changesets/v2.0.1/cli.html">Command line</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.1/comparison.html" aria-current="page">Comparison with wp-release</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.1/configuration.html">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/v2.0.1/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/v2.0.1/github-actions.html">GitHub Actions</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -131,8 +137,9 @@
     <li><span aria-current="page">v2.0.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v2.0.1</strong>. <a href="/docs/php/php-changesets/latest/comparison.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v2.0.1</strong>. <a href="/docs/php/php-changesets/latest/comparison.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
   <header class="page-head">
     <h1>Comparison with wp-release</h1>
     <div class="actions" data-pagefind-ignore>
@@ -140,6 +147,7 @@
       <a href="/docs/markdown/php/php-changesets/v2.0.1/comparison.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>PHP Changesets is the PHP counterpart of the <code>changeset</code> commands of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose <code>wp-release</code> when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same <code>releases[]</code> plan, so a repository can switch between them.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">

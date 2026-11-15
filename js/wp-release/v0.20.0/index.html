@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/wp-release">wp-release · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/index.html">latest</option>
+      <option value="/docs/js/wp-release/latest/index.html">Development (main)</option>
       <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
@@ -123,10 +129,10 @@
     <li><a href="/docs/js/wp-release/v0.20.0/comparison.html">Comparison with other tools</a></li>
     <li><a href="/docs/js/wp-release/v0.20.0/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/v0.20.0/deployment.html">Deployment</a></li>
-    <li><a href="/docs/js/wp-release/v0.20.0/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/v0.20.0/internationalization.html">Internationalization</a></li>
     <li><a href="/docs/js/wp-release/v0.20.0/library.html">Library API</a></li>
     <li><a href="/docs/js/wp-release/v0.20.0/packaging.html">Packaging and integrity</a></li>
+    <li><a href="/docs/js/wp-release/v0.20.0/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -139,8 +145,9 @@
     <li><span aria-current="page">v0.20.0</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.20.0</strong>. <a href="/docs/js/wp-release/latest/index.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.20.0</strong>. <a href="/docs/js/wp-release/latest/index.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>WP Release</h1><p class="lede">Build and release WordPress plugins, themes, and packages.</p>
     <div class="actions" data-pagefind-ignore>
@@ -148,6 +155,7 @@
       <a href="/docs/markdown/js/wp-release/v0.20.0/index.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p><code>@wpelevator/wp-release</code> provides a CLI and library for building release directories and ZIPs, creating checksums and signatures, checking versions, extracting and compiling translations, and deploying to WordPress.org SVN or Git repositories.</p>
 <p>The <a href="https://github.com/wpelevator/wp-release-zip"><code>wp-release-zip</code></a>, <a href="https://github.com/wpelevator/wp-release-checksums"><code>wp-release-checksums</code></a>, <a href="https://github.com/wpelevator/wp-release-sign"><code>wp-release-sign</code></a>, and <a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wp-release-deploy-svn</code></a> GitHub Actions expose the same commands in workflows.</p>

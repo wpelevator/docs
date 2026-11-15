@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/subtree-split">subtree-split · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/subtree-split/latest/caching.html">latest</option>
+      <option value="/docs/js/subtree-split/latest/caching.html">Development (main)</option>
       <option value="/docs/js/subtree-split/v0.2.2/caching.html" selected>v0.2.2</option>
       <option value="/docs/js/subtree-split/v0.2.1/caching.html">v0.2.1</option>
     </select>
@@ -117,9 +123,9 @@
     <li><a href="/docs/js/subtree-split/v0.2.2/caching.html" aria-current="page">Caching</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/cli.html">CLI</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/compatibility.html">Compatibility with git subtree split</a></li>
-    <li><a href="/docs/js/subtree-split/v0.2.2/development.html">Development</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/github-actions.html">GitHub Actions</a></li>
     <li><a href="/docs/js/subtree-split/v0.2.2/library.html">Library API</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.2/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -132,8 +138,9 @@
     <li><span aria-current="page">v0.2.2</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.2.2</strong>. <a href="/docs/js/subtree-split/latest/caching.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.2.2</strong>. <a href="/docs/js/subtree-split/latest/caching.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">subtree-split</span>
   <header class="page-head">
     <h1>Caching</h1>
     <div class="actions" data-pagefind-ignore>
@@ -141,6 +148,7 @@
       <a href="/docs/markdown/js/subtree-split/v0.2.2/caching.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Every run splits the whole history again. <code>--git-dir-cache</code> remembers the results in <code>.git/subtree-split-cache/</code>, so the next run only processes the commits that are new. On gutenberg that takes <code>packages/components</code> from 1.7 seconds to 0.3. On a small repository it makes no difference.</p>
 <p>A fresh CI checkout has no cache. Give <code>--cache</code> a file that you save and restore between runs, or set it once with <code>SUBTREE_SPLIT_CACHE</code>.</p>

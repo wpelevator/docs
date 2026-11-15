@@ -12,6 +12,29 @@ npm install @wpelevator/wp-gettext
 
 Requires Node.js 22.12 or later.
 
+## Extract your first message
+
+Save this as `example.mjs`:
+
+```js
+import { parsePhpTranslations } from '@wpelevator/wp-gettext/php';
+
+const { messages, diagnostics } = parsePhpTranslations( {
+	contents: '<?php __( "Hello", "my-plugin" );',
+	file: 'my-plugin.php',
+	domain: 'my-plugin',
+} );
+console.log( messages[ 0 ].id );
+console.log( `Diagnostics: ${ diagnostics.length }` );
+```
+
+Run `node example.mjs`:
+
+```text
+Hello
+Diagnostics: 0
+```
+
 ## Guides
 
 - [Sub-path exports](./entries.md)

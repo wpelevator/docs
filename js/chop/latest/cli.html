@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/cli.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/cli.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/cli.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/cli.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Run the server</h1><p class="lede">Run the chop server, read its access log and startup warnings, and look up its flags, environment variables and exit codes.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,14 +173,15 @@
       <a href="/docs/markdown/js/chop/latest/cli.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>The <code>chop</code> command runs the server. Give it a data directory or an origin, and a port:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">chop <span class="token parameter variable">--data</span> /var/www/wp-content/uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/chop <span class="token parameter variable">--data</span> /var/www/wp-content/uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /var/www/wp-content/uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Add <code>CHOP_ACCESS_LOG=1</code> to print one JSON line per request to the standard output, and use <code>/healthz</code> for health checks. This run also sets <code>CHOP_ALLOWED_WIDTHS=320,640</code>, and the log shows requests for <code>?w=300</code>, <code>?w=320</code> and <code>/healthz</code>:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span> <span class="token assign-left variable">CHOP_ACCESS_LOG</span><span class="token operator">=</span><span class="token number">1</span> chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span> <span class="token assign-left variable">CHOP_ACCESS_LOG</span><span class="token operator">=</span><span class="token number">1</span> npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /home/me/uploads
 {&quot;method&quot;:&quot;GET&quot;,&quot;path&quot;:&quot;/2026/05/photo.jpg&quot;,&quot;status&quot;:400,&quot;duration&quot;:5,&quot;bytes&quot;:54}
@@ -181,7 +191,7 @@
 <p>The width of 300 is not in the list, so it is a <code>400</code>. The <code>path</code> has no query string, and <code>duration</code> is in milliseconds.</p>
 <h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
 <h3 id="listen-on-one-interface" tabindex="-1"><a class="header-anchor" href="#listen-on-one-interface">Listen on one interface</a></h3>
-<p><code>chop --host 127.0.0.1 --port 3000</code> accepts connections from the same machine only.</p>
+<p><code>npx @wpelevator/chop --host 127.0.0.1 --port 3000</code> accepts connections from the same machine only.</p>
 <h3 id="switch-between-a-directory-and-an-origin" tabindex="-1"><a class="header-anchor" href="#switch-between-a-directory-and-an-origin">Switch between a directory and an origin</a></h3>
 <p><code>--origin</code> replaces <code>CHOP_DATA_DIR</code>, and <code>--data</code> replaces <code>CHOP_ORIGIN</code>, so a flag works in an environment that sets the other one. Passing both flags is an invalid setting.</p>
 <h3 id="stop-it-cleanly" tabindex="-1"><a class="header-anchor" href="#stop-it-cleanly">Stop it cleanly</a></h3>
@@ -207,32 +217,32 @@
 <tr>
 <td><code>-d</code>, <code>--data &lt;dir&gt;</code></td>
 <td>Directory with the original images. Defaults to <code>CHOP_DATA_DIR</code>, then <code>/data</code>. Can't be combined with <code>--origin</code>.</td>
-<td><code>chop --data /srv/images</code></td>
+<td><code>npx @wpelevator/chop --data /srv/images</code></td>
 </tr>
 <tr>
 <td><code>-o</code>, <code>--origin &lt;url&gt;</code></td>
 <td>Serve the images of this <code>https://</code> origin (<code>http://</code> with <code>CHOP_ORIGIN_ALLOW_HTTP</code>), like <code>https://uploads.example.com/base</code>, or of an S3 bucket, like <code>s3://my-bucket/uploads</code>, instead of a directory. Defaults to <code>CHOP_ORIGIN</code>. See <a href="sources.html">Sources</a> and <a href="s3.html">Serve images from S3</a>.</td>
-<td><code>chop --origin https://uploads.example.com</code></td>
+<td><code>npx @wpelevator/chop --origin https://uploads.example.com</code></td>
 </tr>
 <tr>
 <td><code>-p</code>, <code>--port &lt;n&gt;</code></td>
 <td>Port to listen on. Defaults to <code>PORT</code>, then <code>CHOP_PORT</code>, then <code>8080</code>. Use <code>0</code> for a free port.</td>
-<td><code>chop -p 3000</code></td>
+<td><code>npx @wpelevator/chop -p 3000</code></td>
 </tr>
 <tr>
 <td><code>--host &lt;address&gt;</code></td>
 <td>Address to listen on. Defaults to <code>CHOP_HOST</code>, then <code>0.0.0.0</code>.</td>
-<td><code>chop --host 127.0.0.1</code></td>
+<td><code>npx @wpelevator/chop --host 127.0.0.1</code></td>
 </tr>
 <tr>
 <td><code>--scheme &lt;name&gt;</code></td>
 <td>URL scheme, <code>query</code> or <code>cloudflare</code>. Repeat it to enable several, tried in order, and list <code>query</code> last. Overrides <code>CHOP_SCHEMES</code>. See <a href="from-cloudflare.html">URL schemes</a>.</td>
-<td><code>chop --scheme cloudflare --scheme query</code></td>
+<td><code>npx @wpelevator/chop --scheme cloudflare --scheme query</code></td>
 </tr>
 <tr>
 <td><code>-h</code>, <code>--help</code></td>
 <td>Show the usage.</td>
-<td><code>chop --help</code></td>
+<td><code>npx @wpelevator/chop --help</code></td>
 </tr>
 </tbody>
 </table>

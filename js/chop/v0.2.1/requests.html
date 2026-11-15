@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/index.html">latest</option>
+      <option value="/docs/js/chop/latest/index.html">Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/requests.html" selected>v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -119,7 +125,6 @@
     <li><a href="/docs/js/chop/v0.2.1/caching.html">Caching</a></li>
     <li><a href="/docs/js/chop/v0.2.1/cli.html">CLI</a></li>
     <li><a href="/docs/js/chop/v0.2.1/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
     <li><a href="/docs/js/chop/v0.2.1/formats.html">Formats and quality</a></li>
     <li><a href="/docs/js/chop/v0.2.1/library.html">Library API</a></li>
     <li><a href="/docs/js/chop/v0.2.1/reference.html">Reference</a></li>
@@ -129,6 +134,7 @@
     <li><a href="/docs/js/chop/v0.2.1/security.html">Securing remote origins</a></li>
     <li><a href="/docs/js/chop/v0.2.1/sources.html">Sources</a></li>
     <li><a href="/docs/js/chop/v0.2.1/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -141,8 +147,9 @@
     <li><span aria-current="page">v0.2.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Requests</h1>
     <div class="actions" data-pagefind-ignore>
@@ -150,6 +157,7 @@
       <a href="/docs/markdown/js/chop/v0.2.1/requests.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>The URL path selects the original, like <code>/2026/05/photo.jpg</code> for <code>&lt;data&gt;/2026/05/photo.jpg</code> or for <code>&lt;origin&gt;/2026/05/photo.jpg</code> when an <a href="sources.html">origin</a> is configured, and a <a href="url-schemes.html">URL scheme</a> selects the operations. The default <code>query</code> scheme reads them from the query string. Unknown arguments are ignored, so cache-busting arguments like <code>ver=3</code> are harmless. A malformed value of a known argument is a <code>400</code> with a message that names the argument. <code>GET /healthz</code> answers <code>ok</code> without touching the data directory or the origin. Only <code>GET</code> and <code>HEAD</code> are allowed.</p>
 <p>Operations run in a fixed order, whatever the order in the URL: orientation, <code>crop</code>, size, <code>lb</code>, then encoding. The EXIF orientation is always applied to the pixels first, so every size and offset refers to the displayed image, and the output has no orientation tag.</p>

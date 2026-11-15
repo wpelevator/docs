@@ -1,14 +1,20 @@
 # Quickstart
 
-Go from a WordPress plugin directory to a release ZIP, a version check and a verified checksums manifest in about a minute.
+Build and inspect a disposable plugin ZIP, check its version and verify its checksums.
 
-Turn a plugin directory into a release ZIP you can trust. You need Node.js 22.12 or later and a plugin with a `Version` header. There is nothing to install or configure.
+Build a disposable plugin release without touching an existing project. You need Node.js 22.12 or later, npm and `unzip`.
 
-## 1. Build the ZIP
+## 1. Create a fixture and build
 
-From the plugin directory:
+Create a temporary workspace and run the commands there. The explicit `.distignore` excludes development directories and release outputs from subsequent builds.
 
 ```sh
+workspace=$(mktemp -d)
+cd "$workspace"
+mkdir my-plugin && cd my-plugin
+printf '<?php\n/*\nPlugin Name: My Plugin\nVersion: 1.4.2\n*/\n' > my-plugin.php
+printf '=== My Plugin ===\nStable tag: 1.4.1\n' > readme.txt
+printf 'node_modules/\ntests/\n*.zip\n*.checksums.json\n' > .distignore
 npx @wpelevator/wp-release zip
 ```
 
@@ -16,18 +22,28 @@ npx @wpelevator/wp-release zip
 /home/me/my-plugin/my-plugin.1.4.2.zip
 ```
 
-The ZIP has the `my-plugin/` root folder that WordPress.org, plugin updates and WordPress Playground require. Everything in `.distignore` is left out:
+Inspect the archive before treating it as a release:
 
-```text
-my-plugin/.distignore
-my-plugin/includes/class-thing.php
-my-plugin/my-plugin.php
-my-plugin/readme.txt
+```sh
+unzip -l my-plugin.1.4.2.zip
 ```
 
-`node_modules/` and `tests/` were listed in `.distignore`, so they aren't there. The same files give the same ZIP, so a rebuild creates no diff.
+```text
+Archive:  my-plugin.1.4.2.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+       44  1980-01-01 00:00   my-plugin/.distignore
+       50  1980-01-01 00:00   my-plugin/my-plugin.php
+       36  1980-01-01 00:00   my-plugin/readme.txt
+---------                     -------
+      130                     3 files
+```
 
-## 2. Catch version mismatches before WordPress.org does
+The paths are normalized from a run in a temporary directory. The `my-plugin/` root folder is required by WordPress.
+
+## 2. Catch and fix a mismatch
+
+The fixture deliberately has different versions in its header and readme:
 
 ```sh
 npx @wpelevator/wp-release version-check
@@ -37,53 +53,38 @@ npx @wpelevator/wp-release version-check
 Error: Stable tag in readme.txt is 1.4.1, expected 1.4.2.
 ```
 
-The command exits with `2`, so it stops a CI job. In `readme.txt`, change `Stable tag: 1.4.1` to `Stable tag: 1.4.2`, then run it again:
+The command exits with `2`. Replace the fixture readme and check again:
+
+```sh
+printf '=== My Plugin ===\nStable tag: 1.4.2\n' > readme.txt
+npx @wpelevator/wp-release version-check
+```
 
 ```text
 All versions match 1.4.2.
 ```
 
-It compares the `Version` header with the readme `Stable tag`. [Check versions](version-check.md) adds PHP constants and the git tag.
+## 3. Build and verify checksums
 
-## 3. Prove the ZIP wasn't changed
-
-Write a checksums manifest while building, then check any ZIP against it, for example the one a user downloaded. The ZIP from step 1 already exists, so replace it with `--force`:
+Rebuild after fixing the readme, replacing the first ZIP and generating the manifest:
 
 ```sh
 npx @wpelevator/wp-release zip --checksums --force
+npx @wpelevator/wp-release verify --zip my-plugin.1.4.2.zip --checksums my-plugin.1.4.2.checksums.json
 ```
 
 ```text
 /home/me/my-plugin/my-plugin.1.4.2.zip
 /home/me/my-plugin/my-plugin.1.4.2.checksums.json
+3 files match, 0 changed, 0 missing and 0 extra.
 ```
 
-```sh
-npx @wpelevator/wp-release verify --zip my-plugin.1.4.2.zip --checksums my-plugin.1.4.2.checksums.json
-```
+## Use an existing plugin
 
-```text
-4 files match, 0 changed, 0 missing and 0 extra.
-```
-
-If someone adds or edits a file, the check fails and names it. To try it, add a file and build a second ZIP from the changed plugin, leaving out the ZIP from step 1:
-
-```sh
-touch evil.php
-npx @wpelevator/wp-release zip --exclude '*.zip' --output ../tampered.zip
-npx @wpelevator/wp-release verify --zip ../tampered.zip --checksums my-plugin.1.4.2.checksums.json
-```
-
-```text
-Error: Not in the checksums: evil.php
-4 files match, 0 changed, 0 missing and 1 extra.
-```
-
-Delete `evil.php` and `../tampered.zip` when you're done.
+Run the commands from a plugin directory with a `Version` header and a readme `Stable tag`. First review [file selection](file-selection.md) and create a `.distignore` appropriate to your project, including development dependencies, tests, secrets and generated release artifacts. Inspect the ZIP before distributing it. The slug, version, files and counts depend on your plugin; `--force` replaces an existing output, so review paths before using it.
 
 ## What next
 
-- **Automate versions, changelogs and tags.** [Changesets](changesets.md) record the release impact of each pull request, and [Release from GitHub Actions](release-workflow.md) turns them into a release pull request and a tag.
-- **Publish to WordPress.org.** [Deploy to WordPress.org](deploy-svn.md) syncs trunk and creates the tag; add `--dry-run` to see everything except the commit.
-- **Sign the release.** [Sign releases](signing.md) covers Ed25519, minisign and SSH signatures.
-- **Choose which files ship.** [Choose which files ship](file-selection.md) explains `.distignore` and `--exclude`.
+- [Choose which files ship](file-selection.md) and [check versions](version-check.md).
+- [Verify](verify.md) and [sign releases](signing.md).
+- [Release from GitHub Actions](release-workflow.md) or [deploy to WordPress.org](deploy-svn.md).

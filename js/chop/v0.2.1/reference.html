@@ -82,7 +82,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -105,7 +111,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/index.html">latest</option>
+      <option value="/docs/js/chop/latest/index.html">Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/reference.html" selected>v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -119,7 +125,6 @@
     <li><a href="/docs/js/chop/v0.2.1/caching.html">Caching</a></li>
     <li><a href="/docs/js/chop/v0.2.1/cli.html">CLI</a></li>
     <li><a href="/docs/js/chop/v0.2.1/configuration.html">Configuration</a></li>
-    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
     <li><a href="/docs/js/chop/v0.2.1/formats.html">Formats and quality</a></li>
     <li><a href="/docs/js/chop/v0.2.1/library.html">Library API</a></li>
     <li><a href="/docs/js/chop/v0.2.1/reference.html" aria-current="page">Reference</a></li>
@@ -129,6 +134,7 @@
     <li><a href="/docs/js/chop/v0.2.1/security.html">Securing remote origins</a></li>
     <li><a href="/docs/js/chop/v0.2.1/sources.html">Sources</a></li>
     <li><a href="/docs/js/chop/v0.2.1/url-schemes.html">URL schemes</a></li>
+    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -141,8 +147,9 @@
     <li><span aria-current="page">v0.2.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">This is the documentation of <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Read the latest version</a>.</p>
+<p class="notice" role="note">Documentation for <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Development documentation (main)</a>.</p>
 <article>
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Reference</h1>
     <div class="actions" data-pagefind-ignore>
@@ -150,6 +157,12 @@
       <a href="/docs/markdown/js/chop/v0.2.1/reference.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#requests">Requests</a></li><li data-level="2"><a href="#sources">Sources</a></li><li data-level="3"><a href="#s3-origin">S3 origin</a></li><li data-level="2"><a href="#query-scheme-arguments">Query scheme arguments</a></li><li data-level="2"><a href="#url-schemes">URL schemes</a></li><li data-level="3"><a href="#cloudflare">`cloudflare`</a></li><li data-level="2"><a href="#output-format">Output format</a></li><li data-level="2"><a href="#quality-and-size">Quality and size</a></li><li data-level="2"><a href="#responses">Responses</a></li><li data-level="2"><a href="#caching">Caching</a></li><li data-level="2"><a href="#limits">Limits</a></li><li data-level="2"><a href="#settings">Settings</a></li><li data-level="2"><a href="#interfaces">Interfaces</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <p>How chop behaves, in short. The guides describe each area in more detail: <a href="requests.html">requests</a>, <a href="sources.html">sources</a>, <a href="url-schemes.html">URL schemes</a>, <a href="formats.html">formats and quality</a>, <a href="responses.html">responses</a> and <a href="configuration.html">configuration</a>. The IDs in parentheses, like <code>R-OP-8</code>, are what the tests refer to in their names. chop is MIT licensed and was implemented from a written behavior specification and the repository conventions, without reference to the source code of any other image server.</p>
 <h2 id="requests" tabindex="-1"><a class="header-anchor" href="#requests">Requests</a></h2>

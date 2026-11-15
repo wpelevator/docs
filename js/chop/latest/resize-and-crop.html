@@ -81,7 +81,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -104,7 +110,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/resize-and-crop.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/resize-and-crop.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -142,6 +148,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -153,10 +160,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Resize, crop and pad images</h1><p class="lede">Resize, crop, pad and scale images with chop query arguments such as w, resize, crop and lb.</p>
     <div class="actions" data-pagefind-ignore>
@@ -164,6 +173,12 @@
       <a href="/docs/markdown/js/chop/latest/resize-and-crop.md">Open as Markdown</a>
     </div>
   </header>
+  
+  <details class="outline" data-pagefind-ignore>
+    <summary>On this page</summary>
+    <nav aria-label="On this page"><ul><li data-level="2"><a href="#common-tasks">Common tasks</a></li><li data-level="3"><a href="#limit-the-widths-that-can-be-requested">Limit the widths that can be requested</a></li><li data-level="3"><a href="#make-square-thumbnails">Make square thumbnails</a></li><li data-level="3"><a href="#keep-the-whole-image-in-a-fixed-box">Keep the whole image in a fixed box</a></li><li data-level="3"><a href="#remove-metadata-or-change-quality">Remove metadata or change quality</a></li><li data-level="2"><a href="#reference">Reference</a></li><li data-level="3"><a href="#w-and-h">`w` and `h`</a></li><li data-level="3"><a href="#fit">`fit`</a></li><li data-level="3"><a href="#resize-and-gravity">`resize` and `gravity`</a></li><li data-level="3"><a href="#crop">`crop`</a></li><li data-level="3"><a href="#lb">`lb`</a></li><li data-level="3"><a href="#upscale">`upscale`</a></li><li data-level="3"><a href="#zoom">`zoom`</a></li><li data-level="3"><a href="#limits-and-animated-sources">Limits and animated sources</a></li><li data-level="3"><a href="#other-details">Other details</a></li></ul></nav>
+  </details>
+  
   <div class="prose">
     <p>Add query arguments to the path of an image to get a resized, cropped or padded copy. The path selects the original, so <code>/2026/05/photo.jpg</code> is <code>&lt;data&gt;/2026/05/photo.jpg</code>, or <code>&lt;origin&gt;/2026/05/photo.jpg</code> when an <a href="sources.html">origin</a> is configured.</p>
 <p>Each row is a request for the same 2400 by 1600 JPEG, and the size of the image that came back:</p>

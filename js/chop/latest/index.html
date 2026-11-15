@@ -80,7 +80,13 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
+  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
+    <option value="js/chop">chop · Development docs</option>
+    <option value="">All packages · Development docs</option>
+  </select></label>
+  <div data-search-widget></div>
+</div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -103,7 +109,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/index.html" selected>latest</option>
+      <option value="/docs/js/chop/latest/index.html" selected>Development (main)</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -141,6 +147,7 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -152,10 +159,12 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">latest</span></li>
+    <li><span aria-current="page">Development (main)</span></li>
   </ol>
 </nav>
-<article data-pagefind-body>
+<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
+<article data-pagefind-body data-pagefind-filter="package:js/chop">
+  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>chop</h1><p class="lede">An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.</p>
     <div class="actions" data-pagefind-ignore>
@@ -163,6 +172,7 @@
       <a href="/docs/markdown/js/chop/latest/index.md">Open as Markdown</a>
     </div>
   </header>
+  
   <div class="prose">
     <p>Serve one original image as many sizes and formats, from a URL, with no build step. chop reads originals from a folder, an HTTPS origin or an S3 bucket, resizes them with <a href="https://sharp.pixelplumbing.com/">sharp</a>, and picks AVIF, WebP or the source format from the <code>Accept</code> header of each request.</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/chop <span class="token parameter variable">--data</span> /var/www/wp-content/uploads <span class="token parameter variable">--port</span> <span class="token number">8080</span></code></pre>
@@ -182,7 +192,8 @@
 <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/chop</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Requires Node.js 22.12 or later. The examples use the bare <code>chop</code> command, which exists after the install. Before it, use <code>npx @wpelevator/chop</code>, because bare <code>npx chop</code> doesn't run this package. The container image is <code>ghcr.io/wpelevator/chop</code>, described in <a href="docker.html">Run chop in Docker</a>.</p>
+<p>Requires Node.js 22.12 or later. After local installation, run <code>npx --no-install chop</code> from the project directory; local npm binaries are not normally on your shell's PATH. Without installation, use <code>npx @wpelevator/chop</code>, because bare <code>npx chop</code> doesn't run this package. The container image is <code>ghcr.io/wpelevator/chop</code>, described in <a href="docker.html">Run chop in Docker</a>.</p>
+<p>The unversioned <code>npx @wpelevator/chop</code> command uses the published npm package; development documentation can describe newer behavior. For the published <code>0.2.1</code> release documented here, see <a href="https://wpelevator.github.io/docs/js/chop/v0.2.1/">chop 0.2.1 documentation</a>. Check your installed version when choosing instructions.</p>
 <h2 id="pick-a-task" tabindex="-1"><a class="header-anchor" href="#pick-a-task">Pick a task</a></h2>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
