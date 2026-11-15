@@ -165,7 +165,13 @@
     </div>
   </header>
   <div class="prose">
-    <h2 id="021-2026-11-07" tabindex="-1"><a class="header-anchor" href="#021-2026-11-07">0.2.1 (2026-11-07)</a></h2>
+    <h2 id="022-2026-11-15" tabindex="-1"><a class="header-anchor" href="#022-2026-11-15">0.2.2 (2026-11-15)</a></h2>
+<ul>
+<li>Reorganize the documentation by task, with real command output at the top of each page: a quickstart, pages to resize images, serve responsive images, serve AVIF and WebP, set quality, serve transparent and animated images, choose a source, serve from an HTTPS origin, S3 and named hosts, run in Docker, prepare for production, cache with nginx or a CDN, troubleshoot errors, and migrate from Photon or Cloudflare Image Resizing. The long reference page is gone, and its rules live in the pages that own them. (<a href="https://github.com/wpelevator/basement/commit/d447886acf93e5d85236d796bdd2116b62f13da3"><code>d447886</code></a>)</li>
+<li>Start each documentation page with a <code># Title</code> heading instead of a <code>title</code> in the front matter, so that the Markdown pages read well on GitHub and in <code>node_modules</code>. (<a href="https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757"><code>ca287e4</code></a>)</li>
+<li>Point the package homepage to the documentation site, so that the Homepage link on the npm package page works without access to the private repository. (<a href="https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757"><code>ca287e4</code></a>)</li>
+</ul>
+<h2 id="021-2026-11-07" tabindex="-1"><a class="header-anchor" href="#021-2026-11-07">0.2.1 (2026-11-07)</a></h2>
 <ul>
 <li>Make the exported DEFAULT_SETTINGS report the real maxConcurrency default of the number of CPUs, which createConfig used to compute separately after overriding the placeholder value. (<a href="https://github.com/wpelevator/basement/commit/c075de501e64fa95b0966a9b525e9fecaec3a6cb"><code>c075de5</code></a>)</li>
 <li>Move the detailed usage documentation from the README into topic pages of the <code>docs/</code> directory, so that the docs site has a guide for each area besides the reference. (<a href="https://github.com/wpelevator/basement/commit/da8652c9da98ef8962c0f7dce9c398bb814c8620"><code>da8652c</code></a>)</li>

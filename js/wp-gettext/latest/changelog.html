@@ -133,7 +133,13 @@
     </div>
   </header>
   <div class="prose">
-    <h2 id="021-2026-11-11" tabindex="-1"><a class="header-anchor" href="#021-2026-11-11">0.2.1 (2026-11-11)</a></h2>
+    <h2 id="022-2026-11-15" tabindex="-1"><a class="header-anchor" href="#022-2026-11-15">0.2.2 (2026-11-15)</a></h2>
+<ul>
+<li>Start each documentation page with a <code># Title</code> heading instead of a <code>title</code> in the front matter, so that the Markdown pages read well on GitHub and in <code>node_modules</code>. (<a href="https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757"><code>ca287e4</code></a>)</li>
+<li>Move the detailed usage documentation from the README into topic pages of the <code>docs/</code> directory, and publish it in the npm package, so that the docs site has a guide for each area and agents and editors can read the documentation of the installed version. (<a href="https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757"><code>ca287e4</code></a>)</li>
+<li>Point the package homepage to the documentation site, so that the Homepage link on the npm package page works without access to the private repository. (<a href="https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757"><code>ca287e4</code></a>)</li>
+</ul>
+<h2 id="021-2026-11-11" tabindex="-1"><a class="header-anchor" href="#021-2026-11-11">0.2.1 (2026-11-11)</a></h2>
 <ul>
 <li>Group the wp-release commands as <code>changeset add|status|version|tag</code>, <code>deploy svn|git</code> and <code>i18n pot|audit|mo|json|php</code>, and run <code>changeset add</code> for a bare <code>wp-release changeset</code>, so that a <code>&quot;changeset&quot;: &quot;wp-release changeset&quot;</code> script runs <code>npm run changeset</code>. The dashed names like <code>changeset-add</code> keep working as aliases, and <code>execute()</code> and <code>CommandResults</code> use the grouped names. (<a href="https://github.com/wpelevator/basement/commit/0bb0b187cc93d3dd1ea9378764e00ef0a7a32f87"><code>0bb0b18</code></a>)</li>
 </ul>

@@ -2,6 +2,11 @@
 
 What changed in each release.
 
+## 0.2.3 (2026-11-15)
+
+- Start each documentation page with a `# Title` heading instead of a `title` in the front matter, so that the Markdown pages read well on GitHub and in `node_modules`. ([`ca287e4`](https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757))
+- Point the package homepage to the documentation site, so that the Homepage link on the npm package page works without access to the private repository. ([`ca287e4`](https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757))
+
 ## 0.2.2 (2026-11-11)
 
 - Update the docs for the grouped `wp-release` command names, like `deploy git`. ([`0bb0b18`](https://github.com/wpelevator/basement/commit/0bb0b187cc93d3dd1ea9378764e00ef0a7a32f87))

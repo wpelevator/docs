@@ -2,6 +2,18 @@
 
 What changed in each release.
 
+## 0.21.1 (2026-11-15)
+
+- Start each documentation page with a `# Title` heading instead of a `title` in the front matter, so that the Markdown pages read well on GitHub and in `node_modules`. ([`ca287e4`](https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757))
+- Point the package homepage to the documentation site, so that the Homepage link on the npm package page works without access to the private repository. ([`ca287e4`](https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757))
+- Reorganize the documentation by task, with real command output at the top of each page: a quickstart, pages to build a ZIP, check versions, write checksums, verify and sign, a guide to releasing from GitHub Actions, and separate pages to deploy to WordPress.org, Git repositories and configured packages, to release a monorepo, to make pre-releases and snapshots, and to extract and compile translations. Add a command reference grouped by task and a config reference. ([`4e6600f`](https://github.com/wpelevator/basement/commit/4e6600f4fddd75706f3b0c33d328d51e26d5ffd9))
+- Bundle checksums 0.1.1.
+- Bundle fileset 0.1.1.
+- Bundle signatures 0.1.1.
+- Bundle subtree-split 0.2.3.
+- Bundle wp-gettext 0.2.2.
+- Bundle zip 0.1.1.
+
 ## 0.21.0 (2026-11-11)
 
 - Group the wp-release commands as `changeset add|status|version|tag`, `deploy svn|git` and `i18n pot|audit|mo|json|php`, and run `changeset add` for a bare `wp-release changeset`, so that a `"changeset": "wp-release changeset"` script runs `npm run changeset`. The dashed names like `changeset-add` keep working as aliases, and `execute()` and `CommandResults` use the grouped names. ([`0bb0b18`](https://github.com/wpelevator/basement/commit/0bb0b187cc93d3dd1ea9378764e00ef0a7a32f87))

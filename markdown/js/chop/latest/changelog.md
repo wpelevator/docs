@@ -2,6 +2,12 @@
 
 What changed in each release.
 
+## 0.2.2 (2026-11-15)
+
+- Reorganize the documentation by task, with real command output at the top of each page: a quickstart, pages to resize images, serve responsive images, serve AVIF and WebP, set quality, serve transparent and animated images, choose a source, serve from an HTTPS origin, S3 and named hosts, run in Docker, prepare for production, cache with nginx or a CDN, troubleshoot errors, and migrate from Photon or Cloudflare Image Resizing. The long reference page is gone, and its rules live in the pages that own them. ([`d447886`](https://github.com/wpelevator/basement/commit/d447886acf93e5d85236d796bdd2116b62f13da3))
+- Start each documentation page with a `# Title` heading instead of a `title` in the front matter, so that the Markdown pages read well on GitHub and in `node_modules`. ([`ca287e4`](https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757))
+- Point the package homepage to the documentation site, so that the Homepage link on the npm package page works without access to the private repository. ([`ca287e4`](https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757))
+
 ## 0.2.1 (2026-11-07)
 
 - Make the exported DEFAULT_SETTINGS report the real maxConcurrency default of the number of CPUs, which createConfig used to compute separately after overriding the placeholder value. ([`c075de5`](https://github.com/wpelevator/basement/commit/c075de501e64fa95b0966a9b525e9fecaec3a6cb))
