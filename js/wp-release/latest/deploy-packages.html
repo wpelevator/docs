@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/wp-release">wp-release · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/deploy-packages.html" selected>Development (main)</option>
+      <option value="/docs/js/wp-release/latest/deploy-packages.html" selected>latest</option>
       <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
@@ -153,8 +147,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
@@ -165,12 +159,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/index.html">Stable documentation (v0.21.0)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
-  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Deploy configured packages</h1><p class="lede">Deploy the packages of a monorepo to the Git repositories and WordPress.org plugins that the config names, from a release tag or a branch.</p>
     <div class="actions" data-pagefind-ignore>
@@ -178,12 +170,6 @@
       <a href="/docs/markdown/js/wp-release/latest/deploy-packages.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#configure-targets">Configure targets</a></li><li data-level="2"><a href="#choose-a-mode">Choose a mode</a></li><li data-level="2"><a href="#target-options">Target options</a></li><li data-level="2"><a href="#build-before-you-deploy">Build before you deploy</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <p><code>deploy git --release-ref &lt;ref&gt;</code> and <code>deploy svn --release-ref &lt;ref&gt;</code> deploy the packages of a monorepo, or of a single-package repository, to the targets in the <code>deploy</code> config of their package groups. The ref decides what ships: a release tag deploys that package and version, and a branch deploys every package with a target for that branch. In GitHub Actions, <code>$GITHUB_REF</code> is the pushed ref, so one job can run <code>deploy git --release-ref &quot;$GITHUB_REF&quot;</code>.</p>
 <p><code>deploy git --release-ref &lt;ref&gt;</code> and <code>deploy svn --release-ref &lt;ref&gt;</code> deploy the packages of a monorepo, or of a single-package repository, to the targets in the <code>deploy</code> config of their package groups, like the release repository of each package or its WordPress.org plugin. The ref decides what's deployed: a release tag of a package, like <code>refs/tags/plugins/alpha/1.2.0</code> read with the <code>tagFormat</code>, deploys that package and version, and a branch, like <code>refs/heads/main</code>, deploys every package with a target for that branch. A name without <code>refs/</code> is a release tag when it matches the tag format of a package, otherwise a branch, and in GitHub Actions <code>$GITHUB_REF</code> is the pushed ref.</p>

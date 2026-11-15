@@ -82,13 +82,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/wp-release">wp-release · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,7 +105,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/internationalization.html">Development (main)</option>
+      <option value="/docs/js/wp-release/latest/internationalization.html">latest</option>
       <option value="/docs/js/wp-release/v0.21.0/internationalization.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/internationalization.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/internationalization.html">v0.20.1</option>
@@ -130,10 +124,10 @@
     <li><a href="/docs/js/wp-release/v0.19.0/comparison.html">Comparison with other tools</a></li>
     <li><a href="/docs/js/wp-release/v0.19.0/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/v0.19.0/deployment.html">Deployment</a></li>
+    <li><a href="/docs/js/wp-release/v0.19.0/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/v0.19.0/internationalization.html" aria-current="page">Internationalization</a></li>
     <li><a href="/docs/js/wp-release/v0.19.0/library.html">Library API</a></li>
     <li><a href="/docs/js/wp-release/v0.19.0/packaging.html">Packaging and integrity</a></li>
-    <li><a href="/docs/js/wp-release/v0.19.0/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -146,9 +140,8 @@
     <li><span aria-current="page">v0.19.0</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Documentation for <strong>v0.19.0</strong>. <a href="/docs/js/wp-release/latest/internationalization.html">Development documentation (main)</a>.</p>
+<p class="notice" role="note">This is the documentation of <strong>v0.19.0</strong>. <a href="/docs/js/wp-release/latest/internationalization.html">Read the latest version</a>.</p>
 <article>
-  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>Internationalization</h1>
     <div class="actions" data-pagefind-ignore>
@@ -156,12 +149,6 @@
       <a href="/docs/markdown/js/wp-release/v0.19.0/internationalization.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#wordpress-internationalization">WordPress internationalization</a></li><li data-level="3"><a href="#supported-extraction-syntax">Supported extraction syntax</a></li><li data-level="3"><a href="#compile-translated-catalogs">Compile translated catalogs</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <h2 id="wordpress-internationalization" tabindex="-1"><a class="header-anchor" href="#wordpress-internationalization">WordPress internationalization</a></h2>
 <p><code>i18n-pot</code> extracts plugin/theme strings and writes a reproducible UTF-8 POT. <code>i18n-audit</code> reads the same source and returns findings without writing files. Both run with Node alone: no PHP, WordPress installation, database, WP-CLI or network requests. Extraction is independent of <code>files</code>, <code>.distignore</code> and Git <code>export-ignore</code> distribution rules.</p>
@@ -219,7 +206,7 @@ wp-release i18n-mo languages/my-plugin-lv.po <span class="token parameter variab
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.19.0/deployment.html"><small>Previous</small>Deployment</a><a rel="next" href="/docs/js/wp-release/v0.19.0/library.html"><small>Next</small>Library API</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.19.0/development.html"><small>Previous</small>Development</a><a rel="next" href="/docs/js/wp-release/v0.19.0/library.html"><small>Next</small>Library API</a>
 </nav>
 
   </main>

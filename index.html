@@ -7,13 +7,13 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
   <title>WP Elevator Docs</title>
-  <meta name="description" content="Guides to release plugins, serve images, compile translations and work with code.">
+  <meta name="description" content="Guides and references for the packages of the WP Elevator monorepo.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="WP Elevator Docs">
-  <meta property="og:description" content="Guides to release plugins, serve images, compile translations and work with code.">
+  <meta property="og:description" content="Guides and references for the packages of the WP Elevator monorepo.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -59,13 +59,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <nav aria-label="Packages">
   <h2 class="nav-heading">JS packages</h2>
   <ul class="nav-list">
@@ -89,45 +83,34 @@
     <article class="home">
   <header class="page-head">
     <h1>WP Elevator Docs</h1>
-    <p class="lede">Release plugins, serve images, compile translations and work with code.</p>
+    <p class="lede">Guides and references for the packages of the WP Elevator monorepo.</p>
   </header>
-  <section class="group" aria-labelledby="outcomes">
-    <h2 id="outcomes">What do you want to do?</h2>
-    <ul class="cards">
-      <li><a href="/docs/js/wp-release/latest/quickstart.html">Release a WordPress plugin</a></li>
-      <li><a href="/docs/js/chop/latest/quickstart.html">Serve responsive images</a></li>
-      <li><a href="/docs/js/wp-release/latest/compile-translations.html">Compile translations</a></li>
-      <li><a href="/docs/js/subtree-split/latest/cli.html">Split repository history</a></li>
-    </ul>
-  </section>
-  <h2>Package catalogue</h2>
-  <p>Browse ready-to-run CLI tools and building-block libraries by package.</p>
   <section class="group" aria-labelledby="group-js">
     <h2 id="group-js">JS packages</h2>
     <ul class="cards">
       <li>
-        <a href="/docs/js/checksums/latest/index.html">checksums</a><small>Library</small><p>Hash bytes and files, and write, read and verify checksum manifests in the sha256sum and WordPress.org formats.</p>
+        <a href="/docs/js/checksums/latest/index.html">checksums</a><p>Hash bytes and files, and write, read and verify checksum manifests in the sha256sum and WordPress.org formats.</p>
       </li>
       <li>
-        <a href="/docs/js/chop/latest/index.html">chop</a><small>CLI + library</small><p>An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.</p>
+        <a href="/docs/js/chop/latest/index.html">chop</a><p>An HTTP image server that resizes images on request and picks AVIF, WebP or the original format from the Accept header.</p>
       </li>
       <li>
-        <a href="/docs/js/fileset/latest/index.html">fileset</a><small>Library</small><p>Select the files of a directory with gitignore-style rules and sync another directory to match, copying only what changed.</p>
+        <a href="/docs/js/fileset/latest/index.html">fileset</a><p>Select the files of a directory with gitignore-style rules and sync another directory to match, copying only what changed.</p>
       </li>
       <li>
-        <a href="/docs/js/signatures/latest/index.html">signatures</a><small>Library</small><p>Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.</p>
+        <a href="/docs/js/signatures/latest/index.html">signatures</a><p>Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.</p>
       </li>
       <li>
-        <a href="/docs/js/subtree-split/latest/index.html">subtree-split</a><small>CLI + library</small><p>Split a monorepo directory into its own history, with the same commit hashes as git subtree split.</p>
+        <a href="/docs/js/subtree-split/latest/index.html">subtree-split</a><p>Split a monorepo directory into its own history, with the same commit hashes as git subtree split.</p>
       </li>
       <li>
-        <a href="/docs/js/wp-gettext/latest/index.html">wp-gettext</a><small>Library</small><p>Extract translatable strings from WordPress sources, write POT files, compile PO files to MO, JSON and PHP, and audit catalogs.</p>
+        <a href="/docs/js/wp-gettext/latest/index.html">wp-gettext</a><p>Extract translatable strings from WordPress sources, write POT files, compile PO files to MO, JSON and PHP, and audit catalogs.</p>
       </li>
       <li>
-        <a href="/docs/js/wp-release/latest/index.html">wp-release</a><small>CLI + library</small><p>Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.</p>
+        <a href="/docs/js/wp-release/latest/index.html">wp-release</a><p>Build, verify, version and deploy WordPress plugin and theme releases from one CLI, a library or GitHub Actions.</p>
       </li>
       <li>
-        <a href="/docs/js/zip/latest/index.html">zip</a><small>Library</small><p>Create reproducible ZIP archives from files and buffers, and safely list and extract them.</p>
+        <a href="/docs/js/zip/latest/index.html">zip</a><p>Create reproducible ZIP archives from files and buffers, and safely list and extract them.</p>
       </li>
     </ul>
   </section>
@@ -135,7 +118,7 @@
     <h2 id="group-php">PHP packages</h2>
     <ul class="cards">
       <li>
-        <a href="/docs/php/php-changesets/latest/index.html">php-changesets</a><small>CLI + library</small><p>Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.</p>
+        <a href="/docs/php/php-changesets/latest/index.html">php-changesets</a><p>Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.</p>
       </li>
     </ul>
   </section>

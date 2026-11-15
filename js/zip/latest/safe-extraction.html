@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/zip">zip · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,11 +105,11 @@
 <nav aria-label="zip documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/zip/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
+    <li><a href="/docs/js/zip/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/zip/latest/errors.html">Errors</a></li>
     <li><a href="/docs/js/zip/latest/reproducible-archives.html">Reproducible archives</a></li>
     <li><a href="/docs/js/zip/latest/safe-extraction.html" aria-current="page">Safe extraction</a></li>
-    <li><a href="/docs/js/zip/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/zip/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
   </ul>
 </nav>
 
@@ -125,12 +119,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/zip/latest/index.html">zip</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/zip">
-  <span class="visually-hidden" data-pagefind-meta="package">zip</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Safe extraction</h1>
     <div class="actions" data-pagefind-ignore>
@@ -138,13 +130,12 @@
       <a href="/docs/markdown/js/zip/latest/safe-extraction.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p><code>extractZip()</code> checks every entry with <code>getZipEntryErrors()</code> before writing anything, and refuses an archive with an absolute path, a <code>..</code> segment, a backslash, a symbolic link or an entry outside the <code>rootFolder</code>. Only regular files are extracted, never over an existing file, and the root folder is stripped from the paths. It returns the sorted relative paths of the extracted files.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/zip/latest/reproducible-archives.html"><small>Previous</small>Reproducible archives</a><a rel="next" href="/docs/js/zip/latest/errors.html"><small>Next</small>Errors</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/zip/latest/reproducible-archives.html"><small>Previous</small>Reproducible archives</a><a rel="next" href="/docs/js/zip/latest/usage.html"><small>Next</small>Usage</a>
 </nav>
 
   </main>

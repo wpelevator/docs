@@ -5,7 +5,7 @@ Every chop setting and its CHOP_ environment variable, with defaults, for the co
 Every setting is a `CHOP_*` environment variable, so a container or a service file configures chop without flags. This run limits the output widths, lowers the JPEG quality and turns AVIF off:
 
 ```sh
-CHOP_ALLOWED_WIDTHS=320,640,1280 CHOP_JPEG_QUALITY=75 CHOP_AVIF=false npx @wpelevator/chop --data ./uploads
+CHOP_ALLOWED_WIDTHS=320,640,1280 CHOP_JPEG_QUALITY=75 CHOP_AVIF=false chop --data ./uploads
 ```
 
 ```text
@@ -15,7 +15,7 @@ chop listening on http://0.0.0.0:8080, serving /home/me/uploads
 A value that can't be used stops the server with exit code `2` and names the variable or setting, so a typo shows up at startup and not in production:
 
 ```sh
-CHOP_MAX_QUEUE=abc npx @wpelevator/chop --data ./uploads
+CHOP_MAX_QUEUE=abc chop --data ./uploads
 ```
 
 ```text

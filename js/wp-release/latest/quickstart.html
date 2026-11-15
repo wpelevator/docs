@@ -7,14 +7,14 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
   <title>Quickstart – wp-release | WP Elevator Docs</title>
-  <meta name="description" content="Build and inspect a disposable plugin ZIP, check its version and verify its checksums.">
+  <meta name="description" content="Go from a WordPress plugin directory to a release ZIP, a version check and a verified checksums manifest in about a minute.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/quickstart.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/latest/quickstart.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Quickstart – wp-release">
-  <meta property="og:description" content="Build and inspect a disposable plugin ZIP, check its version and verify its checksums.">
+  <meta property="og:description" content="Go from a WordPress plugin directory to a release ZIP, a version check and a verified checksums manifest in about a minute.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/quickstart.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -45,7 +45,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/quickstart.html#article",
       "headline": "Quickstart",
-      "description": "Build and inspect a disposable plugin ZIP, check its version and verify its checksums.",
+      "description": "Go from a WordPress plugin directory to a release ZIP, a version check and a verified checksums manifest in about a minute.",
       "url": "https://wpelevator.github.io/docs/js/wp-release/latest/quickstart.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/quickstart.html",
       "inLanguage": "en",
@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/wp-release">wp-release · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/quickstart.html" selected>Development (main)</option>
+      <option value="/docs/js/wp-release/latest/quickstart.html" selected>latest</option>
       <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
@@ -153,8 +147,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
@@ -165,75 +159,67 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/index.html">Stable documentation (v0.21.0)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
-  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
+<article data-pagefind-body>
   <header class="page-head">
-    <h1>Quickstart</h1><p class="lede">Build and inspect a disposable plugin ZIP, check its version and verify its checksums.</p>
+    <h1>Quickstart</h1><p class="lede">Go from a WordPress plugin directory to a release ZIP, a version check and a verified checksums manifest in about a minute.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/latest/quickstart.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/wp-release/latest/quickstart.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
-    <p>Build a disposable plugin release without touching an existing project. You need Node.js 22.12 or later, npm and <code>unzip</code>.</p>
-<h2 id="1-create-a-fixture-and-build" tabindex="-1"><a class="header-anchor" href="#1-create-a-fixture-and-build">1. Create a fixture and build</a></h2>
-<p>Create a temporary workspace and run the commands there. The explicit <code>.distignore</code> excludes development directories and release outputs from subsequent builds.</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">workspace</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>mktemp <span class="token parameter variable">-d</span><span class="token variable">)</span></span>
-<span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$workspace</span>"</span>
-<span class="token function">mkdir</span> my-plugin <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> my-plugin
-<span class="token builtin class-name">printf</span> <span class="token string">'&lt;?php\n/*\nPlugin Name: My Plugin\nVersion: 1.4.2\n*/\n'</span> <span class="token operator">></span> my-plugin.php
-<span class="token builtin class-name">printf</span> <span class="token string">'=== My Plugin ===\nStable tag: 1.4.1\n'</span> <span class="token operator">></span> readme.txt
-<span class="token builtin class-name">printf</span> <span class="token string">'node_modules/\ntests/\n*.zip\n*.checksums.json\n'</span> <span class="token operator">></span> .distignore
-npx @wpelevator/wp-release <span class="token function">zip</span></code></pre>
+    <p>Turn a plugin directory into a release ZIP you can trust. You need Node.js 22.12 or later and a plugin with a <code>Version</code> header. There is nothing to install or configure.</p>
+<h2 id="1-build-the-zip" tabindex="-1"><a class="header-anchor" href="#1-build-the-zip">1. Build the ZIP</a></h2>
+<p>From the plugin directory:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Inspect the archive before treating it as a release:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">unzip</span> <span class="token parameter variable">-l</span> my-plugin.1.4.2.zip</code></pre>
+<p>The ZIP has the <code>my-plugin/</code> root folder that WordPress.org, plugin updates and WordPress Playground require. Everything in <code>.distignore</code> is left out:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">my-plugin/.distignore
+my-plugin/includes/class-thing.php
+my-plugin/my-plugin.php
+my-plugin/readme.txt</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Archive:  my-plugin.1.4.2.zip
-  Length      Date    Time    Name
----------  ---------- -----   ----
-       44  1980-01-01 00:00   my-plugin/.distignore
-       50  1980-01-01 00:00   my-plugin/my-plugin.php
-       36  1980-01-01 00:00   my-plugin/readme.txt
----------                     -------
-      130                     3 files</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>The paths are normalized from a run in a temporary directory. The <code>my-plugin/</code> root folder is required by WordPress.</p>
-<h2 id="2-catch-and-fix-a-mismatch" tabindex="-1"><a class="header-anchor" href="#2-catch-and-fix-a-mismatch">2. Catch and fix a mismatch</a></h2>
-<p>The fixture deliberately has different versions in its header and readme:</p>
+<p><code>node_modules/</code> and <code>tests/</code> were listed in <code>.distignore</code>, so they aren't there. The same files give the same ZIP, so a rebuild creates no diff.</p>
+<h2 id="2-catch-version-mismatches-before-wordpressorg-does" tabindex="-1"><a class="header-anchor" href="#2-catch-version-mismatches-before-wordpressorg-does">2. Catch version mismatches before WordPress.org does</a></h2>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release version-check</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Error: Stable tag in readme.txt is 1.4.1, expected 1.4.2.</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>The command exits with <code>2</code>. Replace the fixture readme and check again:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token builtin class-name">printf</span> <span class="token string">'=== My Plugin ===\nStable tag: 1.4.2\n'</span> <span class="token operator">></span> readme.txt
-npx @wpelevator/wp-release version-check</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The command exits with <code>2</code>, so it stops a CI job. In <code>readme.txt</code>, change <code>Stable tag: 1.4.1</code> to <code>Stable tag: 1.4.2</code>, then run it again:</p>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">All versions match 1.4.2.</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h2 id="3-build-and-verify-checksums" tabindex="-1"><a class="header-anchor" href="#3-build-and-verify-checksums">3. Build and verify checksums</a></h2>
-<p>Rebuild after fixing the readme, replacing the first ZIP and generating the manifest:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--checksums</span> <span class="token parameter variable">--force</span>
-npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.4.2.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json</code></pre>
+<p>It compares the <code>Version</code> header with the readme <code>Stable tag</code>. <a href="version-check.html">Check versions</a> adds PHP constants and the git tag.</p>
+<h2 id="3-prove-the-zip-wasnt-changed" tabindex="-1"><a class="header-anchor" href="#3-prove-the-zip-wasnt-changed">3. Prove the ZIP wasn't changed</a></h2>
+<p>Write a checksums manifest while building, then check any ZIP against it, for example the one a user downloaded. The ZIP from step 1 already exists, so replace it with <code>--force</code>:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--checksums</span> <span class="token parameter variable">--force</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">/home/me/my-plugin/my-plugin.1.4.2.zip
-/home/me/my-plugin/my-plugin.1.4.2.checksums.json
-3 files match, 0 changed, 0 missing and 0 extra.</code></pre>
+/home/me/my-plugin/my-plugin.1.4.2.checksums.json</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<h2 id="use-an-existing-plugin" tabindex="-1"><a class="header-anchor" href="#use-an-existing-plugin">Use an existing plugin</a></h2>
-<p>Run the commands from a plugin directory with a <code>Version</code> header and a readme <code>Stable tag</code>. First review <a href="file-selection.html">file selection</a> and create a <code>.distignore</code> appropriate to your project, including development dependencies, tests, secrets and generated release artifacts. Inspect the ZIP before distributing it. The slug, version, files and counts depend on your plugin; <code>--force</code> replaces an existing output, so review paths before using it.</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> my-plugin.1.4.2.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">4 files match, 0 changed, 0 missing and 0 extra.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>If someone adds or edits a file, the check fails and names it. To try it, add a file and build a second ZIP from the changed plugin, leaving out the ZIP from step 1:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">touch</span> evil.php
+npx @wpelevator/wp-release <span class="token function">zip</span> <span class="token parameter variable">--exclude</span> <span class="token string">'*.zip'</span> <span class="token parameter variable">--output</span> <span class="token punctuation">..</span>/tampered.zip
+npx @wpelevator/wp-release verify <span class="token parameter variable">--zip</span> <span class="token punctuation">..</span>/tampered.zip <span class="token parameter variable">--checksums</span> my-plugin.1.4.2.checksums.json</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">Error: Not in the checksums: evil.php
+4 files match, 0 changed, 0 missing and 1 extra.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Delete <code>evil.php</code> and <code>../tampered.zip</code> when you're done.</p>
 <h2 id="what-next" tabindex="-1"><a class="header-anchor" href="#what-next">What next</a></h2>
 <ul>
-<li><a href="file-selection.html">Choose which files ship</a> and <a href="version-check.html">check versions</a>.</li>
-<li><a href="verify.html">Verify</a> and <a href="signing.html">sign releases</a>.</li>
-<li><a href="release-workflow.html">Release from GitHub Actions</a> or <a href="deploy-svn.html">deploy to WordPress.org</a>.</li>
+<li><strong>Automate versions, changelogs and tags.</strong> <a href="changesets.html">Changesets</a> record the release impact of each pull request, and <a href="release-workflow.html">Release from GitHub Actions</a> turns them into a release pull request and a tag.</li>
+<li><strong>Publish to WordPress.org.</strong> <a href="deploy-svn.html">Deploy to WordPress.org</a> syncs trunk and creates the tag; add <code>--dry-run</code> to see everything except the commit.</li>
+<li><strong>Sign the release.</strong> <a href="signing.html">Sign releases</a> covers Ed25519, minisign and SSH signatures.</li>
+<li><strong>Choose which files ship.</strong> <a href="file-selection.html">Choose which files ship</a> explains <code>.distignore</code> and <code>--exclude</code>.</li>
 </ul>
 
   </div>

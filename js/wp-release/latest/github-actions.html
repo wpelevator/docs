@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/wp-release">wp-release · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/github-actions.html" selected>Development (main)</option>
+      <option value="/docs/js/wp-release/latest/github-actions.html" selected>latest</option>
       <option value="/docs/js/wp-release/v0.21.0/index.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/index.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/index.html">v0.20.1</option>
@@ -153,8 +147,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
@@ -165,12 +159,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/index.html">Stable documentation (v0.21.0)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
-  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Use it in GitHub Actions</h1><p class="lede">Run wp-release commands in workflows, read their results in later steps and see problems as annotations and job summaries.</p>
     <div class="actions" data-pagefind-ignore>
@@ -178,7 +170,6 @@
       <a href="/docs/markdown/js/wp-release/latest/github-actions.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>Every command runs in a workflow after <code>npm ci</code>, with <code>--github-output</code> to pass the result to later steps:</p>
 <div class="code"><pre class="language-yaml" tabindex="0"><code class="language-yaml">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v7

@@ -5,14 +5,13 @@ Build, verify, version and deploy WordPress plugin and theme releases from one C
 Releasing a WordPress plugin means a ZIP with the right root folder, the same version in several places, a changelog and, for WordPress.org, an SVN commit. `wp-release` does each of them with one command.
 
 ```sh
-npx @wpelevator/wp-release zip --checksums
+npx @wpelevator/wp-release zip
 npx @wpelevator/wp-release version-check
 npx @wpelevator/wp-release verify --zip my-plugin.1.4.2.zip --checksums my-plugin.1.4.2.checksums.json
 ```
 
 ```text
 /home/me/my-plugin/my-plugin.1.4.2.zip
-/home/me/my-plugin/my-plugin.1.4.2.checksums.json
 All versions match 1.4.2.
 4 files match, 0 changed, 0 missing and 0 extra.
 ```
@@ -59,8 +58,6 @@ Node.js 22.12 or later is required. SVN deployments also need the `svn` command 
 The package is an ES module with TypeScript declarations. CommonJS projects can load it with `require( '@wpelevator/wp-release' )` on Node.js 22.12 or later.
 
 Zero-install examples in these docs use `npx @wpelevator/wp-release`, because `npx wp-release` alone runs an unrelated npm package until this one is installed. After `npm install`, `npx wp-release` and `wp-release` in npm scripts are the same command.
-
-The unversioned `npx @wpelevator/wp-release` command uses the published npm package; development documentation can describe newer behavior. For the published `0.21.0` release documented here, see [wp-release 0.21.0 documentation](https://wpelevator.github.io/docs/js/wp-release/v0.21.0/). Check your installed version when choosing instructions.
 
 ## Reference
 

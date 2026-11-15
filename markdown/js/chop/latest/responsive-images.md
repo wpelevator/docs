@@ -40,7 +40,7 @@ Pick a short ladder and use it everywhere. Each width is a separate variant to b
 Anyone who can reach chop can request any width up to `maxOutputDimension`, which is `8192` by default, so every new width is another variant to build and cache. List the widths that your markup uses, and any other width is a `400`:
 
 ```sh
-CHOP_ALLOWED_WIDTHS=320,640,960,1280 npx @wpelevator/chop --data ./uploads
+CHOP_ALLOWED_WIDTHS=320,640,960,1280 chop --data ./uploads
 ```
 
 The check is on the width of the output after clamping, so a `zoom` that doubles `w=320` to 640 passes when 640 is on the list. A bare path with no `w` has the width of the original, such as 2400, which is a `400` unless that width is on the list, so every URL needs a size that gives a listed width, such as `w`, `h` or `resize`. A `w` above a small original clamps to the original width, which is also a `400`. Add `upscale=1` to the URL to enlarge a small original to a listed width, and see [`upscale`](resize-and-crop.md#upscale).

@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/responsive-images.html" selected>Development (main)</option>
+      <option value="/docs/js/chop/latest/responsive-images.html" selected>latest</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -148,7 +142,6 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -160,12 +153,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/chop">
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Serve responsive images</h1><p class="lede">Write a srcset and sizes for chop, choose a ladder of widths, limit the widths that can be requested, and bust the cache when an image changes.</p>
     <div class="actions" data-pagefind-ignore>
@@ -173,7 +164,6 @@
       <a href="/docs/markdown/js/chop/latest/responsive-images.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>Point every candidate of a <code>srcset</code> at the same original with a different <code>w</code>, and let chop pick the format. The browser chooses a width, and chop answers with AVIF, WebP or the original format that its <code>Accept</code> header lists, so the markup needs no <code>&lt;picture&gt;</code> element.</p>
 <div class="code"><pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
@@ -200,7 +190,7 @@ w=960 38919</code></pre>
 <h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
 <h3 id="allow-only-the-widths-of-your-markup" tabindex="-1"><a class="header-anchor" href="#allow-only-the-widths-of-your-markup">Allow only the widths of your markup</a></h3>
 <p>Anyone who can reach chop can request any width up to <code>maxOutputDimension</code>, which is <code>8192</code> by default, so every new width is another variant to build and cache. List the widths that your markup uses, and any other width is a <code>400</code>:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span>,960,1280 npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span>,960,1280 chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>The check is on the width of the output after clamping, so a <code>zoom</code> that doubles <code>w=320</code> to 640 passes when 640 is on the list. A bare path with no <code>w</code> has the width of the original, such as 2400, which is a <code>400</code> unless that width is on the list, so every URL needs a size that gives a listed width, such as <code>w</code>, <code>h</code> or <code>resize</code>. A <code>w</code> above a small original clamps to the original width, which is also a <code>400</code>. Add <code>upscale=1</code> to the URL to enlarge a small original to a listed width, and see <a href="resize-and-crop.html#upscale"><code>upscale</code></a>.</p>
 <h3 id="serve-square-thumbnails-at-fixed-sizes" tabindex="-1"><a class="header-anchor" href="#serve-square-thumbnails-at-fixed-sizes">Serve square thumbnails at fixed sizes</a></h3>

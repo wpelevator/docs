@@ -82,13 +82,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,7 +105,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/formats.html">Development (main)</option>
+      <option value="/docs/js/chop/latest/formats.html">latest</option>
       <option value="/docs/js/chop/v0.2.1/formats.html" selected>v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -125,6 +119,7 @@
     <li><a href="/docs/js/chop/v0.2.1/caching.html">Caching</a></li>
     <li><a href="/docs/js/chop/v0.2.1/cli.html">CLI</a></li>
     <li><a href="/docs/js/chop/v0.2.1/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
     <li><a href="/docs/js/chop/v0.2.1/formats.html" aria-current="page">Formats and quality</a></li>
     <li><a href="/docs/js/chop/v0.2.1/library.html">Library API</a></li>
     <li><a href="/docs/js/chop/v0.2.1/reference.html">Reference</a></li>
@@ -134,7 +129,6 @@
     <li><a href="/docs/js/chop/v0.2.1/security.html">Securing remote origins</a></li>
     <li><a href="/docs/js/chop/v0.2.1/sources.html">Sources</a></li>
     <li><a href="/docs/js/chop/v0.2.1/url-schemes.html">URL schemes</a></li>
-    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -147,9 +141,8 @@
     <li><span aria-current="page">v0.2.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Documentation for <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/formats.html">Development documentation (main)</a>.</p>
+<p class="notice" role="note">This is the documentation of <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/formats.html">Read the latest version</a>.</p>
 <article>
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>Formats and quality</h1>
     <div class="actions" data-pagefind-ignore>
@@ -157,12 +150,6 @@
       <a href="/docs/markdown/js/chop/v0.2.1/formats.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#restricting-formats">Restricting formats</a></li><li data-level="2"><a href="#quality-and-size">Quality and size</a></li><li data-level="2"><a href="#choices-where-the-specification-is-silent">Choices where the specification is silent</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <p>With <code>format=auto</code> (the default), the format is chosen from the <code>Accept</code> header for a still image among the formats of <code>autoFormats</code> (<code>avif,webp</code> by default): AVIF if it's listed and the output is lossy, or WebP if it's listed and the output fits the 16383 pixel limit of WebP, otherwise the fallback format. When the client lists both, the format with the highest <code>q</code> is used, and the earlier format of <code>autoFormats</code> wins a tie. Browsers send no <code>q</code> for image types, so they get the first format of <code>autoFormats</code> that they accept, as before, while a header like <code>image/avif;q=0.5,image/webp</code> now gives WebP. The fallback is GIF for a GIF source, PNG for lossless or transparent output, and JPEG otherwise.</p>
 <p>The header is parsed per RFC 9110, ignoring whitespace and case, and a type with <code>q=0</code> is not accepted. <code>image/*</code> and <code>*/*</code> never make AVIF or WebP acceptable: only a listed <code>image/avif</code> or <code>image/webp</code> does, so clients that don't list them get a format that they can display. An explicit <code>format</code> is used even if <code>Accept</code> doesn't list it, and it isn't restricted by <code>autoFormats</code>, which only governs the negotiation.</p>
@@ -243,7 +230,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/v0.2.1/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/chop/v0.2.1/library.html"><small>Next</small>Library API</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/v0.2.1/development.html"><small>Previous</small>Development</a><a rel="next" href="/docs/js/chop/v0.2.1/library.html"><small>Next</small>Library API</a>
 </nav>
 
   </main>

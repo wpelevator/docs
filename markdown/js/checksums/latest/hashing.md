@@ -1,9 +1,6 @@
 # Hashing
 
-The file examples assume `my-plugin.php` exists in the current directory and that `dist` contains `my-plugin.php` and `readme.txt`.
-
 ```js
-import { createReadStream } from 'node:fs';
 import { hashBytes, hashFile, hashFiles, hashStream } from '@wpelevator/checksums';
 
 hashBytes( 'abc' ); // { md5: '9001…', sha256: 'ba78…' }

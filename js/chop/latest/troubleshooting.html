@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/troubleshooting.html" selected>Development (main)</option>
+      <option value="/docs/js/chop/latest/troubleshooting.html" selected>latest</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -148,7 +142,6 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -160,12 +153,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/chop">
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Troubleshoot chop</h1><p class="lede">Find the cause of a chop error by its status code or startup message, with the exact output and the setting that fixes it.</p>
     <div class="actions" data-pagefind-ignore>
@@ -173,12 +164,6 @@
       <a href="/docs/markdown/js/chop/latest/troubleshooting.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#images-are-missing-from-a-remote-origin">Images are missing from a remote origin</a></li><li data-level="2"><a href="#s3-error-codes">S3 error codes</a></li><li data-level="2"><a href="#a-browser-gets-the-wrong-format">A browser gets the wrong format</a></li><li data-level="2"><a href="#a-replaced-image-still-shows-the-old-one">A replaced image still shows the old one</a></li><li data-level="2"><a href="#the-server-doesnt-start">The server doesn&#39;t start</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <p>Match the message you see to a cause. Errors are plain text with <code>Cache-Control: no-store</code>, and they never include file system paths. These are real responses from a data directory with a text file named <code>notimage.jpg</code> and a truncated JPEG.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">

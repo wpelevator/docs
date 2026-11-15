@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/quickstart.html" selected>Development (main)</option>
+      <option value="/docs/js/chop/latest/quickstart.html" selected>latest</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -148,7 +142,6 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -160,12 +153,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/index.html">Stable documentation (v0.2.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/chop">
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Quickstart</h1><p class="lede">Serve a folder of images as resized AVIF, WebP or JPEG copies from one command, and see the response headers that make them cacheable.</p>
     <div class="actions" data-pagefind-ignore>
@@ -173,10 +164,9 @@
       <a href="/docs/markdown/js/chop/latest/quickstart.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>Point chop at a folder of images and get resized copies in the best format each browser accepts. You need Node.js 22.12 or later and a folder with a JPEG in it. There is nothing to configure. The sizes below come from a 2400 by 1600 synthetic test image, so yours will differ.</p>
-<p>The examples run the published package with <code>npx @wpelevator/chop</code>. After <code>npm install @wpelevator/chop</code>, use <code>npx --no-install chop</code> from the project directory. Local installation does not normally add binaries to your shell's PATH, and bare <code>npx chop</code> without installation doesn't run this package.</p>
+<p>The examples run the published package with <code>npx @wpelevator/chop</code>. Use the scoped name until you install it, because bare <code>npx chop</code> doesn't run this package. After <code>npm install @wpelevator/chop</code> the bare <code>chop</code> command works.</p>
 <h2 id="1-start-the-server" tabindex="-1"><a class="header-anchor" href="#1-start-the-server">1. Start the server</a></h2>
 <p>Create the folder and copy any JPEG into it, then start the server from the folder that holds <code>uploads</code>:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> uploads/2026/05

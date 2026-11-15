@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/configuration.html" selected>Development (main)</option>
+      <option value="/docs/js/chop/latest/configuration.html" selected>latest</option>
       <option value="/docs/js/chop/v0.2.1/configuration.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -148,7 +142,6 @@
     <li><a href="/docs/js/chop/latest/configuration.html" aria-current="page">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -160,12 +153,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/configuration.html">Stable documentation (v0.2.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/chop">
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Configuration</h1><p class="lede">Every chop setting and its CHOP_ environment variable, with defaults, for the command and the library.</p>
     <div class="actions" data-pagefind-ignore>
@@ -173,20 +164,14 @@
       <a href="/docs/markdown/js/chop/latest/configuration.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#reference">Reference</a></li><li data-level="3"><a href="#source-and-urls">Source and URLs</a></li><li data-level="3"><a href="#limits">Limits</a></li><li data-level="3"><a href="#formats-and-quality">Formats and quality</a></li><li data-level="3"><a href="#caching-headers">Caching headers</a></li><li data-level="3"><a href="#remote-origins-and-url-sources">Remote origins and URL sources</a></li><li data-level="3"><a href="#s3">S3</a></li><li data-level="3"><a href="#variables-of-the-command-only">Variables of the command only</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <p>Every setting is a <code>CHOP_*</code> environment variable, so a container or a service file configures chop without flags. This run limits the output widths, lowers the JPEG quality and turns AVIF off:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span>,1280 <span class="token assign-left variable">CHOP_JPEG_QUALITY</span><span class="token operator">=</span><span class="token number">75</span> <span class="token assign-left variable">CHOP_AVIF</span><span class="token operator">=</span>false npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span>,1280 <span class="token assign-left variable">CHOP_JPEG_QUALITY</span><span class="token operator">=</span><span class="token number">75</span> <span class="token assign-left variable">CHOP_AVIF</span><span class="token operator">=</span>false chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /home/me/uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>A value that can't be used stops the server with exit code <code>2</code> and names the variable or setting, so a typo shows up at startup and not in production:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_MAX_QUEUE</span><span class="token operator">=</span>abc npx @wpelevator/chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_MAX_QUEUE</span><span class="token operator">=</span>abc chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">CHOP_MAX_QUEUE must be a whole number, got &quot;abc&quot;.</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>

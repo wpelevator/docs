@@ -1,7 +1,5 @@
 # Selecting files
 
-This example assumes a `dist` directory containing `my-plugin.php` and `includes/class-plugin.php`.
-
 ```js
 import { loadFileRules, resolveFileSelection, selectFiles } from '@wpelevator/fileset';
 

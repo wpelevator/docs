@@ -82,13 +82,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,7 +105,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/index.html">Development (main)</option>
+      <option value="/docs/js/chop/latest/index.html">latest</option>
       <option value="/docs/js/chop/v0.2.1/url-schemes.html" selected>v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -125,6 +119,7 @@
     <li><a href="/docs/js/chop/v0.2.1/caching.html">Caching</a></li>
     <li><a href="/docs/js/chop/v0.2.1/cli.html">CLI</a></li>
     <li><a href="/docs/js/chop/v0.2.1/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
     <li><a href="/docs/js/chop/v0.2.1/formats.html">Formats and quality</a></li>
     <li><a href="/docs/js/chop/v0.2.1/library.html">Library API</a></li>
     <li><a href="/docs/js/chop/v0.2.1/reference.html">Reference</a></li>
@@ -134,7 +129,6 @@
     <li><a href="/docs/js/chop/v0.2.1/security.html">Securing remote origins</a></li>
     <li><a href="/docs/js/chop/v0.2.1/sources.html">Sources</a></li>
     <li><a href="/docs/js/chop/v0.2.1/url-schemes.html" aria-current="page">URL schemes</a></li>
-    <li><a href="/docs/js/chop/v0.2.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -147,9 +141,8 @@
     <li><span aria-current="page">v0.2.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Documentation for <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Development documentation (main)</a>.</p>
+<p class="notice" role="note">This is the documentation of <strong>v0.2.1</strong>. <a href="/docs/js/chop/latest/index.html">Read the latest version</a>.</p>
 <article>
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
   <header class="page-head">
     <h1>URL schemes</h1>
     <div class="actions" data-pagefind-ignore>
@@ -157,7 +150,6 @@
       <a href="/docs/markdown/js/chop/v0.2.1/url-schemes.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>A URL scheme turns the URL of a request into the path of the original and the operations to run on it. All the schemes produce the same operations, so every scheme gets the same format negotiation, limits and path safety, and different schemes that give the same operations give the same bytes and <code>ETag</code>. Enable them with <code>schemes</code> in the settings, <code>CHOP_SCHEMES</code> or <code>--scheme</code>, which can be repeated.</p>
 <p>The schemes are tried in the configured order, and the first one that recognizes the URL wins. A URL that none of them recognizes is a <code>404</code>. <code>/healthz</code> doesn't depend on the schemes. The <code>query</code> scheme recognizes every URL, so when it's enabled together with other schemes, list it last. The path of a scheme goes through the same checks as any path: dot segments, empty segments, slashes, backslashes and NUL bytes in a decoded segment are a <code>400</code>, and the real path must stay inside the data directory. A scheme can also find a <a href="sources.html">URL source</a> in the URL.</p>

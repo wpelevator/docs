@@ -80,13 +80,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/signatures">signatures · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,10 +104,10 @@
 <nav aria-label="signatures documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/signatures/latest/index.html" aria-current="page">Overview</a></li>
-    <li><a href="/docs/js/signatures/latest/usage.html">Usage</a></li>
+    <li><a href="/docs/js/signatures/latest/changelog.html">Changelog</a></li>
     <li><a href="/docs/js/signatures/latest/command-line.html">Command line</a></li>
     <li><a href="/docs/js/signatures/latest/formats.html">Formats</a></li>
-    <li><a href="/docs/js/signatures/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/signatures/latest/usage.html">Usage</a></li>
   </ul>
 </nav>
 
@@ -123,12 +117,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/signatures/latest/index.html">signatures</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/signatures">
-  <span class="visually-hidden" data-pagefind-meta="package">signatures</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>signatures</h1><p class="lede">Generate Ed25519 keys, sign files and verify signatures in the WordPress, minisign and OpenSSH formats.</p>
     <div class="actions" data-pagefind-ignore>
@@ -136,26 +128,12 @@
       <a href="/docs/markdown/js/signatures/latest/index.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>Generate Ed25519 keys, sign files and verify signatures in three formats that share one key: the detached signature that WordPress core's <code>verify_file_signature()</code> checks, <a href="https://jedisct1.github.io/minisign/">minisign</a> and OpenSSH (<code>ssh-keygen -Y sign</code>). It uses only <code>node:crypto</code>, with no runtime dependencies.</p>
 <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/signatures</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Requires Node.js 22.12 or later.</p>
-<h2 id="sign-and-verify-bytes" tabindex="-1"><a class="header-anchor" href="#sign-and-verify-bytes">Sign and verify bytes</a></h2>
-<p>Save this as <code>example.mjs</code>:</p>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> generateSigningKeyPair<span class="token punctuation">,</span> parsePublicKey<span class="token punctuation">,</span> parseSigningKey<span class="token punctuation">,</span> signBytes<span class="token punctuation">,</span> verifyBytes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/signatures'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> <span class="token punctuation">{</span> privateKey<span class="token punctuation">,</span> publicKey <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">generateSigningKeyPair</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> data <span class="token operator">=</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span> <span class="token string">'hello'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> signature <span class="token operator">=</span> <span class="token function">signBytes</span><span class="token punctuation">(</span> data<span class="token punctuation">,</span> <span class="token function">parseSigningKey</span><span class="token punctuation">(</span> privateKey <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token function">verifyBytes</span><span class="token punctuation">(</span> data<span class="token punctuation">,</span> signature<span class="token punctuation">,</span> <span class="token function">parsePublicKey</span><span class="token punctuation">(</span> publicKey <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Run <code>node example.mjs</code>:</p>
-<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">true</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>This generates a disposable key for the example. Keep a release signing key secret and store it securely instead of generating a new one for each verification.</p>
 <h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
 <ul>
 <li><a href="./formats.html">Formats</a></li>
@@ -165,7 +143,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/signatures/latest/usage.html"><small>Next</small>Usage</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/signatures/latest/changelog.html"><small>Next</small>Changelog</a>
 </nav>
 
   </main>

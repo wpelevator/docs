@@ -7,14 +7,14 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
   <title>Hashing – checksums | WP Elevator Docs</title>
-  <meta name="description" content="The file examples assume my-plugin.php exists in the current directory and that dist contains my-plugin.php and readme.txt.">
+  <meta name="description" content="Every function gives the MD5 and the SHA-256 hex digests in a single pass. MD5 is there for compatibility with the WordPress.org format. hashFiles() reads…">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/checksums/latest/hashing.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/checksums/latest/hashing.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Hashing – checksums">
-  <meta property="og:description" content="The file examples assume my-plugin.php exists in the current directory and that dist contains my-plugin.php and readme.txt.">
+  <meta property="og:description" content="Every function gives the MD5 and the SHA-256 hex digests in a single pass. MD5 is there for compatibility with the WordPress.org format. hashFiles() reads…">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/checksums/latest/hashing.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -45,7 +45,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html#article",
       "headline": "Hashing",
-      "description": "The file examples assume my-plugin.php exists in the current directory and that dist contains my-plugin.php and readme.txt.",
+      "description": "Every function gives the MD5 and the SHA-256 hex digests in a single pass. MD5 is there for compatibility with the WordPress.org format. hashFiles() reads…",
       "url": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/checksums/latest/hashing.html",
       "inLanguage": "en",
@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/checksums">checksums · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,12 +105,12 @@
 <nav aria-label="checksums documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/checksums/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/checksums/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/checksums/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/checksums/latest/formats.html">Formats</a></li>
     <li><a href="/docs/js/checksums/latest/hashing.html" aria-current="page">Hashing</a></li>
     <li><a href="/docs/js/checksums/latest/manifests.html">Manifests</a></li>
     <li><a href="/docs/js/checksums/latest/verifying.html">Comparing and verifying</a></li>
-    <li><a href="/docs/js/checksums/latest/formats.html">Formats</a></li>
-    <li><a href="/docs/js/checksums/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/checksums/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -126,12 +120,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/checksums/latest/index.html">checksums</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/checksums">
-  <span class="visually-hidden" data-pagefind-meta="package">checksums</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Hashing</h1>
     <div class="actions" data-pagefind-ignore>
@@ -139,11 +131,8 @@
       <a href="/docs/markdown/js/checksums/latest/hashing.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
-    <p>The file examples assume <code>my-plugin.php</code> exists in the current directory and that <code>dist</code> contains <code>my-plugin.php</code> and <code>readme.txt</code>.</p>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createReadStream <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'node:fs'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> hashBytes<span class="token punctuation">,</span> hashFile<span class="token punctuation">,</span> hashFiles<span class="token punctuation">,</span> hashStream <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
+    <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> hashBytes<span class="token punctuation">,</span> hashFile<span class="token punctuation">,</span> hashFiles<span class="token punctuation">,</span> hashStream <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>
 
 <span class="token function">hashBytes</span><span class="token punctuation">(</span> <span class="token string">'abc'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// { md5: '9001…', sha256: 'ba78…' }</span>
 <span class="token keyword">await</span> <span class="token function">hashStream</span><span class="token punctuation">(</span> <span class="token function">createReadStream</span><span class="token punctuation">(</span> <span class="token string">'my-plugin.php'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -154,7 +143,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/checksums/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/js/checksums/latest/manifests.html"><small>Next</small>Manifests</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/checksums/latest/formats.html"><small>Previous</small>Formats</a><a rel="next" href="/docs/js/checksums/latest/manifests.html"><small>Next</small>Manifests</a>
 </nav>
 
   </main>

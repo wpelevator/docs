@@ -82,13 +82,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/wp-release">wp-release · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,7 +105,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/deployment.html">Development (main)</option>
+      <option value="/docs/js/wp-release/latest/deployment.html">latest</option>
       <option value="/docs/js/wp-release/v0.21.0/deployment.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/deployment.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/deployment.html">v0.20.1</option>
@@ -130,10 +124,10 @@
     <li><a href="/docs/js/wp-release/v0.18.1/comparison.html">Comparison with other tools</a></li>
     <li><a href="/docs/js/wp-release/v0.18.1/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/v0.18.1/deployment.html" aria-current="page">Deployment</a></li>
+    <li><a href="/docs/js/wp-release/v0.18.1/development.html">Development</a></li>
     <li><a href="/docs/js/wp-release/v0.18.1/internationalization.html">Internationalization</a></li>
     <li><a href="/docs/js/wp-release/v0.18.1/library.html">Library API</a></li>
     <li><a href="/docs/js/wp-release/v0.18.1/packaging.html">Packaging and integrity</a></li>
-    <li><a href="/docs/js/wp-release/v0.18.1/development.html">Development</a></li>
   </ul>
 </nav>
 
@@ -146,9 +140,8 @@
     <li><span aria-current="page">v0.18.1</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Documentation for <strong>v0.18.1</strong>. <a href="/docs/js/wp-release/latest/deployment.html">Development documentation (main)</a>.</p>
+<p class="notice" role="note">This is the documentation of <strong>v0.18.1</strong>. <a href="/docs/js/wp-release/latest/deployment.html">Read the latest version</a>.</p>
 <article>
-  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
   <header class="page-head">
     <h1>Deployment</h1>
     <div class="actions" data-pagefind-ignore>
@@ -156,12 +149,6 @@
       <a href="/docs/markdown/js/wp-release/v0.18.1/deployment.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#deploy-to-svn">Deploy to SVN</a></li><li data-level="2"><a href="#deploy-to-git">Deploy to Git</a></li><li data-level="2"><a href="#deploy-configured-packages">Deploy configured packages</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <h2 id="deploy-to-svn" tabindex="-1"><a class="header-anchor" href="#deploy-to-svn">Deploy to SVN</a></h2>
 <p>The <a href="https://github.com/wpelevator/wp-release-deploy-svn"><code>wp-release-deploy-svn</code></a> GitHub Action runs this command.</p>
@@ -352,7 +339,7 @@ wp-release deploy-git packages/my-plugin --split-prefix packages/my-plugin --git
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.18.1/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/wp-release/v0.18.1/internationalization.html"><small>Next</small>Internationalization</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.18.1/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/js/wp-release/v0.18.1/development.html"><small>Next</small>Development</a>
 </nav>
 
   </main>

@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="php/php-changesets">php-changesets · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/comparison.html" selected>Development (main)</option>
+      <option value="/docs/php/php-changesets/latest/comparison.html" selected>latest</option>
       <option value="/docs/php/php-changesets/v2.0.1/comparison.html">v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/comparison.html">v2.0.0</option>
     </select>
@@ -119,12 +113,12 @@
 <nav aria-label="php-changesets documentation">
   <ul class="nav-list">
     <li><a href="/docs/php/php-changesets/latest/index.html">Overview</a></li>
-    <li><a href="/docs/php/php-changesets/latest/cli.html">Command line</a></li>
-    <li><a href="/docs/php/php-changesets/latest/github-actions.html">GitHub Actions</a></li>
-    <li><a href="/docs/php/php-changesets/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/latest/comparison.html" aria-current="page">Comparison with wp-release</a></li>
-    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/php/php-changesets/latest/cli.html">Command line</a></li>
+    <li><a href="/docs/php/php-changesets/latest/comparison.html" aria-current="page">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/latest/github-actions.html">GitHub Actions</a></li>
   </ul>
 </nav>
 
@@ -134,12 +128,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · revision a0529e4. <a href="/docs/php/php-changesets/v2.0.1/comparison.html">Stable documentation (v2.0.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:php/php-changesets">
-  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Comparison with wp-release</h1>
     <div class="actions" data-pagefind-ignore>
@@ -147,7 +139,6 @@
       <a href="/docs/markdown/php/php-changesets/latest/comparison.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>PHP Changesets is the PHP counterpart of the <code>changeset</code> commands of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose <code>wp-release</code> when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same <code>releases[]</code> plan, so a repository can switch between them.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
@@ -222,7 +213,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/latest/configuration.html"><small>Previous</small>Configuration</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/latest/cli.html"><small>Previous</small>Command line</a><a rel="next" href="/docs/php/php-changesets/latest/configuration.html"><small>Next</small>Configuration</a>
 </nav>
 
   </main>

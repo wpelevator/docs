@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/wp-release">wp-release · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/wp-release/latest/changesets.html" selected>Development (main)</option>
+      <option value="/docs/js/wp-release/latest/changesets.html" selected>latest</option>
       <option value="/docs/js/wp-release/v0.21.0/changesets.html">v0.21.0</option>
       <option value="/docs/js/wp-release/v0.20.2/changesets.html">v0.20.2</option>
       <option value="/docs/js/wp-release/v0.20.1/changesets.html">v0.20.1</option>
@@ -153,8 +147,8 @@
     <li><a href="/docs/js/wp-release/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/wp-release/latest/naming.html">Names across the CLI, Actions and library</a></li>
     <li><a href="/docs/js/wp-release/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/latest/comparison.html">Comparison with existing tools</a></li>
     <li><a href="/docs/js/wp-release/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
@@ -165,12 +159,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.21.0 · revision a0529e4. <a href="/docs/js/wp-release/v0.21.0/changesets.html">Stable documentation (v0.21.0)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/wp-release">
-  <span class="visually-hidden" data-pagefind-meta="package">wp-release</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Changesets</h1><p class="lede">Record the release impact of a pull request, then bump versions, write the changelog and create tags from the notes.</p>
     <div class="actions" data-pagefind-ignore>
@@ -178,12 +170,6 @@
       <a href="/docs/markdown/js/wp-release/latest/changesets.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#add-a-changeset">Add a changeset</a></li><li data-level="2"><a href="#check-pull-requests">Check pull requests</a></li><li data-level="2"><a href="#version-a-release">Version a release</a></li><li data-level="2"><a href="#tag-a-release">Tag a release</a></li><li data-level="2"><a href="#single-project-repositories">Single-project repositories</a></li><li data-level="2"><a href="#how-a-release-flows">How a release flows</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <p>A changeset is a small Markdown file that says which package a pull request changes, how big the change is and what to tell users. You don't write it by hand: <code>changeset add</code> creates it. Four commands turn the files into a release: <code>add</code>, <code>status</code>, <code>version</code> and <code>tag</code>.</p>
 <p>In a terminal, run <code>add</code> without options. It lists the packages, preselects the ones that changed since the base branch, and asks for the bump of each and the release note. In scripts and CI, pass the answers as options. <code>--empty</code> records that a change needs no release, and <code>--name</code> sets the file name instead of a random one:</p>

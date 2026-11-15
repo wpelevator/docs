@@ -10,7 +10,7 @@ CHOP_MAX_INPUT_BYTES=10485760 \
 CHOP_MAX_INPUT_PIXELS=50000000 \
 CHOP_AUTO_FORMATS=webp \
 CHOP_ACCESS_LOG=1 \
-npx @wpelevator/chop --data /var/www/uploads
+chop --data /var/www/uploads
 ```
 
 An original over the limit is then a `413` with a plain message, and the client learns nothing about your files:

@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/chop">chop · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,7 +104,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/js/chop/latest/s3.html" selected>Development (main)</option>
+      <option value="/docs/js/chop/latest/s3.html" selected>latest</option>
       <option value="/docs/js/chop/v0.2.1/s3.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -148,7 +142,6 @@
     <li><a href="/docs/js/chop/latest/configuration.html">Configuration</a></li>
     <li><a href="/docs/js/chop/latest/responses.html">Responses and errors</a></li>
     <li><a href="/docs/js/chop/latest/library.html">Library API</a></li>
-    <li><a href="/docs/js/chop/latest/legacy-reference.html">Former reference pages</a></li>
     <li><a href="/docs/js/chop/latest/development.html">Development</a></li>
     <li><a href="/docs/js/chop/latest/changelog.html">Changelog</a></li>
   </ul>
@@ -160,12 +153,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.2.1 · revision a0529e4. <a href="/docs/js/chop/v0.2.1/s3.html">Stable documentation (v0.2.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/chop">
-  <span class="visually-hidden" data-pagefind-meta="package">chop</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Serve images from S3</h1><p class="lede">Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.</p>
     <div class="actions" data-pagefind-ignore>
@@ -173,12 +164,6 @@
       <a href="/docs/markdown/js/chop/latest/s3.md">Open as Markdown</a>
     </div>
   </header>
-  
-  <details class="outline" data-pagefind-ignore>
-    <summary>On this page</summary>
-    <nav aria-label="On this page"><ul><li data-level="2"><a href="#common-tasks">Common tasks</a></li><li data-level="3"><a href="#use-aws-lambda-or-a-public-bucket">Use AWS, Lambda or a public bucket</a></li><li data-level="3"><a href="#use-seaweedfs-or-minio-on-a-private-network">Use SeaweedFS or MinIO on a private network</a></li><li data-level="3"><a href="#use-cloudflare-r2">Use Cloudflare R2</a></li><li data-level="3"><a href="#find-out-why-images-are-missing">Find out why images are missing</a></li><li data-level="2"><a href="#reference">Reference</a></li><li data-level="3"><a href="#keys-and-signing">Keys and signing</a></li><li data-level="3"><a href="#endpoints-and-addressing">Endpoints and addressing</a></li><li data-level="3"><a href="#credentials">Credentials</a></li><li data-level="3"><a href="#errors">Errors</a></li><li data-level="3"><a href="#limits-of-the-s3-origin">Limits of the S3 origin</a></li></ul></nav>
-  </details>
-  
   <div class="prose">
     <p>Serve the images of an S3 bucket, or of an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS, with one environment variable and the credentials that the bucket needs:</p>
 <div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://my-bucket/uploads <span class="token assign-left variable">AWS_REGION</span><span class="token operator">=</span>eu-west-1 <span class="token punctuation">\</span>

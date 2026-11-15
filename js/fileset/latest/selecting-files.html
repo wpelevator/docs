@@ -7,14 +7,14 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
   <title>Selecting files – fileset | WP Elevator Docs</title>
-  <meta name="description" content="This example assumes a dist directory containing my-plugin.php and includes/class-plugin.php.">
+  <meta name="description" content="selectFiles() returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra exclude…">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/fileset/latest/selecting-files.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Selecting files – fileset">
-  <meta property="og:description" content="This example assumes a dist directory containing my-plugin.php and includes/class-plugin.php.">
+  <meta property="og:description" content="selectFiles() returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra exclude…">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -45,7 +45,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html#article",
       "headline": "Selecting files",
-      "description": "This example assumes a dist directory containing my-plugin.php and includes/class-plugin.php.",
+      "description": "selectFiles() returns sorted relative paths with forward slashes. The rules come from the ignore file in the source directory and the extra exclude…",
       "url": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/fileset/latest/selecting-files.html",
       "inLanguage": "en",
@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/fileset">fileset · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,10 +105,10 @@
 <nav aria-label="fileset documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/fileset/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/fileset/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/fileset/latest/errors.html">Errors</a></li>
     <li><a href="/docs/js/fileset/latest/selecting-files.html" aria-current="page">Selecting files</a></li>
     <li><a href="/docs/js/fileset/latest/syncing.html">Syncing a directory</a></li>
-    <li><a href="/docs/js/fileset/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/fileset/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -124,12 +118,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/fileset/latest/index.html">fileset</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/fileset">
-  <span class="visually-hidden" data-pagefind-meta="package">fileset</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Selecting files</h1>
     <div class="actions" data-pagefind-ignore>
@@ -137,10 +129,8 @@
       <a href="/docs/markdown/js/fileset/latest/selecting-files.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
-    <p>This example assumes a <code>dist</code> directory containing <code>my-plugin.php</code> and <code>includes/class-plugin.php</code>.</p>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> loadFileRules<span class="token punctuation">,</span> resolveFileSelection<span class="token punctuation">,</span> selectFiles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/fileset'</span><span class="token punctuation">;</span>
+    <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> loadFileRules<span class="token punctuation">,</span> resolveFileSelection<span class="token punctuation">,</span> selectFiles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/fileset'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span>
 	<span class="token function">resolveFileSelection</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
@@ -185,7 +175,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/fileset/latest/index.html"><small>Previous</small>Overview</a><a rel="next" href="/docs/js/fileset/latest/syncing.html"><small>Next</small>Syncing a directory</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/fileset/latest/errors.html"><small>Previous</small>Errors</a><a rel="next" href="/docs/js/fileset/latest/syncing.html"><small>Next</small>Syncing a directory</a>
 </nav>
 
   </main>

@@ -80,13 +80,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/fileset">fileset · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -110,10 +104,10 @@
 <nav aria-label="fileset documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/fileset/latest/index.html" aria-current="page">Overview</a></li>
+    <li><a href="/docs/js/fileset/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/fileset/latest/errors.html">Errors</a></li>
     <li><a href="/docs/js/fileset/latest/selecting-files.html">Selecting files</a></li>
     <li><a href="/docs/js/fileset/latest/syncing.html">Syncing a directory</a></li>
-    <li><a href="/docs/js/fileset/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/fileset/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -123,12 +117,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/fileset/latest/index.html">fileset</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/fileset">
-  <span class="visually-hidden" data-pagefind-meta="package">fileset</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>fileset</h1><p class="lede">Select the files of a directory with gitignore-style rules and sync another directory to match, copying only what changed.</p>
     <div class="actions" data-pagefind-ignore>
@@ -136,34 +128,12 @@
       <a href="/docs/markdown/js/fileset/latest/index.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>Select the files of a directory with gitignore-style rules and an ignore file like <code>.distignore</code>, and make another directory match the selected files, copying only what changed. It uses the <a href="https://github.com/kaelzhang/node-ignore">ignore</a> package for the rules, and doesn't run Git or any other program.</p>
 <h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
 <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> @wpelevator/fileset</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <p>Requires Node.js 22.12 or later.</p>
-<h2 id="select-your-first-files" tabindex="-1"><a class="header-anchor" href="#select-your-first-files">Select your first files</a></h2>
-<p>Save this as <code>example.mjs</code>. It creates and removes its own temporary fixture:</p>
-<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> mkdtemp<span class="token punctuation">,</span> mkdir<span class="token punctuation">,</span> rm<span class="token punctuation">,</span> writeFile <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'node:fs/promises'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> tmpdir <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'node:os'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> join <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'node:path'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> loadFileRules<span class="token punctuation">,</span> resolveFileSelection<span class="token punctuation">,</span> selectFiles <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/fileset'</span><span class="token punctuation">;</span>
-
-<span class="token keyword">const</span> dir <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">mkdtemp</span><span class="token punctuation">(</span> <span class="token function">join</span><span class="token punctuation">(</span> <span class="token function">tmpdir</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'fileset-example-'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">try</span> <span class="token punctuation">{</span>
-	<span class="token keyword">await</span> <span class="token function">mkdir</span><span class="token punctuation">(</span> <span class="token function">join</span><span class="token punctuation">(</span> dir<span class="token punctuation">,</span> <span class="token string">'tests'</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">await</span> <span class="token function">writeFile</span><span class="token punctuation">(</span> <span class="token function">join</span><span class="token punctuation">(</span> dir<span class="token punctuation">,</span> <span class="token string">'plugin.php'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;?php'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">await</span> <span class="token function">writeFile</span><span class="token punctuation">(</span> <span class="token function">join</span><span class="token punctuation">(</span> dir<span class="token punctuation">,</span> <span class="token string">'tests'</span><span class="token punctuation">,</span> <span class="token string">'test.php'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'&lt;?php'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span> <span class="token function">resolveFileSelection</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> dir<span class="token punctuation">,</span> <span class="token literal-property property">sourceDir</span><span class="token operator">:</span> dir<span class="token punctuation">,</span> <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token string">'tests/'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token keyword">await</span> <span class="token function">selectFiles</span><span class="token punctuation">(</span> dir<span class="token punctuation">,</span> rules <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
-	<span class="token keyword">await</span> <span class="token function">rm</span><span class="token punctuation">(</span> dir<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">recursive</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>Run <code>node example.mjs</code>:</p>
-<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">[ 'plugin.php' ]</code></pre>
-<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
 <ul>
 <li><a href="./selecting-files.html">Selecting files</a></li>
@@ -173,7 +143,7 @@
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/fileset/latest/selecting-files.html"><small>Next</small>Selecting files</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/fileset/latest/changelog.html"><small>Next</small>Changelog</a>
 </nav>
 
   </main>

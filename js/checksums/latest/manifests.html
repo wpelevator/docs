@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/checksums">checksums · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,12 +105,12 @@
 <nav aria-label="checksums documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/checksums/latest/index.html">Overview</a></li>
+    <li><a href="/docs/js/checksums/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/checksums/latest/errors.html">Errors</a></li>
+    <li><a href="/docs/js/checksums/latest/formats.html">Formats</a></li>
     <li><a href="/docs/js/checksums/latest/hashing.html">Hashing</a></li>
     <li><a href="/docs/js/checksums/latest/manifests.html" aria-current="page">Manifests</a></li>
     <li><a href="/docs/js/checksums/latest/verifying.html">Comparing and verifying</a></li>
-    <li><a href="/docs/js/checksums/latest/formats.html">Formats</a></li>
-    <li><a href="/docs/js/checksums/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/checksums/latest/changelog.html">Changelog</a></li>
   </ul>
 </nav>
 
@@ -126,12 +120,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/checksums/latest/index.html">checksums</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/checksums">
-  <span class="visually-hidden" data-pagefind-meta="package">checksums</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Manifests</h1>
     <div class="actions" data-pagefind-ignore>
@@ -139,7 +131,6 @@
       <a href="/docs/markdown/js/checksums/latest/manifests.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <h2 id="create-a-manifest" tabindex="-1"><a class="header-anchor" href="#create-a-manifest">Create a manifest</a></h2>
 <div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> createChecksums<span class="token punctuation">,</span> writeChecksums <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/checksums'</span><span class="token punctuation">;</span>

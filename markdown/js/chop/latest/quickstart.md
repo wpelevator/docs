@@ -4,7 +4,7 @@ Serve a folder of images as resized AVIF, WebP or JPEG copies from one command, 
 
 Point chop at a folder of images and get resized copies in the best format each browser accepts. You need Node.js 22.12 or later and a folder with a JPEG in it. There is nothing to configure. The sizes below come from a 2400 by 1600 synthetic test image, so yours will differ.
 
-The examples run the published package with `npx @wpelevator/chop`. After `npm install @wpelevator/chop`, use `npx --no-install chop` from the project directory. Local installation does not normally add binaries to your shell's PATH, and bare `npx chop` without installation doesn't run this package.
+The examples run the published package with `npx @wpelevator/chop`. Use the scoped name until you install it, because bare `npx chop` doesn't run this package. After `npm install @wpelevator/chop` the bare `chop` command works.
 
 ## 1. Start the server
 

@@ -80,13 +80,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="php/php-changesets">php-changesets · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -109,7 +103,7 @@
   <label class="field">
     <span>Version</span>
     <select data-navigate autocomplete="off">
-      <option value="/docs/php/php-changesets/latest/index.html" selected>Development (main)</option>
+      <option value="/docs/php/php-changesets/latest/index.html" selected>latest</option>
       <option value="/docs/php/php-changesets/v2.0.1/index.html">v2.0.1</option>
       <option value="/docs/php/php-changesets/v2.0.0/index.html">v2.0.0</option>
     </select>
@@ -118,12 +112,12 @@
 <nav aria-label="php-changesets documentation">
   <ul class="nav-list">
     <li><a href="/docs/php/php-changesets/latest/index.html" aria-current="page">Overview</a></li>
-    <li><a href="/docs/php/php-changesets/latest/cli.html">Command line</a></li>
-    <li><a href="/docs/php/php-changesets/latest/github-actions.html">GitHub Actions</a></li>
-    <li><a href="/docs/php/php-changesets/latest/configuration.html">Configuration</a></li>
-    <li><a href="/docs/php/php-changesets/latest/comparison.html">Comparison with wp-release</a></li>
-    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
     <li><a href="/docs/php/php-changesets/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/php/php-changesets/latest/cli.html">Command line</a></li>
+    <li><a href="/docs/php/php-changesets/latest/comparison.html">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/latest/configuration.html">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/latest/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/latest/github-actions.html">GitHub Actions</a></li>
   </ul>
 </nav>
 
@@ -133,12 +127,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · revision a0529e4. <a href="/docs/php/php-changesets/v2.0.1/index.html">Stable documentation (v2.0.1)</a>.</p>
-<article data-pagefind-body data-pagefind-filter="package:php/php-changesets">
-  <span class="visually-hidden" data-pagefind-meta="package">php-changesets</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>php-changesets</h1><p class="lede">Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.</p>
     <div class="actions" data-pagefind-ignore>
@@ -146,7 +138,6 @@
       <a href="/docs/markdown/php/php-changesets/latest/index.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p><code>wpelevator/php-changesets</code> releases WordPress plugins, themes and Composer packages from changeset Markdown files, with PHP and Git and without Node.js. It's for projects that don't use Node.js or JavaScript tooling: a Composer dependency replaces an npm one, and nothing needs installing in CI beyond PHP. It follows the release model of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, the Node.js release tool of WP Elevator, so both tools read the same changesets, take the same command options and produce the same release plans.</p>
 <p>If your project already builds with Node.js, or you also want ZIPs, checksums, translations or WordPress.org deploys, use the <a href="../../../js/wp-release/latest/changesets.html"><code>wp-release</code> changeset commands</a> instead. The <a href="comparison.html">comparison</a> lists the differences.</p>
@@ -181,7 +172,7 @@ vendor/bin/changeset tag                   <span class="token comment"># After m
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/php/php-changesets/latest/cli.html"><small>Next</small>Command line</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/php/php-changesets/latest/changelog.html"><small>Next</small>Changelog</a>
 </nav>
 
   </main>

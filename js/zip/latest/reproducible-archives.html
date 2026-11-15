@@ -81,13 +81,7 @@
    </div>
   </header>
   <div class="layout">
-  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search">
-  <label class="search-scope"><span class="visually-hidden">Search scope (development documentation)</span><select aria-label="Search scope (development documentation)" data-search-scope>
-    <option value="js/zip">zip · Development docs</option>
-    <option value="">All packages · Development docs</option>
-  </select></label>
-  <div data-search-widget></div>
-</div>
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
 <div class="switchers">
   <label class="field">
     <span>Package</span>
@@ -111,11 +105,11 @@
 <nav aria-label="zip documentation">
   <ul class="nav-list">
     <li><a href="/docs/js/zip/latest/index.html">Overview</a></li>
-    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
+    <li><a href="/docs/js/zip/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/zip/latest/errors.html">Errors</a></li>
     <li><a href="/docs/js/zip/latest/reproducible-archives.html" aria-current="page">Reproducible archives</a></li>
     <li><a href="/docs/js/zip/latest/safe-extraction.html">Safe extraction</a></li>
-    <li><a href="/docs/js/zip/latest/errors.html">Errors</a></li>
-    <li><a href="/docs/js/zip/latest/changelog.html">Changelog</a></li>
+    <li><a href="/docs/js/zip/latest/usage.html">Usage</a></li>
   </ul>
 </nav>
 
@@ -125,12 +119,10 @@
   <ol>
     <li><a href="/docs/">Docs</a></li>
     <li><a href="/docs/js/zip/latest/index.html">zip</a></li>
-    <li><span aria-current="page">Development (main)</span></li>
+    <li><span aria-current="page">latest</span></li>
   </ol>
 </nav>
-<p class="notice" role="note">Development documentation (main) · checked-out package version 0.1.0 · revision a0529e4.</p>
-<article data-pagefind-body data-pagefind-filter="package:js/zip">
-  <span class="visually-hidden" data-pagefind-meta="package">zip</span>
+<article data-pagefind-body>
   <header class="page-head">
     <h1>Reproducible archives</h1>
     <div class="actions" data-pagefind-ignore>
@@ -138,14 +130,13 @@
       <a href="/docs/markdown/js/zip/latest/reproducible-archives.md">Open as Markdown</a>
     </div>
   </header>
-  
   <div class="prose">
     <p>The same entries always give the same archive bytes: entries are sorted by name, every entry has the file mode <code>0o100644</code> (<code>ZIP_FILE_MODE</code>) and the same modification time, so the archive doesn't depend on the umask, file system, clock or the order of the input.</p>
 <p>The modification time is the Unix time in the <code>SOURCE_DATE_EPOCH</code> environment variable when it's set, as in <a href="https://reproducible-builds.org/docs/source-date-epoch/">reproducible-builds.org</a>, and otherwise the fixed <code>ZIP_MTIME</code>, 1980-01-01, the first day that ZIP supports. ZIP stores local time without a time zone, so the UTC time is written as it is, to give the same bytes in every time zone. A time before 1980 gives <code>ZIP_MTIME</code>, and a value that isn't a whole number of seconds throws a <code>ZipError</code> with the code <code>ERR_INVALID_SOURCE_DATE_EPOCH</code>. Pass <code>mtime</code> to override both.</p>
 
   </div>
 </article>
-<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/zip/latest/usage.html"><small>Previous</small>Usage</a><a rel="next" href="/docs/js/zip/latest/safe-extraction.html"><small>Next</small>Safe extraction</a>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/zip/latest/errors.html"><small>Previous</small>Errors</a><a rel="next" href="/docs/js/zip/latest/safe-extraction.html"><small>Next</small>Safe extraction</a>
 </nav>
 
   </main>
