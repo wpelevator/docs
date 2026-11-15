@@ -225,6 +225,8 @@ main {
   color: inherit;
   font-size: var(--text-sm);
   font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
   text-decoration: none;
 }
 
@@ -446,22 +448,21 @@ article { display: grid; grid-template-columns: var(--col); gap: var(--space-5);
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-2);
-  padding-block-end: var(--space-4);
-  border-block-end: 1px solid var(--border);
 
   :is(button, a) {
     display: inline-flex;
     align-items: center;
-    min-block-size: var(--control);
-    padding-inline: var(--space-4);
-    border: 1px solid var(--field-border);
+    min-block-size: 1.75rem;
+    padding-inline: var(--space-2);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: var(--surface);
-    color: var(--text);
+    background: transparent;
+    color: var(--muted);
+    font-size: var(--text-xs);
     text-decoration: none;
     cursor: pointer;
 
-    @media (hover: hover) { &:hover { background: var(--hover); } }
+    @media (hover: hover) { &:hover { background: var(--hover); color: var(--text); } }
   }
 
   button { display: none; .js & { display: inline-flex; } }
