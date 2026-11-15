@@ -60,8 +60,9 @@
   --bar: 4.25rem;
 
   /* Colors: one definition per token for both schemes, light first. The dark palette
-   * follows the main site at wpelevator.com. Borders of controls reach 3:1 against
-   * their surroundings, decorative dividers do not need to. */
+   * follows the main site at wpelevator.com. Borders of outlined controls reach 3:1 against
+   * their surroundings, decorative dividers do not need to. A filled control is told apart
+   * by its fill, a darker edge of the same hue and its label: dark text on the fill holds 9:1. */
   --bg: light-dark(#fff, #1f2628);
   --surface: light-dark(#f4f6f7, #283033);
   --text: light-dark(#1f2628, #f4f6f7);
@@ -70,6 +71,9 @@
   --field-border: light-dark(#78848a, #7d8a8e);
   --accent: light-dark(#00637f, #00cbff);
   --accent-surface: light-dark(#e0f6fc, #123743);
+  --accent-fill: #00cbff;
+  --accent-fill-edge: color-mix(in oklab, var(--accent-fill) 65%, black);
+  --on-accent-fill: #1f2628;
   --focus: light-dark(#0072ff, #6cb8ff);
   --code-bg: light-dark(#f4f6f7, #171d1f);
   --hover: color-mix(in oklab, var(--text) 10%, var(--bg));
@@ -137,6 +141,9 @@ main:focus { outline: none; }
 
 /* A native control, drawn once: buttons, links that look like buttons and selects. */
 :where(button, select) { font: inherit; font-size: var(--text-sm); color: var(--text); }
+
+/* Taps are taps: no double-tap-to-zoom delay or zoom on the menu, the bar and the search. Pinch zoom still works. */
+:where(a, button, select, input, summary, label) { touch-action: manipulation; }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
@@ -359,13 +366,16 @@ select {
   gap: var(--space-2);
   min-block-size: var(--control);
   padding-inline: var(--space-3);
-  border: 1px solid var(--field-border);
+  /* The accent fill makes the button stand out: the menu sits at the bottom, where navigation is not expected. The edge is a darker shade of the fill, so the button reads against the white page. */
+  border: 1px solid var(--accent-fill-edge);
   border-radius: var(--radius);
-  background: var(--surface);
+  background: var(--accent-fill);
+  color: var(--on-accent-fill);
   font-weight: 600;
   cursor: pointer;
 
-  &[aria-expanded='true'] { background: var(--accent-surface); color: var(--accent); }
+  /* Open: the colors swap, so the pressed state still reads as a different state. */
+  &[aria-expanded='true'] { background: var(--accent-surface); border-color: var(--accent); color: var(--accent); }
 }
 
 .menu-icon {
@@ -648,6 +658,8 @@ article { display: grid; grid-template-columns: var(--col); gap: var(--space-5);
   --pagefind-ui-border-radius: var(--radius);
 
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  /* The widget resets every property on its elements (`all: unset`), which drops the rule of the base layer. */
+  :is(input, button, a) { touch-action: manipulation; }
   .pagefind-ui__search-input { font-size: var(--text-sm); font-weight: 400; }
   .pagefind-ui__message { margin: 0 0 var(--space-2); padding-inline: var(--space-3); font-size: var(--text-sm); }
 
