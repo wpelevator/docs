@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>subtree-split (v0.2.3) | WP Elevator Docs</title>
+  <meta name="description" content="Split a monorepo directory into its own history, with the same commit hashes as git subtree split.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/subtree-split/latest/index.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/subtree-split/v0.2.3/index.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="subtree-split (v0.2.3)">
+  <meta property="og:description" content="Split a monorepo directory into its own history, with the same commit hashes as git subtree split.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/subtree-split/latest/index.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html#article",
+      "headline": "subtree-split",
+      "description": "Split a monorepo directory into its own history, with the same commit hashes as git subtree split.",
+      "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html",
+      "inLanguage": "en",
+      "version": "v0.2.3",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "subtree-split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.2.3", "item": "https://wpelevator.github.io/docs/js/subtree-split/v0.2.3/index.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/subtree-split/latest/index.html">latest</option>
+      <option value="/docs/js/subtree-split/v0.2.3/index.html" selected>v0.2.3</option>
+      <option value="/docs/js/subtree-split/v0.2.2/index.html">v0.2.2</option>
+      <option value="/docs/js/subtree-split/v0.2.1/index.html">v0.2.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="subtree-split documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/subtree-split/v0.2.3/index.html" aria-current="page">Overview</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/caching.html">Caching</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/cli.html">CLI</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/compatibility.html">Compatibility with git subtree split</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/development.html">Development</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/github-actions.html">GitHub Actions</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/library.html">Library API</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/subtree-split/latest/index.html">subtree-split</a></li>
+    <li><span aria-current="page">v0.2.3</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.2.3</strong>. <a href="/docs/js/subtree-split/latest/index.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>subtree-split</h1><p class="lede">Split a monorepo directory into its own history, with the same commit hashes as git subtree split.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/v0.2.3/index.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/subtree-split/v0.2.3/index.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Split a directory of a monorepo into its own history, with the same commit hashes as <code>git subtree split</code>, in about a tenth of a second instead of several seconds.</p>
+<p>In a monorepo with 477 commits, <code>git subtree split</code> takes 6 to 8 seconds for one package and <code>subtree-split</code> takes 0.1 seconds. On <a href="https://github.com/WordPress/gutenberg">WordPress/gutenberg</a> (43,568 commits) it splits <code>packages/components</code> in 1.7 seconds. The hashes are the same as <code>git subtree split</code> makes, so a repository that you already split that way keeps its history when you switch.</p>
+<p><a href="https://www.npmjs.com/package/@wpelevator/wp-release"><code>@wpelevator/wp-release</code></a> uses it for <code>deploy git --split-prefix</code>.</p>
+<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev @wpelevator/subtree-split</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>It needs Node.js 22.12 or later, Git 2.29 or later, and the full history of the repository. It works in a bare clone, and it fails with a message on a shallow one, so in CI check out with <code>fetch-depth: 0</code>.</p>
+<h2 id="quick-start" tabindex="-1"><a class="header-anchor" href="#quick-start">Quick start</a></h2>
+<p>Run it in the monorepo, with the directory that you want to split:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">npx @wpelevator/subtree-split <span class="token parameter variable">--prefix</span> packages/my-library</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>It prints the hash of the split commit and writes the commits to the repository. It doesn't change a branch, so you decide what to do with the hash. To publish it to the repository of the package:</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token assign-left variable">tip</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>npx @wpelevator/subtree-split <span class="token parameter variable">--prefix</span> packages/my-library<span class="token variable">)</span></span>
+<span class="token function">git</span> push git@github.com:acme/my-library.git <span class="token string">"<span class="token variable">$tip</span>:refs/heads/main"</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>To keep it in a local branch instead, run <code>git update-ref refs/heads/split/my-library &quot;$tip&quot;</code>.</p>
+<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
+<ul>
+<li><a href="./cli.html">CLI</a></li>
+<li><a href="./github-actions.html">GitHub Actions</a></li>
+<li><a href="./caching.html">Caching split results</a></li>
+<li><a href="./library.html">Library API</a></li>
+<li><a href="./compatibility.html">Compatibility with git subtree split</a></li>
+<li><a href="./development.html">Development</a></li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/js/subtree-split/v0.2.3/caching.html"><small>Next</small>Caching</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

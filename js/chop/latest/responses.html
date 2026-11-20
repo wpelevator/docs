@@ -105,6 +105,7 @@
     <span>Version</span>
     <select data-navigate autocomplete="off">
       <option value="/docs/js/chop/latest/responses.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.2/responses.html">v0.2.2</option>
       <option value="/docs/js/chop/v0.2.1/responses.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -168,12 +169,13 @@
     <p>Every success is a <code>200</code> with the headers a cache needs, and every error is plain text that is never cached. A successful request for the test image at 300 pixels wide with <code>Accept: image/avif</code>, then a request for a file that doesn't exist:</p>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 200 OK
 content-type: image/avif
-content-length: 2364
-etag: &quot;K2I_n1NeFESPeswIg97fQI_m5l2EXCOn5F2-2AcJ5iQ&quot;
+content-length: 2642
+etag: &quot;&lt;etag&gt;&quot;
 cache-control: public, max-age=31536000
 vary: Accept
+chop-status: transformed
 x-content-type-options: nosniff
-x-bytes-saved: 1350587</code></pre>
+chop-bytes-saved: 516645</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 404 Not Found
 content-type: text/plain; charset=utf-8
@@ -193,7 +195,11 @@ x-content-type-options: nosniff
 Invalid path.</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
-<p>A success is <code>200</code> with the <code>Content-Type</code> of the output, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong <code>ETag</code> that is a SHA-256 of the body. An <code>If-None-Match</code> that matches the <code>ETag</code> (weak comparison, lists and <code>*</code>) gets <code>304</code> with the same <code>ETag</code>, <code>Cache-Control</code> and <code>Vary</code> and no body. A <code>HEAD</code> response has the headers of the <code>GET</code> response, including <code>Content-Length</code>, and no body.</p>
+<p>A success is <code>200</code> with the <code>Content-Type</code> of the output, <code>Content-Length</code>, <code>Cache-Control: public, max-age=&lt;maxAge&gt;</code>, <code>Vary: Accept</code>, <code>X-Content-Type-Options: nosniff</code> and a strong <code>ETag</code> based on a SHA-256 of the image bytes and the Chop header values. An <code>If-None-Match</code> that matches the <code>ETag</code> (weak comparison, lists and <code>*</code>) gets <code>304</code> with the same <code>ETag</code>, <code>Cache-Control</code> and <code>Vary</code> and no body. A <code>HEAD</code> response has the headers of the <code>GET</code> response, including <code>Content-Length</code>, and no body.</p>
+<ul>
+<li><code>Chop-Status</code> is <code>transformed</code> when Chop serves the encoded image, even if it is larger than the original. It is <code>passthrough</code> when Chop serves the original bytes. The header appears on image responses, including <code>HEAD</code> and <code>304</code>, and its value contains no Chop version.</li>
+<li><code>Chop-Bytes-Saved</code> is the original size minus the output size, in bytes. It appears on <code>200</code> image responses only when the output is smaller. If your client reads <code>X-Bytes-Saved</code>, <a href="caching.html#upgrade-from-x-bytes-saved">update the client and check your caches</a>.</li>
+</ul>
 <p>Errors are plain text with a short message that doesn't reveal file system paths, <code>Cache-Control: no-store</code> and <code>X-Content-Type-Options: nosniff</code>.</p>
 <h3 id="status-codes" tabindex="-1"><a class="header-anchor" href="#status-codes">Status codes</a></h3>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">

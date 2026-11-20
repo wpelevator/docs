@@ -2,7 +2,7 @@
 
 Set the quality of AVIF, WebP and JPEG output, remove metadata, and know when chop sends the original bytes instead of a re-encoded copy.
 
-`quality` trades file size for fidelity per request, and chop never returns a file larger than the original when a request changes nothing about the pixels. The same 800 pixel wide JPEG at three qualities:
+`quality` trades file size for fidelity per request. The same 800 pixel wide JPEG at three qualities:
 
 ```sh
 for q in 40 70 90; do curl -s -o /dev/null -w "quality=$q %{size_download}\n" "http://localhost:8080/2026/05/photo.jpg?w=800&quality=$q"; done
@@ -38,4 +38,4 @@ PNG, GIF and lossless WebP sources stay lossless unless the request has `lossy=1
 - When a request changes nothing about the pixels (no `crop`, size or `lb`, and no orientation to apply), the output format equals the source format and the source has no metadata that `strip` would remove, chop sends the original bytes if the re-encoded image isn't smaller. With `strip=none`, an untouched request in the source format always sends the original bytes. An explicit `quality` or `lossy=1` turns that shortcut off, because the client asked for a re-encoding, but the check that the output isn't larger still applies.
 - An explicit `format=png` is lossless unless `lossy=1` or a `quality` below 100 is given, also for a JPEG source. An explicit `format=avif` or `format=jpeg` is always lossy.
 - With `strip=none`, EXIF, XMP, IPTC and the profile are kept when the encoder can write them. CMYK sources only keep EXIF and XMP, and are always converted to sRGB.
-- Responses have `X-Bytes-Saved` when the output is smaller than the original.
+- A `200` image response has `Chop-Bytes-Saved` when the output is smaller than the original.

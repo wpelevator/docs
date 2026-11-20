@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Comparison with wp-release – php-changesets (v2.0.2) | WP Elevator Docs</title>
+  <meta name="description" content="PHP Changesets is the PHP counterpart of the changeset commands of wp-release, for projects that release with PHP and Git alone and don't use Node.js or…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/php/php-changesets/v2.0.2/comparison.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Comparison with wp-release – php-changesets (v2.0.2)">
+  <meta property="og:description" content="PHP Changesets is the PHP counterpart of the changeset commands of wp-release, for projects that release with PHP and Git alone and don't use Node.js or…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html#article",
+      "headline": "Comparison with wp-release",
+      "description": "PHP Changesets is the PHP counterpart of the changeset commands of wp-release, for projects that release with PHP and Git alone and don't use Node.js or…",
+      "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/comparison.html",
+      "inLanguage": "en",
+      "version": "v2.0.2",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v2.0.2", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Comparison with wp-release", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/comparison.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html" selected>php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/php/php-changesets/latest/comparison.html">latest</option>
+      <option value="/docs/php/php-changesets/v2.0.2/comparison.html" selected>v2.0.2</option>
+      <option value="/docs/php/php-changesets/v2.0.1/comparison.html">v2.0.1</option>
+      <option value="/docs/php/php-changesets/v2.0.0/comparison.html">v2.0.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="php-changesets documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/php/php-changesets/v2.0.2/index.html">Overview</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/cli.html">Command line</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/comparison.html" aria-current="page">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/configuration.html">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/github-actions.html">GitHub Actions</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
+    <li><span aria-current="page">v2.0.2</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v2.0.2</strong>. <a href="/docs/php/php-changesets/latest/comparison.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Comparison with wp-release</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/v2.0.2/comparison.md">Copy as Markdown</button>
+      <a href="/docs/markdown/php/php-changesets/v2.0.2/comparison.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>PHP Changesets is the PHP counterpart of the <code>changeset</code> commands of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, for projects that release with PHP and Git alone and don't use Node.js or JavaScript. Choose <code>wp-release</code> when the project already has a Node.js toolchain, or needs its builds, ZIPs, translations and deploys, and PHP Changesets when Composer is the only package manager. Both read the same changeset files and print the same <code>releases[]</code> plan, so a repository can switch between them.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>PHP Changesets</th>
+<th>wp-release</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>changeset init</code></td>
+<td>No equivalent</td>
+<td>Scaffolds <code>changesets.config.php</code> from the inferred project.</td>
+</tr>
+<tr>
+<td><code>changeset add</code></td>
+<td><code>changeset add</code></td>
+<td>Same options, including <code>--since</code> for the changed packages.</td>
+</tr>
+<tr>
+<td><code>changeset status</code></td>
+<td><code>changeset status</code></td>
+<td>Same <code>--since</code> check, exit code and result fields.</td>
+</tr>
+<tr>
+<td><code>changeset version</code></td>
+<td><code>changeset version</code></td>
+<td>Same options, without <code>--no-dependents</code>.</td>
+</tr>
+<tr>
+<td><code>changeset tag</code></td>
+<td><code>changeset tag</code></td>
+<td>Same options, including <code>--untagged</code> and <code>--push</code>.</td>
+</tr>
+<tr>
+<td><code>changeset recover</code></td>
+<td>No equivalent</td>
+<td>Restores files after an interrupted release transaction.</td>
+</tr>
+<tr>
+<td><code>changesets.config.php</code></td>
+<td><code>wp-release.config.mjs</code></td>
+<td><code>define_config()</code> and the descriptor functions mirror <code>defineConfig()</code> and its builders.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>They also share these conventions: <code>--json</code> and <code>--github-output</code> on every command, <code>--log-format github</code> annotations and job summaries, global <code>--config</code>, <code>--tag-format</code> and <code>--project-name</code>, the <code>remote</code> and <code>baseBranch</code> settings with their <code>--remote</code> and <code>--base-branch</code> options, the <code>{path}/{version}</code> tag format with <code>v{version}</code> for an inferred root project, and the exit codes 0, 1 and 2.</p>
+<h2 id="deliberate-differences" tabindex="-1"><a class="header-anchor" href="#deliberate-differences">Deliberate differences</a></h2>
+<ul>
+<li><code>wp-release changeset</code> without a subcommand runs <code>changeset add</code>, so that a package.json script can map <code>changeset</code> to it, like the JavaScript Changesets CLI. <code>changeset</code> alone prints the usage here. Run <code>changeset --help</code> for the commands.</li>
+<li>No single-project version flags like <code>--version-composer-json</code>: without a config, the project is inferred, and <code>changeset init</code> writes the inferred settings to <code>changesets.config.php</code> to change them.</li>
+<li>No <code>changelogInsertAfter</code>: new <code>CHANGELOG.md</code> sections go before the first version heading, and readme sections after the <code>== Changelog ==</code> heading.</li>
+<li><code>tag</code> creates and pushes tags but not GitHub Releases. A workflow step like <code>softprops/action-gh-release</code> creates them from its result; see <a href="github-actions.html">GitHub Actions</a>.</li>
+<li>No <code>releaseNotes</code> callback: the release notes are the changelog section, or the commits since the previous tag.</li>
+<li>No library of primitives: the package is the config-driven CLI and its classes, without build, ZIP, checksum or deploy functions.</li>
+<li>A package at the repository root needs an <code>id</code>, a manifest name or <code>--project-name</code>, and the name of the checkout directory never names a package, so changesets keep working in forks, worktrees and CI.</li>
+<li>Only the literal <code>.</code> glob matches the package root, while in <code>wp-release</code> a pattern like <code>*</code> also matches it.</li>
+<li>A pre-release current version graduates like <code>semver inc</code> on a stable release, where <code>wp-release</code> rejects bumping one.</li>
+<li>Package groups can set their own <code>changelog</code> and <code>tagFormat</code>.</li>
+</ul>
+<h2 id="excluded-by-design" tabindex="-1"><a class="header-anchor" href="#excluded-by-design">Excluded by design</a></h2>
+<p>These <code>wp-release</code> features are left out, and the CLI never commits or publishes versions. Their settings and options are rejected as unknown:</p>
+<ul>
+<li>Fixed and linked version groups: every package releases from its own changesets and version descriptors.</li>
+<li>The dependents system and <code>version --no-dependents</code>: bundled or dependent packages release with their own changesets, not automatically after a source release.</li>
+<li>Publishing: no builds, ZIPs, i18n extraction, git commits, or package registry and WordPress.org deploys. The CLI only writes version, changelog and changeset files and creates the release tags.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/v2.0.2/cli.html"><small>Previous</small>Command line</a><a rel="next" href="/docs/php/php-changesets/v2.0.2/configuration.html"><small>Next</small>Configuration</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

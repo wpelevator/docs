@@ -25,6 +25,6 @@ An origin and an explicitly set data directory together are an invalid setting. 
 
 ## Reference
 
-Whatever the source, the original is downloaded or read into memory, up to `maxInputBytes`, before it is processed. `X-Bytes-Saved` is measured against that size, the `ETag` is still a hash of the output, and when re-encoding doesn't make the image smaller, the original bytes are sent as they are. The type of the image is found from its content, and the `Content-Type` that an origin states is ignored. chop doesn't cache originals.
+Whatever the source, the original is downloaded or read into memory, up to `maxInputBytes`, before it is processed. `Chop-Bytes-Saved` is measured against that size. The type of the image is found from its content, and the `Content-Type` that an origin states is ignored. chop doesn't cache originals.
 
 Read [Secure remote origins](security.md) before you use any remote source.

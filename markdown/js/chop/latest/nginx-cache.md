@@ -54,7 +54,7 @@ server {
 - `image/*` and `*/*` don't select a bucket, the same as in chop, so a client that only accepts wildcards gets a format that it can display.
 - A cached response always has the format that its bucket gets from chop, since the key and the upstream header come from the same variable.
 - Only the `Accept` header and the URL select a variant, so a purge needs three keys per URL, one for each bucket, like `$host$uri$is_args$args|avif`.
-- chop's strong `ETag` and `If-None-Match` handling work through the cache, and the `ETag` of an image is the same for every `Accept` that gets the same bytes.
+- chop's strong `ETag` and `If-None-Match` handling work through the cache, and requests with different `Accept` values share an `ETag` when the output bytes and Chop header values match.
 - The recipe caches `200` only. A `502` or `504` means that the origin failed for a moment, and caching it would keep a broken image for as long as the `proxy_cache_valid` time. chop sends `Cache-Control: no-store` with every error, so nginx doesn't cache a `404` either. To cache `404` responses for a short time, add `proxy_ignore_headers Cache-Control` with `proxy_cache_valid 404 1m`, and don't use `any`.
 - For remote originals, `proxy_cache_lock on` makes concurrent requests for the same variant wait for one fetch, and `proxy_cache_min_uses 2` (commented out in the recipe) keeps one-off requests for unusual sizes out of the cache. See [Secure remote origins](security.md).
 - If you turn AVIF off in chop (`CHOP_AVIF=false`), the `avif` bucket holds WebP, which is correct but caches the same image twice. Remove the AVIF line from the first `map` then.

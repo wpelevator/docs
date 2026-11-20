@@ -105,6 +105,7 @@
     <span>Version</span>
     <select data-navigate autocomplete="off">
       <option value="/docs/js/chop/latest/caching.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.2/caching.html">v0.2.2</option>
       <option value="/docs/js/chop/v0.2.1/caching.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -166,15 +167,18 @@
   </header>
   <div class="prose">
     <p>Every variant of an image is built once and then served from a cache. chop sends what a cache needs: a strong <code>ETag</code>, a one year <code>Cache-Control</code> and <code>Vary: Accept</code>. A request that repeats the <code>ETag</code> in <code>If-None-Match</code> gets a <code>304</code> with no body:</p>
-<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-D</span> - <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-H</span> <span class="token string">'If-None-Match: "n-Yo3BGjnbvonRM2dNUyTQCA3dloKdxSNJ2CqjeBGDs"'</span> <span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=300'</span></code></pre>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">url</span><span class="token operator">=</span><span class="token string">'http://localhost:8080/2026/05/photo.jpg?w=300'</span>
+<span class="token assign-left variable">etag</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsS</span> <span class="token parameter variable">-D</span> - <span class="token parameter variable">-o</span> /dev/null <span class="token string">"<span class="token variable">$url</span>"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-n</span> <span class="token string">'s/^etag: //p'</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">'\r'</span><span class="token variable">)</span></span>
+<span class="token function">curl</span> <span class="token parameter variable">-fsS</span> <span class="token parameter variable">-D</span> - <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-H</span> <span class="token string">"If-None-Match: <span class="token variable">$etag</span>"</span> <span class="token string">"<span class="token variable">$url</span>"</span></code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="code"><pre class="language-text" tabindex="0"><code class="language-text">HTTP/1.1 304 Not Modified
-etag: &quot;n-Yo3BGjnbvonRM2dNUyTQCA3dloKdxSNJ2CqjeBGDs&quot;
+etag: &quot;&lt;etag&gt;&quot;
 cache-control: public, max-age=31536000
 vary: Accept
+chop-status: transformed
 x-content-type-options: nosniff</code></pre>
 <button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-<p>The <code>ETag</code> is a SHA-256 of the output, so it changes only when the bytes change, and it is the same for every <code>Accept</code> header that gets the same bytes. Take the value from the response to your own first request, because it depends on the image. The same URL and <code>Accept</code> header always give the same bytes.</p>
+<p>Chop builds the <code>ETag</code> from the output bytes, <code>Chop-Status</code> and <code>Chop-Bytes-Saved</code>. A change to any of them makes the previous <code>ETag</code> stale. When a cache sends that stale tag as its only <code>If-None-Match</code> value, Chop returns <code>200</code> with fresh headers.</p>
 <p>chop doesn't cache anything itself. <code>Vary: Accept</code> makes a plain cache keep one copy per distinct <code>Accept</code> string, so the cache has to reduce that to the variants chop makes.</p>
 <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
 <table>
@@ -200,6 +204,8 @@ x-content-type-options: nosniff</code></pre>
 <p>Responses depend on the <code>Accept</code> header, so the CDN must use it in the cache key, or at least whether it lists <code>image/avif</code> and <code>image/webp</code>. Every response has <code>Vary: Accept</code>, but many CDNs ignore <code>Vary</code> unless configured, and without it a cached AVIF can be sent to a browser that can't display it. Normalizing <code>Accept</code> at the edge to a small set of values (<code>image/avif,image/webp</code>, <code>image/webp</code> and none) keeps the number of cached variants low.</p>
 <p>The responses are immutable by design (<code>Cache-Control: public, max-age=31536000</code> by default and a strong <code>ETag</code>), so change the URL, for example with <code>?ver=3</code>, when an original changes, which also holds for a remote origin, since chop doesn't cache originals and doesn't look at the cache headers of the origin. Set <code>allowedWidths</code> to the widths of your <code>srcset</code> so that the server can't be used to generate unbounded variants, and put the server behind the CDN only. Use <code>/healthz</code> for health checks.</p>
 <p>The <a href="nginx-cache.html">nginx recipe</a> shows the same normalization for a cache that runs next to chop.</p>
+<h2 id="upgrade-from-x-bytes-saved" tabindex="-1"><a class="header-anchor" href="#upgrade-from-x-bytes-saved">Upgrade from <code>X-Bytes-Saved</code></a></h2>
+<p>Switch clients to <code>Chop-Bytes-Saved</code>. ETags issued before the rename become stale after the upgrade. Caches can still serve fresh entries with <code>X-Bytes-Saved</code> until they expire. If clients need the new header immediately, purge the cached image variants or change the image URLs to bypass caches you cannot purge.</p>
 <h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
 <ul>
 <li>Only the <code>Accept</code> header and the URL select a variant. A cache can key on the URL and one of three buckets: <code>image/avif</code>, <code>image/webp</code> or neither.</li>

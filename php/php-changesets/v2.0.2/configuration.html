@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Configuration – php-changesets (v2.0.2) | WP Elevator Docs</title>
+  <meta name="description" content="The configuration lives in changesets.config.php at the project root, the analog of wp-release.config.mjs. The global --config PATH selects another file…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/php/php-changesets/v2.0.2/configuration.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Configuration – php-changesets (v2.0.2)">
+  <meta property="og:description" content="The configuration lives in changesets.config.php at the project root, the analog of wp-release.config.mjs. The global --config PATH selects another file…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html#article",
+      "headline": "Configuration",
+      "description": "The configuration lives in changesets.config.php at the project root, the analog of wp-release.config.mjs. The global --config PATH selects another file…",
+      "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/configuration.html",
+      "inLanguage": "en",
+      "version": "v2.0.2",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v2.0.2", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Configuration", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/configuration.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html" selected>php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/php/php-changesets/latest/configuration.html">latest</option>
+      <option value="/docs/php/php-changesets/v2.0.2/configuration.html" selected>v2.0.2</option>
+      <option value="/docs/php/php-changesets/v2.0.1/configuration.html">v2.0.1</option>
+      <option value="/docs/php/php-changesets/v2.0.0/configuration.html">v2.0.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="php-changesets documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/php/php-changesets/v2.0.2/index.html">Overview</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/cli.html">Command line</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/comparison.html">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/configuration.html" aria-current="page">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/github-actions.html">GitHub Actions</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
+    <li><span aria-current="page">v2.0.2</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v2.0.2</strong>. <a href="/docs/php/php-changesets/latest/configuration.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Configuration</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/v2.0.2/configuration.md">Copy as Markdown</button>
+      <a href="/docs/markdown/php/php-changesets/v2.0.2/configuration.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>The configuration lives in <code>changesets.config.php</code> at the project root, the analog of <code>wp-release.config.mjs</code>. The global <code>--config PATH</code> selects another file for one command.</p>
+<p>With no config, <code>init</code> infers the single project from a root Composer manifest or WordPress plugin headers as one group, tagged <code>v{version}</code> like the <code>wp-release</code> single-project default. The package is named by its Composer <code>name</code>, or for a plugin without one, by the slug of its main plugin file, like <code>demo</code> for <code>demo.php</code>, never by the checkout directory. <code>--project-name NAME</code> names any other project without a config. Readme changelog updates are opt-in, like in <code>wp-release</code>, so the scaffold of a plugin carries <code>readmeChangelog</code> commented out. When every directory under <code>packages/*</code> declares a Composer name and version, inference adds a second group for them. Other layouts keep the single group, and the scaffold carries a commented template that shows how to add groups. The config lives outside the changeset directory, so <code>.changeset/</code> holds only the Markdown changesets and its <code>README.md</code>.</p>
+<p>The loader rejects the removed formats <code>.php-changesets.json</code>, <code>.changeset/config.php</code> and <code>config/changesets.php</code> with guidance pointing at <code>changesets.config.php</code>. It also rejects the upstream Changesets <code>.changeset/config.json</code>, since both tools would read and consume the same changeset files.</p>
+<p>The config file is regular PHP (loaded with <code>require</code>) and must return an array, normally the result of <code>define_config()</code>, which validates the settings and hooks eagerly at load time and returns their canonical shape. The config helpers are namespaced functions, the PHP analogs of the <code>wp-release</code> <code>defineConfig()</code> and descriptor builders; import them with <code>use function</code>.</p>
+<h2 id="workspace-settings" tabindex="-1"><a class="header-anchor" href="#workspace-settings">Workspace settings</a></h2>
+<p>The canonical configuration is a workspace with package groups; a single-project config is one group covering the repository root:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Required</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>packages</code></td>
+<td>Yes</td>
+<td>—</td>
+<td>Non-empty list of package groups, in release order.</td>
+</tr>
+<tr>
+<td><code>changesets</code></td>
+<td>No</td>
+<td><code>.changeset</code></td>
+<td>Directory containing changeset Markdown files, relative to the repository root.</td>
+</tr>
+<tr>
+<td><code>tagFormat</code></td>
+<td>No</td>
+<td><code>{path}/{version}</code></td>
+<td>Proposed tag format, like <code>plugins/alpha/1.2.0</code>, or <code>1.2.0</code> for a package at the root; must contain <code>{version}</code> exactly once and may use <code>{name}</code> and <code>{path}</code>. The default matches <code>wp-release</code>, and the global <code>--tag-format</code> replaces it and the group formats for one command.</td>
+</tr>
+<tr>
+<td><code>releaseTitle</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Title of the releases that <code>tag</code> reports, as a template with <code>{name}</code>, <code>{path}</code>, <code>{version}</code> and <code>{tag}</code> placeholders, like <code>'{version} (beta)'</code>, or a callable that receives <code>[ 'package' =&gt; [ 'name' =&gt; …, 'path' =&gt; … ], 'version' =&gt; …, 'tag' =&gt; … ]</code>. <code>null</code> titles them <code>name@version</code>, or the version for a package at the root. <code>--release-title</code> replaces it for one command.</td>
+</tr>
+<tr>
+<td><code>root</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Package path base that package globs resolve against; <code>null</code> uses the repository root.</td>
+</tr>
+<tr>
+<td><code>remote</code></td>
+<td>No</td>
+<td><code>origin</code></td>
+<td>Git remote of the base branch and of <code>tag --push</code>.</td>
+</tr>
+<tr>
+<td><code>baseBranch</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Branch on the remote that <code>status</code> and <code>add</code> compare with when there's no <code>--since</code>, like <code>main</code> for <code>origin/main</code>.</td>
+</tr>
+<tr>
+<td><code>changelog</code></td>
+<td>No</td>
+<td><code>CHANGELOG.md</code></td>
+<td>Default changelog path for groups. Set to an empty string to disable changelog generation.</td>
+</tr>
+<tr>
+<td><code>readmeChangelog</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Also add a <code>= {version} =</code> section with one <code>*</code> bullet per changeset summary after the <code>== Changelog ==</code> heading of a package's <code>readme.txt</code> or <code>readme.md</code>, which WordPress.org shows, like <code>wp-release</code>. A readme without the heading is left as it is.</td>
+</tr>
+<tr>
+<td><code>nextVersion</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Callable replacing the stable bump computation; see the hooks below.</td>
+</tr>
+<tr>
+<td><code>changelogEntry</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Callable formatting one changeset's changelog line; see the hooks below.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Each package group sets:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Required</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>glob</code></td>
+<td>Yes</td>
+<td>—</td>
+<td>Relative path pattern for package directories, like <code>packages/*</code> or <code>.</code> for the root.</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td>No</td>
+<td><code>[]</code></td>
+<td>Relative path patterns removed from the group matches.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>No</td>
+<td><code>null</code></td>
+<td>Fixed package identifier for a glob that matches exactly one directory; takes precedence over <code>idFrom</code>.</td>
+</tr>
+<tr>
+<td><code>idFrom</code></td>
+<td>No</td>
+<td><code>path</code></td>
+<td>Package name source: <code>composer.json#name</code>, <code>package.json#name</code>, or <code>path</code>. The package at the root (<code>.</code>) has no path, so it needs an <code>id</code> or a manifest source. Unlike in <code>wp-release</code>, the name of the checkout directory never names a package, so changesets keep working in forks, worktrees and CI.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td>Yes</td>
+<td>—</td>
+<td><code>{ from, to }</code> descriptors; every releasable group needs one.</td>
+</tr>
+<tr>
+<td><code>changelog</code></td>
+<td>No</td>
+<td>Inherited</td>
+<td>Per-package changelog path; empty string disables, <code>null</code> inherits. <code>wp-release</code> has no per-group setting and always writes <code>CHANGELOG.md</code>.</td>
+</tr>
+<tr>
+<td><code>tagFormat</code></td>
+<td>No</td>
+<td>Inherited</td>
+<td>Per-package tag format; <code>null</code> inherits. <code>wp-release</code> only has the repository setting.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Discovery walks the directories below <code>root</code>, bounded by the deepest configured glob, and never enters <code>.git</code>, <code>node_modules</code>, <code>vendor</code> or <code>dist</code>. A glob that matches no directory, and duplicate package identifiers across groups, are configuration errors. Only the literal <code>.</code> glob matches the package root. Patterns like <code>*</code> and <code>packages/**</code> never cover it, while in <code>wp-release</code> a pattern like <code>*</code> also matches the root. Group settings and descriptor files must resolve inside the package, like all project paths.</p>
+<p>A monorepo config lists one group per package kind; releases stay in configured group order:</p>
+<div class="code"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token keyword">function</span> <span class="token package">WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>composer_json_version</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">function</span> <span class="token package">WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>define_config</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">function</span> <span class="token package">WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>git_tag_version</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">function</span> <span class="token package">WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>wordpress_plugin_version</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token keyword">function</span> <span class="token package">WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>wordpress_stable_tag</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token function">define_config</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+	<span class="token string single-quoted-string">'changesets'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'.changeset'</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'packages'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+		<span class="token punctuation">[</span>
+			<span class="token string single-quoted-string">'glob'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'packages/*'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'idFrom'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'composer.json#name'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'version'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+				<span class="token string single-quoted-string">'from'</span> <span class="token operator">=></span> <span class="token function">git_tag_version</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+				<span class="token string single-quoted-string">'to'</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token punctuation">[</span>
+			<span class="token string single-quoted-string">'glob'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'plugins/*'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'version'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+				<span class="token string single-quoted-string">'from'</span> <span class="token operator">=></span> <span class="token function">wordpress_plugin_version</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'plugin.php'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+				<span class="token string single-quoted-string">'to'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+					<span class="token function">wordpress_plugin_version</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'plugin.php'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+					<span class="token function">wordpress_stable_tag</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'readme.txt'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+				<span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="hooks" tabindex="-1"><a class="header-anchor" href="#hooks">Hooks</a></h2>
+<p>Callbacks are plain PHP closures and live only in the PHP config; nothing else in the schema accepts callables, and callability is validated at config load. A failing hook, or a <code>nextVersion</code> result that is not a supported version, stops the run with a message naming the package.</p>
+<p><code>nextVersion</code> receives <code>{ package, bump, currentVersion, changesets }</code>, like the <code>wp-release</code> <code>NextVersionInput</code>, where <code>package</code> is <code>{ name, path, currentVersion }</code> and <code>changesets</code> lists the release's changeset records, and it returns the supported stable version of the release. A <code>--prerelease</code> run turns that version into a pre-release afterwards, as without a hook:</p>
+<div class="code"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">return</span> <span class="token function"><span class="token punctuation">\</span>WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>define_config</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+	<span class="token string single-quoted-string">'nextVersion'</span> <span class="token operator">=></span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token punctuation">(</span> <span class="token keyword type-hint">array</span> <span class="token variable">$input</span> <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token function">sprintf</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'%s.0.0'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span> <span class="token variable">$input</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'currentVersion'</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'packages'</span> <span class="token operator">=></span> <span class="token punctuation">[</span> <span class="token comment">/* one or more groups */</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>changelogEntry</code> receives <code>{ package, changeset }</code> where <code>changeset</code> is the record with <code>file</code>, <code>packages</code> and <code>summary</code>, and formats one changeset's changelog line, replacing the default <code>- {summary}</code> bullet. An empty result falls back to the default entry:</p>
+<div class="code"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">return</span> <span class="token function"><span class="token punctuation">\</span>WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>define_config</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+	<span class="token string single-quoted-string">'changelogEntry'</span> <span class="token operator">=></span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token punctuation">(</span> <span class="token keyword type-hint">array</span> <span class="token variable">$input</span> <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token string single-quoted-string">'- ['</span> <span class="token operator">.</span> <span class="token variable">$input</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'changeset'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'file'</span><span class="token punctuation">]</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'] '</span> <span class="token operator">.</span> <span class="token variable">$input</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'changeset'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'summary'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span><span class="token punctuation">,</span>
+	<span class="token string single-quoted-string">'packages'</span> <span class="token operator">=></span> <span class="token punctuation">[</span> <span class="token comment">/* one or more groups */</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="version-descriptors" tabindex="-1"><a class="header-anchor" href="#version-descriptors">Version descriptors</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th><code>kind</code></th>
+<th>Fields</th>
+<th>Source or target behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>composer-json</code></td>
+<td><code>file</code></td>
+<td>Read or replace the top-level Composer <code>version</code> while preserving surrounding formatting. A target with <code>ifPresent: true</code> is skipped when the version is absent.</td>
+</tr>
+<tr>
+<td><code>wordpress-plugin-header</code></td>
+<td><code>file</code></td>
+<td>Read or replace the plugin <code>Version</code> header.</td>
+</tr>
+<tr>
+<td><code>wordpress-theme-header</code></td>
+<td><code>file</code></td>
+<td>Read or replace the theme stylesheet <code>Version</code> header, over <code>style.css</code> by default.</td>
+</tr>
+<tr>
+<td><code>wordpress-stable-tag</code></td>
+<td><code>file</code></td>
+<td>Read or replace the readme <code>Stable tag</code>. A target with <code>ifPresent: true</code> is skipped when the file or value is absent.</td>
+</tr>
+<tr>
+<td><code>php-constant</code></td>
+<td><code>file</code>, <code>constant</code></td>
+<td>Read or replace a <code>const</code> declaration or <code>define()</code> value with the given constant name.</td>
+</tr>
+<tr>
+<td><code>git-tag</code></td>
+<td><code>pattern</code>, optional <code>initialVersion</code></td>
+<td>Read the highest tag by version precedence matching <code>pattern</code>, which defaults to the package's tag format and also expands <code>{name}</code> and <code>{path}</code>; pre-release tags rank below the stable version of the same base. Source only; use an empty <code>version.to</code> list.</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td><code>file</code>, <code>resolve</code>, optional <code>replace</code></td>
+<td>Resolve and replace a custom version span, available in every config path.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="builder-helpers" tabindex="-1"><a class="header-anchor" href="#builder-helpers">Builder helpers</a></h2>
+<p>Version descriptors are built with functions in the <code>WPElevator\PHP_Changesets</code> namespace, which Composer autoloads: <code>composer_json_version( ?string $file, bool $if_present )</code>, <code>wordpress_plugin_version( ?string $file )</code>, <code>wordpress_theme_version( ?string $file )</code> (<code>style.css</code> by default) and <code>wordpress_stable_tag( ?string $file, bool $if_present )</code> for the manifest, header and readme kinds, <code>php_constant_version( string $file, string $constant )</code> for constants, <code>git_tag_version( ?string $pattern, ?string $initial_version )</code> for tag-only sources, and <code>callback_version( string $file, callable $resolve, ?callable $replace )</code> for custom spans.</p>
+<p><code>define_config( array $config )</code> validates a workspace configuration when it loads, rejects unknown or malformed settings and returns the canonical shape that the other classes read.</p>
+<p>A Git-tag-only library needs a first tag, like <code>git tag v0.1.0</code>, or an initial version for its first release:</p>
+<div class="code"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">return</span> <span class="token function"><span class="token punctuation">\</span>WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>define_config</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+	<span class="token string single-quoted-string">'packages'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+		<span class="token punctuation">[</span>
+			<span class="token string single-quoted-string">'glob'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'.'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'idFrom'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'composer.json#name'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'version'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+				<span class="token string single-quoted-string">'from'</span> <span class="token operator">=></span> <span class="token function"><span class="token punctuation">\</span>WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>git_tag_version</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'v{version}'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'0.1.0'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+				<span class="token string single-quoted-string">'to'</span> <span class="token operator">=></span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Once a matching stable tag exists, it takes precedence over <code>initialVersion</code>. Tag-only releases do not modify <code>composer.json</code>: the release is recorded in the changelog, and <code>tag</code> tags the changelog version above the latest tag.</p>
+<h2 id="callback-descriptors" tabindex="-1"><a class="header-anchor" href="#callback-descriptors">Callback descriptors</a></h2>
+<p>Use <code>callback_version()</code> when the built-in descriptors can't find the version. Its callables must return the same result for the same contents and must not write files:</p>
+<ul>
+<li><code>resolve( string $contents ): ?array</code> returns the version <code>value</code>, zero-based byte <code>offset</code> and byte <code>length</code>, or <code>null</code> when absent. The span must contain exactly <code>value</code>.</li>
+<li><code>replace( string $contents, string $old_version, string $new_version ): string</code> optionally returns the complete proposed contents. Without it, only the resolved span is replaced.</li>
+<li>After either replacement, <code>resolve</code> must find the new version. <code>resolve</code> runs for status and planning; <code>replace</code> runs whenever a bump is planned, including dry runs.</li>
+</ul>
+<p>The same descriptor can be the source and a target:</p>
+<div class="code"><pre class="language-php" tabindex="0"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token variable">$resolve</span> <span class="token operator">=</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token punctuation">(</span> <span class="token keyword type-hint">string</span> <span class="token variable">$contents</span> <span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token operator">?</span><span class="token keyword return-type">array</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span> <span class="token function">preg_match</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'/^Release: (\d+\.\d+\.\d+)$/m'</span><span class="token punctuation">,</span> <span class="token variable">$contents</span><span class="token punctuation">,</span> <span class="token variable">$matches</span><span class="token punctuation">,</span> <span class="token constant">PREG_OFFSET_CAPTURE</span> <span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">return</span> <span class="token punctuation">[</span>
+		<span class="token string single-quoted-string">'value'</span> <span class="token operator">=></span> <span class="token variable">$matches</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token string single-quoted-string">'offset'</span> <span class="token operator">=></span> <span class="token variable">$matches</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token string single-quoted-string">'length'</span> <span class="token operator">=></span> <span class="token function">strlen</span><span class="token punctuation">(</span> <span class="token variable">$matches</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token variable">$version</span> <span class="token operator">=</span> <span class="token function"><span class="token punctuation">\</span>WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>callback_version</span><span class="token punctuation">(</span> <span class="token string single-quoted-string">'release.txt'</span><span class="token punctuation">,</span> <span class="token variable">$resolve</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> <span class="token function"><span class="token punctuation">\</span>WPElevator<span class="token punctuation">\</span>PHP_Changesets<span class="token punctuation">\</span>define_config</span><span class="token punctuation">(</span> <span class="token punctuation">[</span>
+	<span class="token string single-quoted-string">'packages'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+		<span class="token punctuation">[</span>
+			<span class="token string single-quoted-string">'glob'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'.'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'id'</span> <span class="token operator">=></span> <span class="token string single-quoted-string">'example'</span><span class="token punctuation">,</span>
+			<span class="token string single-quoted-string">'version'</span> <span class="token operator">=></span> <span class="token punctuation">[</span>
+				<span class="token string single-quoted-string">'from'</span> <span class="token operator">=></span> <span class="token variable">$version</span><span class="token punctuation">,</span>
+				<span class="token string single-quoted-string">'to'</span> <span class="token operator">=></span> <span class="token punctuation">[</span> <span class="token variable">$version</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+			<span class="token punctuation">]</span><span class="token punctuation">,</span>
+		<span class="token punctuation">]</span><span class="token punctuation">,</span>
+	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/v2.0.2/comparison.html"><small>Previous</small>Comparison with wp-release</a><a rel="next" href="/docs/php/php-changesets/v2.0.2/development.html"><small>Next</small>Development</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

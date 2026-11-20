@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Configuration – chop (v0.2.2) | WP Elevator Docs</title>
+  <meta name="description" content="Every chop setting and its CHOP_ environment variable, with defaults, for the command and the library.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/configuration.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/v0.2.2/configuration.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Configuration – chop (v0.2.2)">
+  <meta property="og:description" content="Every chop setting and its CHOP_ environment variable, with defaults, for the command and the library.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/configuration.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html#article",
+      "headline": "Configuration",
+      "description": "Every chop setting and its CHOP_ environment variable, with defaults, for the command and the library.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/configuration.html",
+      "inLanguage": "en",
+      "version": "v0.2.2",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.2.2", "item": "https://wpelevator.github.io/docs/js/chop/v0.2.2/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Configuration", "item": "https://wpelevator.github.io/docs/js/chop/v0.2.2/configuration.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/configuration.html">latest</option>
+      <option value="/docs/js/chop/v0.2.2/configuration.html" selected>v0.2.2</option>
+      <option value="/docs/js/chop/v0.2.1/configuration.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/v0.2.2/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/v0.2.2/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/v0.2.2/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/s3.html">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/v0.2.2/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/v0.2.2/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/v0.2.2/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/configuration.html" aria-current="page">Configuration</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/development.html">Development</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">v0.2.2</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.2.2</strong>. <a href="/docs/js/chop/latest/configuration.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Configuration</h1><p class="lede">Every chop setting and its CHOP_ environment variable, with defaults, for the command and the library.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/v0.2.2/configuration.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/v0.2.2/configuration.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Every setting is a <code>CHOP_*</code> environment variable, so a container or a service file configures chop without flags. This run limits the output widths, lowers the JPEG quality and turns AVIF off:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ALLOWED_WIDTHS</span><span class="token operator">=</span><span class="token number">320,640</span>,1280 <span class="token assign-left variable">CHOP_JPEG_QUALITY</span><span class="token operator">=</span><span class="token number">75</span> <span class="token assign-left variable">CHOP_AVIF</span><span class="token operator">=</span>false chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving /home/me/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A value that can't be used stops the server with exit code <code>2</code> and names the variable or setting, so a typo shows up at startup and not in production:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_MAX_QUEUE</span><span class="token operator">=</span>abc chop <span class="token parameter variable">--data</span> ./uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">CHOP_MAX_QUEUE must be a whole number, got &quot;abc&quot;.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>Settings come from the <code>CHOP_*</code> environment variables of the command, from the options of <a href="library.html"><code>createConfig()</code></a>, or from a few <a href="cli.html">command line flags</a>. A number or boolean that can't be parsed is reported with the name of the variable, and a value that can't be used is an invalid setting.</p>
+<h3 id="source-and-urls" tabindex="-1"><a class="header-anchor" href="#source-and-urls">Source and URLs</a></h3>
+<p>Where originals come from and how URLs are read. See <a href="sources.html">Choose where originals come from</a>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dataDir</code></td>
+<td><code>CHOP_DATA_DIR</code></td>
+<td><code>/data</code></td>
+<td>Directory with the originals, when there is no <code>origin</code>.</td>
+</tr>
+<tr>
+<td><code>schemes</code></td>
+<td><code>CHOP_SCHEMES</code> (comma separated)</td>
+<td><code>query</code></td>
+<td>Names of the URL schemes, tried in order. An unknown name is an invalid setting.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="limits" tabindex="-1"><a class="header-anchor" href="#limits">Limits</a></h3>
+<p>What one request can cost. See <a href="production-checklist.html">Prepare chop for production</a>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxConcurrency</code></td>
+<td><code>CHOP_MAX_CONCURRENCY</code></td>
+<td>number of CPUs</td>
+<td>Images processed at the same time.</td>
+</tr>
+<tr>
+<td><code>maxQueue</code></td>
+<td><code>CHOP_MAX_QUEUE</code></td>
+<td><code>64</code></td>
+<td>Requests that wait for a slot, in arrival order. More are a <code>503</code>.</td>
+</tr>
+<tr>
+<td><code>maxInputBytes</code></td>
+<td><code>CHOP_MAX_INPUT_BYTES</code></td>
+<td><code>52428800</code></td>
+<td>Largest original in bytes.</td>
+</tr>
+<tr>
+<td><code>maxInputPixels</code></td>
+<td><code>CHOP_MAX_INPUT_PIXELS</code></td>
+<td><code>120000000</code></td>
+<td>Largest original in pixels, which stops decompression bombs.</td>
+</tr>
+<tr>
+<td><code>maxOutputDimension</code></td>
+<td><code>CHOP_MAX_OUTPUT_DIMENSION</code></td>
+<td><code>8192</code></td>
+<td>Largest output width or height.</td>
+</tr>
+<tr>
+<td><code>maxUpscaleDimension</code></td>
+<td><code>CHOP_MAX_UPSCALE_DIMENSION</code></td>
+<td><code>4096</code></td>
+<td>Largest long side of an enlarged image with <code>upscale=1</code>.</td>
+</tr>
+<tr>
+<td><code>allowedWidths</code></td>
+<td><code>CHOP_ALLOWED_WIDTHS</code> (comma separated)</td>
+<td>unset</td>
+<td>When set, the output width of every request must be in the list, after clamping to the size of the original. A request without <code>w</code> is a <code>400</code> unless the original's width is listed.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="formats-and-quality" tabindex="-1"><a class="header-anchor" href="#formats-and-quality">Formats and quality</a></h3>
+<p>See <a href="formats.html">Serve AVIF and WebP</a> and <a href="quality-and-metadata.html">Set quality and strip metadata</a>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>jpegQuality</code></td>
+<td><code>CHOP_JPEG_QUALITY</code></td>
+<td><code>82</code></td>
+<td>Default JPEG quality.</td>
+</tr>
+<tr>
+<td><code>webpQuality</code></td>
+<td><code>CHOP_WEBP_QUALITY</code></td>
+<td><code>80</code></td>
+<td>Default lossy WebP quality.</td>
+</tr>
+<tr>
+<td><code>avifQuality</code></td>
+<td><code>CHOP_AVIF_QUALITY</code></td>
+<td><code>55</code></td>
+<td>Default AVIF quality.</td>
+</tr>
+<tr>
+<td><code>avif</code></td>
+<td><code>CHOP_AVIF</code></td>
+<td><code>true</code></td>
+<td>Whether AVIF output is enabled. <code>false</code> removes <code>avif</code> from <code>autoFormats</code>, and doesn't affect an explicit <code>format=avif</code>.</td>
+</tr>
+<tr>
+<td><code>avifEffort</code></td>
+<td><code>CHOP_AVIF_EFFORT</code></td>
+<td><code>4</code></td>
+<td>AVIF encoder effort from 0 (fast) to 9 (small).</td>
+</tr>
+<tr>
+<td><code>allowedInputFormats</code></td>
+<td><code>CHOP_ALLOWED_INPUT_FORMATS</code> (comma separated)</td>
+<td><code>jpeg,png,gif,webp,avif</code></td>
+<td>The formats of the originals that are processed (<code>jpeg</code> or <code>jpg</code>, <code>png</code>, <code>gif</code>, <code>webp</code>, <code>avif</code>). Others are a <code>415</code>. An empty list or an unknown name is an invalid setting. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>autoFormats</code></td>
+<td><code>CHOP_AUTO_FORMATS</code> (comma separated, or <code>none</code>)</td>
+<td><code>avif,webp</code></td>
+<td>The formats that <code>format=auto</code> can negotiate, in order of preference (<code>avif</code>, <code>webp</code>). An empty list (<code>none</code> in the environment) disables the upgrades. Unknown or repeated names are an invalid setting. Added in 0.2.0.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="caching-headers" tabindex="-1"><a class="header-anchor" href="#caching-headers">Caching headers</a></h3>
+<p>See <a href="caching.html">Cache images</a>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>maxAge</code></td>
+<td><code>CHOP_MAX_AGE</code></td>
+<td><code>31536000</code></td>
+<td>Seconds in <code>Cache-Control: max-age</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="remote-origins-and-url-sources" tabindex="-1"><a class="header-anchor" href="#remote-origins-and-url-sources">Remote origins and URL sources</a></h3>
+<p>See <a href="https-origin.html">Serve images from an HTTPS origin</a>, <a href="url-sources.html">Let requests name the image URL</a> and <a href="security.html">Secure remote origins</a>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>origin</code></td>
+<td><code>CHOP_ORIGIN</code></td>
+<td>unset</td>
+<td>Base URL that plain paths are appended to, instead of the data directory, or <code>s3://bucket[/prefix]</code> for an <a href="s3.html">S3 bucket</a>. Can't be combined with an explicit <code>dataDir</code>. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originAllowHttp</code></td>
+<td><code>CHOP_ORIGIN_ALLOW_HTTP</code></td>
+<td><code>false</code></td>
+<td>Allow <code>http://</code> for the origin and for URL sources. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originAllowPrivate</code></td>
+<td><code>CHOP_ORIGIN_ALLOW_PRIVATE</code></td>
+<td><code>false</code></td>
+<td>Allow the configured origin at a loopback, private or link-local address. Never applies to URL sources. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originAuth</code></td>
+<td><code>CHOP_ORIGIN_AUTH</code></td>
+<td>unset</td>
+<td><code>Authorization</code> header value for the configured origin only. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originConnectTimeout</code></td>
+<td><code>CHOP_ORIGIN_CONNECT_TIMEOUT</code></td>
+<td><code>3000</code></td>
+<td>Milliseconds to connect, including TLS, before a <code>504</code>. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originTimeout</code></td>
+<td><code>CHOP_ORIGIN_TIMEOUT</code></td>
+<td><code>10000</code></td>
+<td>Milliseconds for the whole download before a <code>504</code>. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originConcurrency</code></td>
+<td><code>CHOP_ORIGIN_CONCURRENCY</code></td>
+<td><code>4</code></td>
+<td>Downloads at the same time, outside of the processing slots. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>originQueue</code></td>
+<td><code>CHOP_ORIGIN_QUEUE</code></td>
+<td><code>32</code></td>
+<td>Downloads that wait for a slot. More are a <code>503</code>. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>allowedHosts</code></td>
+<td><code>CHOP_ALLOWED_HOSTS</code> (comma separated)</td>
+<td>unset</td>
+<td>Hosts that URL sources may name: <code>host</code>, <code>*.example.com</code>, <code>host:port</code> or <code>*</code>. Unset means no URL sources. Added in 0.2.0.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="s3" tabindex="-1"><a class="header-anchor" href="#s3">S3</a></h3>
+<p>See <a href="s3.html">Serve images from S3</a>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Environment variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>s3Endpoint</code></td>
+<td><code>CHOP_S3_ENDPOINT</code></td>
+<td>unset</td>
+<td>Base URL of an S3-compatible service for an <code>s3://</code> origin. Unset means AWS. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>s3Region</code></td>
+<td><code>CHOP_S3_REGION</code>, <code>AWS_REGION</code></td>
+<td>unset</td>
+<td>Region to sign for. Required on AWS, <code>us-east-1</code> with an endpoint, <code>auto</code> for R2. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>s3PathStyle</code></td>
+<td><code>CHOP_S3_PATH_STYLE</code></td>
+<td><code>true</code> with an endpoint, <code>false</code> on AWS</td>
+<td>Put the bucket in the path instead of the host. Buckets with dots on AWS are always path-style. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>s3AccessKeyId</code></td>
+<td><code>CHOP_S3_ACCESS_KEY_ID</code>, <code>AWS_ACCESS_KEY_ID</code></td>
+<td>unset</td>
+<td>Access key. Without a key and a secret requests are unsigned. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>s3SecretAccessKey</code></td>
+<td><code>CHOP_S3_SECRET_ACCESS_KEY</code>, <code>AWS_SECRET_ACCESS_KEY</code></td>
+<td>unset</td>
+<td>Secret of the access key. Environment only, never logged. Added in 0.2.0.</td>
+</tr>
+<tr>
+<td><code>s3SessionToken</code></td>
+<td><code>CHOP_S3_SESSION_TOKEN</code>, <code>AWS_SESSION_TOKEN</code></td>
+<td>unset</td>
+<td>Token of temporary credentials, which isn't refreshed. Environment only, never logged. Added in 0.2.0.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="variables-of-the-command-only" tabindex="-1"><a class="header-anchor" href="#variables-of-the-command-only">Variables of the command only</a></h3>
+<p>These are read by the <code>chop</code> command, and not by <code>createConfig()</code> or <code>createHandler()</code>.</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Flag</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PORT</code>, then <code>CHOP_PORT</code></td>
+<td><code>--port</code></td>
+<td><code>8080</code></td>
+<td>Port to listen on. <code>0</code> picks a free port.</td>
+</tr>
+<tr>
+<td><code>CHOP_HOST</code></td>
+<td><code>--host</code></td>
+<td><code>0.0.0.0</code></td>
+<td>Address to listen on.</td>
+</tr>
+<tr>
+<td><code>CHOP_ACCESS_LOG</code></td>
+<td>none</td>
+<td>unset</td>
+<td><code>1</code> prints one JSON line per request to the standard output.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>maxConcurrency</code> defaults to the number of CPUs.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/v0.2.2/cli.html"><small>Previous</small>Run the server</a><a rel="next" href="/docs/js/chop/v0.2.2/responses.html"><small>Next</small>Responses and errors</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

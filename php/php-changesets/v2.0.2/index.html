@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>php-changesets (v2.0.2) | WP Elevator Docs</title>
+  <meta name="description" content="Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/php/php-changesets/latest/index.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/php/php-changesets/v2.0.2/index.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="php-changesets (v2.0.2)">
+  <meta property="og:description" content="Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/php/php-changesets/latest/index.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html#article",
+      "headline": "php-changesets",
+      "description": "Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.",
+      "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html",
+      "inLanguage": "en",
+      "version": "v2.0.2",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v2.0.2", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/index.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html" selected>php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/php/php-changesets/latest/index.html">latest</option>
+      <option value="/docs/php/php-changesets/v2.0.2/index.html" selected>v2.0.2</option>
+      <option value="/docs/php/php-changesets/v2.0.1/index.html">v2.0.1</option>
+      <option value="/docs/php/php-changesets/v2.0.0/index.html">v2.0.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="php-changesets documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/php/php-changesets/v2.0.2/index.html" aria-current="page">Overview</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/cli.html">Command line</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/comparison.html">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/configuration.html">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/development.html">Development</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/github-actions.html">GitHub Actions</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
+    <li><span aria-current="page">v2.0.2</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v2.0.2</strong>. <a href="/docs/php/php-changesets/latest/index.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>php-changesets</h1><p class="lede">Prepare multi-package releases for PHP projects and monorepos with changeset Markdown files, PHP and Git.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/v2.0.2/index.md">Copy as Markdown</button>
+      <a href="/docs/markdown/php/php-changesets/v2.0.2/index.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p><code>wpelevator/php-changesets</code> releases WordPress plugins, themes and Composer packages from changeset Markdown files, with PHP and Git and without Node.js. It's for projects that don't use Node.js or JavaScript tooling: a Composer dependency replaces an npm one, and nothing needs installing in CI beyond PHP. It follows the release model of <a href="../../../js/wp-release/latest/index.html"><code>wp-release</code></a>, the Node.js release tool of WP Elevator, so both tools read the same changesets, take the same command options and produce the same release plans.</p>
+<p>If your project already builds with Node.js, or you also want ZIPs, checksums, translations or WordPress.org deploys, use the <a href="../../../js/wp-release/latest/changesets.html"><code>wp-release</code> changeset commands</a> instead. The <a href="comparison.html">comparison</a> lists the differences.</p>
+<p>Contributors describe each change in a small Markdown file. When you release, the <code>changeset</code> command bumps the versions of every changed package, writes the changelogs and creates the release tags. It never commits or publishes: those steps belong to your workflow, like the <a href="github-actions.html">GitHub Actions workflow</a>.</p>
+<h2 id="requirements" tabindex="-1"><a class="header-anchor" href="#requirements">Requirements</a></h2>
+<ul>
+<li>PHP 7.4 or later.</li>
+<li>Git for tag-based versions, changed-package checks, release tags and dry-run diffs.</li>
+<li>Composer to install the CLI. Node.js is not required.</li>
+</ul>
+<h2 id="install" tabindex="-1"><a class="header-anchor" href="#install">Install</a></h2>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">composer</span> require <span class="token parameter variable">--dev</span> wpelevator/php-changesets
+vendor/bin/changeset <span class="token parameter variable">--help</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="quickstart" tabindex="-1"><a class="header-anchor" href="#quickstart">Quickstart</a></h2>
+<p>For a WordPress plugin or a Composer package at the repository root:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh">vendor/bin/changeset init                  <span class="token comment"># Infer and write changesets.config.php</span>
+vendor/bin/changeset <span class="token function">add</span>                   <span class="token comment"># Describe a change; commit the file with it</span>
+vendor/bin/changeset status <span class="token parameter variable">--since</span> origin/main  <span class="token comment"># Check that changed packages have changesets</span>
+vendor/bin/changeset version --dry-run     <span class="token comment"># Preview the versions, changelog and diff</span>
+vendor/bin/changeset version               <span class="token comment"># Apply them; review and commit</span>
+vendor/bin/changeset tag                   <span class="token comment"># After merging: create the release tags, like v1.3.0</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="guides" tabindex="-1"><a class="header-anchor" href="#guides">Guides</a></h2>
+<ul>
+<li><a href="cli.html">Command line</a>: the commands, changesets, the status check, releases, pre-releases, output formats and exit codes.</li>
+<li><a href="configuration.html">Configuration</a>: <code>changesets.config.php</code>, package groups, version descriptors and hooks.</li>
+<li><a href="github-actions.html">GitHub Actions</a>: check pull requests for changesets, open release pull requests and create the tags and GitHub releases.</li>
+<li><a href="comparison.html">Comparison with wp-release</a>: the command mapping and the deliberate differences.</li>
+<li><a href="development.html">Development</a>: the architecture and tests of the package.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="next" href="/docs/php/php-changesets/v2.0.2/cli.html"><small>Next</small>Command line</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

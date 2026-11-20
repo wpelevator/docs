@@ -36,7 +36,7 @@ Each entry of `CHOP_ALLOWED_HOSTS` is a comma separated list item:
 
 Hosts are compared in lower case and without a trailing dot. International names must be written in punycode (`xn--...`). An empty list means no URL sources.
 
-Whatever the source, the original is downloaded into memory, up to `maxInputBytes`, before it is processed. `X-Bytes-Saved` is measured against the downloaded size, the `ETag` is still a hash of the output, and when re-encoding doesn't make the image smaller, the downloaded bytes are sent as they are. The type of the image is found from its content, and the `Content-Type` that the origin states is ignored.
+Whatever the source, the original is downloaded into memory, up to `maxInputBytes`, before it is processed. `Chop-Bytes-Saved` is measured against the downloaded size. The type of the image is found from its content, and the `Content-Type` that the origin states is ignored.
 
 ## Reference
 

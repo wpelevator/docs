@@ -105,6 +105,7 @@
     <span>Version</span>
     <select data-navigate autocomplete="off">
       <option value="/docs/js/chop/latest/nginx-cache.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.2/nginx-cache.html">v0.2.2</option>
       <option value="/docs/js/chop/v0.2.1/index.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -213,7 +214,7 @@
 <li><code>image/*</code> and <code>*/*</code> don't select a bucket, the same as in chop, so a client that only accepts wildcards gets a format that it can display.</li>
 <li>A cached response always has the format that its bucket gets from chop, since the key and the upstream header come from the same variable.</li>
 <li>Only the <code>Accept</code> header and the URL select a variant, so a purge needs three keys per URL, one for each bucket, like <code>$host$uri$is_args$args|avif</code>.</li>
-<li>chop's strong <code>ETag</code> and <code>If-None-Match</code> handling work through the cache, and the <code>ETag</code> of an image is the same for every <code>Accept</code> that gets the same bytes.</li>
+<li>chop's strong <code>ETag</code> and <code>If-None-Match</code> handling work through the cache, and requests with different <code>Accept</code> values share an <code>ETag</code> when the output bytes and Chop header values match.</li>
 <li>The recipe caches <code>200</code> only. A <code>502</code> or <code>504</code> means that the origin failed for a moment, and caching it would keep a broken image for as long as the <code>proxy_cache_valid</code> time. chop sends <code>Cache-Control: no-store</code> with every error, so nginx doesn't cache a <code>404</code> either. To cache <code>404</code> responses for a short time, add <code>proxy_ignore_headers Cache-Control</code> with <code>proxy_cache_valid 404 1m</code>, and don't use <code>any</code>.</li>
 <li>For remote originals, <code>proxy_cache_lock on</code> makes concurrent requests for the same variant wait for one fetch, and <code>proxy_cache_min_uses 2</code> (commented out in the recipe) keeps one-off requests for unusual sizes out of the cache. See <a href="security.html">Secure remote origins</a>.</li>
 <li>If you turn AVIF off in chop (<code>CHOP_AVIF=false</code>), the <code>avif</code> bucket holds WebP, which is correct but caches the same image twice. Remove the AVIF line from the first <code>map</code> then.</li>

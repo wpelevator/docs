@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Library API – wp-release (v0.21.1) | WP Elevator Docs</title>
+  <meta name="description" content="resolveDeployOptions() applies the defaults and throws a ValidationError (with exitCode 2) for invalid combinations. SvnDeploy exposes each step…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/library.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/v0.21.1/library.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Library API – wp-release (v0.21.1)">
+  <meta property="og:description" content="resolveDeployOptions() applies the defaults and throws a ValidationError (with exitCode 2) for invalid combinations. SvnDeploy exposes each step…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/library.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html#article",
+      "headline": "Library API",
+      "description": "resolveDeployOptions() applies the defaults and throws a ValidationError (with exitCode 2) for invalid combinations. SvnDeploy exposes each step…",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/library.html",
+      "inLanguage": "en",
+      "version": "v0.21.1",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.21.1", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Library API", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/library.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/library.html">latest</option>
+      <option value="/docs/js/wp-release/v0.21.1/library.html" selected>v0.21.1</option>
+      <option value="/docs/js/wp-release/v0.21.0/library.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/library.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/library.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/library.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/library.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/library.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/library.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/v0.21.1/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/library.html" aria-current="page">Library API</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">v0.21.1</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.21.1</strong>. <a href="/docs/js/wp-release/latest/library.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Library API</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/v0.21.1/library.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/v0.21.1/library.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <h2 id="exit-codes" tabindex="-1"><a class="header-anchor" href="#exit-codes">Exit codes</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Success, dry run, no changes, or help</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>Unexpected failure, such as a failed svn or git command</td>
+</tr>
+<tr>
+<td><code>2</code></td>
+<td>Invalid options, failed release checks, an existing SVN tag, a Git tag that exists with another release, or files that don't match the checksums</td>
+</tr>
+<tr>
+<td><code>3</code></td>
+<td>Missing SVN credentials, or credentials that SVN rejected</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="library" tabindex="-1"><a class="header-anchor" href="#library">Library</a></h2>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Logger<span class="token punctuation">,</span> SvnDeploy<span class="token punctuation">,</span> resolveDeployOptions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token function">resolveDeployOptions</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">slug</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">trunk</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">svnTag</span><span class="token operator">:</span> <span class="token string">'1.2.0'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">dryRun</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> committed<span class="token punctuation">,</span> revision<span class="token punctuation">,</span> version<span class="token punctuation">,</span> changes <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">SvnDeploy</span><span class="token punctuation">(</span>
+	options<span class="token punctuation">,</span>
+	<span class="token keyword">new</span> <span class="token class-name">Logger</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>resolveDeployOptions()</code> applies the defaults and throws a <code>ValidationError</code> (with <code>exitCode</code> <code>2</code>) for invalid combinations. <code>SvnDeploy</code> exposes each step (<code>prepare()</code>, <code>checkVersions()</code>, <code>checkout()</code>, <code>sync()</code>, <code>commit()</code> and <code>cleanup()</code>) separately so CI wrappers can run and report them one by one; <code>run()</code> runs all of them, or nothing when there's nothing to write. <code>getPlan()</code> lists the planned SVN changes. The <code>Svn</code> class wraps the svn command line, and takes the command runner as a dependency so that tests can replace it.</p>
+<p>Git deploys:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> GitDeploy<span class="token punctuation">,</span> resolveGitDeployOptions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> revision<span class="token punctuation">,</span> created<span class="token punctuation">,</span> pushed <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">new</span> <span class="token class-name">GitDeploy</span><span class="token punctuation">(</span>
+	<span class="token function">resolveGitDeployOptions</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+		<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'packages/my-plugin'</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">gitUrl</span><span class="token operator">:</span> <span class="token string">'git@github.com:me/my-plugin.git'</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">branch</span><span class="token operator">:</span> <span class="token string">'main'</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">tag</span><span class="token operator">:</span> <span class="token string">'1.2.0'</span><span class="token punctuation">,</span>
+		<span class="token literal-property property">splitPrefix</span><span class="token operator">:</span> <span class="token string">'packages/my-plugin'</span><span class="token punctuation">,</span>
+	<span class="token punctuation">}</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>resolveGitDeployOptions()</code> throws a <code>ValidationError</code> without a repository URL or with an invalid branch or tag. <code>GitDeploy</code> exposes <code>createTree()</code>, <code>fetchPrevious()</code>, <code>createRelease()</code>, <code>isOutdated()</code>, <code>checkTag()</code>, <code>getRefsToPush()</code> and <code>push()</code> separately, like <code>SvnDeploy</code>, and takes a git command runner from <code>createGitRunner()</code> as a dependency. The result has <code>outdated</code> when the branch wasn't moved for older source history, the refs to write in <code>planned</code> and the refs that were pushed in <code>pushed</code>, which is empty in a dry run. <code>redactUrls()</code> hides the credentials in URLs.</p>
+<p>Changeset releases:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> ChangesetRelease <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> release <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ChangesetRelease</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> missingChangesets <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> release<span class="token punctuation">.</span><span class="token function">getStatus</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">since</span><span class="token operator">:</span> <span class="token string">'origin/main'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> releases <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> release<span class="token punctuation">.</span><span class="token function">version</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">dryRun</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span> tags <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> release<span class="token punctuation">.</span><span class="token function">tag</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">dryRun</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>ChangesetRelease</code> runs the <code>changeset</code> commands: <code>add()</code>, <code>getStatus()</code>, <code>version()</code> and <code>tag()</code>, plus <code>getPlan()</code>, <code>getPackages()</code> and <code>getConfiguredPackages()</code>. Each call reads the configuration, packages and pending changesets again, so one instance can version and then tag. <code>getConfiguredPackages()</code> returns package directories with their resolved release group metadata; <code>formatTag()</code> and <code>formatTemplate()</code> apply the same placeholders as the release workflows. It takes a git runner from <code>createGitRunner()</code> as <code>git</code>, so that tests can replace it. Without a config file, it detects a single root project. Its optional <code>singleProject</code> settings accept <code>versions</code> (the existing version descriptors), <code>versionFrom</code> (the same selector as <code>--version-from</code>), <code>baseBranch</code>, <code>remote</code>, <code>changesets</code>, <code>readmeChangelog</code> and <code>changelogInsertAfter</code>; <code>tagFormat</code> remains a repository option. The functions <code>addChangeset()</code>, <code>getChangesetStatus()</code>, <code>versionChangesets()</code>, <code>tagChangesets()</code>, <code>getChangesetReleasePlan()</code>, <code>getChangesetPackages()</code> and <code>getConfiguredPackages()</code> do the same with the default runners, in one call.</p>
+<h3 id="signing" tabindex="-1"><a class="header-anchor" href="#signing">Signing</a></h3>
+<p>The Ed25519 key handling and the WordPress, minisign and OpenSSH signature formats live in the <a href="https://www.npmjs.com/package/@wpelevator/signatures"><code>@wpelevator/signatures</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still re-exports the signing functions that it has always exported; the bytes-first functions and error guards are only in <code>@wpelevator/signatures</code>. The wp-release functions read the key from <code>WP_RELEASE_SIGNING_KEY</code> and report invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>; the <code>@wpelevator/signatures</code> functions use <code>SIGNING_KEY</code> by default and throw a <code>SigningError</code>.</p>
+<h3 id="zip-archives" tabindex="-1"><a class="header-anchor" href="#zip-archives">ZIP archives</a></h3>
+<p>Reproducible archives and safe extraction live in the <a href="https://www.npmjs.com/package/@wpelevator/zip"><code>@wpelevator/zip</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports <code>createZip()</code>, <code>readZipEntries()</code>, <code>getZipEntryErrors()</code>, <code>extractZip()</code>, <code>ZIP_MTIME</code> and <code>ZIP_FILE_MODE</code> with their <code>sourceDir</code>, <code>files</code> and <code>zipPath</code> inputs, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The zip package takes a list of <code>{ source, name }</code> entries, where the source is a file path or bytes, and can create and read archives in memory. Entries have the fixed <code>ZIP_MTIME</code>, or the <code>SOURCE_DATE_EPOCH</code> time when that environment variable is set.</p>
+<h3 id="file-selection" tabindex="-1"><a class="header-anchor" href="#file-selection">File selection</a></h3>
+<p>Gitignore-style file selection and directory syncing live in the <a href="https://www.npmjs.com/package/@wpelevator/fileset"><code>@wpelevator/fileset</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports <code>resolveFileSelection()</code>, <code>loadFileRules()</code>, <code>selectFiles()</code>, <code>parseExclude()</code>, <code>syncDirectory()</code> and <code>copyFileIfChanged()</code> with the same inputs, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The fileset package has no Git dependency: it takes a function that lists more files to exclude, <code>listExcluded</code>, and <code>@wpelevator/wp-release</code> passes one that reads the <code>export-ignore</code> attribute with Git when <code>excludeGitattributes</code> is set. The ignore file name (<code>.distignore</code> by default) and the directories that a sync leaves alone (<code>.svn</code> by default) are options of the fileset package.</p>
+<h3 id="checksums" tabindex="-1"><a class="header-anchor" href="#checksums">Checksums</a></h3>
+<p>Hashing, the checksums manifest formats and their comparison live in the <a href="https://www.npmjs.com/package/@wpelevator/checksums"><code>@wpelevator/checksums</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports <code>createChecksums()</code>, <code>writeChecksums()</code>, <code>readChecksums()</code>, <code>parseChecksums()</code>, <code>verifyChecksums()</code>, <code>compareChecksums()</code>, <code>hashFile()</code>, <code>hashFiles()</code> and the <code>wordpressCodec</code> and <code>sha256sumCodec</code> codecs with the same inputs and output, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The checksums package takes a plain list of file paths instead of file rules, hashes bytes and streams with <code>hashBytes()</code> and <code>hashStream()</code>, and keeps the plugin or theme slug and version as generic <code>metadata</code> next to the <code>files</code>, which <code>@wpelevator/wp-release</code> fills in. Manifests are written byte for byte as before.</p>
+<h3 id="translations" tabindex="-1"><a class="header-anchor" href="#translations">Translations</a></h3>
+<p>Extracting translatable strings from PHP, JavaScript and <code>block.json</code> sources, building catalogs, writing POT files, compiling PO files to MO, script JSON and <code>.l10n.php</code>, and auditing live in the <a href="https://www.npmjs.com/package/@wpelevator/wp-gettext"><code>@wpelevator/wp-gettext</code></a> package, which <code>@wpelevator/wp-release</code> depends on. It still exports the same functions, like <code>extractCatalog()</code>, <code>generatePackagePot()</code>, <code>serializePot()</code>, <code>parseTranslatedPo()</code> and <code>compileTranslations()</code>, with the same inputs and output, and reports invalid input as a <code>ValidationError</code> with the original error as its <code>cause</code>. The wp-gettext package doesn't read plugin and theme headers: it takes the header details as a <code>meta</code> input, which <code>@wpelevator/wp-release</code> reads from the main file with its own package metadata reader. <code>resolveI18nPackages()</code>, which selects the configured packages, stays in <code>@wpelevator/wp-release</code>. Importing the main entry of <code>@wpelevator/wp-gettext</code> doesn't load the PHP and JavaScript parsers, which are in the <code>/php</code> and <code>/javascript</code> sub-paths.</p>
+<h3 id="logging" tabindex="-1"><a class="header-anchor" href="#logging">Logging</a></h3>
+<p><code>Logger</code> filters messages by level and passes them to a writer, like the transports of other Node.js loggers. The writer decides how messages look:</p>
+<ul>
+<li><code>TextWriter</code> prints plain text to <code>stdout</code> and <code>stderr</code>. It's the default.</li>
+<li><code>GitHubActionsWriter</code> prints <a href="github-actions.html#annotations-and-job-summaries">workflow commands</a>, so that notices, warnings and errors with a file are annotations, and appends summaries to <code>GITHUB_STEP_SUMMARY</code>. It's the CLI's <code>github</code> log format, and the GitHub Actions pass it to their logger. Its <code>workspace</code> and <code>summaryPath</code> options default to <code>GITHUB_WORKSPACE</code> and <code>GITHUB_STEP_SUMMARY</code>.</li>
+</ul>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> GitHubActionsWriter<span class="token punctuation">,</span> Logger<span class="token punctuation">,</span> logError <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> logger <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Logger</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">writer</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">GitHubActionsWriter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">verbose</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+logger<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span> <span class="token string">'Version header is 1.2.0, expected 1.3.0.'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">file</span><span class="token operator">:</span> <span class="token string">'my-plugin.php'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">line</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Version mismatch'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+logger<span class="token punctuation">.</span><span class="token function">summary</span><span class="token punctuation">(</span> <span class="token punctuation">(</span> <span class="token parameter"><span class="token punctuation">{</span> workspace <span class="token punctuation">}</span></span> <span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">### Checked </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> workspace <span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>A writer implements <code>LogWriter</code> with <code>write()</code>, <code>startGroup()</code>, <code>endGroup()</code> and <code>summary()</code>, so other CI systems can have their own format. <code>summary()</code> takes a function that builds the Markdown, which only writers with a summary call.</p>
+<p>A <code>ValidationError</code> can list <code>problems</code>, each with a <code>message</code> and an optional <code>file</code>, <code>line</code> and <code>title</code>. <code>logError( logger, error, title )</code> logs each problem as an error on its file and line and lists them in the summary under the title, or logs the message when there are none. <code>VersionMismatchError</code> and <code>version-check</code> report the version mismatches this way.</p>
+<p>ZIP files and metadata:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	createZip<span class="token punctuation">,</span>
+	findVersionMismatches<span class="token punctuation">,</span>
+	loadFileRules<span class="token punctuation">,</span>
+	readPackageMeta<span class="token punctuation">,</span>
+	resolveFileSelection<span class="token punctuation">,</span>
+	selectFiles<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span>
+	<span class="token function">resolveFileSelection</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> meta <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">readPackageMeta</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">dir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span> <span class="token literal-property property">slug</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> <span class="token function">createZip</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token keyword">await</span> <span class="token function">selectFiles</span><span class="token punctuation">(</span> <span class="token string">'dist'</span><span class="token punctuation">,</span> rules <span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">zipPath</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">my-plugin.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span> meta<span class="token punctuation">.</span>version <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.zip</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+	<span class="token literal-property property">rootFolder</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> mismatches <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">findVersionMismatches</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+	meta<span class="token punctuation">,</span>
+	<span class="token literal-property property">slug</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">constants</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'MY_PLUGIN_VERSION'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Checksums:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>
+	createChecksums<span class="token punctuation">,</span>
+	loadFileRules<span class="token punctuation">,</span>
+	readChecksums<span class="token punctuation">,</span>
+	resolveFileSelection<span class="token punctuation">,</span>
+	verifyChecksums<span class="token punctuation">,</span>
+	writeChecksums<span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> rules <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span>
+	<span class="token function">resolveFileSelection</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">cwd</span><span class="token operator">:</span> process<span class="token punctuation">.</span><span class="token function">cwd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> manifest <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">createChecksums</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'dist'</span><span class="token punctuation">,</span>
+	rules<span class="token punctuation">,</span>
+	<span class="token literal-property property">slug</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token string">'1.2.0'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">await</span> <span class="token function">writeChecksums</span><span class="token punctuation">(</span> <span class="token string">'my-plugin.1.2.0.checksums.json'</span><span class="token punctuation">,</span> manifest <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> valid<span class="token punctuation">,</span> changed<span class="token punctuation">,</span> missing<span class="token punctuation">,</span> extra <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">verifyChecksums</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'wp-content/plugins/my-plugin'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">manifest</span><span class="token operator">:</span> <span class="token keyword">await</span> <span class="token function">readChecksums</span><span class="token punctuation">(</span> <span class="token string">'my-plugin.1.2.0.checksums.json'</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token keyword">await</span> <span class="token function">loadFileRules</span><span class="token punctuation">(</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p><code>loadFileRules()</code> reads the ignore file and <code>--exclude</code> patterns into a gitignore matcher, optionally adds Git <code>export-ignore</code> paths, and <code>selectFiles()</code> lists the files it doesn't ignore. <code>compareChecksums()</code> compares two hash maps without reading any files, and <code>parseChecksums()</code> validates manifest JSON. <code>extractZip()</code> extracts a ZIP after the same checks as <code>deploy svn --from-zip</code>.</p>
+<p>Translations:</p>
+<div class="code"><pre class="language-js" tabindex="0"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> extractCatalog<span class="token punctuation">,</span> auditCatalog<span class="token punctuation">,</span> serializePot<span class="token punctuation">,</span> generatePackagePot <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@wpelevator/wp-release'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> catalog<span class="token punctuation">,</span> diagnostics<span class="token punctuation">,</span> files <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">extractCatalog</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>
+	<span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'/project/plugin'</span><span class="token punctuation">,</span>
+	<span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">domain</span><span class="token operator">:</span> <span class="token string">'my-plugin'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> findings <span class="token operator">=</span> <span class="token function">auditCatalog</span><span class="token punctuation">(</span> catalog <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> pot <span class="token operator">=</span> <span class="token function">serializePot</span><span class="token punctuation">(</span> catalog <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">generatePackagePot</span><span class="token punctuation">(</span> <span class="token punctuation">{</span> <span class="token literal-property property">sourceDir</span><span class="token operator">:</span> <span class="token string">'/project/plugin'</span><span class="token punctuation">,</span> <span class="token literal-property property">check</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The parsers, catalog and compiler functions are provided by <code>@wpelevator/wp-gettext</code>. Parsers return messages and structured diagnostics with stable codes, severity and source-relative locations. Catalog messages retain IDs, contexts, plurals, translations, translator comments, flags and structured references. <code>aggregateCatalog()</code> selects/merges a domain, unions references/comments and diagnoses plural conflicts. <code>resolveI18nPackages()</code> is the separate config adapter; extraction and serialization primitives know nothing about the repository. Library functions do not log, parse process arguments or set exit codes. Extraction results report unique files consulted, including the main plugin/theme file used for headers and header strings even when source globs exclude it. <code>parseTranslatedPo()</code>, <code>compileMo()</code>, <code>compileScriptTranslations()</code>, <code>compilePhpTranslations()</code> and <code>compileTranslations()</code> expose the same typed operations to library callers.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.21.1/naming.html"><small>Previous</small>Names across the CLI, Actions and library</a><a rel="next" href="/docs/js/wp-release/v0.21.1/development.html"><small>Next</small>Development</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

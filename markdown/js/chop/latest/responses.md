@@ -7,12 +7,13 @@ Every success is a `200` with the headers a cache needs, and every error is plai
 ```text
 HTTP/1.1 200 OK
 content-type: image/avif
-content-length: 2364
-etag: "K2I_n1NeFESPeswIg97fQI_m5l2EXCOn5F2-2AcJ5iQ"
+content-length: 2642
+etag: "<etag>"
 cache-control: public, max-age=31536000
 vary: Accept
+chop-status: transformed
 x-content-type-options: nosniff
-x-bytes-saved: 1350587
+chop-bytes-saved: 516645
 ```
 
 ```text
@@ -41,7 +42,10 @@ Invalid path.
 
 ## Reference
 
-A success is `200` with the `Content-Type` of the output, `Content-Length`, `Cache-Control: public, max-age=<maxAge>`, `Vary: Accept`, `X-Content-Type-Options: nosniff` and a strong `ETag` that is a SHA-256 of the body. An `If-None-Match` that matches the `ETag` (weak comparison, lists and `*`) gets `304` with the same `ETag`, `Cache-Control` and `Vary` and no body. A `HEAD` response has the headers of the `GET` response, including `Content-Length`, and no body.
+A success is `200` with the `Content-Type` of the output, `Content-Length`, `Cache-Control: public, max-age=<maxAge>`, `Vary: Accept`, `X-Content-Type-Options: nosniff` and a strong `ETag` based on a SHA-256 of the image bytes and the Chop header values. An `If-None-Match` that matches the `ETag` (weak comparison, lists and `*`) gets `304` with the same `ETag`, `Cache-Control` and `Vary` and no body. A `HEAD` response has the headers of the `GET` response, including `Content-Length`, and no body.
+
+- `Chop-Status` is `transformed` when Chop serves the encoded image, even if it is larger than the original. It is `passthrough` when Chop serves the original bytes. The header appears on image responses, including `HEAD` and `304`, and its value contains no Chop version.
+- `Chop-Bytes-Saved` is the original size minus the output size, in bytes. It appears on `200` image responses only when the output is smaller. If your client reads `X-Bytes-Saved`, [update the client and check your caches](caching.md#upgrade-from-x-bytes-saved).
 
 Errors are plain text with a short message that doesn't reveal file system paths, `Cache-Control: no-store` and `X-Content-Type-Options: nosniff`.
 

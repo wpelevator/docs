@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Development – php-changesets (v2.0.2) | WP Elevator Docs</title>
+  <meta name="description" content="Classes live in php/ with Composer classmap autoloading, and tests live in tests/phpunit/. The bin/changeset entry point loads php/bootstrap.php so it…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/php/php-changesets/latest/development.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/php/php-changesets/v2.0.2/development.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Development – php-changesets (v2.0.2)">
+  <meta property="og:description" content="Classes live in php/ with Composer classmap autoloading, and tests live in tests/phpunit/. The bin/changeset entry point loads php/bootstrap.php so it…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/php/php-changesets/latest/development.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html#article",
+      "headline": "Development",
+      "description": "Classes live in php/ with Composer classmap autoloading, and tests live in tests/phpunit/. The bin/changeset entry point loads php/bootstrap.php so it…",
+      "url": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/php/php-changesets/latest/development.html",
+      "inLanguage": "en",
+      "version": "v2.0.2",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "php-changesets", "item": "https://wpelevator.github.io/docs/php/php-changesets/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v2.0.2", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Development", "item": "https://wpelevator.github.io/docs/php/php-changesets/v2.0.2/development.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html" selected>php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/php/php-changesets/latest/development.html">latest</option>
+      <option value="/docs/php/php-changesets/v2.0.2/development.html" selected>v2.0.2</option>
+      <option value="/docs/php/php-changesets/v2.0.1/development.html">v2.0.1</option>
+      <option value="/docs/php/php-changesets/v2.0.0/development.html">v2.0.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="php-changesets documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/php/php-changesets/v2.0.2/index.html">Overview</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/cli.html">Command line</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/comparison.html">Comparison with wp-release</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/configuration.html">Configuration</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/development.html" aria-current="page">Development</a></li>
+    <li><a href="/docs/php/php-changesets/v2.0.2/github-actions.html">GitHub Actions</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/php/php-changesets/latest/index.html">php-changesets</a></li>
+    <li><span aria-current="page">v2.0.2</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v2.0.2</strong>. <a href="/docs/php/php-changesets/latest/development.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Development</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/php/php-changesets/v2.0.2/development.md">Copy as Markdown</button>
+      <a href="/docs/markdown/php/php-changesets/v2.0.2/development.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Classes live in <code>php/</code> with Composer classmap autoloading, and tests live in <code>tests/phpunit/</code>. The <code>bin/changeset</code> entry point loads <code>php/bootstrap.php</code> so it also runs directly from a checkout. Run the package tests from the monorepo root:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token function">docker</span> compose run <span class="token parameter variable">--rm</span> wordpress vendor/bin/phpunit <span class="token parameter variable">--testsuite</span> php/php-changesets</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture">Architecture</a></h2>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Project_Files</code></td>
+<td>Hold the canonical project root and resolve safe paths inside it, also for a package directory. The other project classes share it.</td>
+</tr>
+<tr>
+<td><code>Config_Schema</code> and <code>functions.php</code></td>
+<td>Validate the workspace configuration and its hooks through <code>define_config()</code>, and build the shared version descriptors with the namespaced builder functions, which Composer autoloads as <code>files</code>.</td>
+</tr>
+<tr>
+<td><code>Package_Discovery</code></td>
+<td>Find package directories from the configured globs, with id resolution and duplicate and empty-match detection.</td>
+</tr>
+<tr>
+<td><code>Cli</code></td>
+<td>Resolve the project root once, construct the project-bound services, parse commands and global options, prompt for package selection and changeset content, create changesets and configuration, print results and step outputs, set the exit code and invoke recovery.</td>
+</tr>
+<tr>
+<td><code>Git</code></td>
+<td>Run git commands in one directory and throw <code>Git_Exception</code> on failures, which exit with code 1. Tests replace it with a subclass.</td>
+</tr>
+<tr>
+<td><code>Logger</code></td>
+<td>Log plain text, or GitHub Actions annotations and job summaries with the <code>github</code> log format.</td>
+</tr>
+<tr>
+<td><code>Release_Engine</code></td>
+<td>Load the configuration and changesets, plan the versions, turn them into pre-releases for <code>--prerelease</code> or snapshots for <code>--snapshot</code>, version only the <code>--package</code> selection, format the changelog and readme changelog entries with the hooks, and build one ordered in-memory edit plan. It also finds the changed packages without a changeset since a ref, and creates and pushes the tags that released versions still need, with their titles and release notes.</td>
+</tr>
+<tr>
+<td><code>Semver</code></td>
+<td>Parse, bump and compare the supported stable and pre-release versions, and number the pre-release versions of the stable plan from the package tags.</td>
+</tr>
+<tr>
+<td><code>Tag_Format</code></td>
+<td>Expand the <code>{name}</code>, <code>{path}</code> and <code>{version}</code> placeholders of tag formats and git-tag patterns, like <code>wp-release</code> <code>formatTag()</code>.</td>
+</tr>
+<tr>
+<td><code>Changeset_Reader</code> and <code>Version_Planner</code></td>
+<td>Read ordered multi-package changesets and assemble the <code>releases[]</code> plan of every package, with the highest bump, next version, tag and changelog.</td>
+</tr>
+<tr>
+<td><code>Version_Files</code></td>
+<td>Resolve version descriptors and propose bounded in-memory edits without writing files.</td>
+</tr>
+<tr>
+<td><code>Release_Transaction</code></td>
+<td>Check the expected contents, journal and stage the edits of every package, apply them as one transaction and recover interrupted writes.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>Project_Config</code>, <code>Version_Files</code>, <code>Release_Engine</code> and <code>Release_Transaction</code> are instance-based and receive <code>Project_Files</code> through their constructors. Constructors only store their dependencies, and the optional <code>Git</code>, <code>Semver</code> and <code>Tag_Format</code> arguments of <code>Release_Engine</code>, <code>Version_Files</code> and <code>Version_Planner</code> default to new instances, so tests can replace them. Validation errors are <code>Release_Exception</code>s, which exit with code 2 and can list problems with their files and lines for annotations. Package directories come from <code>Package_Discovery</code> in configured group order; the engine plans one release per discovered package and applies their combined edits as one transaction.</p>
+<p><code>status</code> and <code>version --dry-run</code> only inspect the plan. <code>version</code> passes the same edits to the transaction layer. Only the CLI's <code>init</code> and <code>add</code> commands and the transaction layer write project files.</p>
+<p>PHP methods, parameters and local variables use snake_case. External JSON and configuration keys such as <code>currentVersion</code>, <code>nextVersion</code>, <code>tagFormat</code>, <code>initialVersion</code> and <code>ifPresent</code> stay camelCase, since other tools read them.</p>
+<p>Releases use the monorepo's <code>wp-release</code> workflow and are split to <a href="https://github.com/wpelevator/php-changesets">github.com/wpelevator/php-changesets</a>.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/php/php-changesets/v2.0.2/configuration.html"><small>Previous</small>Configuration</a><a rel="next" href="/docs/php/php-changesets/v2.0.2/github-actions.html"><small>Next</small>GitHub Actions</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

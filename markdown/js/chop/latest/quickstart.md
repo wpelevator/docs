@@ -32,31 +32,33 @@ The path of a request selects the file, so `/2026/05/photo.jpg` is `uploads/2026
 In a second terminal, ask for the image 300 pixels wide as a browser that supports AVIF does:
 
 ```sh
-curl -s -D - -o photo.avif -H 'Accept: image/avif,image/webp' 'http://localhost:8080/2026/05/photo.jpg?w=300' | grep -iE '^(HTTP|content-|vary|x-bytes)'
+curl -s -D - -o photo.avif -H 'Accept: image/avif,image/webp' 'http://localhost:8080/2026/05/photo.jpg?w=300' | grep -iE '^(HTTP|content-|vary|chop-)'
 ```
 
 ```text
 HTTP/1.1 200 OK
 content-type: image/avif
-content-length: 2364
+content-length: 2642
 vary: Accept
-x-bytes-saved: 1350587
+chop-status: transformed
+chop-bytes-saved: 516645
 ```
 
-The `Accept` header listed AVIF, so the body is an AVIF image 300 pixels wide. `x-bytes-saved` is the difference to the size of the original, which was 1352951 bytes here. `vary: Accept` tells caches that the answer depends on the header.
+The `Accept` header listed AVIF, so the body is an AVIF image 300 pixels wide. `chop-status: transformed` tells you Chop served a transformed image. `chop-bytes-saved` is how many bytes smaller it is than the original, which was 519287 bytes here. `vary: Accept` tells caches that the answer depends on the header.
 
 Send the same request without `Accept`, or with `image/webp` only, and the format changes with it:
 
 ```sh
-curl -s -D - -o photo.jpg 'http://localhost:8080/2026/05/photo.jpg?w=300' | grep -iE '^(HTTP|content-|vary|x-bytes)'
+curl -s -D - -o photo.jpg 'http://localhost:8080/2026/05/photo.jpg?w=300' | grep -iE '^(HTTP|content-|vary|chop-)'
 ```
 
 ```text
 HTTP/1.1 200 OK
 content-type: image/jpeg
-content-length: 4548
+content-length: 4052
 vary: Accept
-x-bytes-saved: 1348403
+chop-status: transformed
+chop-bytes-saved: 515235
 ```
 
 ## 3. Crop to a square

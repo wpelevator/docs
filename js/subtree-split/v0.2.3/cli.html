@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>CLI – subtree-split (v0.2.3) | WP Elevator Docs</title>
+  <meta name="description" content="The exit code is 0 for a split and 1 when it fails or the directory doesn't exist at the ref, like for git subtree split. It's 2 for invalid options…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/subtree-split/latest/cli.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/subtree-split/v0.2.3/cli.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="CLI – subtree-split (v0.2.3)">
+  <meta property="og:description" content="The exit code is 0 for a split and 1 when it fails or the directory doesn't exist at the ref, like for git subtree split. It's 2 for invalid options…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/subtree-split/latest/cli.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/subtree-split/latest/cli.html#article",
+      "headline": "CLI",
+      "description": "The exit code is 0 for a split and 1 when it fails or the directory doesn't exist at the ref, like for git subtree split. It's 2 for invalid options…",
+      "url": "https://wpelevator.github.io/docs/js/subtree-split/latest/cli.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/subtree-split/latest/cli.html",
+      "inLanguage": "en",
+      "version": "v0.2.3",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "subtree-split", "item": "https://wpelevator.github.io/docs/js/subtree-split/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.2.3", "item": "https://wpelevator.github.io/docs/js/subtree-split/v0.2.3/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "CLI", "item": "https://wpelevator.github.io/docs/js/subtree-split/v0.2.3/cli.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html" selected>subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/subtree-split/latest/cli.html">latest</option>
+      <option value="/docs/js/subtree-split/v0.2.3/cli.html" selected>v0.2.3</option>
+      <option value="/docs/js/subtree-split/v0.2.2/cli.html">v0.2.2</option>
+      <option value="/docs/js/subtree-split/v0.2.1/cli.html">v0.2.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="subtree-split documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/subtree-split/v0.2.3/index.html">Overview</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/caching.html">Caching</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/cli.html" aria-current="page">CLI</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/compatibility.html">Compatibility with git subtree split</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/development.html">Development</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/github-actions.html">GitHub Actions</a></li>
+    <li><a href="/docs/js/subtree-split/v0.2.3/library.html">Library API</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/subtree-split/latest/index.html">subtree-split</a></li>
+    <li><span aria-current="page">v0.2.3</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.2.3</strong>. <a href="/docs/js/subtree-split/latest/cli.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>CLI</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/subtree-split/v0.2.3/cli.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/subtree-split/v0.2.3/cli.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash">subtree-split <span class="token parameter variable">--prefix</span> packages/my-library <span class="token parameter variable">--ref</span> main --git-dir-cache</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-P</code>, <code>--prefix &lt;dir&gt;</code></td>
+<td>Directory to split, relative to the root of the repository. Required.</td>
+</tr>
+<tr>
+<td><code>-r</code>, <code>--ref &lt;commit&gt;</code></td>
+<td>Commit to split the history of, <code>HEAD</code> by default.</td>
+</tr>
+<tr>
+<td><code>--cwd &lt;dir&gt;</code></td>
+<td>Directory in the repository, the current directory by default.</td>
+</tr>
+<tr>
+<td><code>--git-dir-cache</code></td>
+<td>Remember the split commits in a file named after the prefix in the Git directory, like <code>.git/subtree-split-cache/packages-my-library.json</code>.</td>
+</tr>
+<tr>
+<td><code>--cache &lt;file&gt;</code></td>
+<td>Remember the split commits in this file instead. Defaults to the path in the <code>SUBTREE_SPLIT_CACHE</code> environment variable.</td>
+</tr>
+<tr>
+<td><code>--github-output</code></td>
+<td>Set the outputs of a GitHub Actions step. Needs the <code>GITHUB_OUTPUT</code> variable that GitHub Actions sets, and fails before splitting without it.</td>
+</tr>
+<tr>
+<td><code>-h</code>, <code>--help</code></td>
+<td>Show the usage.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The exit code is 0 for a split and 1 when it fails or the directory doesn't exist at the ref, like for <code>git subtree split</code>. It's 2 for invalid options. Errors go to the standard error output.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/subtree-split/v0.2.3/caching.html"><small>Previous</small>Caching</a><a rel="next" href="/docs/js/subtree-split/v0.2.3/compatibility.html"><small>Next</small>Compatibility with git subtree split</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

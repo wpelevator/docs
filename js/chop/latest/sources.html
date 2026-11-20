@@ -105,6 +105,7 @@
     <span>Version</span>
     <select data-navigate autocomplete="off">
       <option value="/docs/js/chop/latest/sources.html" selected>latest</option>
+      <option value="/docs/js/chop/v0.2.2/sources.html">v0.2.2</option>
       <option value="/docs/js/chop/v0.2.1/sources.html">v0.2.1</option>
       <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
       <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
@@ -206,7 +207,7 @@
 </div>
 <p>An origin and an explicitly set data directory together are an invalid setting. The flag <code>--origin</code> replaces <code>CHOP_DATA_DIR</code>, and <code>--data</code> replaces <code>CHOP_ORIGIN</code>, so a flag works in an environment that sets the other one.</p>
 <h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
-<p>Whatever the source, the original is downloaded or read into memory, up to <code>maxInputBytes</code>, before it is processed. <code>X-Bytes-Saved</code> is measured against that size, the <code>ETag</code> is still a hash of the output, and when re-encoding doesn't make the image smaller, the original bytes are sent as they are. The type of the image is found from its content, and the <code>Content-Type</code> that an origin states is ignored. chop doesn't cache originals.</p>
+<p>Whatever the source, the original is downloaded or read into memory, up to <code>maxInputBytes</code>, before it is processed. <code>Chop-Bytes-Saved</code> is measured against that size. The type of the image is found from its content, and the <code>Content-Type</code> that an origin states is ignored. chop doesn't cache originals.</p>
 <p>Read <a href="security.html">Secure remote origins</a> before you use any remote source.</p>
 
   </div>

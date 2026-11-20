@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Deploy – wp-release (v0.21.1) | WP Elevator Docs</title>
+  <meta name="description" content="Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/v0.21.1/deployment.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Deploy – wp-release (v0.21.1)">
+  <meta property="og:description" content="Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html#article",
+      "headline": "Deploy",
+      "description": "Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/deployment.html",
+      "inLanguage": "en",
+      "version": "v0.21.1",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.21.1", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Deploy", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/deployment.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/deployment.html">latest</option>
+      <option value="/docs/js/wp-release/v0.21.1/deployment.html" selected>v0.21.1</option>
+      <option value="/docs/js/wp-release/v0.21.0/deployment.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/deployment.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/deployment.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/deployment.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/deployment.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/deployment.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/deployment.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/v0.21.1/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deployment.html" aria-current="page">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">v0.21.1</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.21.1</strong>. <a href="/docs/js/wp-release/latest/deployment.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Deploy</h1><p class="lede">Choose between WordPress.org SVN, a Git repository and the configured packages of a monorepo.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/v0.21.1/deployment.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/v0.21.1/deployment.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Deploys publish the files of a release. Pick the target:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>I want to</th>
+<th>Command</th>
+<th>Page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Publish a plugin to WordPress.org</td>
+<td><code>deploy svn</code></td>
+<td><a href="deploy-svn.html">Deploy to WordPress.org</a></td>
+</tr>
+<tr>
+<td>Release built files to a distribution repository</td>
+<td><code>deploy git</code></td>
+<td><a href="deploy-git.html">Deploy to a Git repository</a></td>
+</tr>
+<tr>
+<td>Release every package of a monorepo to its own targets</td>
+<td><code>deploy git --release-ref</code>, <code>deploy svn --release-ref</code></td>
+<td><a href="deploy-packages.html">Deploy configured packages</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All three read files like <code>zip</code> does: with <a href="file-selection.html"><code>.distignore</code> and <code>--exclude</code></a>, so build first and deploy what you built. Each supports <code>--dry-run</code>, which runs everything except the write, and a failed check exits with <code>2</code>. WordPress.org themes are released by uploading a ZIP, so <code>deploy svn</code> is for plugins only: use <a href="build-a-zip.html"><code>zip</code></a> for a theme.</p>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.21.1/prereleases.html"><small>Previous</small>Pre-releases and snapshots</a><a rel="next" href="/docs/js/wp-release/v0.21.1/deploy-svn.html"><small>Next</small>Deploy to WordPress.org</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

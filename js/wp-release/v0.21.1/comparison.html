@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Comparison with existing tools – wp-release (v0.21.1) | WP Elevator Docs</title>
+  <meta name="description" content="Documentation for WP Elevator packages and plugins.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/v0.21.1/comparison.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Comparison with existing tools – wp-release (v0.21.1)">
+  <meta property="og:description" content="Documentation for WP Elevator packages and plugins.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html#article",
+      "headline": "Comparison with existing tools",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/comparison.html",
+      "inLanguage": "en",
+      "version": "v0.21.1",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.21.1", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Comparison with existing tools", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/comparison.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/comparison.html">latest</option>
+      <option value="/docs/js/wp-release/v0.21.1/comparison.html" selected>v0.21.1</option>
+      <option value="/docs/js/wp-release/v0.21.0/comparison.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/comparison.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/comparison.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/comparison.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/comparison.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/comparison.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/comparison.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/v0.21.1/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/development.html">Development</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/comparison.html" aria-current="page">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">v0.21.1</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.21.1</strong>. <a href="/docs/js/wp-release/latest/comparison.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Comparison with existing tools</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/v0.21.1/comparison.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/v0.21.1/comparison.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+<th>How <code>wp-release</code> differs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/10up/action-wordpress-plugin-deploy">10up WordPress.org plugin deploy</a> and <a href="https://github.com/10up/action-wordpress-plugin-asset-update">readme/asset update</a> actions</td>
+<td>Two separate GitHub Actions configured through env vars. A deploy always syncs the build to <code>trunk/</code> and copies it to the tag; readme and asset updates need the second action. Assets come from <code>.wordpress-org</code> by default, and files are selected with <code>.distignore</code> or <code>.gitattributes</code>. Files are synced with <code>rsync</code>.</td>
+<td>One <code>deploy svn</code> command with independent write flags, so a release, a readme-only update and an assets-only update are the same command with different flags. Runs locally and in any CI, not only GitHub Actions, and syncs in Node.js without <code>rsync</code>. Checks that the <code>Version</code> header, readme <code>Stable tag</code> and SVN tag agree before writing, which the 10up actions don't. Assets are deployed only when <code>--assets-dir</code> is passed, instead of always syncing <code>.wordpress-org</code> when it exists, so a plugin's own <code>assets/</code> folder is never uploaded by accident. Adds <code>--exclude</code> for patterns without an ignore file, opt-in Git <code>export-ignore</code> support and <code>--from-zip</code> to deploy the exact files of a ZIP.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/stephenharris/grunt-wp-deploy"><code>grunt-wp-deploy</code></a></td>
+<td>Grunt task with <code>deploy_trunk</code> and <code>deploy_tag</code> booleans, interactive password prompts and a <code>Stable tag</code> check.</td>
+<td>No Grunt dependency and never interactive. <code>--readme-only</code> is a separate flag, where <code>grunt-wp-deploy</code> can only update trunk with the full build. Assets are independent of trunk writes.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/codeinwp/action-wordpress-theme-deploy">codeinwp theme deploy</a></td>
+<td>Fork of the 10up plugin action that commits themes to the themes SVN repository.</td>
+<td>Doesn't deploy themes. Theme releases are ZIP uploads on WordPress.org; <code>zip</code> builds the upload with the theme folder as the root.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/wp-cli/dist-archive-command"><code>wp dist-archive</code></a></td>
+<td>WP-CLI command that zips a project using <code>.distignore</code>, with <code>--plugin-dirname</code> and <code>--filename-format</code>.</td>
+<td>Same <code>.distignore</code> file and <code>{name}.{version}</code> style filename format, but needs only Node.js instead of PHP and WP-CLI. <code>.distignore</code> is matched with full gitignore syntax, including <code>!</code> negation, and <code>--distignore</code> / <code>--exclude</code> let you point at another ignore file or add patterns on the command line. Builds are reproducible, and <code>--checksums</code> writes a manifest next to the ZIP.</td>
+</tr>
+<tr>
+<td><a href="https://developer.wordpress.org/cli/commands/i18n/make-pot/"><code>wp i18n make-pot</code></a></td>
+<td>WP-CLI command that extracts PHP, JavaScript, <code>block.json</code> and <code>theme.json</code> strings into a POT, with <code>--domain</code>, <code>--include</code>/<code>--exclude</code>, <code>--headers</code>, <code>--file-comment</code>, <code>--merge</code>/<code>--subtract</code> and audit warnings.</td>
+<td><code>i18n pot</code> and <code>i18n audit</code> need only Node.js, write byte-for-byte reproducible POTs without dates, and <code>--check</code> fails CI on a stale POT. Headers are set one at a time with a repeatable <code>--header NAME=VALUE</code> instead of a JSON object, and <code>--include</code>/<code>--exclude</code> take one glob each, so patterns never need escaping or comma splitting. <code>--add-location</code>, <code>--no-location</code> and <code>--all-domains</code> say what they do, and <code>--add-location file</code> drops line numbers so that unrelated edits don't make the POT stale. Monorepos keep these settings once in <code>wp-release.config.js</code> and select packages with <code>--package</code> or <code>--all</code> instead of running the command for every directory. The audit is a separate read-only command with stable finding codes for <code>--suppress</code>, instead of warnings mixed into generation. There's no <code>--merge</code>, <code>--subtract</code> or <code>--skip-*</code>; <code>--include</code> and <code>--exclude</code> cover the same needs.</td>
+</tr>
+<tr>
+<td><a href="https://developer.wordpress.org/cli/commands/i18n/"><code>wp i18n make-mo</code>, <code>make-json</code> and <code>make-php</code></a></td>
+<td>WP-CLI commands that compile PO files into MO, script JSON and <code>.l10n.php</code> files. <code>make-json</code> maps sources with <code>--use-map</code> and removes JavaScript strings from the PO unless <code>--no-purge</code> is passed.</td>
+<td><code>i18n mo</code>, <code>i18n json</code> and <code>i18n php</code> compile one translated PO at a time, never change it, and leave out fuzzy, obsolete and untranslated entries. <code>i18n json</code> takes a many-to-many <code>--map</code> from source files to built scripts, and JSX and TypeScript sources need one, so catalogs are never written for files WordPress doesn't load. <code>--check</code> compares the outputs without writing. There's no <code>update-po</code>, so update PO files from the POT with gettext's <code>msgmerge</code> or a translation platform.</td>
+</tr>
+<tr>
+<td><a href="https://developer.wordpress.org/cli/commands/plugin/verify-checksums/"><code>wp plugin verify-checksums</code></a></td>
+<td>WP-CLI command that checks installed plugins against the WordPress.org checksums API.</td>
+<td>Reads the same manifest format, but from a file, so it also works for plugins and themes that aren't hosted on WordPress.org and for build directories in CI. <code>checksums</code> writes the manifest that WordPress.org generates for its own plugins.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/WordPress/gutenberg/tree/trunk/packages/scripts#plugin-zip"><code>wp-scripts plugin-zip</code></a></td>
+<td>Zips files from <code>package.json</code> <code>files</code> or a fixed allowlist, named after the npm package, with <code>--root-folder</code> / <code>--no-root-folder</code>.</td>
+<td>Reuses the root folder flags, selects files with <code>.distignore</code> by default and can optionally honor Git <code>export-ignore</code> attributes, puts the version from the plugin headers in the filename and streams the archive instead of building it in memory.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.21.1/development.html"><small>Previous</small>Development</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

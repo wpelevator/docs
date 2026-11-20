@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Serve images from S3 – chop (v0.2.2) | WP Elevator Docs</title>
+  <meta name="description" content="Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/s3.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/v0.2.2/s3.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Serve images from S3 – chop (v0.2.2)">
+  <meta property="og:description" content="Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/s3.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/chop/latest/s3.html#article",
+      "headline": "Serve images from S3",
+      "description": "Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.",
+      "url": "https://wpelevator.github.io/docs/js/chop/latest/s3.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/s3.html",
+      "inLanguage": "en",
+      "version": "v0.2.2",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "chop", "item": "https://wpelevator.github.io/docs/js/chop/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.2.2", "item": "https://wpelevator.github.io/docs/js/chop/v0.2.2/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Serve images from S3", "item": "https://wpelevator.github.io/docs/js/chop/v0.2.2/s3.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html" selected>chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html">wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/chop/latest/s3.html">latest</option>
+      <option value="/docs/js/chop/v0.2.2/s3.html" selected>v0.2.2</option>
+      <option value="/docs/js/chop/v0.2.1/s3.html">v0.2.1</option>
+      <option value="/docs/js/chop/v0.2.0/reference.html">v0.2.0</option>
+      <option value="/docs/js/chop/v0.1.1/reference.html">v0.1.1</option>
+      <option value="/docs/js/chop/v0.1.0/reference.html">v0.1.0</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="chop documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/chop/v0.2.2/index.html">Overview</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Serve images</li>
+    <li><a href="/docs/js/chop/v0.2.2/resize-and-crop.html">Resize, crop and pad images</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/responsive-images.html">Serve responsive images</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/formats.html">Serve AVIF and WebP</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/quality-and-metadata.html">Set quality and strip metadata</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/animated-and-transparent.html">Serve transparent and animated images</a></li>
+    <li class="nav-heading">Choose a source</li>
+    <li><a href="/docs/js/chop/v0.2.2/sources.html">Choose where originals come from</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/https-origin.html">Serve images from an HTTPS origin</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/s3.html" aria-current="page">Serve images from S3</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/url-sources.html">Let requests name the image URL</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/security.html">Secure remote origins</a></li>
+    <li class="nav-heading">Run in production</li>
+    <li><a href="/docs/js/chop/v0.2.2/docker.html">Run chop in Docker</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/production-checklist.html">Prepare chop for production</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/caching.html">Cache images</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/nginx-cache.html">Cache with nginx</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/troubleshooting.html">Troubleshoot chop</a></li>
+    <li class="nav-heading">Migrate</li>
+    <li><a href="/docs/js/chop/v0.2.2/from-photon.html">Migrate from Photon</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/from-cloudflare.html">Migrate from Cloudflare Image Resizing</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/chop/v0.2.2/cli.html">Run the server</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/responses.html">Responses and errors</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/library.html">Library API</a></li>
+    <li><a href="/docs/js/chop/v0.2.2/development.html">Development</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/chop/latest/index.html">chop</a></li>
+    <li><span aria-current="page">v0.2.2</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.2.2</strong>. <a href="/docs/js/chop/latest/s3.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Serve images from S3</h1><p class="lede">Serve images from an S3 bucket or an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS.</p>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/chop/v0.2.2/s3.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/chop/v0.2.2/s3.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>Serve the images of an S3 bucket, or of an S3-compatible service such as Cloudflare R2, MinIO or SeaweedFS, with one environment variable and the credentials that the bucket needs:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://my-bucket/uploads <span class="token assign-left variable">AWS_REGION</span><span class="token operator">=</span>eu-west-1 <span class="token punctuation">\</span>
+<span class="token assign-left variable">AWS_ACCESS_KEY_ID</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token assign-left variable">AWS_SECRET_ACCESS_KEY</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token punctuation">\</span>
+npx @wpelevator/chop</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">chop listening on http://0.0.0.0:8080, serving s3://my-bucket/uploads</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The request <code>/2026/05/photo.jpg</code> reads the key <code>uploads/2026/05/photo.jpg</code>. The S3 origin needs chop 0.2.0 or later. Lambda puts the same <code>AWS_*</code> variables in the environment for its execution role, so there is nothing to add there.</p>
+<p>Without a region, chop exits with code <code>2</code>:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">An S3 origin on AWS needs a region: set s3Region (CHOP_S3_REGION or AWS_REGION).</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>Without credentials, chop sends unsigned requests, which only work for a bucket with public read access, and prints a warning at startup:</p>
+<div class="code"><pre class="language-text" tabindex="0"><code class="language-text">warning: The S3 origin has no credentials (s3AccessKeyId and s3SecretAccessKey): requests are unsigned, which only works for a bucket with public read access.</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h2 id="common-tasks" tabindex="-1"><a class="header-anchor" href="#common-tasks">Common tasks</a></h2>
+<h3 id="use-aws-lambda-or-a-public-bucket" tabindex="-1"><a class="header-anchor" href="#use-aws-lambda-or-a-public-bucket">Use AWS, Lambda or a public bucket</a></h3>
+<p>The first command covers AWS. A public bucket needs only a region, and chop prints the warning that there are no credentials:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://public-photos/uploads <span class="token assign-left variable">CHOP_S3_REGION</span><span class="token operator">=</span>eu-west-1 chop</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h3 id="use-seaweedfs-or-minio-on-a-private-network" tabindex="-1"><a class="header-anchor" href="#use-seaweedfs-or-minio-on-a-private-network">Use SeaweedFS or MinIO on a private network</a></h3>
+<p>An endpoint on a private network needs <code>CHOP_ORIGIN_ALLOW_PRIVATE</code>, and plain http also needs <code>CHOP_ORIGIN_ALLOW_HTTP</code>:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://photos <span class="token punctuation">\</span>
+<span class="token assign-left variable">CHOP_S3_ENDPOINT</span><span class="token operator">=</span>http://seaweedfs:8333 <span class="token punctuation">\</span>
+<span class="token assign-left variable">CHOP_ORIGIN_ALLOW_HTTP</span><span class="token operator">=</span><span class="token number">1</span> <span class="token assign-left variable">CHOP_ORIGIN_ALLOW_PRIVATE</span><span class="token operator">=</span><span class="token number">1</span> <span class="token punctuation">\</span>
+<span class="token assign-left variable">CHOP_S3_ACCESS_KEY_ID</span><span class="token operator">=</span>chop <span class="token assign-left variable">CHOP_S3_SECRET_ACCESS_KEY</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token punctuation">\</span>
+chop</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h3 id="use-cloudflare-r2" tabindex="-1"><a class="header-anchor" href="#use-cloudflare-r2">Use Cloudflare R2</a></h3>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token assign-left variable">CHOP_ORIGIN</span><span class="token operator">=</span>s3://photos <span class="token punctuation">\</span>
+<span class="token assign-left variable">CHOP_S3_ENDPOINT</span><span class="token operator">=</span>https://<span class="token operator">&lt;</span>account-id<span class="token operator">></span>.r2.cloudflarestorage.com <span class="token assign-left variable">CHOP_S3_REGION</span><span class="token operator">=</span>auto <span class="token punctuation">\</span>
+<span class="token assign-left variable">CHOP_S3_ACCESS_KEY_ID</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token assign-left variable">CHOP_S3_SECRET_ACCESS_KEY</span><span class="token operator">=</span><span class="token punctuation">..</span>. <span class="token punctuation">\</span>
+chop</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<h3 id="find-out-why-images-are-missing" tabindex="-1"><a class="header-anchor" href="#find-out-why-images-are-missing">Find out why images are missing</a></h3>
+<p>A signature problem, a wrong key and a missing permission all look like a <code>404</code> to the client. chop writes the S3 error code to the standard error, like <code>origin ERR_NOT_FOUND: s3.example.com answered 403 SignatureDoesNotMatch</code>. Look there first. <a href="troubleshooting.html#s3-error-codes">Troubleshoot chop</a> lists the codes.</p>
+<h2 id="reference" tabindex="-1"><a class="header-anchor" href="#reference">Reference</a></h2>
+<p>The settings are in the <a href="configuration.html#s3">S3 group of the configuration reference</a>.</p>
+<h3 id="keys-and-signing" tabindex="-1"><a class="header-anchor" href="#keys-and-signing">Keys and signing</a></h3>
+<p><code>CHOP_ORIGIN=s3://bucket</code> or <code>s3://bucket/prefix</code> reads the originals from a bucket, and <code>--origin s3://bucket</code> works too. The path of a request is appended to the prefix to make the key. With <code>s3://my-bucket/uploads</code>, the request <code>/2026/05/photo.jpg</code> reads the key <code>uploads/2026/05/photo.jpg</code>.</p>
+<p>Each segment is percent-encoded once, which is what S3 signs, so spaces, <code>+</code>, <code>!</code>, <code>*</code>, <code>'</code>, <code>(</code>, <code>)</code> and non-ASCII names work. The bucket name follows the S3 rules: 3 to 63 lower case letters, digits, dots and hyphens. A prefix can't have empty, <code>.</code> or <code>..</code> segments. An <code>s3://</code> origin can't be combined with an explicit <code>CHOP_DATA_DIR</code> or <code>--data</code>.</p>
+<p>chop signs every request to the bucket with AWS Signature Version 4, using only <code>node:crypto</code>. The rest follows the <a href="https-origin.html">HTTP origin</a>: the pinned DNS lookup and address checks, no redirects, the size cap while reading, the timeouts, and the fetch limit and queue. <code>CHOP_ORIGIN_ALLOW_HTTP</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE</code> apply to the endpoint. URL sources from <code>CHOP_ALLOWED_HOSTS</code> still work next to an S3 origin. They are fetched without a signature, and the credentials are never sent to them.</p>
+<h3 id="endpoints-and-addressing" tabindex="-1"><a class="header-anchor" href="#endpoints-and-addressing">Endpoints and addressing</a></h3>
+<p>On AWS the default is the virtual-hosted form, <code>bucket.s3.&lt;region&gt;.amazonaws.com</code>. A bucket name with dots uses the path-style form, <code>s3.&lt;region&gt;.amazonaws.com/bucket/key</code>, because the wildcard certificate of AWS doesn't cover dotted names. <code>CHOP_S3_PATH_STYLE=true</code> forces path style.</p>
+<p>With a custom endpoint the default is <code>endpoint/bucket/key</code>. <code>CHOP_S3_PATH_STYLE=false</code> uses <code>bucket.endpoint-host</code> instead, which needs a host name that can have subdomains and not an IP address. The endpoint is checked like an origin: <code>https://</code>, or <code>http://</code> with <code>CHOP_ORIGIN_ALLOW_HTTP</code>, without user information, a query string or a fragment. A loopback, private or link-local address needs <code>CHOP_ORIGIN_ALLOW_PRIVATE</code>.</p>
+<h3 id="credentials" tabindex="-1"><a class="header-anchor" href="#credentials">Credentials</a></h3>
+<p>Credentials need both a key and a secret. With only one of them, or with a session token alone, chop doesn't start. The error names the settings and not their values. With neither, requests are unsigned, which only works for a bucket with public read access, and chop prints a warning at startup.</p>
+<p>chop reads credentials once at startup and doesn't refresh them. Temporary credentials with a session token stop working when they expire in a long-running process, so restart chop when they rotate, or use static keys for a server. chop doesn't read instance metadata, shared credential files or web identity. The secret key and the session token are only read from the environment, there is no flag, and they never appear in a log, warning or error message.</p>
+<h3 id="errors" tabindex="-1"><a class="header-anchor" href="#errors">Errors</a></h3>
+<p>Errors are answered like those of an HTTP origin. A missing key, a <code>403</code> and a <code>404</code> are a plain <code>404</code> for the client. A <code>5xx</code>, a network or TLS error and a redirect are a <code>502</code>. A timeout is a <code>504</code>, and an object over <code>maxInputBytes</code> is a <code>413</code>.</p>
+<p>S3 explains an error in an XML body. A signature problem, a wrong key and a missing permission all look like a missing image to the client, so chop reads at most the first 2048 bytes of an error body, waits at most two seconds for them, and writes the <code>&lt;Code&gt;</code> to the standard error. The codes and their usual causes are in <a href="troubleshooting.html#s3-error-codes">Troubleshoot chop</a>. The codes never reach the client.</p>
+<h3 id="limits-of-the-s3-origin" tabindex="-1"><a class="header-anchor" href="#limits-of-the-s3-origin">Limits of the S3 origin</a></h3>
+<ul>
+<li><strong>GET only.</strong> chop reads whole objects with a signed <code>GET</code>. It doesn't list buckets, use ranges or presigned URLs.</li>
+<li><strong>Interface VPC endpoints.</strong> A private endpoint for S3 resolves to private addresses, which chop blocks unless <code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code> is set. Set it together with the endpoint.</li>
+<li><strong>SeaweedFS filer.</strong> SeaweedFS can also serve a bucket through its filer over plain HTTP, which needs no signature and no S3 settings. Use the <a href="https-origin.html">HTTP origin</a> with <code>CHOP_ORIGIN=http://seaweedfs:8888/buckets/&lt;bucket&gt;</code>, <code>CHOP_ORIGIN_ALLOW_HTTP=1</code> and <code>CHOP_ORIGIN_ALLOW_PRIVATE=1</code>, when the filer isn't exposed to anyone else. Use the S3 origin when you want access keys.</li>
+</ul>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/chop/v0.2.2/https-origin.html"><small>Previous</small>Serve images from an HTTPS origin</a><a rel="next" href="/docs/js/chop/v0.2.2/url-sources.html"><small>Next</small>Let requests name the image URL</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>

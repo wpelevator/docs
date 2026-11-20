@@ -5,18 +5,21 @@ What chop sends so caches can keep each image variant, and how to cache it at a 
 Every variant of an image is built once and then served from a cache. chop sends what a cache needs: a strong `ETag`, a one year `Cache-Control` and `Vary: Accept`. A request that repeats the `ETag` in `If-None-Match` gets a `304` with no body:
 
 ```sh
-curl -s -D - -o /dev/null -H 'If-None-Match: "n-Yo3BGjnbvonRM2dNUyTQCA3dloKdxSNJ2CqjeBGDs"' 'http://localhost:8080/2026/05/photo.jpg?w=300'
+url='http://localhost:8080/2026/05/photo.jpg?w=300'
+etag=$(curl -fsS -D - -o /dev/null "$url" | sed -n 's/^etag: //p' | tr -d '\r')
+curl -fsS -D - -o /dev/null -H "If-None-Match: $etag" "$url"
 ```
 
 ```text
 HTTP/1.1 304 Not Modified
-etag: "n-Yo3BGjnbvonRM2dNUyTQCA3dloKdxSNJ2CqjeBGDs"
+etag: "<etag>"
 cache-control: public, max-age=31536000
 vary: Accept
+chop-status: transformed
 x-content-type-options: nosniff
 ```
 
-The `ETag` is a SHA-256 of the output, so it changes only when the bytes change, and it is the same for every `Accept` header that gets the same bytes. Take the value from the response to your own first request, because it depends on the image. The same URL and `Accept` header always give the same bytes.
+Chop builds the `ETag` from the output bytes, `Chop-Status` and `Chop-Bytes-Saved`. A change to any of them makes the previous `ETag` stale. When a cache sends that stale tag as its only `If-None-Match` value, Chop returns `200` with fresh headers.
 
 chop doesn't cache anything itself. `Vary: Accept` makes a plain cache keep one copy per distinct `Accept` string, so the cache has to reduce that to the variants chop makes.
 
@@ -32,6 +35,10 @@ Responses depend on the `Accept` header, so the CDN must use it in the cache key
 The responses are immutable by design (`Cache-Control: public, max-age=31536000` by default and a strong `ETag`), so change the URL, for example with `?ver=3`, when an original changes, which also holds for a remote origin, since chop doesn't cache originals and doesn't look at the cache headers of the origin. Set `allowedWidths` to the widths of your `srcset` so that the server can't be used to generate unbounded variants, and put the server behind the CDN only. Use `/healthz` for health checks.
 
 The [nginx recipe](nginx-cache.md) shows the same normalization for a cache that runs next to chop.
+
+## Upgrade from `X-Bytes-Saved`
+
+Switch clients to `Chop-Bytes-Saved`. ETags issued before the rename become stale after the upgrade. Caches can still serve fresh entries with `X-Bytes-Saved` until they expire. If clients need the new header immediately, purge the cached image variants or change the image URLs to bypass caches you cannot purge.
 
 ## Reference
 

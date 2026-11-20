@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en" data-base="/docs/">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
+  <title>Development – wp-release (v0.21.1) | WP Elevator Docs</title>
+  <meta name="description" content="The source is TypeScript in src/, with tests next to the files they test (.test.ts). The published package contains only the compiled dist/ with…">
+  <link rel="canonical" href="https://wpelevator.github.io/docs/js/wp-release/latest/development.html">
+  <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/wp-release/v0.21.1/development.md">
+  <meta property="og:site_name" content="WP Elevator Docs">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Development – wp-release (v0.21.1)">
+  <meta property="og:description" content="The source is TypeScript in src/, with tests next to the files they test (.test.ts). The published package contains only the compiled dist/ with…">
+  <meta property="og:url" content="https://wpelevator.github.io/docs/js/wp-release/latest/development.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@konstruktors">
+  <link rel="icon" href="/docs/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/docs/assets/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://wpelevator.github.io/docs/#website",
+      "url": "https://wpelevator.github.io/docs/",
+      "name": "WP Elevator Docs",
+      "description": "Documentation for WP Elevator packages and plugins.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://wpelevator.github.io/docs/#organization",
+      "name": "WP Elevator",
+      "url": "https://wpelevator.com",
+      "logo": "https://wpelevator.github.io/docs/assets/icon.svg",
+      "sameAs": ["https://github.com/wpelevator", "https://x.com/konstruktors"]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html#article",
+      "headline": "Development",
+      "description": "The source is TypeScript in src/, with tests next to the files they test (.test.ts). The published package contains only the compiled dist/ with…",
+      "url": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html",
+      "mainEntityOfPage": "https://wpelevator.github.io/docs/js/wp-release/latest/development.html",
+      "inLanguage": "en",
+      "version": "v0.21.1",
+      "isPartOf": { "@id": "https://wpelevator.github.io/docs/#website" },
+      "author": { "@id": "https://wpelevator.github.io/docs/#organization" },
+      "publisher": { "@id": "https://wpelevator.github.io/docs/#organization" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Docs", "item": "https://wpelevator.github.io/docs/" },
+        { "@type": "ListItem", "position": 2, "name": "wp-release", "item": "https://wpelevator.github.io/docs/js/wp-release/latest/index.html" },
+        { "@type": "ListItem", "position": 3, "name": "v0.21.1", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/index.html" },
+        { "@type": "ListItem", "position": 4, "name": "Development", "item": "https://wpelevator.github.io/docs/js/wp-release/v0.21.1/development.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+   <div class="wrap">
+    <a class="brand" href="/docs/" aria-label="WP Elevator Docs home">
+      <svg class="logo" aria-hidden="true" focusable="false"><use href="/docs/assets/logo.svg#logo"></use></svg>
+      <span>Packages</span>
+    </a>
+    <nav aria-label="Site">
+      <a href="https://wpelevator.com">Home</a>
+      <a href="https://github.com/wpelevator">GitHub</a>
+    </nav>
+   </div>
+  </header>
+  <div class="layout">
+  <aside class="sidebar" id="menu" tabindex="-1" aria-label="Documentation menu" data-pagefind-ignore><div class="search" id="search" role="search"></div>
+<div class="switchers">
+  <label class="field">
+    <span>Package</span>
+    <select data-navigate autocomplete="off">
+      <optgroup label="JS">
+        <option value="/docs/js/checksums/latest/index.html">checksums</option>
+        <option value="/docs/js/chop/latest/index.html">chop</option>
+        <option value="/docs/js/fileset/latest/index.html">fileset</option>
+        <option value="/docs/js/signatures/latest/index.html">signatures</option>
+        <option value="/docs/js/subtree-split/latest/index.html">subtree-split</option>
+        <option value="/docs/js/wp-gettext/latest/index.html">wp-gettext</option>
+        <option value="/docs/js/wp-release/latest/index.html" selected>wp-release</option>
+        <option value="/docs/js/zip/latest/index.html">zip</option>
+      </optgroup>
+      <optgroup label="PHP">
+        <option value="/docs/php/php-changesets/latest/index.html">php-changesets</option>
+      </optgroup>
+    </select>
+  </label>
+  <label class="field">
+    <span>Version</span>
+    <select data-navigate autocomplete="off">
+      <option value="/docs/js/wp-release/latest/development.html">latest</option>
+      <option value="/docs/js/wp-release/v0.21.1/development.html" selected>v0.21.1</option>
+      <option value="/docs/js/wp-release/v0.21.0/development.html">v0.21.0</option>
+      <option value="/docs/js/wp-release/v0.20.2/development.html">v0.20.2</option>
+      <option value="/docs/js/wp-release/v0.20.1/development.html">v0.20.1</option>
+      <option value="/docs/js/wp-release/v0.20.0/development.html">v0.20.0</option>
+      <option value="/docs/js/wp-release/v0.19.0/development.html">v0.19.0</option>
+      <option value="/docs/js/wp-release/v0.18.2/development.html">v0.18.2</option>
+      <option value="/docs/js/wp-release/v0.18.1/development.html">v0.18.1</option>
+    </select>
+  </label>
+</div>
+<nav aria-label="wp-release documentation">
+  <ul class="nav-list">
+    <li><a href="/docs/js/wp-release/v0.21.1/index.html">Overview</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/quickstart.html">Quickstart</a></li>
+    <li class="nav-heading">Build and check</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/packaging.html">Build, verify and sign</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/build-a-zip.html">Build a release ZIP</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/file-selection.html">Choose which files ship</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/version-check.html">Check versions before you release</a></li>
+    <li class="nav-heading">Verify and sign</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/checksums.html">Write a checksums manifest</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/verify.html">Verify a ZIP or directory</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/signing.html">Sign releases</a></li>
+    <li class="nav-heading">Release</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/release-workflow.html">Release from GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/changesets.html">Changesets</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/monorepo-releases.html">Release a monorepo</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/prereleases.html">Pre-releases and snapshots</a></li>
+    <li class="nav-heading">Deploy</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deployment.html">Deploy</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-svn.html">Deploy to WordPress.org</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-git.html">Deploy to a Git repository</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/deploy-packages.html">Deploy configured packages</a></li>
+    <li class="nav-heading">Translate</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/internationalization.html">Extract a POT file</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/compile-translations.html">Compile translations</a></li>
+    <li class="nav-heading">Reference</li>
+    <li><a href="/docs/js/wp-release/v0.21.1/cli.html">CLI reference</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/github-actions.html">Use it in GitHub Actions</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/configuration.html">Configuration</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/naming.html">Names across the CLI, Actions and library</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/library.html">Library API</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/development.html" aria-current="page">Development</a></li>
+    <li><a href="/docs/js/wp-release/v0.21.1/comparison.html">Comparison with existing tools</a></li>
+  </ul>
+</nav>
+
+  </aside>
+  <main id="main" tabindex="-1">
+    <nav class="crumbs" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/docs/">Docs</a></li>
+    <li><a href="/docs/js/wp-release/latest/index.html">wp-release</a></li>
+    <li><span aria-current="page">v0.21.1</span></li>
+  </ol>
+</nav>
+<p class="notice" role="note">This is the documentation of <strong>v0.21.1</strong>. <a href="/docs/js/wp-release/latest/development.html">Read the latest version</a>.</p>
+<article>
+  <header class="page-head">
+    <h1>Development</h1>
+    <div class="actions" data-pagefind-ignore>
+      <button type="button" data-copy-markdown="/docs/markdown/js/wp-release/v0.21.1/development.md">Copy as Markdown</button>
+      <a href="/docs/markdown/js/wp-release/v0.21.1/development.md">Open as Markdown</a>
+    </div>
+  </header>
+  <div class="prose">
+    <p>The source is TypeScript in <code>src/</code>, with tests next to the files they test (<code>*.test.ts</code>). The published package contains only the compiled <code>dist/</code> with JavaScript and <code>.d.ts</code> files; tests and translation fixtures stay in the repository.</p>
+<div class="code"><pre class="language-bash" tabindex="0"><code class="language-bash"><span class="token function">npm</span> run build <span class="token parameter variable">--workspace</span> @wpelevator/wp-release
+<span class="token function">npm</span> <span class="token builtin class-name">test</span> <span class="token parameter variable">--workspace</span> @wpelevator/wp-release
+<span class="token function">npm</span> run lint <span class="token parameter variable">--workspace</span> @wpelevator/wp-release</code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<ul>
+<li><code>build</code> compiles <code>src/</code> to <code>dist/</code> with <code>tsc</code>, leaving out the tests. TypeScript resolves the workspace packages that wp-release depends on, like <code>@wpelevator/zip</code>, through their <code>wpelevator-source</code> condition, so it checks their source and needs no <code>dist/</code> of them. <code>preserveSymlinks</code> keeps their files under <code>node_modules</code>, so they aren't compiled into wp-release's <code>dist/</code>.</li>
+<li><code>test</code> runs the <code>.ts</code> tests directly with <code>node --test</code>, using Node.js type stripping, so it needs Node.js 22.18 or later but no build. The SVN integration tests in <code>svn-deploy.integration.test.ts</code> create repositories with <code>svnadmin</code> and deploy to their <code>file://</code> URLs; they're skipped when <code>svn</code> or <code>svnadmin</code> isn't installed.</li>
+<li><code>lint</code> runs ESLint and a <code>tsc</code> type check.</li>
+</ul>
+<p>The i18n tests in <code>@wpelevator/wp-gettext</code> validate gettext round trips, script catalogs and generated PHP data without launching PHP, WP-CLI or WordPress, covering contexts, plural forms, comments, flags, Unicode, escaping and PHP-looking input as data.</p>
+<p>The <code>wpelevator-source</code> export condition points at <code>src/index.ts</code>. The wp-release tests and monorepo CLI scripts use it to work with the source instead of a <code>dist/</code> build. Action builds use the declared dependency's default export, which resolves to <code>dist/</code> for the workspace copy and the published package. Build wp-release before building the actions.</p>
+<p><code>execute( 'deploy svn', args, { cwd, logger, svnRunner } )</code> runs a single-plugin deployment or a configured plan or deployment. The optional <code>svnRunner</code> replaces the external command runner in both modes; without it, the command uses its normal runner.</p>
+<h2 id="architecture" tabindex="-1"><a class="header-anchor" href="#architecture">Architecture</a></h2>
+<p>wp-release has two layers, so that it fits any repository layout:</p>
+<ul>
+<li><strong>Primitives</strong> work on the directory, file or values they're given and know nothing about the repository: <code>build &lt;dir&gt;</code>, <code>zip &lt;dir&gt;</code>, <code>checksums</code>, <code>sign</code>, <code>verify</code>, <code>version-check</code>, <code>deploy git &lt;dir&gt;</code>, <code>deploy svn &lt;dir&gt;</code>, <code>i18n pot &lt;dir&gt;</code>, <code>i18n audit &lt;dir&gt;</code> and the <code>i18n mo</code>, <code>i18n json</code> and <code>i18n php</code> compilers.</li>
+<li><strong>The config layer</strong> reads <code>wp-release.config.js</code> for everything about the repository: where packages are (<code>root</code> and the package globs), how their versions and tags are named (<code>version</code>, <code>tagFormat</code>), which files they ship (<code>files</code>), how their translations are extracted (<code>i18n</code>), where they deploy (<code>deploy</code>) and the git <code>remote</code>. The changeset commands (with a single-project fallback when no config exists), <code>deploy git</code> and <code>deploy svn --release-ref</code>, <code>build --package</code> and <code>zip --package</code>, and <code>i18n pot</code> and <code>i18n audit</code> with <code>--package</code> or <code>--all</code> belong to it, and the global <code>--config</code> and <code>--tag-format</code> options select or adjust the config. <code>zip</code> and <code>checksums</code> also read caller configuration for integrity settings even without <code>--package</code>; verification reads it only when explicitly selected. Only <code>--release-ref</code> reads which package and version a ref releases. A primitive with a config mode, like <code>deploy git --release-ref</code> beside <code>deploy git &lt;dir&gt;</code> or <code>zip --package</code> beside <code>zip &lt;dir&gt;</code>, only takes the package directory, its files and its targets from the config there, and otherwise works the same.</li>
+</ul>
+<p>Configured repositories use the layout and naming conventions their config sets. Config-free changeset releases use the root-only detection and defaults described above.</p>
+<p>The GitHub Actions are adapters to these commands: they use the same flag names and <code>execute()</code> entry point, with secrets supplied through environment variables. The SVN action injects a command runner that checks or installs SVN only when a deployment runs its first SVN command; config planning and deployment behavior remain in <code>wp-release</code>.</p>
+<p>The package uses ES modules as its unit of encapsulation, like most Node.js CLI tools: a module exports a few functions and keeps its helpers private, so there's no class to wrap them in. A class is used only when it holds state across steps or binds dependencies, so that callers and tests can replace them:</p>
+<ul>
+<li><strong>Workflows with steps</strong> are classes, so that their steps share state and dependencies on the instance: <code>SvnDeploy</code> shares the temporary working copy across <code>prepare()</code>, <code>checkout()</code>, <code>sync()</code> and <code>commit()</code>, <code>GitDeploy</code> binds the options and the git runner to its steps, and <code>ChangesetRelease</code> binds the repository and the runners to <code>add()</code>, <code>version()</code> and <code>tag()</code>.</li>
+<li><strong>External commands</strong> run through injectable runners: <code>createSvnRunner()</code> and <code>createGitRunner()</code> return functions that spawn the binary without a shell. The classes take a runner as an option and create the default one when it's missing, so tests pass a fake runner, or one that wraps the real runner and records some commands, instead of putting fake binaries on the <code>PATH</code>. The <code>Svn</code> and <code>ReleaseRepository</code> classes wrap a runner with the commands of their domain.</li>
+<li><strong>Domain logic</strong> is plain functions that take their dependencies as arguments, like <code>discoverPackages( repository, config )</code>, so that each one can be tested on its own.</li>
+<li><strong>Commands</strong> in <code>src/commands/</code> parse the CLI options and call the library, and <code>cli.ts</code> handles the global options, logging and exit codes. Errors carry their exit code, like <code>ValidationError</code> with <code>2</code>. Signing lives in <code>@wpelevator/signatures</code>, which throws errors with a <code>code</code>; <code>src/signing.ts</code> wraps it to read <code>WP_RELEASE_SIGNING_KEY</code> and to report those errors as <code>ValidationError</code>. ZIP archives live in <code>@wpelevator/zip</code> in the same way: <code>src/zip.ts</code> and <code>src/unzip.ts</code> adapt its entries and <code>zipPath</code> inputs and report its <code>ZipError</code> as <code>ValidationError</code>, with the <code>--force</code> hint for an existing archive. File selection and syncing live in <code>@wpelevator/fileset</code> and checksums in <code>@wpelevator/checksums</code>, which throw errors with a <code>code</code> in the same way: <code>src/file-selection.ts</code>, <code>src/sync.ts</code> and <code>src/checksums.ts</code> wrap them to report those errors as <code>ValidationError</code>, to build the manifest metadata from the plugin or theme slug and version, to select the files from the rules before hashing, and to pass the Git <code>export-ignore</code> lister to the fileset package. <code>src/integrity.ts</code> wraps the manifest codecs of the checksums package in the same way.</li>
+<li>Constructors only store their options. Work starts in a method call.</li>
+</ul>
+<p>The changeset release modules, from the entry point down:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>changeset-release.ts</code></td>
+<td><code>ChangesetRelease</code>, which plans releases and runs <code>add()</code>, <code>getStatus()</code>, <code>version()</code> and <code>tag()</code>, and the function form of each operation.</td>
+</tr>
+<tr>
+<td><code>single-project.ts</code></td>
+<td>Resolving the config-free root project, its version source and targets, and shared release settings.</td>
+</tr>
+<tr>
+<td><code>changeset-config.ts</code></td>
+<td>Loading and validating <code>wp-release.config.js</code>, and the version source and target helpers.</td>
+</tr>
+<tr>
+<td><code>changeset-packages.ts</code></td>
+<td>Discovering the packages of the configured globs, with or without a version, and finding the changed ones.</td>
+</tr>
+<tr>
+<td><code>changeset-files.ts</code></td>
+<td>Reading, writing and consuming changeset files.</td>
+</tr>
+<tr>
+<td><code>changeset-dependents.ts</code></td>
+<td>The dependents policy: which packages re-release with their sources, and rewriting their dependency specs.</td>
+</tr>
+<tr>
+<td><code>changesets.ts</code></td>
+<td>Parsing and formatting changesets, and the release types.</td>
+</tr>
+<tr>
+<td><code>version-files.ts</code></td>
+<td>Reading and writing versions in manifests, headers, readmes and PHP constants.</td>
+</tr>
+<tr>
+<td><code>changelog.ts</code></td>
+<td>Changelog entries, and the <code>CHANGELOG.md</code> and readme changelog sections.</td>
+</tr>
+<tr>
+<td><code>release-tags.ts</code></td>
+<td>Choosing the version and previous tag of a release, and building its release notes.</td>
+</tr>
+<tr>
+<td><code>tag-format.ts</code></td>
+<td>Formatting tag names from the tag format.</td>
+</tr>
+<tr>
+<td><code>package-deploy.ts</code></td>
+<td>Resolving the configured deploys of a ref: the released packages, their targets and file selections, for <code>deploy git</code> and <code>deploy svn</code>, and the file selection of a package for <code>zip --package</code>.</td>
+</tr>
+<tr>
+<td><code>package-zip.ts</code></td>
+<td><code>zipPackage()</code>, the ZIP and checksums manifest of the selected files of a package, for <code>zip</code> and the snapshot builds of a monorepo.</td>
+</tr>
+<tr>
+<td><code>release-repository.ts</code></td>
+<td><code>ReleaseRepository</code>, the git commands of a release: tags, commits and changed files.</td>
+</tr>
+<tr>
+<td><code>file-journal.ts</code></td>
+<td><code>FileJournal</code>, which restores every file a failed <code>changeset version</code> run changed.</td>
+</tr>
+<tr>
+<td><code>versions.ts</code></td>
+<td>Version checks and SemVer precedence.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The internationalization modules in <code>src/i18n/</code> adapt the standalone <code>@wpelevator/wp-gettext</code> package, which owns extraction, catalogs, POT, PO, MO, script JSON, <code>.l10n.php</code> and audits:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>packages.ts</code></td>
+<td><code>resolveI18nPackages()</code>, the config adapter that selects a directory, one package or all packages and resolves their options and POT paths.</td>
+</tr>
+<tr>
+<td><code>generate.ts</code></td>
+<td><code>extractCatalog()</code>, <code>generatePackagePot()</code>, <code>resolvePotPath()</code> and <code>validatePotDestinations()</code>, which read the headers of the main file with <code>package-meta.ts</code> and pass them as <code>meta</code> to the generate functions of <code>@wpelevator/wp-gettext/generate</code>.</td>
+</tr>
+<tr>
+<td><code>gettext.ts</code></td>
+<td>The other functions of <code>@wpelevator/wp-gettext</code>, with their <code>GettextError</code> reported as a <code>ValidationError</code> with the original error as its <code>cause</code>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+</article>
+<nav class="pager" aria-label="Pages" data-pagefind-ignore><a rel="prev" href="/docs/js/wp-release/v0.21.1/library.html"><small>Previous</small>Library API</a><a rel="next" href="/docs/js/wp-release/v0.21.1/comparison.html"><small>Next</small>Comparison with existing tools</a>
+</nav>
+
+  </main>
+</div>
+<div class="bottom-bar" data-pagefind-ignore>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+    <span class="menu-icon" aria-hidden="true"></span>
+    <span class="menu-label">Menu</span>
+  </button>
+  <div class="bar-search"></div>
+</div>
+<div class="scrim" hidden></div>
+
+  <footer class="site-footer">
+   <div class="wrap">
+    <p>&copy; <a href="https://wpelevator.com">WP Elevator</a> &middot; <a href="https://github.com/wpelevator">GitHub</a> &middot; <a href="/docs/colophon.html">Colophon</a></p>
+   </div>
+  </footer>
+  <script src="/docs/assets/site.js" defer></script>
+</body>
+</html>
