@@ -36,6 +36,10 @@ The responses are immutable by design (`Cache-Control: public, max-age=31536000`
 
 The [nginx recipe](nginx-cache.md) shows the same normalization for a cache that runs next to chop.
 
+### Avoid stampedes at a CDN
+
+Many requests for a variant that isn't cached yet each make chop build it, unless the cache collapses them. If your CDN has request collapsing (also called a cache lock or request coalescing), turn it on, and use a tiered cache or an origin shield if it has one, so that misses from different locations reach chop once. Check that the collapsed requests wait as long as chop may take, because a lock that gives up early sends them all to chop. Warm the variants after a purge. [Avoid stampedes](nginx-cache.md#avoid-stampedes) lists the same measures for nginx.
+
 ## Upgrade from `X-Bytes-Saved`
 
 Switch clients to `Chop-Bytes-Saved`. ETags issued before the rename become stale after the upgrade. Caches can still serve fresh entries with `X-Bytes-Saved` until they expire. If clients need the new header immediately, purge the cached image variants or change the image URLs to bypass caches you cannot purge.

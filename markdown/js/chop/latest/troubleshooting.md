@@ -15,7 +15,7 @@ Match the message you see to a cause. Errors are plain text with `Cache-Control:
 | `415` `This file is not a supported image.` | The content isn't a JPEG, PNG, GIF, WebP or AVIF, or the format isn't in `CHOP_ALLOWED_INPUT_FORMATS` | Check the file. The extension isn't used. |
 | `422` `The image can not be processed.` or `The image can not be read.` | A corrupt or truncated image. An image over `CHOP_MAX_INPUT_PIXELS` gives `can not be read` | Replace the original or raise the limit. |
 | `502` | The origin couldn't be reached, answered `5xx`, redirected, or sent a compressed or incomplete body | Read the standard error. A redirect needs the final URL in `CHOP_ORIGIN`. |
-| `503` with `Retry-After: 1` | The queue of images or of downloads is full | Raise `CHOP_MAX_QUEUE` or the concurrency, or add servers. |
+| `503` with `Retry-After: 1` | The queue of images or of downloads is full | Raise `CHOP_MAX_QUEUE` or the concurrency, or add servers. If it happens on an empty cache, [avoid the stampede](nginx-cache.md#avoid-stampedes) with the cache lock and a warm-up. |
 | `504` | The origin was too slow to connect or to send the image | Raise `CHOP_ORIGIN_CONNECT_TIMEOUT` or `CHOP_ORIGIN_TIMEOUT`, or fix the origin. |
 
 The `415` and `422` responses for those two test files:

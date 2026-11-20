@@ -30,6 +30,7 @@ That output came from `CHOP_MAX_INPUT_BYTES=1000` and a 1.3 MB test image.
 ## Checklist
 
 - **Cache in front.** Responses are built on request and are not stored. Run [nginx](nginx-cache.md) or a [CDN](caching.md#at-a-cdn) so each variant is built once, and let only the cache reach chop.
+- **Collapse concurrent misses.** Without a lock, every request for an uncached variant makes chop build it. The nginx recipe sets the lock and its timeouts, serves stale copies while one request refreshes them, and shows how to warm a cleared cache. See [Avoid stampedes](nginx-cache.md#avoid-stampedes).
 - **Limit the widths.** `CHOP_ALLOWED_WIDTHS` bounds the number of variants that anyone can make. See [Serve responsive images](responsive-images.md).
 - **Lower the input limits.** `CHOP_MAX_INPUT_BYTES` (default `52428800`) and `CHOP_MAX_INPUT_PIXELS` (default `120000000`) bound what one request can make chop decode. Set them to the largest original that you serve.
 - **Size the concurrency.** `CHOP_MAX_CONCURRENCY` images are processed at once, by default the number of CPUs, and `CHOP_MAX_QUEUE` (default `64`) more wait. A full queue is a `503` with `Retry-After: 1`. For a remote origin, the memory in use can reach `CHOP_ORIGIN_CONCURRENCY` (default `4`) times `CHOP_MAX_INPUT_BYTES`, so lower one of them on a small machine.

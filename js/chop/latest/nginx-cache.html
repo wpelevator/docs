@@ -7,14 +7,14 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#1f2628" media="(prefers-color-scheme: dark)">
   <title>Cache with nginx – chop | WP Elevator Docs</title>
-  <meta name="description" content="An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.">
+  <meta name="description" content="An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format, and builds each one once when many requests arrive together.">
   <link rel="canonical" href="https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html">
   <link rel="alternate" type="text/markdown" href="https://wpelevator.github.io/docs/markdown/js/chop/latest/nginx-cache.md">
   <meta property="og:site_name" content="WP Elevator Docs">
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Cache with nginx – chop">
-  <meta property="og:description" content="An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.">
+  <meta property="og:description" content="An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format, and builds each one once when many requests arrive together.">
   <meta property="og:url" content="https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@konstruktors">
@@ -45,7 +45,7 @@
       "@type": "TechArticle",
       "@id": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html#article",
       "headline": "Cache with nginx",
-      "description": "An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.",
+      "description": "An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format, and builds each one once when many requests arrive together.",
       "url": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html",
       "mainEntityOfPage": "https://wpelevator.github.io/docs/js/chop/latest/nginx-cache.html",
       "inLanguage": "en",
@@ -159,7 +159,7 @@
 </nav>
 <article data-pagefind-body>
   <header class="page-head">
-    <h1>Cache with nginx</h1><p class="lede">An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format.</p>
+    <h1>Cache with nginx</h1><p class="lede">An nginx cache for chop that keeps three variants of each image, AVIF, WebP and the original format, and builds each one once when many requests arrive together.</p>
     <div class="actions" data-pagefind-ignore>
       <button type="button" data-copy-markdown="/docs/markdown/js/chop/latest/nginx-cache.md">Copy as Markdown</button>
       <a href="/docs/markdown/js/chop/latest/nginx-cache.md">Open as Markdown</a>
@@ -191,10 +191,21 @@
 		<span class="token directive"><span class="token keyword">proxy_pass</span> http://chop:8080</span><span class="token punctuation">;</span>
 		<span class="token directive"><span class="token keyword">proxy_cache</span> chop</span><span class="token punctuation">;</span>
 		<span class="token directive"><span class="token keyword">proxy_cache_key</span> <span class="token string">"<span class="token variable">$host</span><span class="token variable">$uri</span><span class="token variable">$is_args</span><span class="token variable">$args</span>|<span class="token variable">$chop_bucket</span>"</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># Make concurrent requests for the same variant wait for one build.</span>
 		<span class="token directive"><span class="token keyword">proxy_cache_lock</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># The defaults of 5s send waiting requests to chop uncached when a build takes longer, so wait as long as nginx waits for chop.</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_lock_timeout</span> <span class="token number">60s</span></span><span class="token punctuation">;</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_lock_age</span> <span class="token number">60s</span></span><span class="token punctuation">;</span>
+		<span class="token directive"><span class="token keyword">proxy_read_timeout</span> <span class="token number">60s</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># Don't retry a slow request on another address of chop, which doubles the work.</span>
+		<span class="token directive"><span class="token keyword">proxy_next_upstream</span> <span class="token boolean">off</span></span><span class="token punctuation">;</span>
 		<span class="token comment"># Cache 200 only. Errors have Cache-Control: no-store, which nginx respects.</span>
+		<span class="token comment"># The max-age of chop takes precedence, so this only applies to responses without one.</span>
 		<span class="token directive"><span class="token keyword">proxy_cache_valid</span> <span class="token number">200</span> <span class="token number">30d</span></span><span class="token punctuation">;</span>
-		<span class="token comment"># For remote originals, keep one-off requests for unusual sizes out of the cache.</span>
+		<span class="token comment"># Send the old copy while one request builds the new one, and when chop fails.</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_use_stale</span> error timeout updating http_502 http_503 http_504</span><span class="token punctuation">;</span>
+		<span class="token directive"><span class="token keyword">proxy_cache_background_update</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+		<span class="token comment"># For remote originals, keep one-off requests for unusual sizes out of the cache. This costs one more request to chop per variant.</span>
 		<span class="token comment"># proxy_cache_min_uses 2;</span>
 
 		<span class="token comment"># Send chop the bucket, so the body in the cache always matches its key.</span>
@@ -216,8 +227,68 @@
 <li>Only the <code>Accept</code> header and the URL select a variant, so a purge needs three keys per URL, one for each bucket, like <code>$host$uri$is_args$args|avif</code>.</li>
 <li>chop's strong <code>ETag</code> and <code>If-None-Match</code> handling work through the cache, and requests with different <code>Accept</code> values share an <code>ETag</code> when the output bytes and Chop header values match.</li>
 <li>The recipe caches <code>200</code> only. A <code>502</code> or <code>504</code> means that the origin failed for a moment, and caching it would keep a broken image for as long as the <code>proxy_cache_valid</code> time. chop sends <code>Cache-Control: no-store</code> with every error, so nginx doesn't cache a <code>404</code> either. To cache <code>404</code> responses for a short time, add <code>proxy_ignore_headers Cache-Control</code> with <code>proxy_cache_valid 404 1m</code>, and don't use <code>any</code>.</li>
-<li>For remote originals, <code>proxy_cache_lock on</code> makes concurrent requests for the same variant wait for one fetch, and <code>proxy_cache_min_uses 2</code> (commented out in the recipe) keeps one-off requests for unusual sizes out of the cache. See <a href="security.html">Secure remote origins</a>.</li>
+<li>For remote originals, <code>proxy_cache_lock on</code> makes concurrent requests for the same variant wait for one fetch, and <code>proxy_cache_min_uses 2</code> (commented out in the recipe) keeps one-off requests for unusual sizes out of the cache. See <a href="security.html">Secure remote origins</a> and <a href="#avoid-stampedes">Avoid stampedes</a>.</li>
 <li>If you turn AVIF off in chop (<code>CHOP_AVIF=false</code>), the <code>avif</code> bucket holds WebP, which is correct but caches the same image twice. Remove the AVIF line from the first <code>map</code> then.</li>
+</ul>
+<h2 id="avoid-stampedes" tabindex="-1"><a class="header-anchor" href="#avoid-stampedes">Avoid stampedes</a></h2>
+<p>A stampede is many requests for a variant that isn't cached yet. Without a cache lock, each of them makes chop decode the original and encode the image, and the work queues behind <code>CHOP_MAX_CONCURRENCY</code>. Once <code>CHOP_MAX_QUEUE</code> requests wait, chop answers <code>503</code> with <code>Retry-After: 1</code>, and those images fail to load. The recipe above prevents the common cases:</p>
+<div class="table-scroll" role="group" aria-label="Scrollable table" tabindex="0">
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>What it prevents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>proxy_cache_lock on</code></td>
+<td>Concurrent misses for one variant all reaching chop. One request builds the image and the others wait for it.</td>
+</tr>
+<tr>
+<td><code>proxy_cache_lock_timeout 60s</code> and <code>proxy_cache_lock_age 60s</code></td>
+<td>The lock giving up. With the default <code>5s</code>, a request that waits longer goes to chop and its response isn't cached, and after <code>5s</code> the lock lets another request through. Keep both at least as long as <code>proxy_read_timeout</code>.</td>
+</tr>
+<tr>
+<td><code>proxy_cache_use_stale ... updating</code> and <code>proxy_cache_background_update on</code></td>
+<td>A refresh of an expired copy making every visitor wait. nginx sends the old copy at once and refreshes it with one request. Without them, each concurrent request for an expired copy reaches chop.</td>
+</tr>
+<tr>
+<td><code>http_502 http_503 http_504</code> in <code>proxy_cache_use_stale</code></td>
+<td>A restart or a busy chop breaking images that nginx still has an old copy of.</td>
+</tr>
+<tr>
+<td><code>proxy_next_upstream off</code></td>
+<td>A request that timed out being sent to another address of chop, when the name <code>chop</code> resolves to several containers. That doubles the work on an already busy server.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In a test with an upstream that took 7 seconds to answer, six simultaneous requests for one uncached variant reached it six times with the default lock timeouts and once with <code>60s</code>. After the copy expired, four simultaneous requests reached it four times without <code>proxy_cache_use_stale ... updating</code> and once with it, and the visitors got an answer in about a millisecond.</p>
+<p>These parts need more than the recipe:</p>
+<ul>
+<li>
+<p><strong>Different variants don't share a lock.</strong> A page with 20 images in <code>srcset</code> on an empty cache makes 20 builds at once, one per URL. Keep <code>CHOP_MAX_QUEUE</code> above the number of images that one page requests from a cold cache, and limit the variants with <code>CHOP_ALLOWED_WIDTHS</code>.</p>
+</li>
+<li>
+<p><strong><code>proxy_cache_min_uses 2</code> costs a request.</strong> The first request isn't cached and the second one is, so chop builds each variant twice. Use it for remote originals, where one-off URLs fill the cache, and not for a library of uploads that you serve.</p>
+</li>
+<li>
+<p><strong>Expiry follows chop.</strong> nginx takes the lifetime from the <code>Cache-Control: max-age</code> of chop, one year by default, and uses <code>proxy_cache_valid</code> only for responses without one. A short <code>CHOP_MAX_AGE</code> makes every variant expire often, so keep it long and change the URL of an image that changes.</p>
+</li>
+<li>
+<p><strong>Size the cache for the images that you serve.</strong> nginx removes the least recently used copies once <code>max_size</code> is reached, and chop builds them again on the next request. Set <code>max_size</code> to the total size of all variants, and check the <code>MISS</code> count in <code>X-Cache-Status</code> after a few days.</p>
+</li>
+<li>
+<p><strong>Warm the cache after you clear it.</strong> A new cache, a purge or a changed <code>proxy_cache_key</code> starts empty, and the first visitors build every variant. Request the variants through nginx before you send traffic to it, once for each bucket and one at a time, which is about the rate that chop builds them:</p>
+<div class="code"><pre class="language-sh" tabindex="0"><code class="language-sh"><span class="token keyword">for</span> <span class="token for-or-select variable">accept</span> <span class="token keyword">in</span> <span class="token string">'image/avif,image/webp'</span> <span class="token string">'image/webp'</span> <span class="token string">'image/jpeg'</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+	<span class="token keyword">for</span> <span class="token for-or-select variable">width</span> <span class="token keyword">in</span> <span class="token number">320</span> <span class="token number">640</span> <span class="token number">1280</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+		<span class="token function">curl</span> <span class="token parameter variable">-fsS</span> <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-H</span> <span class="token string">"Accept: <span class="token variable">$accept</span>"</span> <span class="token string">"http://localhost/2026/05/photo.jpg?w=<span class="token variable">$width</span>"</span>
+	<span class="token keyword">done</span>
+<span class="token keyword">done</span></code></pre>
+<button class="copy-code" type="button" aria-label="Copy code" title="Copy code"><svg class="icon-copy" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg><svg class="icon-done" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><svg class="icon-failed" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<p>The last value is the <code>original</code> bucket, since any <code>Accept</code> without a usable <code>image/avif</code> or <code>image/webp</code> selects it.</p>
+</li>
 </ul>
 <p>A CDN in front of nginx needs the same buckets: see <a href="caching.html#at-a-cdn">Cache at a CDN</a>.</p>
 

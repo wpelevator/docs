@@ -225,7 +225,7 @@
 <tr>
 <td><code>503</code> with <code>Retry-After: 1</code></td>
 <td>The queue of images or of downloads is full</td>
-<td>Raise <code>CHOP_MAX_QUEUE</code> or the concurrency, or add servers.</td>
+<td>Raise <code>CHOP_MAX_QUEUE</code> or the concurrency, or add servers. If it happens on an empty cache, <a href="nginx-cache.html#avoid-stampedes">avoid the stampede</a> with the cache lock and a warm-up.</td>
 </tr>
 <tr>
 <td><code>504</code></td>
