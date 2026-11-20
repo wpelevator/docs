@@ -2,6 +2,11 @@
 
 What changed in each release.
 
+## 0.3.0 (2026-11-20)
+
+- Add the versionless `Chop-Status` response header and rename `X-Bytes-Saved` to `Chop-Bytes-Saved`. Image ETags now account for the Chop headers so revalidation refreshes stale metadata. Update clients that read the old header and purge cached image variants or change their URLs if clients need the new header immediately. ([`7f8fbfc`](https://github.com/wpelevator/basement/commit/7f8fbfc729f8a27a2fe45f80318d9c67dcf90a53))
+- Document how to avoid stampedes with the nginx cache: longer lock timeouts, stale copies while one request refreshes, no retries on a slow request, cache sizing and a warm-up. The recipe now sets them, and `proxy_cache_valid` is documented as a fallback to the `max-age` of chop. ([`3388be7`](https://github.com/wpelevator/basement/commit/3388be7b1c501c0158e3fa78e821c46da1d80972))
+
 ## 0.2.2 (2026-11-15)
 
 - Reorganize the documentation by task, with real command output at the top of each page: a quickstart, pages to resize images, serve responsive images, serve AVIF and WebP, set quality, serve transparent and animated images, choose a source, serve from an HTTPS origin, S3 and named hosts, run in Docker, prepare for production, cache with nginx or a CDN, troubleshoot errors, and migrate from Photon or Cloudflare Image Resizing. The long reference page is gone, and its rules live in the pages that own them. ([`d447886`](https://github.com/wpelevator/basement/commit/d447886acf93e5d85236d796bdd2116b62f13da3))

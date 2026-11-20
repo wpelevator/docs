@@ -166,7 +166,12 @@
     </div>
   </header>
   <div class="prose">
-    <h2 id="022-2026-11-15" tabindex="-1"><a class="header-anchor" href="#022-2026-11-15">0.2.2 (2026-11-15)</a></h2>
+    <h2 id="030-2026-11-20" tabindex="-1"><a class="header-anchor" href="#030-2026-11-20">0.3.0 (2026-11-20)</a></h2>
+<ul>
+<li>Add the versionless <code>Chop-Status</code> response header and rename <code>X-Bytes-Saved</code> to <code>Chop-Bytes-Saved</code>. Image ETags now account for the Chop headers so revalidation refreshes stale metadata. Update clients that read the old header and purge cached image variants or change their URLs if clients need the new header immediately. (<a href="https://github.com/wpelevator/basement/commit/7f8fbfc729f8a27a2fe45f80318d9c67dcf90a53"><code>7f8fbfc</code></a>)</li>
+<li>Document how to avoid stampedes with the nginx cache: longer lock timeouts, stale copies while one request refreshes, no retries on a slow request, cache sizing and a warm-up. The recipe now sets them, and <code>proxy_cache_valid</code> is documented as a fallback to the <code>max-age</code> of chop. (<a href="https://github.com/wpelevator/basement/commit/3388be7b1c501c0158e3fa78e821c46da1d80972"><code>3388be7</code></a>)</li>
+</ul>
+<h2 id="022-2026-11-15" tabindex="-1"><a class="header-anchor" href="#022-2026-11-15">0.2.2 (2026-11-15)</a></h2>
 <ul>
 <li>Reorganize the documentation by task, with real command output at the top of each page: a quickstart, pages to resize images, serve responsive images, serve AVIF and WebP, set quality, serve transparent and animated images, choose a source, serve from an HTTPS origin, S3 and named hosts, run in Docker, prepare for production, cache with nginx or a CDN, troubleshoot errors, and migrate from Photon or Cloudflare Image Resizing. The long reference page is gone, and its rules live in the pages that own them. (<a href="https://github.com/wpelevator/basement/commit/d447886acf93e5d85236d796bdd2116b62f13da3"><code>d447886</code></a>)</li>
 <li>Start each documentation page with a <code># Title</code> heading instead of a <code>title</code> in the front matter, so that the Markdown pages read well on GitHub and in <code>node_modules</code>. (<a href="https://github.com/wpelevator/basement/commit/ca287e459833429482d3e033eb3eab81eaea3757"><code>ca287e4</code></a>)</li>
